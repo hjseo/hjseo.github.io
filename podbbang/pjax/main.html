@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <meta name="description" content="description-main">
+     <meta name="author" content="hj">
+    <meta http-equiv="Expires" CONTENT="-1">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+   
+  <title>pjax-demo</title>
+  
+  <script src="jquery-1.12.js"></script>
+  <script src="jquery.pjax.js"></script>
+  
+
+  
+ </head>
+ 
+ <body>
+
+  <div id="wrap">
+    <div id="list">
+     <div onclick="moveDetail()" style="width: 50px; height: 50px; border: 1px solid #000;">
+      box
+     </div>  
+     <a href="detail2.html">detail2</a>
+    </div>
+    <div id="pjax-container" style="width: 100%; height: 50px; border: 1px solid #000;">
+      pjax
+    </div>
+
+    <audio controls>
+      <source src="running_out.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+  </div>
+
+  <script>
+   function moveDetail() {
+     $.pjax({url: 'detail.html', container: '#pjax-container'})
+   }
+
+  $(document).pjax('a', '#pjax-container');
+  
+/*$(document).pjax(selector, [container], options)
+1. selector is a string to be used for click event delegation.
+2. container is a string selector that uniquely identifies the pjax container.
+3. options is an object with keys described below.*/
+
+  </script>
+ </body>
+</html>
+

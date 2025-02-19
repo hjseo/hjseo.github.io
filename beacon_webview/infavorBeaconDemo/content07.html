@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<link rel="stylesheet" href="css/common.css" />
+		<style>
+			.box{
+				width:100%; 
+				height:58%; 
+				position:absolute; 
+				left:0; bottom:16%;
+				  
+				
+			}
+			.text{height:30%; padding-left:13%; padding-right:25%;}
+			.radio{height:50%; padding:0 13%; padding-top:8%;}
+			
+			.btn{
+				width:100%; 
+				height:16%; 
+				position:absolute; 
+				left:0; bottom:0; 
+				text-align:center;
+				
+			}
+			.btn input[type=image]{ width:33%; }
+			
+		</style>
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/css3-mediaqueries.js"></script>
+		<![endif]-->
+		<title>설문조사</title>
+	</head>
+	<body>
+		<div id="wrap">
+			<img src="images/content07/content07_survey_bg.jpg" alt="" class="bg" />
+			
+			<div class="box">
+				<div class="text">
+					Demo를 보신후 저희 솔루션에 대하여
+					느낌을 선택해주세요..
+				</div>
+				<div class="radio">
+				    <input type="radio" name="survey" id="best" value="best">
+				    <label for="best">정말 최고의 마케팅 솔루션이다.</label>
+				  	<br />
+				    <input type="radio" name="survey" id="good" value="good">
+				    <label for="good">괜찮은 마케팅 솔루션인 것 같다.</label>
+				    <br />
+				    <input type="radio" name="survey" id="soso" value="soso">
+				    <label for="soso">잘 모르겠다</label>
+				  	<br />
+				    <input type="radio" name="survey" id="bad" value="bad">
+				    <label for="bad">의문이다.</label>
+				    
+				</div>
+			</div>		
+			<div class="btn">
+				<input type="image" src="images/content07/btn07.gif" />
+			</div>	
+		</div>
+	</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html  lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>Yello market</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<script>
+	var frameworkReadyUrl = 'https://img.yellomarket.co.kr/resources';
+	</script>
+	<script src='js/ifvFramework.js' type="text/javascript"></script>
+	<script src="js/common.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+<style type="text/css">
+/* web */
+.search_area{display:none;}
+.ym_contents .ym_detail_con{background-color:transparent; border:0 none; margin-top:0;}
+.ym_contents .ym_detail_con.news_box{margin-top:0; margin-bottom:10px; background-color: #fff; border: 1px solid #d0d0d0; box-sizing: border-box;}
+.ym_custom_info .info_text_area .info_desc{padding:10px 0 20px 0;}
+.ym_custom_info .info_text_area .info_desc .cafe_title{padding-bottom:5px; font-size: 17px; font-weight: bold;}
+.txt_product_list{padding-top: 20px; font-size: 13px; text-align: right;}
+.txt_product_list a{color: #8f8f8f;}
+.m_product_list{display: none;}
+.tmp_news .contents_txt_area .txt_con{max-height: none;}
+.tmp_news .contents_img_area{max-height:none;}
+
+/* mobile */
+@media only screen and (max-width: 760px), only screen and (device-max-width: 760px) {
+    .ym_custom_info .info_text_area{top:0; padding-top:60px;}
+    .ym_custom_info .info_text_area .info_title{position: absolute; left: 0; right: 0; bottom: 30px;}
+    .ym_custom_info .info_text_area .info_title .store_logo_area{margin-bottom: 0; width: 36px; height: 36px; border-radius: 18px;}
+    .ym_custom_info .info_text_area .info_title .store_title{display: inline; padding-left:5px;}
+    .ym_custom_info .info_text_area .info_desc .cafe_title{color: #fff; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; overflow: hidden;}
+    .ym_tab{display: none;}
+    .txt_product_list{display: none;}
+    .m_product_list{position: relative; display: block; height: 46px; background-color: #fff; border-bottom: 2px solid #ffb108; line-height: 46px; font-size:18px; font-weight: bold; text-align: center; color: #ffb108;}
+    .m_product_list .btn_back{position: absolute; left: 0; top:0; display: inline-block; width: 40px; height: 100%; background:url(images/btn_back.png) no-repeat center; background-size: 50%;}
+    .ym_contents .ym_detail_con{margin-top:0; border-top: 1px solid #d0d0d0;}
+}
+</style>
+<script type="text/javascript">
+
+function tmplCafe(){
+    var dataArr = [];
+    var tmpNum = 5;
+
+    for( var i = 0; i<tmpNum; i++ ){
+
+        var obj = {
+            index : i,
+            img : 'images/@tmp_store_img.png',
+            cafeName : '맛집을 사랑하는 사람들의 페이버',
+            title : '후암동 태국음식점 창수린',
+            time : '12분 전',
+            memberName : 'Vivian',
+            text : '닥터로빈 시청점이 드디어 오픈을 했습니다. 다양한 오픈 이벤트와 행사가 준비되어 있으니,  고고고 닥터로빈 시청점이 드디어 오픈을 했습니다. 다양한 오픈 이벤트와 행사가 준비되어 있으니,  고고고',
+            newsImg : 'images/@tmp_news_img.jpg',
+            viewCount : '213',
+            newsCount : '213',
+            heartCount : '213'
+        };
+        dataArr.push(obj);
+    }
+    var temp = $("#newsTemplate").tmpl(dataArr);
+    $("#newsTemplateCon").append(temp);
+
+    for( var i = 0; i<tmpNum; i++ ){
+        var txtLength = $("#txtCon"+i).html().length;
+        if(txtLength > 100){
+            $("#moreRead"+i).show();/* 계속 읽기 */
+        }
+
+        /*
+            #goodIcon
+            #badIcon
+            #questionIcon
+            #reviewIcon
+            #rinkIcon
+            #ideaIcon
+        */
+        $("#goodIcon"+i).show();
+        tmplReply(i);
+    }
+
+}
+
+/* 댓글 탬플릿 */
+function tmplReply( cafeNum ){
+    var dataArr = [];
+    var tmpNum = 3; 
+
+    for( var i = 0; i<tmpNum; i++ ){
+        var indexNum = String(cafeNum) + String(i);
+
+        var obj = {
+            index : indexNum,
+            img : '',   
+            name : 'Vivian',
+            time : '3시간 전',
+            reply : '칼라리필 토너 입니다.'
+        };
+        dataArr.push(obj);
+    }
+    var temp = $("#replyTemplate").tmpl(dataArr);
+    $("#productReply" + cafeNum ).append(temp);
+
+    for( var i = 0; i<tmpNum; i++ ){
+        
+        if(dataArr[i].img == ''){
+            $("#replyMemberImg" + dataArr[i].index ).attr("src","images/img_member.png");
+        }
+       
+    }
+}
+
+/* 왼쪽 카페 정보 이미지 */
+function infoImgSetting(){
+    $("#infoImg").css({'background-image':'url(images/@tmp_store_bg.jpg)'});
+    $("#storeLogo").attr('src','images/@tmp_store_img.png');
+    $("#storeName").html('꼬마');
+    $("#cafeTit").html('옐로마켓');
+    $("#storeDesc").html('Design your slim &amp; Healthy food');
+}
+
+$(document).ready(function() {
+    infoImgSetting();
+    tmplCafe();
+});
+</script>
+
+<!-- 소식 탬플릿 -->
+<script id="newsTemplate" type="text/x-jquery-tmpl">
+<div class="ym_detail_con news_box">
+    <div class="tmp_news">
+        <div class="tit_area">
+            <div class="member_img">
+                <img src="${img}" alt="" id="memberImg${index}" />
+            </div>
+            <div class="news_name_area">
+                <p class="cafe_name">${cafeName}</p>
+                <p class="title">${title}</p>
+                <span class="time">${time}</span>  
+                <span class="member_name">${memberName}</span> 
+            </div>
+            <div class="news_icon_area">
+                <div class="good" id="goodIcon${index}"><span></span></div>
+                <div class="bad" id="badIcon${index}"><span></span></div>
+                <div class="question" id="questionIcon${index}"><span></span></div>
+                <div class="review" id="reviewIcon${index}"><span></span></div>
+                <div class="rink" id="rinkIcon${index}"><span></span></div>
+                <div class="idea" id="ideaIcon${index}"><span></span></div>
+            </div>
+        </div>
+        <div class="contents_txt_area">
+            <p class="txt_con" id="txtCon${index}">${text}</p>
+        </div>
+        <div class="contents_img_area">
+            <img src="${newsImg}" alt="" />
+        </div>
+        <div class="views_ico_area">
+            <div class="count_area pro_count">
+                <p><span class="member_ico"></span><span>${viewCount}</span></p>
+                <p><span class="news_ico"></span><span>${newsCount}</span></p>
+                <p><span class="heart_ico"></span><span>${heartCount}</span></p>
+            </div>
+        </div>
+        <div id="productReply${index}"></div>
+    </div>
+</div>
+</script>
+
+<!-- 댓글 -->
+<script id="replyTemplate" type="text/x-jquery-tmpl">
+    <div class="reply_contents">
+        <div class="member_img">
+            <img src="${img}" alt="" id="replyMemberImg${index}" />
+        </div>
+        <div class="reply_txt_area">
+            <span class="member_name">${name}</span>
+            <span class="write_time">${time}</span>
+            <p class="reply_txt">${reply}</p>  
+        </div>
+    </div>
+</script>
+</head>
+<body>
+	<div class="ym_wrap">
+		<!-- header -->
+        <header class="ym_header" id="ymHeader">
+            <div class="web_fix_width center_header">
+                <h1 class="logo" id="ymLogo">
+                    <a href="search.html" class="link">
+                        <img src="images/ym_logo.png" alt="yello market logo" />
+                    </a>
+                </h1>
+                <div class="search_area" id="searchArea">
+                    <input type="search" placeholder="가게/상품/서비스명으로 검색" class="search" />    
+                    <span class="ico_search"></span><!-- 검색 아이콘 -->
+                </div>
+                <p class="btn_app_open link_app_down">앱에서 열기</p>
+            </div>
+        </header>
+        <!-- header End -->
+
+        <!-- contents -->
+		<div class="ym_container web_fix_width">
+            <!-- Remote Top Button -->
+            <div id="remote_top" class="remote_top" onclick="goTop();">
+                <div class="remote_content">
+                    <img src="images/btn_scroll_top.png"/><br/>
+                    <span>TOP</span>
+                </div>
+            </div>
+            <!-- Remote Top Button End -->
+            
+            <section class="ym_custom_info">
+                <div class="info_img_area" id="infoImg"></div>
+                <div class="info_text_area">
+                    <div class="info_title">
+                        <div class="store_logo_area">
+                            <img src="" alt="" id="storeLogo" />
+                        </div>
+                        <h2 class="store_title" id="storeName"></h2>    
+                    </div>
+                    <div class="info_desc">
+                              <h2 class="cafe_title" id="cafeTit"></h2>
+                        <p id="storeDesc"></p>  
+                    </div>
+                </div>
+                
+            </section>
+            <section class="ym_contents">
+                <div id="newsTemplateCon"></div>
+
+                <div class="not_list" id="notList">
+                    <img src="images/not_list_logo.png" alt="" />
+                    <p>해당 목록이 없습니다.</p>
+                </div>
+                <div class="pc_down_area">
+                    <div class="app_store_area app_mag">
+                        <img src="images/ios_down_sm.gif" alt="download on the app store" />    
+                    </div>
+                    <div class="app_store_area">
+                        <img src="images/and_down_sm.gif" alt="android app on google play" />
+                    </div>  
+                </div>
+                <div class="btn_area">
+                    <button class="btn_ym_app_down link_app_down">옐로마켓 앱 다운로드</button>  
+                </div>
+                
+            </section>
+
+        </div>
+        <!-- contents End -->
+	</div>
+</body>
+
+</html>

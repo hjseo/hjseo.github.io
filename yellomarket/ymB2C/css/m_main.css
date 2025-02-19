@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+
+.pc_br {display: inline;}
+.mobile_br {display: block;}
+
+.ym_header .btn_app_open{display:none;}
+.response{width: 100%; min-height: 0;}
+.response_wrap{min-width: 0; min-height: 0;}
+.main_detail_txt{top: 5%; width: 100%; text-align: center;}
+.main_detail_txt .ym_title{display: block; font-size: 15px;}
+.main_detail_txt .ym_subtit{display: block; font-size: 20px;}
+.main_detail_txt .ym_detail{font-size: 14px;}
+.main_img{padding-top:130px; padding-left: 0; max-width: 100%; width: 70%;}
+/*update*/
+.main_img.first_img{padding-left:33px;padding-top:106px; width: 60%;}
+
+.main_yellomarket_push .main_detail_text{position: static;}
+.main_yellomarket_down .ym_main_txt .ym_subtit{font-size: 17px;}
+.main_yellomarket_down .ym_main_txt .ym_title{display:block; font-size: 30px;}
+.main_yellomarket_down .ym_down_area{display: none;}
+.main_yellomarket_down .btn_area{display:block; margin: 0; padding: 20px;}
+.main_yellomarket_push{position: relative; height: auto; background-size: 100% auto; background-color: #fff;}
+.main_yellomarket_push .second_img {width: 100%; display: block;}
+.main_yellomarket_push .main_detail_txt {position: static;}
+.main_yellomarket_push .logo_img{position: absolute; top: 22%;right: 15%; width: 92px;}
+.main_yellomarket_push .ym_txt_area {width: 100%; padding: 30px 0 37px;}
+.main_yellomarket_push .ym_txt_area .ym_title{font-size:24px; color: #3f3d37; margin-bottom: 4px;}
+.main_yellomarket_push .ym_txt_area .ym_detail{font-size:16px; color: #666; padding: 2px 0;}
+
+.main_store_info {height: auto; margin-bottom: -330px;}
+.main_store_info .main_detail_txt {margin-top: 40px; position: static; top: 0; left: 0;}
+.main_store_info .main_detail_txt .ym_subtit {margin-top: 270px;}
+.main_store_info .main_img {position: relative; top: -430px;}
+
+.main_store_bene {height: auto; margin-bottom: -330px;}
+.main_store_bene .main_detail_txt {margin-top: 40px; position: static; top: 0; left: 0;}
+.main_store_bene .main_detail_txt .ym_subtit {margin-top: 270px;}
+.main_store_bene .main_img {position: relative; top: -450px;}
+
+.main_cafe {height: auto; margin-bottom: -330px;}
+.main_cafe .main_detail_txt {margin-top: 40px; position: static; top: 0; left: 0;}
+.main_cafe .main_detail_txt .ym_subtit {margin-top: 270px;}
+.main_cafe .main_img {position: relative; top: -450px;}
+
+.main_mypage {height: auto; margin-bottom: -330px;}
+.main_mypage .main_detail_txt {margin-top: 40px; position: static; top: 0; left: 0;}
+.main_mypage .main_detail_txt .ym_subtit {margin-top: 270px;}
+.main_mypage .main_img {position: relative; top: -480px;}
+
+.main_last .ym_down_area2{display: none;}
+/*update*/
+.main_last .btn_area{display: block; margin-bottom: 20px;}
+.main_last .btn_area .btn_ym_app_down{background-color: #fff;}
+.main_last .ym_txt {padding-top: 80px; width: 100%;}
+.main_last .ym_txt .ym_subtit{font-size: 18px; padding-bottom: 5px;}
+.main_last .ym_txt .ym_title{width: 100%; font-size: 30px; padding: 0 0 15px 0; }
+.main_last .ym_txt span img {width: 124px; padding: 15px 0 95px;}
+.main_last .copy {position: static; margin-top: 15px; padding-bottom: 15px;}
+/*update*/
+.main_last .copy img{display: block; margin: 0 auto; padding-bottom: 5px;}
+.scroll_btn{display: none;}
+
+#main1{min-height: 550px;}

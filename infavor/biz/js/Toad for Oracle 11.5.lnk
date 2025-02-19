@@ -1,0 +1,38 @@
+
+
+$("document").ready(function(){
+	
+	/*var Cheight = $(window).height();
+	 
+	$("#menuIcon").click(function() {
+		
+		if( $("#menuBox").css("display") == "none" ) {
+			$(this).children().attr("src","/images/btn_close.gif");
+			$("#menuBox").css({"height":Cheight});
+			$("body").css({overflow:'hidden'}).bind('touchmove', function(e){e.preventDefault()});
+		}else{
+			$(this).children().attr("src","/images/menu.jpg");
+			$("body").css({overflow:'auto'}).unbind('touchmove');
+		} 
+		
+		$("#menuBox").fadeToggle();
+		
+	});*/
+	  
+	
+	$("#menuBox ul").find("li").children().click(function(){
+
+		$(this).parent().addClass("on");
+		
+		if( $("#menuIcon").css("display") == "block" ){
+			
+			$("#menuBox").css("display","none");
+			$("body").css({overflow:'auto'}).unbind('touchmove');
+		}
+		
+	});
+	
+	
+	
+	
+});

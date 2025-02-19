@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+<title>앱 다운로드</title>
+<link rel="stylesheet" type="text/css" href="css/oracle.css" />
+<script src="//code.jquery.com/jquery.min.js"></script>
+<!--[if lt IE 9]>
+	<style>
+		#login #main{
+			background: #000; 
+			border-top:1px solid #fff; 
+			border-bottom:1px solid #fff;
+			filter: alpha(opacity=40);
+		}
+	</style>
+<![endif]-->
+
+<script>
+var uagentLow = '';
+
+$(document).ready(function(){
+	
+	uagentLow = navigator.userAgent.toLocaleLowerCase();
+	
+	$("#iosDownload").on("click", function(){
+		if(uagentLow.search("android") > -1){
+			alert("아이폰에서 선택해주세요");
+		}else{
+			location.href="itms-services://?action=download-manifest&url=https://www.yellomarket.co.kr/resources/apk/ios/manifest.plist";
+		}
+	});
+	
+	$("#andDownload").on("click", function(){
+		if(uagentLow.search("iphone") > -1){
+			alert("안드로이드폰에서 선택해주세요");
+		}else{
+			location.href="https://www.yellomarket.co.kr/resources/apk/android/iCignalDemoApp_release.apk";
+		}
+	});
+});
+</script>
+</head>
+
+<body id="login" class="animated fadeInDown">
+	<!-- possible classes: minified, no-right-panel, fixed-ribbon, fixed-header, fixed-width-->
+	<div class="content_area">
+		
+		<header class="header">
+			<div class="container">
+				<img src='images/appDown_logo.png' alt="iCignal logo" class="hidden-mobile" />
+				<img src='images/appDown_logo_m.png' alt="iCignal logo" class="mobile_logo hidden-web" />
+			</div>
+			
+			<!-- END AJAX-DROPDOWN -->
+		</header>
+	
+		<div id="main" role="main">
+	
+			<!-- MAIN CONTENT -->
+			<div id="content" class="container">
+	
+				<div class="content">
+					<div class="login_txt hidden-mobile">
+						<div class="txt_main">
+							Your omni-channel strategies will turn into highly<br />
+							tailored digital promotions and actionable insight<br />
+							here in iCignal
+						</div>
+						<div class="txt_detail">
+							How should you respond to and exploit the retail channel shift? <br />
+							How would you capture attention from shoppers and <br />
+							differentiate their in-store experiences? <br />
+							Are you capable of delivering personalized service <br />
+							and contents via both web and mobile channels to your customers? <br />
+							All the above questions can be answered in iCignal. Let's get in
+						</div>
+					</div>
+					<div class="smart-form client-form button_area">
+						<header>
+							APP DOWNLOAD
+						</header>
+						<a href="javascript:;" class="ios_download" id="iosDownload">Download on the App Store</a>
+						<a href="javascript:;" class="and_download" id="andDownload">android app on google play</a>
+					</div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+	<footer>
+		 &copy; Quintet Systems 
+	</footer>
+</body>
+</html>

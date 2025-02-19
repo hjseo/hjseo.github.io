@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <style>
+  	*{margin:0; padding:0;}
+  	ul li{list-style:none;}
+  	#wrap{position:relative; left:100px; width:100px; height:100px; overflow:hidden;}
+  	#wrap li{width:100px; height:100px; position:absolute;}
+  	#wrap li.first{left:0; top:0;}
+  	#wrap li.second{left:100px; top:0;}
+  	img{width:100px; height:100px;}
+  	
+  	#pagination{overflow:hidden;}
+  	#pagination li{float:left; margin-right:5px; background:gray; width:10px; height:10px; border-radius:5px; cursor:pointer;}
+  	#pagination li.active{background:red;}
+  </style>
+  	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' type="text/javascript"></script>	
+    <script type="text/javascript" src="slider.js"></script>
+    <script>
+    var slider;
+    var imgList = [
+               {src:"images/images1.jpg"},
+               {src:"images/images2.jpg"},
+               {src:"images/images3.jpg"},
+               {src:"images/images4.jpg"},
+               {src:"images/images5.jpg"},
+               {src:"images/images6.jpg"},
+               {src:"images/images7.jpg"},
+               {src:"images/images8.jpg"},
+               {src:"images/images9.jpg"},
+               {src:"images/images10.jpg"}
+               
+               ]
+    
+	   $("document").ready(function(){
+
+	        slider = $("#wrap").ikSlider({
+	
+				secondBox : $(".second"),
+				firstBox : $(".first"),
+				width : parseInt($("#wrap li").css("width")),
+				imgList : imgList
+
+	        });
+	        
+	        $("#pagination li").on( "click", function() {
+	        	slider.clickPaging(this);
+        	});
+	        
+		});
+
+    function leftBtn(){
+      slider.leftBtn();        
+    }
+
+    function rightBtn(){
+      slider.rightBtn();        
+    }
+
+
+    </script>
+  </head> 
+  <body>
+	<ul id="wrap">
+		<li class="first"></li>
+		<li class="second"></li>
+	</ul>
+	<ul id="pagination"></ul>
+	
+	<input type="button" value="<-버튼" onclick="leftBtn()" />
+	<input type="button" value="버튼->" onclick="rightBtn()" />
+	
+  </body>
+</html>

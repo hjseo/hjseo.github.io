@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>유료화 소개</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/swiper.min.css">
+
+	<style>
+	html, body {
+		position: relative;
+		height: 100%;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	.swiper-container {
+		position: relative;
+		width: 100%;
+		background: #18a4b1;
+	}
+	.swiper-slide img {
+		display: block;
+		width: 100%;
+	}
+	.cash_info_close {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		width: 21px;
+		z-index: 1;
+	}
+	.cash_info_close img {
+		width: 100%;
+	}
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+		bottom: 15px;
+	}
+	.swiper-pagination-bullet {
+		background: #117e88;
+		opacity: 1;
+	}
+	.swiper-pagination-bullet-active {
+		background: #fff;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<img src="images/cash_info_01.png" alt="" />
+			</div>
+			<div class="swiper-slide">
+				<img src="images/cash_info_02.png" alt="" />
+			</div>
+			<div class="swiper-slide">
+				<img src="images/cash_info_03.png" alt="" />
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+		<a href="podbbang://charged?paypoint=" class="cash_info_close">
+			<img src="images/icon_close.png" alt="닫기" />
+		</a>
+	</div>
+
+	<script src="js/swiper.min.js"></script>
+	<script>
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true
+	});
+	</script>
+</body>
+</html>

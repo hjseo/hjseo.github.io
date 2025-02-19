@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>Yello Market</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<link rel="stylesheet" href="../../resources/css/mobile/m_common.css">
+<link rel="stylesheet" href="../../resources/css/mobile/m_join.css">
+<script type="text/javascript" src="../../resources/js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript">
+function init(){
+    //$('#rule1').load('../../join/rule/m_rule1.html');
+    //$('#rule2').load('../../join/rule/m_rule2.html');
+}
+
+function termsCheck(){
+    if( $(this).hasClass('active') ){
+        $(this).removeClass('active');
+    } else {
+        $(this).addClass('active');
+    }
+}
+
+$(document).ready(function() {
+    init();
+    $('.terms_check').on('touchend', termsCheck);
+});
+</script>
+</head>
+<body>
+
+<header id="header" class="title">
+    <h1 id="topBar">약관 동의</h1>
+    <a href="javascript:;" class="btn_close"><img src="../../resources/images/mobile/product/btn_alert_close.png" alt="닫기" /></a>
+</header>
+<div class="join_wrap">
+    <section class="terms_wrap">
+        <div class="terms_top">
+            <div class="terms_check"></div>
+            <h2 class="tit_terms">이용약관 (필수)</h2>
+            <a href="javascript:;" class="btn_all">전체보기</a>    
+        </div>
+        <div class="terms_contents" id="rule1"></div>
+	</section>
+    <section class="terms_wrap">
+        <div class="terms_top">
+            <div class="terms_check"></div>
+            <h2 class="tit_terms">개인정보 취급방침 (필수)</h2>
+            <a href="javascript:;" class="btn_all">전체보기</a>    
+        </div>
+        <div class="terms_contents" id="rule2"></div>
+    </section>
+    <section class="terms_wrap">
+        <h2 class="tit_terms">인증방식 선택</h2>
+        <input type="button" disabled="disabled" class="btn_green" value="본인인증" />
+        <input type="button" disabled="disabled" class="btn_gray" value="I-PIN 인증" />
+    </section>
+	
+</div>
+
+</body>
+</html>

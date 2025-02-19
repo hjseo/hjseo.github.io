@@ -1,0 +1,409 @@
+<xml version="1.0" encoding="UTF-8">
+    <data>
+    	<!-- 월요일 -->
+        <item>
+            <day>MON</day>
+            <date>2014.12.05</date>
+
+            <breakfast>
+                <kor>아침</kor>
+                <eng>BREAKFAST</eng>
+                <time>(07:30~08:30)</time>
+
+                <foodType>
+                    <category>라면</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>한식</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </breakfast>
+
+
+            <lunch>
+                <kor>점심</kor>
+                <eng>LUNCH</eng>
+                <time>(11:30~13:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                        <![CDATA[
+                            뼈해장국<font color="#d82828">(돈등뼈:국내산)</span><br>쌀밥
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>inter-national</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </lunch>
+
+            <dinner>
+                <kor>저녁</kor>
+                <eng>DINNER</eng>
+                <time>(18:00~19:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                    	<![CDATA[
+                    		<font color="#1f9ad9">석식 운영없음</font>
+                    	]]>
+                    </contents>
+                </foodType>
+
+            </dinner>
+
+            <salad>재철과일:귤</salad>
+
+        </item>
+        
+        
+        <!-- 화요일 -->
+        <item>
+            <day>TUE</day>
+            <date>2014.12.12</date>
+
+            <breakfast>
+                <kor>아침</kor>
+                <eng>BREAKFAST</eng>
+                <time>(07:30~08:30)</time>
+
+                <foodType>
+                    <category>tue라면</category>
+                    <contents>
+                        <![CDATA[
+                            tue신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>한식</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </breakfast>
+
+
+            <lunch>
+                <kor>점심</kor>
+                <eng>LUNCH</eng>
+                <time>(11:30~13:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                        <![CDATA[
+                            뼈해장국<font color="#d82828">(돈등뼈:국내산)</span><br>쌀밥
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>inter-national</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </lunch>
+
+            <dinner>
+                <kor>저녁</kor>
+                <eng>DINNER</eng>
+                <time>(18:00~19:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                    	<![CDATA[
+                    		<font color="#1f9ad9">석식 운영없음</font>
+                    	]]>
+                    </contents>
+                </foodType>
+
+            </dinner>
+
+            <salad>재철과일:귤</salad>
+
+        </item>
+        
+        
+        <!-- 수요일 -->
+        <item>
+            <day>WED</day>
+            <date>2014.12.13</date>
+
+            <breakfast>
+                <kor>아침</kor>
+                <eng>BREAKFAST</eng>
+                <time>(07:30~08:30)</time>
+
+                <foodType>
+                    <category>w라면</category>
+                    <contents>
+                        <![CDATA[
+                            w신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>w한식</category>
+                    <contents>
+                        <![CDATA[
+                            w신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </breakfast>
+
+
+            <lunch>
+                <kor>점심</kor>
+                <eng>LUNCH</eng>
+                <time>(11:30~13:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                        <![CDATA[
+                            뼈해장국<font color="#d82828">(돈등뼈:국내산)</span><br>쌀밥
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>inter-national</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </lunch>
+
+            <dinner>
+                <kor>저녁</kor>
+                <eng>DINNER</eng>
+                <time>(18:00~19:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                    	<![CDATA[
+                    		<font color="#1f9ad9">석식 운영없음</font>
+                    	]]>
+                    </contents>
+                </foodType>
+
+            </dinner>
+
+            <salad>재철과일:귤</salad>
+
+        </item>
+        
+        
+        <!-- 목요일 -->
+        <item>
+            <day>THU</day>
+            <date>2014.12.14</date>
+
+            <breakfast>
+                <kor>아침</kor>
+                <eng>BREAKFAST</eng>
+                <time>(07:30~08:30)</time>
+
+                <foodType>
+                    <category>t라면</category>
+                    <contents>
+                        <![CDATA[
+                            t신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>t한식</category>
+                    <contents>
+                        <![CDATA[
+                            t신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </breakfast>
+
+
+            <lunch>
+                <kor>점심</kor>
+                <eng>LUNCH</eng>
+                <time>(11:30~13:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                        <![CDATA[
+                            뼈해장국<font color="#d82828">(돈등뼈:국내산)</span><br>쌀밥
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>inter-national</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </lunch>
+
+            <dinner>
+                <kor>저녁</kor>
+                <eng>DINNER</eng>
+                <time>(18:00~19:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                    	<![CDATA[
+                    		<font color="#1f9ad9">석식 운영없음</font>
+                    	]]>
+                    </contents>
+                </foodType>
+
+            </dinner>
+
+            <salad>재철과일:귤</salad>
+
+        </item>
+        
+        
+        <!-- 금요일 -->
+        <item>
+            <day>FRI</day>
+            <date>2014.12.15</date>
+
+            <breakfast>
+                <kor>아침</kor>
+                <eng>BREAKFAST</eng>
+                <time>(07:30~08:30)</time>
+
+                <foodType>
+                    <category>f라면</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>f한식</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </breakfast>
+
+
+            <lunch>
+                <kor>점심</kor>
+                <eng>LUNCH</eng>
+                <time>(11:30~13:30)</time>
+
+                <foodType>
+                    <category>fKorean</category>
+                    <contents>
+                        <![CDATA[
+                            뼈해장국<font color="#d82828">(돈등뼈:국내산)</span><br>쌀밥
+                        ]]>
+                    </contents>
+                </foodType>
+
+                <foodType>
+                    <category>finter-national</category>
+                    <contents>
+                        <![CDATA[
+                            신라면<br/>
+                            쌀밥<br/>
+                            단무지/배추김치
+                        ]]>
+                    </contents>
+                </foodType>
+            </lunch>
+
+            <dinner>
+                <kor>저녁</kor>
+                <eng>DINNER</eng>
+                <time>(18:00~19:30)</time>
+
+                <foodType>
+                    <category>Korean</category>
+                    <contents>
+                    	<![CDATA[
+                    		<font color="#1f9ad9">석식 운영없음</font>
+                    	]]>
+                    </contents>
+                </foodType>
+
+            </dinner>
+
+            <salad>재철과일:귤</salad>
+
+        </item>
+        
+        
+    </data>
+</xml>

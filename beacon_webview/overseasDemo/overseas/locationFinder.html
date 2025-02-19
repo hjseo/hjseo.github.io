@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/beacon/demo/common.css">
+<link rel="stylesheet" type="text/css" href="../css/beacon/demo/overseas/overseas.css">
+<script>
+    function appClose(){
+        location.href = 'infavor://closeWebView';
+    }
+</script>
+</head>
+<body>
+<div id="wrap" class="location_bg">
+    <header class="header">
+        <h1 class="ellipsis">Location Finder</h1>
+        <a href="javascript:appClose();" class="btn_close"><img src="../images/beacon/demo/overseas/btn_close.png" alt="" /></a>
+    </header>
+    <div class="map_area">
+        <img src="../images/beacon/demo/overseas/bg_map.gif" alt="" class="map" />
+        <img src="../images/beacon/demo/overseas/pin.gif" alt="" class="pin" />
+    </div>
+    <div class="btn_location">Find Location &amp; Path ></div>
+</div>
+</body>
+</html>

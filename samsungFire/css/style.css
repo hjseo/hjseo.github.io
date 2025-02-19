@@ -1,0 +1,58 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+html,body {width: 100%; color: #5d5d5d;}
+.img-responsive {display: block; width: 100%;}
+.clearfix:after {clear: both;}
+.clearfix:before, .clearfix:after {content: ''; display: table;}
+input.form-control {margin: 7px 0; padding: 0 10px; width: 100%; height: 26px; background: #f3f3f3; border: 0;}
+
+/* index */
+.mem_wrap {max-width: 414px; width: 100%; margin: 0 auto;}
+.benefit_info .benefit_item {display: block; float: left; width: 25%; cursor: pointer;}
+.benefit_info .benefit_detail img {display: none;}
+.swiper-container {width: 100%;}  
+.swiper-slide {width: 45%; margin: 10px 0 65px; text-align: center;}
+.swiper-button-prev {background-image: url(../images/btn_prev.png); left: 20%;}
+.swiper-button-next {background-image: url(../images/btn_next.png); right: 20%;}
+.swiper-button-next, .swiper-button-prev {width: 14px; height: 28.5px; -webkit-background-size: 100%; background-size: 100%;}
+.swiper-container-horizontal>.swiper-pagination-bullets {bottom: 15px;}
+.swiper-pagination-bullet {width: 30px; height: 30px; background: #e6e6e6; opacity: 1;}
+.swiper-pagination-bullet-active {background: #e6e6e6;}
+.swiper-pagination-bullet-active:after {content: ''; display: block; margin: 6px; width: 18px; height: 18px; background: #4fc7df; border-radius: 100%;}
+
+/* event */
+header {position: relative; padding: 9px 20px;}
+header .home {width: 26px; height: auto; vertical-align: middle;}
+header .logo { position: absolute; right: 20px; top: 15px; width: 130px; height: auto;}
+.tab_wrap a {display: block; width: 50%; float: left;}
+.event_btn {display: block; margin: 0 auto; width: 90%;}
+.col_name, .col_input {display: block; float: left; padding: 0 10px; line-height: 26px;}
+.col_name {margin-top: 12px; width: 30%;}
+.col_input {width: 70%;}
+.phone_wrap .col_phone {width: 30%; float: left;}
+.phone_wrap .col_phone input {text-align: center;}
+.phone_wrap span {width: 5%; float: left; display: block; height: 40px; margin-top: 2px; }
+.phone_wrap span img {display: block; margin: 18px auto; width: 8px; }
+.post_input {float: left; width: 65%;}
+.btn_post {float: right; margin-top: 7px; width: 30%; height: 26px; background: #5d5d5d; text-align: center; cursor: pointer;}
+.btn_post img {width: 80%;}
+.input_wrap {margin:0 10px 18px;}
+.terms_wrap {margin-bottom: 28px; padding: 20px; background: #e5e5e5;}
+.terms_wrap .chx_box {margin-top: 12px; border-top: 1px solid #bcbcbc;}
+.terms_wrap .chx_box .btn_term {float: right; padding-top: 3px; width: 67px;}
+.terms_wrap .chx_box .terms1 {margin: 10px 0 5px;}
+.terms_wrap .chx_box .terms1 .txt_term {position: relative; top: 2px; width: 162px;}
+.terms_wrap .chx_box .terms2 .txt_term {position: relative; top: 2px; width: 151px;}    
+.check {position: relative; display: inline-block;}
+.check input[type="checkbox"] {position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden;}
+.check input[type="checkbox"] + label {display: inline-block; position: relative; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;}
+.check input[type="checkbox"] + label:before {content: ''; display: inline-block; width: 17px; height: 17px; line-height: 17px; text-align: center; vertical-align: middle; background: #fff;}
+.check input[type="checkbox"]:checked + label:before {content: ''; background: url(../images/check.png) no-repeat center #fff; -webkit-background-size: 13px auto; background-size: 13px auto;}
+.info_wrap {margin-bottom: 26px;}
+.info_wrap .info_title {cursor: pointer;}
+.info_wrap .info_content {display: none;}
+
+.popup_wrap {display: none; position: fixed; left: 0; top: 0; right: 0; bottom: 0;}
+.popup_wrap .bg_pop {position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #000; opacity: 0.6;}
+.popup_wrap .popup {position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.popup_wrap .btn_close {position: absolute; top: -32px; right: 0px; width: 26px; cursor: pointer;}
+.popup_wrap .content {width: 300px;}

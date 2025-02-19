@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://code.angularjs.org/1.0.5/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script>
+    var myApp = angular.module('myApp', []);
+
+    myApp.controller("myCtrl", ['$scope', function($scope) {
+        $scope.arrs = [];  
+
+        $scope.sayHello = function( text ) {
+            $scope.arrs.push({ text : text })
+        };
+
+    }]);
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<header class="top_header">
+    <h1>ㅇㅅ</h1>
+    <a href="" class="btn_back">뒤로가기</a>
+</header>
+<div class="contents_wrap">
+    <div ng-repeat="arr in arrs">
+        {{arr.text}}
+    </div>
+    <div class="message_input">
+        <label for=""></label>
+        <input type="text" id="" ng-model="textInput" />
+        
+        <a href="javascript:;" class="btn" ng-click="sayHello(textInput)">전송</a>    
+    </div>
+</div>
+</body>
+</html>
+

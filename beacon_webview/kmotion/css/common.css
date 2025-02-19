@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:middle;
+    background:transparent;
+}
+
+body {-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+address,caption,em{font-style:normal; font-weight:normal;}
+ul,ol,dl{list-style:none;}
+hr{display:none;}
+button{overflow:visible; margin:0; padding:0; border:0 none; background:transparent; cursor:pointer;}
+caption{font-size:0; line-height:0; margin:0; padding:0; border:none; visibility:hidden;}
+legend{display:block;position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;line-height:0;overflow:hidden;font-size:0;text-indent:-9999px}
+input,button,textarea,select,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+body{font:100%/1.5 HelveticaNeue-Light, AppleSDGothicNeo-Light, sans-serif; color:#323232;}
+a:link, a:visited, a:active {text-decoration:none; color:#323232;}
+a:focus, a:hover {color:#323232;}
+
+.wrap{font-size: 0.9em; border-top: 1px solid #e7e5e4;}
+.header{position: fixed; left: 0; right:0; top:0; padding:0 15px; height: 50px;}
+.header .logo{display:inline-block; margin-top: 21px; width: 105px; height: auto;}
+.header .btn_close{float: right; margin-top: 10px;}
+.header .btn_close img{display:inline-block; width: 24px; height: auto;}
+.main_img{margin-top: 49px; width: 100%;}
+.txt_area{margin:0 15px; padding:27px 8px; border-top:1px dashed #d1d2d4;}
+.txt_area .title{font-size: 1.09em; padding-bottom: 10px;}
+
+.header.header_menu{background:#ffd782;}
+.header.header_news{background: url(../images/bg2.png);}

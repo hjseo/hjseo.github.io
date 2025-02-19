@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+    <head>  
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <!--  Remove this line in production. -->
+        <script src="js/jquery.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/notice.css">
+        <script type="text/javascript">
+            var dataArr = [];
+
+            function getWeather( str ){
+
+                var weather = '';
+                
+                switch( str ){
+                    case 'Chance of Flurries' :
+                        weather = '구름 많을 확률';
+                        break;
+                      
+                    case 'Chance of Rain' :
+                        weather = '비 확률';
+                        break;
+                        
+                    case 'Chance Rain' :
+                        weather = '비 확률';
+                        break;
+                        
+                    case 'Chance of Freezing Rain' :
+                        weather = '우박 확률';
+                        break;
+                      
+                    case 'Chance of Sleet' :
+                        weather = '진눈깨비 확률';
+                        break;
+                      
+                    case 'Chance of Snow' :
+                        weather = '눈 확률';
+                        break;
+                      
+                    case 'Chance of Thunderstorms' :
+                        weather = '뇌우 확률';
+                        break;
+                      
+                    case 'Chance of a Thunderstorm' :
+                        weather = '뇌우 확률';
+                        break;
+                      
+                    case 'Clear' :
+                        weather = '맑음';
+                        break;
+                      
+                    case 'Cloudy' :
+                        weather = '구름';
+                        break;
+                      
+                    case 'Flurries' :
+                        weather = '구름 많음';
+                        break;
+                        
+                    case 'Fog' :
+                        weather = '안개';
+                        break;
+                        
+                    case 'Haze' :
+                        weather = '안개';
+                        break;
+                        
+                    case 'Mostly Cloudy' :
+                        weather = '구름 많음';
+                        break;
+                      
+                    case 'Mostly Sunny' :
+                        weather = '맑음';
+                        break;
+                      
+                    case 'Partly Cloudy' :
+                        weather = '구름 많음';
+                        break;
+                      
+                    case 'Partly Sunny' :
+                        weather = '맑음';
+                        break;
+                      
+                    case 'Freezing Rain' :
+                        weather = '우박';
+                        break;
+                      
+                    case 'Rain' :
+                        weather = '비';
+                        break;
+                        
+                    case 'Sleet' :
+                        weather = '진눈깨비';
+                        break;
+                        
+                    case 'Snow' :
+                        weather = '눈';
+                        break;
+                      
+                    case 'Sunny' :
+                        weather = '맑음';
+                        break;
+                      
+                    case 'Thunderstorms' :
+                        weather = '뇌우';
+                        break;
+                      
+                    case 'Thunderstorm' :
+                        weather = '뇌우';
+                        break;
+                      
+                    case 'Unknown' :
+                        weather = '';
+                        break;
+                      
+                    case 'Overcast' :
+                        weather = '흐림';
+                        break;
+                      
+                    case 'Scattered Clouds' :
+                        weather = '구름';
+                        break;
+                      
+                    case 'Light Rain' :
+                        weather = '약한 비';
+                        break;
+                      
+                      
+                      
+                    default : 
+                        weather = str;
+                        break;
+                }
+                
+                
+                
+                  
+                return weather;
+            }
+
+            function getDayNight( str, hour ){
+              
+              var weather = '';
+                
+                switch( str ){
+                      
+                    case 'Clear' :
+                    case 'Mostly Sunny' :
+                    case 'Partly Sunny' :
+                    case 'Sunny' :
+                        if(hour > 7 && hour < 17){//낮
+                            weather = 'images/weather/sun_lg.png';
+                           
+                        }else{//저녁
+                            weather = 'images/weather/moon_lg.png';
+                        }
+                        break;
+                    
+                    case 'Chance of Flurries' : 
+                    case 'Cloudy' :
+                    case 'Flurries' :
+                    case 'Fog' :
+                    case 'Mist' :
+                    case 'Haze' :
+                    case 'Mostly Cloudy' :
+                    case 'Partly Cloudy' :
+                    case 'Overcast' :
+                    case 'Scattered Clouds' :
+                        weather = 'images/weather/cloud_lg.png';
+                        break;
+                    
+                    case 'Chance of Rain' :
+                    case 'Chance Rain' :
+                    case 'Freezing Rain' :
+                    case 'Rain' :
+                    case 'Light Rain' :
+                        weather = 'images/weather/rain_lg.png';
+                        break;
+                        
+                    case 'Chance of Freezing Rain' :
+                    case 'Chance of Sleet' :
+                    case 'Chance of Snow' :
+                    case 'Sleet' :
+                    case 'Snow' :
+                    case 'Snow Showers' :
+                        weather = 'images/weather/snow_lg.png';
+                        break;
+                    
+                    case 'Chance of Thunderstorms' :
+                    case 'Chance of a Thunderstorm' :
+                    case 'Thunderstorms' :
+                    case 'Thunderstorm' :
+                        weather = 'images/weather/lightning_lg.png';
+                        break;
+                      
+
+                    case 'Unknown' :
+                        weather = '';
+                        break;
+                      
+                      
+                    default : 
+                        weather = str;
+                        break;
+                }
+                return weather;
+            }
+
+            function todayWeather(){
+
+                $.ajax({
+                    url : "https://api.wunderground.com/api/75e069cb7aaa4935/geolookup/conditions/forecast/lang:EN/q/Korea/Seoul.json",
+                    dataType : "jsonp",
+                    success : function(parsed_json) {
+                        debugger;
+                        wetherTodaySetting( parsed_json.current_observation );
+                        subWetherSetting( parsed_json.forecast.simpleforecast.forecastday[0] );
+                    }
+                });
+            };
+
+            function wetherTodaySetting( wdata ){
+                var time = wdata.local_time_rfc822.split(':')[0];
+                var data = {};
+                //data.img = wdata.icon_url;
+                data.img = getDayNight(wdata.weather, time.substring(time.length, time.length-2));
+                data.weather = getWeather(wdata.weather);
+                data.tempC = wdata.temp_c + '℃';
+          
+                for( key in data ){
+                    var item = $("#todayWeather").find( "[data-bind=" + key + "]" );
+                    if( item.length > 0 ){
+                        
+                        if( item[0].tagName == 'IMG'){
+                           item[0].src = data[key];
+                        }else if( item[0].tagName == 'RADIO' || item[0].tagName == 'CHECKBOX' ){
+
+                        }else{
+                           item.html( data[key] );
+                        }
+                    }
+                }
+            }
+
+            function subWetherSetting( wdata ){
+                var data = {};
+                data.precip = "강수확률 " + wdata.pop + "%";
+
+                for( key in data ){
+                    var item = $("#todayWeather").find( "[data-bind=" + key + "]" );
+                    if( item.length > 0 ){
+                        
+                        if( item[0].tagName == 'IMG'){
+                           item[0].src = data[key];
+                        }else if( item[0].tagName == 'RADIO' || item[0].tagName == 'CHECKBOX' ){
+
+                        }else{
+                           item.html( data[key] );
+                        }
+                    }
+                }
+            }
+
+
+            function getData(){
+                $.ajax({
+                    type: "GET",
+                    url: "/xml/food.xml",
+                    dataType: "xml",
+                    success: parseXml
+                });
+            };
+
+            function parseXml( xml ){
+                dataArr = $(xml).find('item');       
+                timeCheck();
+            };
+
+            function timeCheck(){
+                var date = new Date();
+                var now = date.getTime();
+                
+                var today = date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate();
+                var breakCut = new Date( today + ' 08:30' ).getTime();
+                var lunchCut = new Date( today + ' 13:30' ).getTime();
+                var dinnerCut = new Date( today + ' 19:30' ).getTime();
+                
+                var dayNum = new Date().getDay() - 1;
+                var data = $(dataArr[dayNum]);
+                
+                if( now < breakCut ){
+                    var breakFast = data.find('breakfast');
+                    $("#korTitle").html(breakFast.find('kor').text() + '식단' );
+                    $("#category1").html(breakFast.find('foodType').eq(0).find('category').text() );
+                    $("#contents1").html(breakFast.find('foodType').eq(0).find('contents').text() );
+                    $("#category2").html(breakFast.find('foodType').eq(1).find('category').text() );
+                    $("#contents2").html(breakFast.find('foodType').eq(1).find('contents').text() );
+                }else if( now < lunchCut ){
+                    var lunch = data.find('lunch');
+                    $("#korTitle").html(lunch.find('kor').text() + '식단' );
+                    $("#category1").html(lunch.find('foodType').eq(0).find('category').text() );
+                    $("#contents1").html(lunch.find('foodType').eq(0).find('contents').text() );
+                    $("#category2").html(lunch.find('foodType').eq(1).find('category').text() );
+                    $("#contents2").html(lunch.find('foodType').eq(1).find('contents').text() );
+                }else{
+                    var dinner = data.find('dinner');
+                    $("#korTitle").html(dinner.find('kor').text() + '식단' );
+                    $("#category1").html(dinner.find('foodType').eq(0).find('category').text() );
+                    $("#contents1").html(dinner.find('foodType').eq(0).find('contents').text() );
+                }  
+            };
+
+            function ifvGetParams(){
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for(var i = 0; i < hashes.length; i++){
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+
+            function ifvGetParam(name){
+                return ifvGetParams()[name];
+            }
+
+            function todayWord(){
+                var ctlObj = {};
+                ctlObj.todayWord = ifvGetParam('todayWord');
+                
+                $("#todayWord").text(ctlObj.todayWord);
+            }
+
+            function notice(){
+                var ctlObj = {};
+                ctlObj.noticeCount = ifvGetParam('noticeCount');
+                
+                if( ctlObj.noticeCount == 0 ){
+                    $("#noticeArea").hide();
+                    $("#first").css({"border-bottom":"3px solid #fff"});
+                }else{
+                    $("#notice").text(ctlObj.noticeCount + "건");        
+                }
+            }
+
+            $(document).ready(function() {
+                todayWeather();
+                todayWord();
+                notice();
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <div class="wrap">
+            <img src="images/notice/notice.jpg" />  
+            <div class="popup">
+                <div class="first odd" id="first">
+                    <h2><span class="icon"><img src="images/notice/ico_word.png"></span>오늘의 한마디</h2>
+                
+                    <p id="todayWord">긍정적인 마인드로 하루를 시작하는 신한인이 되세요!</p>
+                </div>
+
+                <div class="even" id="noticeArea">
+                    <h2><span class="icon"><img src="images/notice/ico_notice.png"></span>공지사항</h2>
+                 
+                    <p>신규 공지 <span class="red" id="notice">N건</span>이 있습니다.</p>
+                </div>
+
+                <div class="odd">
+                    <h2><span class="icon"><img src="images/notice/ico_weather.png"></span>오늘의 날씨</h2>
+                  
+                    <div class="clearfix content_area" id="todayWeather">
+                        <div class="weather_img"><img src="" data-bind="img"></div>
+                        <div class="weather_content">
+                            <span class="degree" data-bind="tempC"></span><span class="weather_txt" data-bind="weather"></span><br />
+                            <span data-bind="precip"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="even">
+                    <h2><span class="icon"><img src="images/notice/ico_food.png"></span><span id="korTitle">아침식단</span></h2>
+                  
+                    <div class="clearfix content_area">
+                        <div class="food_fst">
+                            <h3 id="category1">라면</h3>
+                            <ul id="contents1">
+                                <li>신라면</li>
+                                <li>쌀밥</li>
+                                <li>단무지/배추김치</li>
+                            </ul>
+                        </div>
+                        <div class="food_scd">
+                            <h3 id="category2">한식</h3>
+                            <ul id="contents2">
+                                <li>누룽지</li>
+                                <li>엄지새송이버섯볶음</li>
+                                <li>마늘종지무침/배추김치</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="even btn">
+                    <input type="button" value="창 닫기" onclick="" />
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

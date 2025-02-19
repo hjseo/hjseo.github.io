@@ -1,0 +1,134 @@
+.ellipsis{
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.progressRoll{
+	background:url('../images/loading.gif') center center no-repeat;
+	background-color:rgba(0, 0, 0, 0.2);
+    position:absolute; left:0; top:0; width:100%; height:100%; display:table;
+    z-index:999999; color:#fff; font-size:14px;
+}
+.progressRoll .table_cell{
+    width:100%; height:100%; text-align:center; vertical-align: middle; display: table-cell;
+}
+
+.progressRoll.tableProgress{
+    z-index:2; 
+}
+
+.progressRoll.main_p_bg{
+    background:rgba(255, 255, 255, 0.2); color:#a9a9a9; padding: 5px 0;
+}
+
+input.tag_phone_size[size] {
+    width: auto;
+}
+
+/* component */
+.ui-datepicker{z-index:110011;}
+.bootstrap-timepicker-widget table td input {width: 40px;}
+
+.picture_area:after {content: ""; display: block; clear: both;}
+.picture_area .image_box:first-child {display: block;}
+.image_box {background: url('../images/camera_bg.png') center center no-repeat;}
+
+.control_content input[type=password] {
+    display: inline-block;
+    width: 100%;
+    height: 27px;
+    padding: 2px 8px;
+    font-size: 13px;
+    line-height: 1.428571429;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+
+html .control_content input[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+}
+    
+/* input 옆 text */    
+.sub_txt {
+	float: left;
+	color: #777777;
+	padding: 5px;
+}
+.underline .sub_txt {
+	padding: 10px 0;
+}
+.sub_txt.not_float{float:none;}
+
+
+.tb_wrap{background:#ffffff; border:1px solid #dddddd; text-align:right; color:#777777;}
+.tb_wrap .row{border-bottom:1px solid #dddddd;}
+.tb_wrap .row:last-child{border-bottom:0;}
+.tb_wrap .tb_cell{
+	padding:0 15px; 
+	border-right:1px solid #dddddd; 
+	height:29px; 
+	line-height:29px; 
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+.tb_wrap .tb_cell.tb_cell_last{border-right:0;}
+.tb_wrap .tb_label{background:#f1f5f8;}
+
+.btn-group-justified>.btn, .btn-group-justified>.btn-group {
+float: none;
+display: table-cell;
+width: 1%;
+}
+.btn-group-justified.just_show {border-left: 1px solid #c6c6c6; }
+.btn-group-justified .btn.title_div, .btn-group-justified .btn.title_div:hover {border: 1px solid #c6c6c6; border-left: 0 none; background-color: #eaeaea; cursor: auto; color: #333;text-align: right; font-weight: normal; text-decoration:none; padding: 6px 12px;}
+.btn-group-justified .btn.cont_div, .btn-group-justified .btn.cont_div:hover {border: 1px solid #c6c6c6; border-left: 0 none; background-color: #fff; cursor: auto; color: #333;text-align: right; font-weight: normal; text-decoration:none; padding: 6px 12px;}
+.btn-group-justified .btn.cont_div:active, .btn-group-justified .btn.title_div:active {top: 0; left: 0; color: #333; } 
+
+.form-horizontal .iradio > label, .form-horizontal .icheckbox > label {
+    padding-top: 5px;
+    display: inline-block;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.form-horizontal .iradio > label input[type="radio"], .form-horizontal .icheckbox > label input[type="checkbox"] {
+    float: left;
+    margin-left: -20px;
+}
+
+.row label {
+    padding-right: 10px;
+}
+
+.btn.btn-side {
+    max-width: 100%;
+    height: 27px;
+    padding: 0 10px;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {vertical-align: top}
+.bootstrap-timepicker-widget.dropdown-menu {z-index: 99999999;}
+
+select.text-right {direction: rtl;}
+select.text-left {direction: ltr;}
+input.text-right {text-align: right !important;}
+input.text-center {text-align: center !important;}
+input.text-left {text-align: left !important;}

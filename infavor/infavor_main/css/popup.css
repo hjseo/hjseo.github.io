@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+/* background */
+
+.dark_alpha_pop {
+	background: url('../images/bg_black_alpha.png');
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999999;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+/* btn_close*/
+.dark_alpha_pop .btn_close {
+	position: absolute;
+	right:-26px; top:-26px;
+	z-index: 10;
+}
+
+button {
+	border: 0;
+	background: none;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	outline-style: none;
+	outline-width: 0;
+}
+
+/* login popup */
+.login_pop {
+	width: 373px;
+	
+}
+
+.popup_style {
+	position: relative;
+	top:50%; 
+	left:50%;
+	margin-top:-170px;
+	margin-left:-186.5px;
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.44);
+	background-color: #f8f8f8;
+	border-radius: 8px;
+	border: 1px solid #d7d7d7;
+}
+
+.login_pop .logo {
+	padding-top: 29px;
+	text-align: center;
+	height: 53px;
+}
+
+.login_pop .login_con {
+	width: 310px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+
+.login_pop .login_con .input_text {
+	border: 1px solid #d4d4d4;
+	display: block;
+	width: 300px;
+	height: 30px;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+.login_pop .login_con input.pw {
+	margin-top: 5px;
+}
+
+.login_pop .login_con .btn_login {
+	background: url('../images/bg_btn_red.gif') repeat-x;
+	border: 1px solid #9d0a10;
+	padding-top: 8px;
+	height: 25px;
+	margin-top: 8px;
+	color: #fff;
+	font-weight: bold;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	border-radius: 5px;
+}
+.login_pop .login_con .area1 {
+	height: 25px;
+	padding-top: 12px;
+}
+.login_pop .login_con .area1 .save_email {
+	float: left;
+	display: inline;
+	color: #666666;
+}
+label {
+	cursor: default;
+}
+.login_pop .login_con .area1 .pw_join {
+	float: right;
+	display: inline;
+	color: #d4d4d4;
+}
+.login_pop .login_con .area1 .pw_join .pw_search {
+	color: #666666;
+}
+.login_pop .login_con .area1 .pw_join .member_join {
+	color: #427fee;
+	font-weight: bold;
+}
+.login_pop .login_con .btns {
+	padding-top: 16px;
+	height: 64px;
+	background: url('../images/line_dot.gif') repeat-x 0 0;
+}
+.login_pop .login_con .btns .btn_fb {
+	background: url('../images/bg_btn_blue.gif') repeat-x;
+	border: 1px solid #2a4069;
+	padding-top: 8px;
+	height: 25px;
+	color: #fff;
+	width: 151px;
+	display: inline-block;
+	text-align: center;
+	border-radius: 5px;
+}
+.login_pop .login_con .btns .btn_fb span {
+	background: url('../images/ico_facebook.png') no-repeat 0 0;
+	color: #fff;
+	font-size: 12px;
+	padding-left: 18px;
+	padding-top: 2px;
+	height: 25px;
+	margin-top: -2px;
+	display: inline-block;
+}
+.login_pop .login_con .btns .btn_twiter {
+	background: url('../images/bg_btn_blue2.gif') repeat-x;
+	border: 1px solid #2091bd;
+	padding-top: 8px;
+	height: 25px;
+	color: #fff;
+	width: 151px;
+	display: inline-block;
+	text-align: center;
+	border-radius: 5px;
+}
+.login_pop .login_con .btns .btn_twiter span {
+	background: url('../images/ico_twitter.png') no-repeat 0 0;
+	color: #fff;
+	font-size: 12px;
+	padding-left: 25px;
+	height: 25px;
+	display: inline-block;
+}
+
+
+

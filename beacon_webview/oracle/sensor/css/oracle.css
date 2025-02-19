@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: middle;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{font-family:HelveticaNeue;}
+html, body{width:100%; height: 100%;}
+.oracle_wrap{width:100%; position: relative; background-color: #1e313f; background-image: url('../images/bg.jpg'); background-repeat: no-repeat; color: #fff; text-shadow: 1px 1px #000; text-align: center;}
+.container_wrap{width:100%;}
+
+.header{position:relative; text-align: left;}
+.header .oracle_logo{padding:20px 7px; width:207px;}
+.header .btn_close{position: absolute; top:0; right: 0;}
+.header .btn_close img{padding:13px; width: 25px;}
+
+.footer{clear: both; padding: 20px 0; }
+.footer .quintet_logo{width:68px;}
+
+.data_con .data_top{position: relative; padding-top:13px; padding-bottom: 5px; text-align: left; border-bottom: 1px solid #94b2ba;}
+.data_con .data_top .txt_time{padding-left: 20px; line-height: 28px; font-size: 14px; text-shadow:none;}
+.data_con .data_top .txt_time span{vertical-align: bottom;}
+
+.data_con .data_top .btn_refresh{position: absolute; right:20px; top:13px;}
+.data_con .data_top .btn_refresh img{width:80px;}
+
+.data_con .power_con{overflow: hidden; padding: 20px;}
+.data_con .power_con .man_area{float: left; width:35%;}
+.data_con .power_con .man_area .ico_man{width:48px;}
+.data_con .power_con .man_area p{padding-top: 3px; font-size: 14px; line-height: 20px; }
+
+.data_con .power_con .man_area.man_in p{color:#f6fe7b;}
+.data_con .power_con .man_area.man_absence{display: none;}
+
+.data_con .power_con .power_area{float: right; width:65%; text-align: right; font-size: 12px; margin-top:14px;}
+.data_con .power_con .power_area .power_num{font-size: 35px; font-weight: bold; color: #f6fe7b;}
+.data_con .power_con .power_area .watt{padding-left:5px; vertical-align: bottom; font-weight: bold;}
+.data_con .power_con .power_area .txt_power{padding-bottom: 10px; line-height: 20px;}
+.data_con .power_con .power_area .current_power .power_num{font-size: 30px; color: #74e7ff;}
+.data_con .power_con .power_area .current_power .txt_power{padding-bottom:0;}
+
+.data_con .data_area{clear: both; overflow: hidden; padding:0 10px;}
+.data_con .data_area .half_area{width:50%; float: left; padding:10px; box-sizing:border-box;}
+.data_con .data_area .data_box{width:100%; height: 131px; padding:18px; border:1px solid #79e8ff; border-radius: 10px; background: rgba(35,54,61,.6); display: inline-block; box-sizing: border-box;}
+
+.data_con .data_area .data_box .ico_degree{display: inline-block; margin-bottom:3px; width:28px; height:28px; background:url('../images/ico_data.png') no-repeat 0 0; background-size: 99px;}
+.data_con .data_area .data_box .ico_humidity{display: inline-block; margin-bottom:3px; width:28px; height:28px; background:url('../images/ico_data.png') no-repeat -47px 0; background-size: 99px;}
+.data_con .data_area .data_box .ico_roughness{display: inline-block; margin-bottom:3px; width:28px; height:28px; background:url('../images/ico_data.png') no-repeat 0 -45px; background-size: 99px;}
+.data_con .data_area .data_box .ico_co2{display: inline-block; margin-bottom:3px; width:42px; height:28px; background:url('../images/ico_data.png') no-repeat -47px -45px; background-size: 99px;}
+
+.data_con .data_area .data_box .txt_sign{font-size: 14px; font-weight: bold;}
+.data_con .data_area .data_box .degree_num{padding-right: 3px; vertical-align: baseline; font-size: 38px; color:#74e7ff; }
+.data_con .data_area .data_box .txt_data{padding-top:3px; font-size:12px; line-height: 18px;}
+
+
+@media screen and (max-width: 374px) {
+    .data_con .data_top .txt_time{font-size: 12px;}
+}
+
+
+@media screen and (min-width: 376px) {
+    .oracle_wrap{height: 100%; background-size: cover;}
+    .footer{position: absolute; bottom: 20px; left: 50%; margin-left: -34px;}
+}

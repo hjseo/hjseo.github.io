@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+.hidden{display: none;}
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+html, body{width: 100%; height: 100%;}
+.wrap{width:100%; height: 100%; min-width:940px;}
+
+.header{width:100%;}
+.container{width:100%; height:100%; border-top:1px solid #2f2e2e;}
+
+.header .top{overflow:hidden; padding-right:5px; padding-left:12px; height:31px; line-height:31px; border-bottom:1px solid #545454; }
+.header .top .left{float:left;}
+.header .top .left h1{float:left;}
+.header .top .left p{float:left; padding-left:8px;}
+.header .top .right{float:right;}
+.header .top .right span{padding-right:10px;}
+.header .top .right span img{padding-right:5px;}
+.header .bottom{padding-top:8px; padding-right:5px; padding-left:12px; height:41px; border-bottom:1px solid #545454; box-sizing:border-box;}
+.header .bottom .left{float:left;}
+.header .bottom .right{float:right; padding-top:4px;}
+.header .bottom .right span{float:left;}
+.header .bottom .right .skin{float:left; margin-left:3px; width:16px; height:16px; cursor:pointer;}
+
+.main{overflow:hidden; margin:5px 7px; min-width:737px;}
+.main .row{padding-top:10px;}
+.main .mainLeft{float:left; width:49.8%; }
+.main .mainRight{float:Right; width:49.8%; }
+
+
+.tab{position:relative; height:32px;}
+.tab .title_area{float:left; position:absolute; left:0; top:0;}
+.tab .title{
+	float:left; 
+	position:relative;
+	padding-left:30px; 
+	padding-right:30px; 
+	height:31px; 
+	line-height:31px; 
+	font-weight:bold;
+}
+.tab .arrow_left{
+	display:none;
+	position:absolute; 
+	left:4px; top:4px; 
+	width:22px; height:22px; 
+	cursor:pointer;
+}
+.tab .arrow_right{
+	display:none;
+	position:absolute; 
+	right:4px; top:4px; 
+	width:22px; height:22px; 
+	cursor:pointer;
+}
+
+
+.list{width:100%; padding-bottom:9px; }
+.list .listTitle{padding-top:8px; width:100%; height:37px; background:#6b6b6b; box-sizing:border-box;}
+.list .listTitle .titleTxt{padding-left:12px; padding-right:15px;}
+.list .listCon{padding:26px 48px; border:1px solid #6b6b6b;}
+.list .listCon label{
+	display: inline-block;
+	height: 24px;
+	margin-bottom: 6px;
+	margin-right: 75px;
+	padding-left:20px; 
+	background:url('../images/common/bu_label.gif') no-repeat left center;
+}
+.list .listCon input{margin-left:25px;}
+
+
+.popup{padding:15px 10px; width:830px;}
+

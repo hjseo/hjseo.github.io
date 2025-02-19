@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html  lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>Yello market</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<script>
+	var frameworkReadyUrl = 'https://img.yellomarket.co.kr/resources';
+	</script>
+	<script src='js/ifvFramework.js' type="text/javascript"></script>
+	<script src="js/common.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+<style type="text/css">
+/* web */
+.search_area{display:none;}
+.ym_contents .ym_detail_con{background-color:transparent; border:0 none; margin-top:0;}
+.ym_contents .ym_detail_con.news_box{margin-top:10px; background-color: #fff; border: 1px solid #d0d0d0; box-sizing: border-box;}
+.tmp_con{overflow: hidden;}
+.box_area{float: left; margin-right:11px; width: 204px; height: 301px; border:1px solid #dfdfdf; background-color: #fff;}
+.box_area:nth-child(3n){margin-right: 0;}
+.box_area .box_img_area{position: relative; width: 204px; height: 190px; background: #dedede url(images/not_img_logo.png) no-repeat center; text-align: center;}
+.box_area .box_txt_area{position: relative; padding:15px; height: 111px; box-sizing: border-box;}
+.box_area .box_txt_area .title{max-height: 36px; font-weight: bold; color: #555; overflow: hidden;}
+.box_area .box_txt_area .desc{padding-top:4px; max-height: 40px; font-size: 16px; font-weight: bold; color:#fc5747; overflow: hidden; text-align: right;}
+.link{display: block;}
+.txt_product_list{padding-top: 20px; font-size: 13px; text-align: right;}
+.txt_product_list a{color: #8f8f8f;}
+.m_product_list{display: none;}
+.pro_main_area{overflow: hidden;}
+.pro_main_area .pro_img{float: left; width: 320px; min-height: 140px; background: #dedede url(images/not_img_logo.png) no-repeat center; text-align: center; overflow: hidden; display: inline-block;}
+.pro_main_area .pro_img img{width: 100%;}
+.pro_main_area .pro_txt_area{float: left; position: relative; width: 318px; display: inline-block;}
+.pro_main_area .pro_txt_area .pro_txt{margin:0 15px; padding:15px 0; border-bottom: 1px solid #f1f1f1;}
+.pro_main_area .pro_txt_area .pro_txt .title{padding-bottom: 20px; font-size: 17px; font-weight: bold;}
+.pro_main_area .pro_txt_area .pro_txt .txt_cost{font-size: 13px; color: #888;}
+.pro_main_area .pro_txt_area .pro_txt .cost{display: inline-block; float: right; font-size: 17px; font-weight: bold;}
+.pro_main_area .pro_txt_area .pro_txt .cost .cost_num{display: inline-block; margin-top:-3px; color: #fc5747;}
+.ym_contents .ym_tab.product_tab ul li{width: 50%; background:transparent;}
+.ym_contents .ym_tab.product_tab ul li a{color: #ffb108;}
+.ym_contents .ym_tab.product_tab ul li.active a{color: #fc5646;}
+.product_contents{padding:15px;}
+.product_contents .contents_img{padding-bottom: 15px;}
+.txt_another_product{line-height: 46px; font-weight: bold; color: #fd4d3c;}
+.count_area.pro_count{padding-right: 15px; text-align: right;}
+.reply_contents_area{display: none;}
+
+/* mobile */
+@media only screen and (max-width: 760px), only screen and (device-max-width: 760px) {
+	.ym_contents .ym_detail_con.news_box{margin-top:0; border: 0 none;}
+	.ym_custom_info{display: none;}
+	.ym_tab{display: none;}
+	.ym_tab.product_tab{display: block;}
+	.tmp_con{padding: 12px; padding-bottom: 0;}
+	.box_area{margin: 0 2% 2% 0; width: 49%; border: 0 none; border-radius: 5px;}
+	.box_area:nth-child(3n){margin-right: 2%;}
+	.box_area:nth-child(2n){margin-right:0;}
+	.box_area .box_img_area{width: 100%; border-radius: 5px 5px 0 0; border:0 none;}
+	.box_area .box_txt_area .desc{text-align: left;}
+	.txt_product_list{display: none;}
+	.m_product_list{position: relative; display: block; height: 46px; background-color: #fff; border-bottom: 2px solid #ffb108; line-height: 46px; font-size:18px; font-weight: bold; text-align: center; color: #ffb108;}
+	.m_product_list .btn_back{position: absolute; left: 0; top:0; display: inline-block; width: 40px; height: 100%; background:url(images/btn_back.png) no-repeat center; background-size: 50%;}
+	.pro_main_area .pro_img{width: 100%}
+	.pro_main_area .pro_txt_area{width: 100%;}
+	.pro_main_area .pro_txt_area .pro_txt{margin:0; padding:10px 12px;}
+	.pro_main_area .pro_txt_area .pro_txt .title{padding-bottom: 15px;}
+	.product_contents{padding:12px 0;}
+	.product_contents .contents_img img{width: 100%;}
+	.product_contents .contents_txt{padding-left: 12px;}
+	.ym_contents .ym_tab.product_tab{border-top:1px solid #f1f1f1;}
+	.txt_another_product{padding-left: 12px;}
+
+}
+</style>
+<script type="text/javascript">
+
+/* 상품 탬플릿 */
+function tmplProduct(){
+	var dataArr = [];
+	var tmpNum = 3;	
+
+    for( var i = 0; i<tmpNum; i++ ){
+
+        var obj = {
+        	index : i,
+        	img : '',	/* 상품 이미지 */
+        	title : '한국지역사회교육 협의회',	/* 상품 이름 */
+        	description : '19,900',	/* 가격 */
+        	eyesNum : '213',	/* 방문한 사람 수 */
+        	replyNum : '213'	/* 댓글 수 */
+        };
+        dataArr.push(obj);
+    }
+	var temp = $("#storeTemplate").tmpl(dataArr);
+    $("#storeTemplateCon").append(temp);
+
+    for( var i = 0; i<tmpNum; i++ ){
+    	
+    	if(dataArr[i].img != ''){
+    		$("#productBgImg"+i).css({"background-image":"url(" + dataArr[i].img + ")"});	
+    	}
+    
+        
+    }
+}
+
+/* 댓글 탬플릿 */
+function tmplReply(){
+	var dataArr = [];
+	var tmpNum = 3;	
+
+    for( var i = 0; i<tmpNum; i++ ){
+
+        var obj = {
+        	index : i,
+        	img : '',	
+        	name : 'Vivian',
+        	time : '3시간 전',
+        	reply : '칼라리필 토너 입니다.'
+        };
+        dataArr.push(obj);
+    }
+	var temp = $("#replyTemplate").tmpl(dataArr);
+    $("#productReply").append(temp);
+
+    for( var i = 0; i<tmpNum; i++ ){
+    	
+    	if(dataArr[i].img == ''){
+    		$("#replyMemberImg"+i).attr("src","images/img_member.png");
+    	}
+    
+        
+    }
+}
+
+function productTabSetting(){
+	$("#productInfo").show();
+	$("#productReply").hide();
+	$("#storeTab").addClass("active");
+	$("#replyTab").removeClass("active");
+	$("#anotherProduct").show();
+}
+
+function replyTabSetting(){
+	$("#productReply").html('');
+	tmplReply();
+	$("#productInfo").hide();
+	$("#productReply").show();
+	$("#storeTab").removeClass("active");
+	$("#replyTab").addClass("active");
+	$("#anotherProduct").hide();
+}
+
+$(document).ready(function() {
+	tmplProduct();
+	$("#ymTab ul li").eq(4).addClass("active");
+});
+</script>
+
+<!-- 상품 탬플릿 -->
+<script id="storeTemplate" type="text/x-jquery-tmpl">
+    <div class="box_area">
+    	<a href="productDetail.html" class="link">
+			<div class="box_img_area" id="productBgImg${index}"></div>
+			<div class="box_txt_area">
+				<h3 class="title">${title}</h3>
+				<p class="desc">${description}원</p>	
+				<div class="count_area">
+					<p><span class="member_ico"></span><span class="member_num">${eyesNum}</span></p>
+					<p><span class="news_ico"></span><span class="news_num">${replyNum}</span></p>
+				</div>
+			</div>
+		</a>
+	</div>
+</script>
+
+<!-- 댓글 -->
+<script id="replyTemplate" type="text/x-jquery-tmpl">
+	<div class="reply_contents">
+		<div class="member_img">
+			<img src="${img}" alt="" id="replyMemberImg${index}" />
+		</div>
+		<div class="reply_txt_area">
+			<span class="member_name">${name}</span>
+			<span class="write_time">${time}</span>
+			<p class="reply_txt">${reply}</p>	
+		</div>
+	</div>
+</script>
+
+</head>
+<body>
+	<div class="ym_wrap">
+		<!-- header -->
+		<header class="ym_header" id="ymHeader">
+			<div class="web_fix_width center_header">
+				<h1 class="logo" id="ymLogo">
+					<a href="search.html" class="link">
+						<img src="images/ym_logo.png" alt="yello market logo" />
+					</a>
+				</h1>
+				<div class="search_area" id="searchArea">
+					<input type="search" placeholder="가게/상품/서비스명으로 검색" class="search" />    
+					<span class="ico_search"></span><!-- 검색 아이콘 -->
+				</div>
+				<p class="btn_app_open link_app_down">앱에서 열기</p>
+			</div>
+		</header>
+		<!-- header End -->
+		
+		<div class="ym_container web_fix_width">
+			<!-- left -->
+			<section class="ym_custom_info">
+				<div class="info_img_area" id="infoImg"></div>
+				<div class="info_text_area">
+					<div class="info_title">
+						<div class="store_logo_area">
+							<img src="" alt="" id="storeLogo" />
+						</div>
+						<h2 class="store_title" id="storeName"></h2>	
+					</div>
+					<div class="info_desc">
+						<p id="storeDesc"></p>	
+					</div>
+				</div>
+			</section>
+			<!-- left End -->
+			
+			<section class="ym_contents">
+				<!-- tab -->
+				<div class="ym_tab" id="ymTab">
+					<ul>
+						<li id="li_home"><a href="home.html" id="homeUrl">홈</a></li>
+						<li id="li_coupon"><a href="coupon.html" id="couponUrl">쿠폰</a></li>
+						<li id="li_stamp"><a href="stamp.html" id="stampUrl">스탬프</a></li>
+						<li id="li_news"><a href="news.html" id="newsUrl">소식</a></li>
+						<li id="li_product"><a href="product.html" id="productUrl">상품</a></li>
+					</ul>
+				</div>
+				<!-- tab End -->
+
+				<!-- contents -->
+				<div class="ym_detail_con" id="boxArea">		
+					<!-- productDetail -->
+					<p class="txt_product_list"><a href="product.html">&lt; 상품목록보기</a></p>
+					<p class="m_product_list"><a href="product.html" class="btn_back"></a>스토어명</p>
+					<div class="ym_detail_con news_box">
+						<div class="pro_main_area">
+							<div class="pro_img">
+								<img src="images/@tmp_img.jpg" alt="" />	
+							</div>
+							<div class="pro_txt_area">
+								<div class="pro_txt">
+									<p class="title">초특가 글리터 &amp; 캔버스 슬립온</p>
+									<span class="txt_cost">판매가</span>
+									<p class="cost"><span class="cost_num">19,900</span>원</p>
+								</div>
+								
+								<div class="count_area pro_count">
+									<p><span class="member_ico"></span><span>213</span></p>
+									<p><span class="news_ico"></span><span>213</span></p>
+									<p><span class="heart_ico"></span><span>213</span></p>
+								</div>
+							</div>
+						</div>
+						<div class="ym_tab product_tab">
+							<ul>
+								<li class="active" id="storeTab"><a href="javascript:productTabSetting();">상품정보</a></li>
+								<li id="replyTab"><a href="javascript:replyTabSetting();">댓글</a></li>
+							</ul>
+						</div>
+						<div class="product_contents" id="productInfo"><!-- 상품정보 -->
+							<div class="contents_img">
+								<img src="images/@tmp_img.jpg" alt="" />		
+							</div>
+							<p class="contents_txt">초특가 글리터 &amp; 캔버스 슬립온</p>
+						</div>
+						<div class="reply_contents_area" id="productReply"><!-- 댓글 -->
+						</div>
+					</div>
+					<div id="anotherProduct">
+						<p class="txt_another_product">스토어 다른 상품</p>
+						<div id="storeTemplateCon" class="tmp_con"></div>
+					</div>
+					<!-- productDetail End -->
+					
+					<div class="btn_area">
+						<button class="btn_ym_app_down link_app_down">옐로마켓 앱 다운로드</button>	
+					</div>
+				</div>
+				<!-- contents End -->
+
+				<div class="not_list" id="notList">
+					<img src="images/not_list_logo.png" alt="" />
+					<p>해당 목록이 없습니다.</p>
+				</div>
+				<div class="pc_down_area">
+					<div class="app_store_area app_mag">
+						<img src="images/ios_down_sm.gif" alt="download on the app store" />	
+					</div>
+					<div class="app_store_area">
+						<img src="images/and_down_sm.gif" alt="android app on google play" />
+					</div>	
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+
+</html> 

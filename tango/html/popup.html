@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<script src="https://img.infavor.me/resources/ifv-Framework/1.0/ifvCommon/js/ifvFramework.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/layout.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/whiteStyle.css">
+<script type="text/javascript">
+
+function makeMainGrid(){
+	var jqGridOption = {
+		onSelectRow : function (data) {
+			
+		},
+	    colNames:['No','제목', '작성일'],
+	    colModel:[
+	        {name:'no', align:"center", key : true },
+	        {name:'title',index:'ifsb.title'},
+	        {name:'createDate',index:'ifsb.create_date', align:"center", formatter:'date',  formatoptions:{srcformat:"Y-m-d",newformat:"d-m-Y"} }      
+	    ],
+	    multiselect : true,
+	    cellEdit : true,
+		cellsubmit : 'clientArray', 
+	    autowidth:true,
+	    sortname: 'ifsb.create_date',
+	    sortorder: "desc",
+	    rowList:[2,4,6,8,10],
+	    pager: '#pjqgajax',
+	    caption:"Menu List",
+	    tempId:'titleGridTemplete'
+	};
+	this.grid = $("#mainGridCon").ifvGrid({ jqGridOption : jqGridOption });
+	this.grid.pagerSetting({page : 1, size : 5})
+
+}
+
+
+$(document).ready(function(){
+    makeMainGrid();
+	 
+	var arr = []
+    arr[0] = {value:'111', txt:'rk'}
+    arr[1] = {value:'222', txt:'rk2'}
+    arr[2] = {value:'333', txt:'rk3'}
+
+    //셀렉트 박스 생성
+    var selectbox1 = $("#selectboxTop").ifvSelectBox();
+    selectbox1.setData(arr, function(obj){
+       //alert(obj.value);
+    });
+    
+    var selectbox2 = $("#selectbox").ifvSelectBox();
+    selectbox2.setData(arr, function(obj){
+       //alert(obj.value);
+    });
+   
+});
+</script>
+<script id="titleGridTemplete" type="text/ifvGrid-tmpl">
+	<div class="ifv_grid_templete">
+		<div class="grid_con">
+			{grid}
+		</div>
+		
+	</div>
+</script>
+</head>
+
+<body style="background:transparent;">
+ 
+	<div class="popup">
+		<div class="list">
+			<div class="listTitle">
+				<span class="titleTxt">Menu List</span>
+				<input type="text" id="selectbox" class="sel_default" value="TEST" />
+				<input type="button" value="조회" class="btn btn_default btn_edit_md" />
+				<input type="button" value="신규" class="btn btn_default btn_edit_md" />
+				<input type="button" value="수정" class="btn btn_default btn_edit_md" />
+			</div>
+			<div id="mainGridCon"></div>
+		</div>
+		<div>
+			<input type="button" value="선택" class="btn btn_default btn_select" />
+			<input type="button" value="취소" class="btn btn_default btn_cancel" />
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+	
+/* web */
+.pc_br {display: block;}
+.mobile_br {display: inline;}
+
+.ym_header{position:fixed;}
+.ym_header .btn_app_open{display:none;}
+.fixed{position: fixed; z-index: 1;}
+.response_wrap{width: 100%; min-width: 1024px; min-height: 700px;}
+.response{position: relative; margin:0 auto; width: 960px; min-height: 700px;}
+.app_store_area{padding-top:9px; width: 256px; height: 75px; border:1px solid #f2a500; border-radius: 5px; background-color: #fff; text-align: center; vertical-align:top; box-sizing:border-box; cursor: pointer;}
+.app_store_area.app_mag{margin-bottom: 12px;}
+.scroll_btn{right:60px; top:50%;}
+.scroll_btn ul li{margin-bottom: 17px; width: 15px; height: 15px; border:1px solid #cccccc; border-radius: 8px; background-color: #cccccc; cursor: pointer;}
+.scroll_btn ul li:last-child{margin-bottom:0;}
+.scroll_btn ul li.active{background-color: #ffb007; border:1px solid #ff9b0d;}
+.main_detail_txt{position: absolute; left:0; top: 35%; width: 350px; height: auto; text-align: right;}
+.main_detail_txt .ym_title{display: inline-block; font-size: 40px; font-weight: bold; color: #ff9f07;}
+.main_detail_txt .ym_subtit{display: inline-block; font-size: 30px; font-weight: bold; color: #3f3d37; letter-spacing: -1px;}
+.main_detail_txt .ym_detail{display: inline-block; font-size: 24px; color: #666; letter-spacing: -1px;}
+.main_img{margin: 0 auto; display: block; padding-top: 15%; padding-left: 350px;}
+.main_img.first_img{padding-left:150px;}
+
+
+.ym_down_area{position: absolute; top:35%; right:0;}
+.main_yellomarket_down{padding-top:50px; background-color: #fff;}
+.main_yellomarket_down .ym_main_txt .ym_subtit{font-size: 36px;}
+.main_yellomarket_down .ym_main_txt .ym_title{font-size: 50px;}
+.main_yellomarket_down .btn_area{display: none;}
+.main_yellomarket_push{background:url(../images/main_bg_1.jpg) no-repeat 0 0; background-size: cover;}
+.main_yellomarket_push .logo_img{width:205px; height: auto;}
+.main_yellomarket_push .second_img{display: none;}
+.main_yellomarket_push .ym_txt_area{left: auto; right:0; width: 420px;}
+.main_yellomarket_push .ym_txt_area .ym_title{color: #fff;}
+.main_yellomarket_push .ym_txt_area .ym_detail{color: #fff;}
+.main_store_info, .main_store_bene, .main_cafe, .main_mypage{border-top:1px solid #ddd;}
+.main_last{background-color: #ffb007; text-align: center;}
+.main_last .ym_txt{padding-top: 25%; color: #fff;}
+.main_last .ym_txt .ym_subtit{display: block; padding-bottom: 20px; font-size: 35px; font-weight: bold;}
+.main_last .ym_txt .ym_title{padding-right: 10px; font-size: 65px; font-weight: bold;}
+.main_last .ym_txt img{vertical-align: middle;}
+.main_last .copy{position: absolute; left: 0; right: 0; bottom:20px; font-size: 11px; color: #fff;}
+.main_last .copy img{vertical-align: middle;}
+.main_last .ym_down_area2{margin-top:82px;}
+.main_last .ym_down_area2 .app_store_area{display: inline-block;}
+.main_last .ym_down_area2 .app_store_area.first{margin-right: 5px;}
+.main_last .ym_down_area2 .app_store_area.last{margin-left: 5px;}
+.main_last .btn_area{display: none;}

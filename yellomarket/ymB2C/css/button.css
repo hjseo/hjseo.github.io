@@ -1,0 +1,87 @@
+.btn_style{
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+
+    font-size: 12px;
+    line-height: 2;
+
+    color: #fff;
+    background-color: #739e73;
+    border-color: #659265;
+
+    padding:0 5px;
+
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,.05);
+
+    -webkit-tap-highlight-color: rgba(169,3,41,.5);
+}
+.btn_style:hover{color: #fff;}
+
+.btn_style.search{
+    padding:3px 10px;  
+    font-size: 14px;
+}
+
+/* 공통 버튼 */
+.btn{
+	box-shadow:none;
+	background-color:#3198c8;
+	border-color:#2185b3;
+	color:#fff;
+	font-weight:bold;
+	min-width: 62px;
+}
+.btn:hover{
+	box-shadow:none;
+	background-color:#3198c8;
+	border-color:#2185b3;
+	color:#fff;
+}
+.btn:active{
+	box-shadow:none;
+	background-color:#3198c8;
+	border-color:#2185b3;
+	color:#fff;
+}
+.btn:focus{
+	box-shadow:none;
+	background-color:#3198c8;
+	border-color:#2185b3;
+	color:#fff;
+}
+
+.btn.btn_gray{background-color:#6e7886; border-color:#616975;}
+.btn.btn_gray:hover{background-color:#6e7886; border-color:#616975;}
+.btn.btn_gray:active{background-color:#6e7886; border-color:#616975;}
+.btn.btn_gray:focus{background-color:#6e7886; border-color:#616975;}
+
+.btn.btn_lightGray{background-color:#9d9fa3; border-color:#989797;}
+.btn.btn_lightGray:hover{background-color:#9d9fa3; border-color:#989797;}
+.btn.btn_lightGray:active{background-color:#9d9fa3; border-color:#989797;}
+.btn.btn_lightGray:focus{background-color:#9d9fa3; border-color:#989797;}
+
+.btn.btn_lightGray2{background-color:#eee; border-color:#ccc; color:#999999;}
+.btn.btn_lightGray2:hover{background-color:#eee; border-color:#ccc; color:#999999;}
+.btn.btn_lightGray2:active{background-color:#eee; border-color:#ccc; color:#999999;}
+.btn.btn_lightGray2:focus{background-color:#eee; border-color:#ccc; color:#999999;}
+
+/* row안에 버튼 */
+.row_btn{margin-left: 5px; height: 27px; line-height: 14px;}
+
+/* 팝업 하단 버튼 영역 */
+.pop_btn_area {
+    padding: 8px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}

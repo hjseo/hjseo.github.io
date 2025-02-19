@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: middle;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{font-family:HelveticaNeue;}
+.skip{position: absolute; left: -9999px; top:-9999px; width: 0; height: 0; line-height: 0; }
+html, body{width:100%; height: 100%; background-color: #1e313f;}
+.oracle_wrap{width:100%; position: relative; background-image: url('../../../../images/beacon/demo/oracle/bg.jpg'); background-repeat: no-repeat; color: #fff; text-shadow: 1px 1px #000; text-align: center;}
+.container_wrap{width:100%; }
+
+.header{position:relative; text-align: left;}
+.header .oracle_logo{padding:20px 7px; width:207px;}
+.header .btn_close{position: absolute; top:0; right: 0;}
+.header .btn_close img{padding:13px; width: 25px;}
+
+.footer{clear: both; padding: 20px 0; }
+.footer .quintet_logo{width:68px;}
+
+.icignal_logo{padding:30px 0; width:209px;}
+.txt_desc{line-height: 22px; padding-bottom: 20px;}
+
+.down_contents .txt_download{padding-bottom: 30px; width:290px;}
+.down_contents .ico_area{padding-bottom: 20px;}
+.down_contents .ico_area .btn_download{width:142px;}
+
+.led_contents .txt_booth{padding-bottom: 30px; width:273px;}
+.led_contents .electric_area{position: relative; margin:0 auto; width:195px; border:1px solid #79e8ff; border-radius:10px; background:rgb(30,50,57);}
+.led_contents .electric_area img{width: 100%;}
+.led_contents .electric_area .count_number{position: absolute; top: 23px; left:50%; margin-left:-11px; font-size: 40px; font-weight: bold; color: #e51111; text-shadow:none;}
+.led_contents .txt_desc{padding-top:20px; padding-bottom: 36px;}
+
+
+#urlCall{display: none;}
+
+@media screen and (min-width: 376px) {
+    .oracle_wrap{height: 100%; background-size: cover;}
+    .footer.media_footer{position: absolute; bottom: 20px; left: 50%; margin-left: -34px;}
+}

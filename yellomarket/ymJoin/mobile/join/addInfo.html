@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>Yello Market</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<link rel="stylesheet" href="../../resources/css/mobile/m_common.css">
+<link rel="stylesheet" href="../../resources/css/mobile/m_join.css">
+<script type="text/javascript" src="../../resources/js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript">
+    
+function valiError(){
+    $('#email').parent().addClass('error')
+    .children('.vali-check').text('유효하지 않은 이메일 주소입니다.');    //해당하는 내용으로 변경
+}
+
+function valiSuccess(){
+    $('#nickname').parent().removeClass('error')
+    .children('.vali-check').text('사용가능합니다.');
+}
+
+$(document).ready(function() {
+    $('input').on('focus',function(){
+        $('input').removeClass('focus');
+        $(this).addClass('focus');
+    });
+    valiError();    //validation error 일 때 사용
+    valiSuccess();  //validation success 일 때 사용
+});
+</script>
+</head>
+<body>
+
+<header id="header" class="title">
+    <h1 id="topBar">추가 정보 입력</h1>
+    <a href="join.html" class="btn_close"><img src="../../resources/images/mobile/product/btn_alert_close.png" alt="닫기" /></a>
+</header>
+<div class="join_wrap">
+    <section class="info_area">
+        <div class="input_area error">
+            <input type="email" placeholder="ID (email)" id="email" />
+            <span class="vali-check"></span>
+        </div>
+        <div class="input_area">
+            <input type="text" placeholder="닉네임 (이름)" id="nickname" />
+            <span class="vali-check"></span>
+        </div>
+        <div class="input_area">
+            <input type="password" placeholder="비밀번호" />
+            <span class="vali-check"></span>
+        </div>
+        <div class="input_area">
+            <input type="password" placeholder="비밀번호 확인" />
+            <span class="vali-check"></span>
+        </div>
+	</section>
+    <section class="phonenumber_area">
+        <h2 class="tit_terms">전화번호</h2>
+        <div class="phone_area">
+            <input type="tel" /> 
+        </div><!-- 
+        --><div class="phone_area">
+            <input type="tel" /> 
+        </div><!-- 
+        --><div class="phone_area">
+            <input type="tel" /> 
+        </div>
+    </section>
+
+    <input type="button" disabled="disabled" class="btn_green" value="회원 가입 하기" />
+</div>
+
+</body>
+</html>

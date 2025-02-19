@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/beacon/demo/common.css">
+<link rel="stylesheet" type="text/css" href="../css/beacon/demo/overseas/overseas.css">
+<script>
+    function appClose(){
+        location.href = 'infavor://closeWebView';
+    }
+</script>
+</head>
+<body>
+<div id="wrap" class="pickup_bg">
+    <header class="header">
+        <h1 class="ellipsis">Pick-Up Service</h1>
+        <a href="javascript:appClose();" class="btn_close"><img src="../images/beacon/demo/overseas/btn_close.png" alt="" /></a>
+    </header>
+    <div class="box_top">
+        <p class="ellipsis">We’re informing you of pick-up service <br />of your purchase.</p>
+    </div>
+    <div class="box_book_item">
+        <p class="book_author ellipsis"><span class="author">Gallo, Carmine</span></p>
+        <p class="book_tit ellipsis">The Apple Experience</p>
+        <p class="book_desc">Secrets to Building Insanely Great <br />Customer Loyalty</p>
+        <div class="img_area">
+            <img src="../images/beacon/demo/overseas/book_01.gif" alt="">    
+        </div>        
+        <p class="book_quality ellipsis">Hardcover</p>
+        <p class="ellipsis"><span class="discount_cost">$16.30</span><span class="cost">$25.00</span></p>
+    </div>
+
+    <footer class="footer">
+        <div class="status_area"><p>Progress Status</p></div>
+        <div class="order_process">
+            <ol>
+                <li class="order">Order</li>
+                <li class="processing">Items in <br />Processing</li>
+                <li class="ready">Ready to<br />Pickup</li>
+                <li class="received">Received</li>
+            </ol>
+            <p>
+               In 5 minutes, your items will be ready to pick up in front of cashier #35 
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

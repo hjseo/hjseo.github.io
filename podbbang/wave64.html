@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>SoundCloud $.wave64 Example</title>
+
+    <!-- Include jQuery, SoundCloud JS SDK, and the $.wave64 Plugin -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src='http://connect.soundcloud.com/sdk.js'></script>
+    <script src='http://wave64.it/jquery.wave64.js'></script>
+
+    <script type='text/javascript'>
+        $(document).ready(function() {
+          // Get the canvas & its context, width, and height.
+          canvas = $("#waveform")[0];
+          context = canvas.getContext("2d");
+          width = context.canvas.clientWidth;
+          height = context.canvas.clientHeight;
+          
+          // Make sure the canvas is sized to the appropriate size.
+          canvas.setAttribute("width", width);
+          canvas.setAttribute("height", height);
+          // Initialize the SoundCloud Javascript SDK
+          SC.initialize({
+            client_id: "02279ab1b6ec248aa05fd3f900e3b46f"
+          });
+          // SC.get a track from SoundCloud.
+          SC.get("/tracks/33820987", function(track) {
+            
+            // Pass the waveform url, height, width, RGB array, and callback to $wave64.
+            $.wave64(track.waveform_url, height, width, [255, 102, 0], function(data) {
+              // Finally, put the received colored image data onto the canvas.
+              context.putImageData(data, 0, 0);
+            });
+          });
+        });
+    </script>
+  </head>
+  <body>
+    <canvas id='waveform' style='width:600px;height:100px'></canvas>
+  </body>
+</html>

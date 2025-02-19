@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<title>고객센터</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		<script src="js/placeholders.min.js"></script>
+		<script src="js/custom.js"></script>
+		<style>
+			#subTop{padding-top:70px;}
+			#container{padding-top:0;}
+		</style>
+		
+		<script>
+			$("document").ready(function(){
+				
+				$("#util").children("li").eq(2).addClass("on");
+				
+				$(".faq").find(".question").click(function(){
+					$(".faq").find(".question").not(this).next().hide();
+					$(this).next("tr").toggle();
+				});
+				
+				
+				var Cheight = $(window).height();
+				 
+				$("#menuIcon").click(function() {
+					
+					if( $("#menuBox").css("display") == "none" ) {
+						$(this).children().attr("src","images/common/btn_close.gif");
+						$("#menuBox").css({"height":Cheight});
+						$("body").css({overflow:'hidden'}).bind('touchmove', function(e){e.preventDefault()});
+					}else{
+						$(this).children().attr("src","images/common/menu.jpg");
+						$("body").css({overflow:'auto'}).unbind('touchmove');
+					} 
+					
+					$("#menuBox").fadeToggle();
+					
+				});
+				  
+				$("#menuBox ul").find("li").click(function(){
+
+					$("#menuIcon").children().attr("src","images/common/menu.jpg");
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="headerWrap">
+				<div id="header">
+					<h1><a href="index.html"><img src="images/common/logo.png" alt="인페이버 비콘 매니저" /></a></h1>
+					<a href="javascript:;" id="menuIcon" >
+						<img src="images/common/menu.jpg" alt="주메뉴" />
+					</a>
+					<div id="menuBox">
+						<h2 class="hidden">주메뉴</h2>
+						<ul id="menu">
+							<li><a href="infavor.html" title="인페이버">인페이버</a></li>
+							<li><a href="beaconManager.html" title="비콘매니저">비콘매니저</a></li>
+						</ul>
+						<ul id="util">
+							<li><a href="myService.html" title="내 서비스">내 서비스</a></li>
+							<li><a href="applyService.html" title="서비스 신청">서비스 신청</a></li>
+							<li><a href="customerCenter.html" title="고객센터">고객센터</a>
+								<ul class="lnb">
+									<li><a href="customerCenter.html#faqTitle">FAQ</a></li>
+									<li><a href="customerCenter.html#inquireTitle">1:1 문의하기</a></li>
+									<li><a href="customerCenter.html#companyTitle">회사소개</a></li>
+								</ul>
+							</li>
+							<li><a href="login.html" title="로그인">로그인</a></li>
+							<!-- <li><a href="login.html" title="로그아웃">로그아웃</a></li> -->
+						</ul>
+					</div>
+					<div id="me">
+						<span>서혜정</span>님 환영합니다!
+					</div>
+					
+				</div>
+			</div>
+			<div id="subTopTitle">
+				<div class="response">
+					<h2>고객센터</h2>
+					<p class="skip">Customer Service</p>
+				</div>
+			</div>
+			<div id="container">
+				<div class="response">
+
+
+
+					<div id="inquireWrap">
+						<div id="inquireTitle" class="title">
+							<h3 class="skip">1:1문의</h3>
+							<p>Infavor Biz 및 서비스 이용에 대하여 궁금하신 점을 보내주세요.</p>
+						</div>
+						<div class="box">
+							<div class="tabStyle on" >
+								<h4 tarId="a">문의하기</h4>	
+							</div>
+							<div class="tabStyle" >
+								<h4 tarId="b">문의리스트</h4>	
+							</div>
+						</div>
+
+						<h4 class="hidden">문의하기</h4>
+						<div class="tab_box"  id="a">
+							<div id="inquire">	
+								<label class="" for="store">가게명<input type="text" placeholder="가게 이름을 작성해주세요(필수)" id="store" /></label>
+								<label class="" for="type">업종<input type="text" placeholder="가게의 업종을 작성해주세요" id="type" class="right" /></label>
+								<label class="" for="address">주소<input type="text" placeholder="가게의 주소를 작성해주세요" id="address" /></label>
+								<label class="" for="name">성함<input type="text" placeholder="담당자 분의 성함을 작성해주세요(필수)" id="name" class="right" /></label>
+								<label class="" for="email">이메일<input type="text" placeholder="담당자 분의 이메일을 작성해주세요(필수)" id="email" /></label>
+								<label class="" for="tel">연락처<input type="text" placeholder="연락 받으실 연락처(전화번호 또는 핸드폰번호)를 작성해주세요(필수)" id="tel" class="right" /></label>
+								<label class="" for="content">문의내용<textarea placeholder="Infavor Biz 이용목적을 작성해주세요(ex: 가게 홍보 등)(필수)" id="content" ></textarea></label>
+								
+								<input type="button" value="보내기" />
+							</div>
+							<ul class="description">
+							 	<li>(1) 수집하는 개인정보의 항목 및 수집방법
+							 		<ul>
+							 			<li>수집하는 개인정보의 항목 : 가게명, 업종, 가게 주소, 이름, 이메일, 연락처</li>
+							 			<li>개인정보수집방법: 문의 및 상담하려는 이용자가 자발적으로, 구체적으로 기입할 때만 개인정보를 수집합니다.</li>
+							 		</ul>
+							 	</li>
+							 	<li>(2) 개인정보 수집 및 이용목적
+							 		<ul>
+							 			<li>(주)퀸텟시스템즈는 수집된 개인정보를 문의 및 상담 요청에 대하여 회신을 하거나 회신을 위한 서비스 이용기록 조회를 위하여 활용합니다.</li>
+							 		</ul>
+							 	</li>
+							 	<li>(3) 개인정보의 보유 및 이용기간
+							 		<ul>
+							 			<li>수집된 개인정보는 관련 법령에 달리 명시되어 있지 않는 한, 문의 처리 후 즉시 파기</li>
+							 		</ul>
+								</li>
+							</ul>
+						</div>
+						
+						<h4 class="hidden">문의리스트</h4>
+						<div class="tab_box" id="b" style="display:none;">
+							
+							<table id="inquireList">
+								<caption class="hidden">문의리스트</caption>
+								<colgroup>
+									<col />
+									<col />
+									<col />
+								</colgroup>
+								<tbody>
+									<tr class="question">
+										<td class="skip">Q</td>
+										<td>2014년 9월 30일  |   닥터로빈님이 문의를 주셨습니다.</td>
+										<td></td>
+									</tr>
+									<tr class="answer">
+										<td class="skip">A</td>
+										<td>
+											문의주셔서 감사합니다. 담당자가 빠른 시간 내에 확인 후 답변드리겠습니다.
+										</td>
+										<td></td>
+									</tr>
+									<tr class="question">
+										<td class="skip">Q</td>
+										<td>2014년 9월 30일  |   닥터로빈님이 문의를 주셨습니다.</td>
+										<td class="on">답변완료</td>
+									</tr>
+									<tr class="answer">
+										<td class="skip">A</td>
+										<td>
+											안녕하세요~ 고객님. 문의하신 내용에 답변 드립니다.~~~~~~
+										</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div class="box no_service">
+								<img src="images/common/icon_no_service.png" alt="">
+								<p class="tit">문의한 내용이 없습니다.</p>
+							</div>
+
+							<div>
+								<!-- 페이징 자리 -->
+							</div>
+						</div>
+						
+					</div>
+
+
+
+
+
+					<div id="faqBox">
+						<div id="faqTitle" class="title">
+							<h3 class="skip">FAQ</h3>
+							<p>무엇이든 물어보세요. 친절히 답변해드립니다.</p>
+						</div>
+
+						<div class="box">
+							<div class="tabStyle on" >
+								<h4 tarId="c">공통</h4>	
+							</div>
+							<div class="tabStyle" >
+								<h4 tarId="d">쿠폰매니저</h4>	
+							</div>
+							<div class="tabStyle" >
+								<h4 tarId="e">비콘매니저</h4>	
+							</div>
+						</div>
+						
+
+						<table id="c" class="tab_box faq">
+							<caption class="hidden">FAQ</caption>
+							<colgroup>
+								<col />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>인페이버 서비스는 어떤 서비스인가요?</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										인페이버는 소비자 네크워크 서비스(Customer Network Service)로 제품, 상품, 가게, 기업 등 온오프라인에서 유통되는 모든 서비스 및 재화에 대한 소비자들의 SNS 공간입니다.
+										이런 소비자들의 활동 속에서 소상공인을 위한 공간을 개설해 소비자와 직접 커뮤니케이션을 하면서 단골 고객으로 유입시킬 수 있는 기회를 창출할 수 있습니다.
+										인페이버는 소비자와 소상공인이 커뮤니케이션 할 수 있는 Mobile App과 Web 서비스가 있으며,
+										인페이버와 연동되어 소비자에게 쿠폰을 발행할 수 있는 쿠폰 서비스,
+										비콘(Beacon)을 활용하여 소비자에게 자동 홍보, 고객관리, 쿠폰발행, 고객 통계를 한번에 진행할 수 있는 비콘 매니저로 구성되어 있습니다.
+										인페이버는 어느 누구나 무료로 개설이 가능하며, 쿠폰 서비스, 비콘 매니저 등을 사용을 원하시는 경우에는
+										고객센터의 1:1문의를 통해 접수를 해주시면 개별 상담이 가능합니다.
+									</td>
+								</tr>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>인페이버와 연동된 쿠폰 서비스가 궁금해요</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										쿠폰 서비스는 인페이버의 우리가게 공간에 참여한 회원들에게 간단한 조작만으로도 실시간 쿠폰 발송에서부터 각종 쿠폰 관련 통계까지 한번에 가능한 서비스입니다.
+										모바일 App과 연동되어 고객들에게 실시간 알림이 가능하기 때문에, 고객을 위한 특별 이벤트 등을 부담없이 진행할 수 있습니다.
+										또한, 발행한 쿠폰의 사용률에서부터 각종 고객통계를 확인할 수 있어 다음 마케팅을 위한 자료로 활용하실 수 있습니다.
+										쿠폰 서비스를 원하시는 소상공인께서는 고객센터의 1:1문의를 통해 접수를 해주시면 개별 상담이 가능합니다.
+									</td>
+								</tr>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>인페이버와 연동된 비콘 매니저가 궁금해요</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										비콘 매니저는 최근 사물인터넷 상에서 최적의 홍보 방법으로 알려져 있는 비콘(Beacon)을 소상공인 및 기업을 위한 맞춤형 홍보로 이용할 수 있는 서비스입니다.
+										우리 가게 인근의 사용자들에게 자동으로 가게를 홍보, 가게의 상품이나 서비스의 정보를 자동으로 알리고, 가게 전용 할인 쿠폰을 발행, 고객의 만족도 응답을 받는 등
+										고객 관리에 필요한 모든 기회를 자동으로 진행할 수 있는 서비스입니다.
+										또한, 가게에 방문한 고객의 각종 통계, 발행한 쿠폰 통계 등 고객과 관련된 다양한 통계를 통해 가게 매출 향상을 확인할 수 있습니다.
+										비콘 매니저 서비스가 궁금하신 소상공인께서는 고객센터의 1:1문의를 통해 접수를 해주시면 개별 상담이 가능합니다.
+									</td>
+								</tr>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>비콘(Beacon)은 어떻게 구매하나요</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										비콘 매니저는 오픈형 서비스로서 시중에 유통되는 그 어떤 비콘(Beacon)이든 관계없이 등록 후 이용이 가능합니다.
+										따라서 온/오프라인에서 유통되는 비콘을 구매하시면 되겠습니다.
+										비콘을 구매한다고 비콘을 활용한 각종 가게 홍보 활동을 하시는 것이 아니기 때문에, 비콘 구매 후 비콘 매니저 서비스를 신청하셔야 우리 가게를 홍보할 수 있습니다.
+										비콘 매니저 서비스가 궁금하신 소상공인께서는 고객센터의 1:1문의를 통해 접수를 해주시면 개별 상담이 가능합니다.
+		
+									</td>
+								</tr>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>우리 가게도 홍보가 가능한가요</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										인페이버 서비스, 쿠폰서비스, 비콘 매니저는 온/오프라인에서 가게를 가진 소상공인, 기업 뿐만 아니라
+										가게가 없이 각종 서비스를 제공하는 경우에도 인페이버를 통해 홍보가 가능합니다.
+										가게나 서비스 형태를 구분하지 않고 홍보가 가능한 인페이버 서비스에서 무료로 홍보를 진행해보세요.
+										추가적으로 쿠폰서비스, 비콘 매니저가 필요한 경우에는 고객센터의 1:1문의를 통해 접수를 해주시면 개별 상담이 가능합니다.
+										(단, 청소년 보호법에서 지정한 청소년 유해매체물 및 유해품목, 담배, 경마/경정 등 사행산업, 주류, 성인, 대부업에 해당하는 개인 및 사업자는 이용이 불가합니다.)
+		
+									</td>
+								</tr>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>인페이버, 쿠폰서비스, 비콘매니저 이용 시 가격은 어떻게 되나요</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										모바일 App과 Web으로 홍보 활동이 가능한 인페이버는 누구나 개설하여 이용할 수 있는 무료 서비스입니다.
+										인페이버와 연동되어 우리가게의 전용 쿠폰을 발행할 수 있는 쿠폰 서비스와
+										비콘(Beacon)과 연동되어 우리가게의 다양한 홍보활동, 고객관리 활동을 할 수 있는 비콘 매니저 서비스는
+										고객센터의 1:1문의를 통해 접수를 해주시면 개별 상담이 가능합니다.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table id="d" class="tab_box faq" style="display:none;">
+							<caption class="hidden">쿠폰매니저 FAQ</caption>
+							<colgroup>
+								<col />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>쿠폰매니저 FAQ</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ
+										
+									</td>
+								</tr>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>인페이버와 연동된 쿠폰 서비스가 궁금해요</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ쿠폰매니저 FAQ
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+
+						<table id="e" class="tab_box faq" style="display:none;">
+							<caption class="hidden">비콘매니저 FAQ</caption>
+							<colgroup>
+								<col />
+								<col />
+							</colgroup>
+							<tbody>
+								<tr class="question">
+									<td class="skip">Q</td>
+									<td>인페이버, 쿠폰서비스, 비콘매니저 이용 시 가격은 어떻게 되나요</td>
+								</tr>
+								<tr class="answer">
+									<td class="skip">A</td>
+									<td>
+										.비콘매니저 FAQ
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+
+
+					
+
+					<div id="referenceBox">
+						<div class="title">
+							<h3 class="skip">자료실</h3>
+							<p>인페이버 Biz 관련 각종 소개 자료를 받아보실 수 있습니다.</p>
+						</div>
+						<div class="box">
+							<div class="tabStyle on" >
+								<h4 tarId="f">쿠폰매니저</h4>	
+							</div>
+							<div class="tabStyle" >
+								<h4 tarId="g">비콘매니저</h4>	
+							</div>							
+						</div>
+
+						<h4 class="hidden">쿠폰매니저</h4>
+						<div class="tab_box" id="f">
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>쿠폰매니저 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+						</div>
+						<h4 class="hidden">비콘매니저</h4>
+						<div class="tab_box" id="g" style="display:none;">
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>비콘매니저 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+							<div>
+								<img src="images/customerCenter/icon_down.gif" alt="">
+								<p>인페이버 회사소개서.pdf</p>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+					<div id="companyBox">
+						<div id="companyTitle" class="title">
+							<h3 class="skip">회사소개</h3>
+							<p>BEACON Solution & Marketing No. 1 Company</p>
+						</div>
+						<div id="company">
+							<div class="left">
+								<p>
+									<span>퀸텟시스템즈는</span> <br />
+									최고 수준의 차별화된 CRM(고객관리) Know-How를 보유하여 <br />
+									국내외 대기업, 공공기관과 성공적인 프로젝트를 수행해온 회사입니다. 
+								</p>
+								<img class="center" src="images/customerCenter/inc_beacon_solution.gif" 
+								alt="국내 최초로 소상공인과 기업이 비콘(Beacon)을 활용한 각종 마케팅 활동, 시스템 지원활동 등을 할 수 있는 솔루션을 제공합니다." />
+								<img src="images/customerCenter/infavor_team.png" alt="infavor team" />
+							</div>
+							<div class="right">
+								<img src="images/customerCenter/logo_quintet.png" alt="퀸텟시스템즈 로고" />
+								<img class="center" src="images/customerCenter/inc_description.png" alt="Why choose us?
+								Because we listen Because we look ahead Because we outperform Because we provide tailored solutions
+								we are not satisfied. We continue to strive for client success though rellable companlonship." />
+								<a href="http://www.quintet.co.kr/" target="_blank">
+									<img src="images/customerCenter/inc_detail.gif" alt="회사소개 상세보기 www.quintet.co.kr" />
+								</a>
+							</div>
+						</div>
+					</div>
+					
+
+
+
+
+				</div>
+			</div>
+			<div id="footer">
+				<div class="response">
+					<address>150-708 서울특별시 영등포구 여의나루로 71 (여의도동, 동화빌딩 16층)</address> 
+					<p class="tel">대표전화 02-541-8517 / 대표팩스 02-512-8510</p>
+					<p class="copy">Copyright &copy; 2014 Infavor. All rights reserved</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

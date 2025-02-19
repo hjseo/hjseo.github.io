@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+
+html{width:100%; min-height:100%;}
+body{width: 100%; min-height:100%;}
+#wrap{ width:100%; min-height: 100%;}
+.cf{overflow: auto; zoom: 1;}
+
+/* header */
+#header{width:100%; min-width: 1152px; height:68px; background-color: #fff; border-bottom: 4px solid #ef2c27;}
+#header h1{position: absolute; left:21px; top:11px;}
+#header .logout{position: absolute; left:1046px; top:30px; width:79px; height:26px; line-height:26px; text-align:center; border-radius: 2px; background-color: #8b8b8b; color:#fff; cursor: pointer;}
+
+/* left menu */
+#nav{position: absolute; left:0; top:72px; background:#444; width:198px; min-height: 100%; line-height: 70px; font-size: 15px;}
+#nav .manager_name{padding-left: 52px; height: 70px; background: url(../images/admin/name_bg.jpg) no-repeat 0 0; color:#fff;}
+#nav ul li{padding-left: 20px; height: 70px;  background-color: #3a3a3a; border-bottom: 1px solid #444;}
+#nav ul li a{display:block; width:100%; height:100%; color:#b5b5b5; }
+#nav ul li.on {background-color: #323232;}
+#nav ul li.on a{color:#fff; background:url(../images/admin/target.png) no-repeat right center;}
+
+/* contents */
+.content_box{width: 100%; min-width: 1152px; min-height: 100%; background-color: #e9e9e9;}
+#content{margin-left: 198px; padding:31px 27px ; width:900px;}
+#content h2{font-size: 19px; margin-bottom: 20px; padding-bottom: 19px; padding-left: 35px; border-bottom: 1px solid #bdbdbd;}
+
+.btn_box{text-align: center;}
+.btn{display: inline-block; width:101px; height:32px; background-color: #f8f8f8; border:1px solid #d1d1d1; text-align: center; line-height: 32px; font-weight: bold;}
+a.btn_red{background-color: #ff0000; border:1px solid #a03131; color:#fff;}
+
+.top{overflow: hidden; margin-bottom: 10px;}
+.top .btn{float: right;}
+.top p{float: left; padding-top: 10px; color:#828282;}
+.top select{float:right; width:134px; height:26px; background-color: #f8f8f8; border:1px solid #d1d1d1; color:#828282;}
+table{margin-bottom: 20px; width:100%; border-right: 1px solid #c6c6c6; border-left: 1px solid #c6c6c6;}
+table.styleTable tr{height:49px; border-bottom: 1px solid #c6c6c6; color:#575757;}
+table.styleTable tr:first-child{border-top: 1px solid #c6c6c6;}
+table.styleTable tr td:first-child{padding:0 20px; width:117px; background-color: #d9d9d9; border-right: 1px solid #c6c6c6;}
+table.styleTable tr td:last-child{padding:0 20px; width:*; background-color: #fff;}
+table.styleTable tr.long{height:200px; line-height: 20px;}
+table.styleTable tr.long td{padding-top: 17px; vertical-align:top;}
+table.styleTable tr td .half_box{padding:0 16px; width:265px; height: 29px; border:1px solid #e1e1e1; box-sizing:border-box;}
+table.styleTable input{padding:0 16px; width:95%; height: 29px; border:1px solid #e1e1e1;}
+table.styleTable textarea{padding:16px; width:100%; height: 160px; border:1px solid #e1e1e1; box-sizing:border-box;  resize:none;}
+
+/* 로그인 페이지 */
+.div_table{display: table; width:100%; height: 100%;}
+.login_wrap{width:100%; height: 100%; background-color: #e9e9e9; display: table-cell;}
+.login{position: relative; margin:0 auto; padding: 55px 0 55px 62px; width:628px; height: 283px; background:url(../images/admin/login_bg.png) no-repeat 0 0; box-sizing:border-box; }
+.login h1{position: absolute; left: 0; top: -48px;}
+.login input{margin-bottom: 7px; padding:0 15px; width:316px; height:39px; box-sizing:border-box; background-color: #f1f1f1; border:1px solid #ddd;}
+.login p{color:#fe0000; line-height: 17px; padding-bottom: 15px;}
+.login .btn_login{display: inline-block; width:316px; height: 49px; background-color: #f42525; border-radius:4px; line-height: 49px; color: #fff; text-align: center; font-weight: bold;}
+
+/* 1:1문의 관리 */
+h2.inquire_title{background:url(../images/admin/icon_inquire.png) no-repeat 0 0;}
+
+/* FAQ 관리 */
+h2.faq_title{background:url(../images/admin/icon_faq.png) no-repeat 0 0; line-height: 28px;}
+
+/* 자료실 관리 */
+h2.file_title{background:url(../images/admin/icon_file.png) no-repeat 0 0;}
+
+.row{padding:10px 24px 10px 30px; height: 84px; background-color: #fff; border-bottom: 1px solid #e8e8e8; box-sizing:border-box;}
+.row.first{border-top: 1px solid #878787;}
+.row.last{border-bottom: 1px solid #878787;}
+.row .num{float: left; width:50px; line-height: 64px; font-weight: bold;}
+.row .con{float:left; }
+.row .con label{display: inline-block; font-weight: bold; padding-right: 32px; line-height: 29px;}
+.row .con label.one{line-height: 64px;}
+.row .con label:nth-of-type(2){margin-top: 4px;}
+.row .con span:nth-of-type(2){ display: inline-block;}
+.row .con input[type=text]{display: inline-block; padding:0 10px; width: 265px; height: 29px; border:1px solid #e1e1e1;}
+.row .con .upload {
+	margin-top: 4px;
+	display: inline-block;
+    width: 103px;
+    height: 29px;
+    background: url(../images/admin/upload.gif);
+    overflow: hidden;
+}
+
+.row .con .upload input {
+    display: block ;
+    width: 103px;
+    height: 29px;
+    opacity: 0 ;
+    overflow: hidden;
+}
+.row .right{float: right; padding-top: 15px; width:103px;}

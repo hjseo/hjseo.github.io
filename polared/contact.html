@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>polared : contact</title>
+    <meta charset="UTF-8">
+    <script src="js/jquery-1.8.3.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript">
+
+        //내부 링크 고정
+        function subTitScroll() {
+            var linkArea = $('#linkArea');
+            var winWidth = $(window).width();
+            var winMaxSize = 960;
+            var sclTop = $(window).scrollTop();
+
+            if (sclTop > 165) {
+                $("#subPageImg").css('margin-bottom', "45px");
+
+                if ( winWidth <= winMaxSize ) {
+                    linkArea.css({'position':'absolute','top':sclTop});
+                } else {
+                    linkArea.css('position', 'fixed').css('top', '0');
+                }      
+            }else {
+                linkArea.css('position','relative').css('top','0');
+                $("#subPageImg").css('margin-bottom', "0");
+            }
+        };
+
+        
+        $(document).ready(function(){
+            $(window).on("scroll resize", function(){
+                subTitScroll();
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="polaredWrap">
+    <header class="layout_con lang_en" id="header">
+        <div class="response">
+            <h1><a href="main.html" class="logo"><img src="images/logo.png" alt="polared" /></a></h1>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="company.html">COMPANY</a></li>
+                    <li><a href="service.html">SERVICE</a></li>
+                    <li><a href="contact.html" class="active">CONTACT</a></li>
+                </ul>
+            </nav>  
+        </div>        
+    </header>
+    
+    <section class="layout_con contact_wrap">
+        <div class="contact_img" id="subPageImg"></div>
+        <div class="link_area lang_en" id="linkArea">
+            <div class="response">
+                <h2 class="sub_title">CONTACT</h2>
+                <a href="https://itunes.apple.com/us/app/infavor/id684704308?l=ko&ls=1&mt=8" class="link_app" target="_blank">Yello Market App Store</a>         
+                <a href="https://play.google.com/store/apps/details?id=com.icekake.and&feature=search_result#?t=W251bGwsMSwxLDEsImNvbS5pY2VrYWtlLmFuZCJd" class="link_app" target="_blank">Yello Market Google Play</a> 
+            </div>
+        </div> 
+        <section class="contact_contents">
+            <div class="response detail_txt">
+                <div class="email">
+                    <h3 class="middle_title">E-MAIL</h3>
+                    <p>신재길 이사  jackie.shin@polared.com</p>
+                    <p>유지수 과장  js.you@polared.com</p>
+                </div>
+                <div class="tel">
+                    <h3 class="middle_title">TEL</h3>
+                    <p>(Tel) +82 2 541 8517</p>
+                    <p>(Fax) +82 2 512 8510</p>
+                </div>
+                <div class="address">
+                    <h3 class="middle_title">ADDRESS</h3>
+                    <p>150-708 서울특별시 영등포구 여의나루로 71(여의도동 동화빌딩 16층)</p>
+                    <p>Yeouinaru 71, Yeongdeungpo-gu, Seoul (16F Donghwa Bldg, Yeoeuido-dong)</p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <footer class="layout_con" id="footer">
+        <div class="response">
+            <img src="images/footer_logo.png" alt="polared" class="footer_logo" />
+            <div class="footer_txt">
+                <span>150-708</span> <address class="address">서울특별시 영등포구 여의나루로 71 (여의도동, 동화빌딩 16층)</address> 
+                <p class="tel">대표전화 02-541-8517 / 대표팩스 02-512-8510</p>
+                <p class="copyright">Copyright &copy; 2015 polared Corp. All rights reserved</p>    
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

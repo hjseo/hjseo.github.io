@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+
+html, body{width: 100%; height: 100%;}
+body{font-family:HelveticaNeue; letter-spacing:0;}
+ul li, ol li{list-style-type:none;}
+.ellipsis{text-overflow: ellipsis; -o-text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; overflow: hidden;}
+
+#wrap{position: relative; left: 0; top: 0; width: 100%; height: 100%;}
+
+.header{position:fixed; left: 0; top:0; width: 100%; height: 43px; background-color: #fff; border-bottom:1px solid #dedede; color:#f96956; font-size: 19px; text-align: center; z-index:1;}
+.header h1{line-height: 43px; font-weight:bold;}
+.header .btn_close{position: absolute; right:6px; top:6px; width: 30px; height: 30px;}
+.header .btn_close img{width: 100%; height: 100%;}
+
+.box_top{margin-top: 44px; padding:12px 0; height: 65px; background-color:#918788; font-size: 15px; line-height: 18px; text-align: center; color: #fff; box-sizing:border-box;}
+ 
+.box_book{overflow: hidden; clear: both; height: 152px; padding:12px 14px; border:1px solid #dedede; box-sizing:border-box;}
+.box_book .img_area{float: left; width: 86px;}
+.box_book .img_area img{width:100%;}
+.box_book .txt_area{padding-left: 103px;}
+.box_book .txt_area .book_tit{font-size: 15px; font-weight: bold; color: #323232;}
+.box_book .txt_area .book_author{font-size: 13px; color: #676767;}
+.box_book .txt_area .book_author .author{color: #388cac;}
+.box_book .txt_area .book_quality{font-size: 13px; color: #676767;}
+.box_book .txt_area .discount_cost{font-size:15px; font-weight: bold; color: #bc0a0a;}
+.box_book .txt_area .cost{padding-left: 5px; font-size: 13px; color: #676767; text-decoration: line-through; vertical-align: text-bottom;}
+
+.pickup_bg{background-color:#4d4d4d;}
+.box_book_item{overflow: hidden; clear: both; padding:9px 19px 24px 19px; background-color: #fff; border:1px solid #dedede; box-sizing:border-box;}
+.box_book_item .img_area{padding-top:12px; padding-bottom: 17px; text-align: center;}
+.box_book_item .img_area img{width: 164px;}
+.box_book_item .book_tit{font-size: 19px; font-weight: bold; color: #323232;}
+.box_book_item .book_author{font-size: 13px; color: #676767;}
+.box_book_item .book_author .author{color: #388cac;}
+.box_book_item .book_quality{font-size: 11px; color: #676767;}
+.box_book_item .discount_cost{font-size:18px; font-weight: bold; color: #bc0a0a;}
+.box_book_item .cost{padding-left: 5px; font-size: 18px; color: #676767; text-decoration: line-through; vertical-align: text-bottom;}
+.box_book_item .book_desc{font-size: 17px; color: #323232;}
+
+.footer{width: 100%;}
+.footer .status_area{padding-left:19px; height: 18px; background-color:#f6f6f6; font-size: 12px; color: #8d8d8d;}
+.footer .status_area p{line-height: 18px;}
+.footer .order_process{padding:10px 19px; min-height: 95px; background-color:#4d4d4d; text-align: center; color: #fff;}
+.footer .order_process ol{overflow: hidden; padding-bottom: 10px;}
+.footer .order_process ol li{float: left; height: 32px; background-color: #fff; border-radius: 3px 15px 15px 3px; font-size: 9px; line-height: 30px; font-weight: bold; color: #f26350; box-sizing:border-box;}
+.footer .order_process ol li.order{margin-right: 5px; width: 20%;}
+.footer .order_process ol li.processing{margin-right: 5px; width: 26%; padding-top:3px; background: url(../../../../images/beacon/demo/overseas/bg_red.gif) no-repeat 0 0; line-height: 12px; color: #fff;}
+.footer .order_process ol li.ready{margin-right: 5px; width: 24%; padding-top:3px; line-height: 12px;}
+.footer .order_process ol li.received{width: 24%;}
+
+.location_bg{background-color: #f6f6f6;}
+.map_area{margin-top: 44px; position: relative;}
+.map_area .map{width: 100%;}
+.map_area .pin{position: absolute; left: 49%; top:16%; width: 25px; height:auto;}
+.btn_location{margin:14px 24px; padding:15px; background-color: #f2504a; color: #fff; font-size: 16px; border-radius: 5px; text-align: center;}

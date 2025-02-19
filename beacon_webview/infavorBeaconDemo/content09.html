@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/idangerous.swiper.css" />
+		<script>
+			function appClose(){
+				debugger;
+				location.href = 'infavor://closeWebView';
+			}
+		</script>
+		<style>
+			
+			html{height:100%;}
+			body{height:100%;}
+			#wrap{position:relative; height:auto; padding-bottom:53%; background:#e3e3e3;}
+			.box{position:absolute;
+				left:0; bottom:0;
+				width:100%;
+				height:37%;
+				overflow:hidden; 
+				margin-left:-13%;
+				padding-right:13%;
+			}
+			.swiper-container{ 
+				width:60%;
+				height:85%;
+				text-align:center;
+			}
+			.swiper-slide {
+				box-sizing:border-box;
+				-moz-box-sizing:border-box; 
+				padding:0 1%;
+			}
+			.swiper-slide img{width:100%; height:auto;}
+			.pagination{position:absolute;z-index:20;left:15%;bottom:10px;}
+			.swiper-pagination-switch {
+				display: inline-block;
+				width: 45px;
+				height: 45px;
+				border-radius: 45px;
+				background: #555;
+				margin-right: 5px;
+				opacity: 0.8;
+				border: 1px solid #fff;
+				cursor: pointer;
+			}
+			.swiper-active-switch {
+				background: #fff;
+			}
+		</style>
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/idangerous.swiper.js"></script>
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/css3-mediaqueries.js"></script>
+		<![endif]-->
+		<title>workFlow</title>
+	</head>
+	<body>
+		<div id="wrap">
+			<img src="images/content09/content09_workflow_bg.jpg" alt="" class="bg" />
+			
+			<div class="box">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="images/content09/taskType_01.jpg" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/content09/taskType_02.jpg" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/content09/taskType_03.jpg" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/content09/taskType_04.jpg" alt="" />
+						</div>
+					</div>
+					<div class="pagination">
+						<span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span>
+						<span class="swiper-pagination-switch"></span>
+						<span class="swiper-pagination-switch"></span>
+						<span class="swiper-pagination-switch"></span>
+					</div>
+					
+				</div>
+				<script>
+					var mySwiper = new Swiper('.swiper-container',{
+				    	pagination: '.pagination',
+				    	paginationClickable: true
+					})
+				</script>
+			</div>
+			
+			<div class="topBtn" style="height:4.3%;">
+			
+				<div class="btnBox">
+					<input type="image" src="images/btn/close01.png" class="topClose" onclick="javascript:appClose();" style="padding:0; margin-top:2%;" />
+				</div>
+			</div>
+			<div class="bottomBtn">
+			
+				<div class="btnBox">
+					<input type="image" src="images/btn/close02.png" class="bottomClose" onclick="javascript:appClose();" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

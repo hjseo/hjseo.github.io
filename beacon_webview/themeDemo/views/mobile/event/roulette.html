@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<title>YM 테마 특별 EVENT</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <link rel="stylesheet" href="../../../resources/css/mobile/m_common.css">
+    <link rel="stylesheet" href="../../../resources/css/mobile/event/event.css">
+</head>
+<body>
+    <div class="event_wrap">
+        <a href="infavor://closeWebView" class="btn_close"><img src="../../../resources/images/mobile/event/close_btn.png" alt="" class="width100" /></a>
+        
+        <img src="../../../resources/images/mobile/event/roulette_top.gif" alt="" class="width100 block_img" />
+        
+        <div class="roulette_area">
+            <img src="../../../resources/images/mobile/event/roulette.png" alt="" class="roulette_img" id="rouletteImg" />    
+            <img src="../../../resources/images/mobile/event/roulette_pin.png" alt="" class="roulette_pin" />   
+            <img src="../../../resources/images/mobile/event/roulette_start.png" alt="" class="roulette_start" role="button" id="startBtn" />   
+            <img src="../../../resources/images/mobile/event/roulette_pointer.png" alt="" class="roulette_pointer" />    
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+
+        var isTouch = true;
+        var rouletteArr = [1750, 1850, 1900, 2000, 2050];
+
+        var rotation = function (){
+            isTouch = false;
+            var random = Math.floor(Math.random() * 5);
+        
+            $("#rouletteImg").rotate({
+                angle:0,
+                animateTo:rouletteArr[random],
+                easing: $.easing.swing,
+                duration: 2000,
+                callback : function(){
+                    isTouch = true; 
+                }
+            });
+        };
+        
+        $( document ).ready(function() {
+            $("#startBtn").on('click', function(){
+                if(isTouch){
+                    rotation(); 
+                } 
+                
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>ORACLE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="./css/oracle.css" />
+<script>
+
+function appClose(){
+	location.href = 'infavor://closeWebView';
+}
+
+
+</script>
+
+</head>
+<body>
+	<div class="oracle_wrap">
+		<div class="container_wrap">
+			<header class="header">
+				<h1><img src="./images/oracle_logo.png" alt="oracle cloud day" class="oracle_logo" /></h1>	
+				<a href="javascript:appClose();" class="btn_close"><img src="./images/btn_close.png" alt="닫기" /></a>
+			</header>
+			<section class="data_con">
+				<div class="data_top">
+					<p class="txt_time">현재 <span>21시 30분</span> 기준 데이터입니다.</p>
+					<a href="javascript:;" class="btn_refresh"><img src="./images/refresh.png" alt="새로고침" /></a>
+				</div>
+
+				<div class="power_con">
+					<div class="man_area man_in">
+						<img src="./images/man_on.png" alt="" class="ico_man" />
+						<p>재실중</p>
+					</div>
+					<div class="man_area man_absence">
+						<img src="./images/man_off.png" alt="" class="ico_man" />
+						<p>부재중</p>
+					</div>
+					<div class="power_area">
+						<div class="all_power">
+							<span class="power_num">125,000</span><span class="watt">Watt</span>
+							<p class="txt_power">총 전력 사용량</p>
+						</div>
+						<div class="current_power">
+							<span class="power_num">1,000</span><span class="watt">Watt</span>
+							<p class="txt_power">현재 전력 사용량</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="data_area">
+					<div class="half_area">
+						<div class="data_box">
+							<span class="ico_degree"></span>
+							<p class="txt_sign"><span class="degree_num">18</span>℃</p>
+							<p class="txt_data">온도</p>
+						</div>
+					</div>
+					<div class="half_area">
+						<div class="data_box">
+							<span class="ico_humidity"></span>
+							<p class="txt_sign"><span class="degree_num">18</span>%</p>
+							<p class="txt_data">습도</p>
+						</div>
+					</div>
+					<div class="half_area">
+						<div class="data_box">
+							<span class="ico_roughness"></span>
+							<p class="txt_sign"><span class="degree_num">100</span>Lux</p>
+							<p class="txt_data">조도</p>
+						</div>
+					</div>
+					<div class="half_area">
+						<div class="data_box">
+							<span class="ico_co2"></span>
+							<p class="txt_sign"><span class="degree_num">100</span>ppm</p>
+							<p class="txt_data">이산화탄소</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer class="footer">
+				<img src="./images/quintet_logo.png" alt="quintet" class="quintet_logo" />
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

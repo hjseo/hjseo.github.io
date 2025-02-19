@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/layout.css">
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="logo_bg">
+        <h1><img src="../images/login/login_logo.png" alt="Tango" /></h1>    
+    </div>
+    <div class="form" id="formArea">
+
+        <p class="login_tit">Tango Development Tools</p>
+        <label class="hidden">ID</label><input type="text" placeholder="ID" required/>
+        <label class="hidden">Password</label><input type="password" placeholder="Password" required/>
+        <div>
+            <label for="Repository" class="hidden">Repository</label>
+            <select id="Repository">
+                <option value="" selected="selected">Repository</option>
+                <option value="">Repository1</option>
+                <option value="">Repository2</option>
+            </select>
+        </div>
+        <p class="vali_txt">비밀번호 5회 실패시 로그인 불가하니 유의바랍니다</p>
+        <input type="button" value="Login" class="btn_login" id="btnLogin" onclick="location.href='main.html'" />
+    </div>
+    <div class="footer">
+        <small class="copy">&copy; 2015 Quintet Systems</small>
+    </div>
+</div>
+</body>
+</html>

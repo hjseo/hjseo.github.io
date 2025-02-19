@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="utf-8">
+<title>iCignal Marketing</title>
+
+<link rel="shortcut icon" href="../images/icignal.ico" type="image/x-icon">
+<link rel="icon" href="../images/icignal.png" type="image/x-icon">
+
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/bootstrap/css/smartadmin-production.css">
+<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../js/syncfusion/themes/default-theme/ej.widgets.all.min.css" />
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.tmpl.min.js"></script>
+<script src="../js/syncfusion/scripts/jquery.easing.1.3.min.js" type="text/javascript"></script>
+<script src="../js/syncfusion/scripts/ej.web.all.min.js" type="text/javascript"></script>
+<script src="../js/jquery.splitter-0.14.0.js"></script>
+
+
+<!--[if lt IE 9]>
+    <script src="../js/html5shiv.js"></script>
+    <script src="../js/respond.min.js"></script>
+<![endif]-->
+
+<script>
+
+var targetLevelId = '<%= request.getParameter("targetLevelId") %>';
+var confilterid = '<%= request.getParameter("id") %>';
+var conditionList;
+var seq = 0;
+var selectedFilterId;
+var selectedFilterName;
+var filterId;
+
+//첫번째 필터 숨김처리
+function filterHide(){
+	$("#fieldSelectArea").find("li:not(.group_edge)").find("select").show();
+	$("#fieldSelectArea").find("li:not(.group_edge)").eq(1).find("select").hide();
+}
+
+//조건 변경 시 서버 업데이트
+function changeAndOr(item){
+    	
+	
+	
+   	var obj = {};
+   	obj.filterId = item.parentNode.parentNode.getAttribute('filterId');
+   	
+   	if(item.selectedIndex == '0'){
+   		obj.andOr = 'AND';
+   	}
+   	else{
+   		obj.andOr = 'OR';
+   	}
+   	
+   	
+   	/* $.ifvSyncPostJSON('<ifvm:action name="updateAndOr"/>',obj
+	,function(result) {
+	
+	});  */
+	
+}
+
+//필드를 끌어놓는 순간 빈 필드 저장
+function setEmptyField(fieldId){
+	
+	var obj = {};
+	obj.filterSeq = seq;
+	obj.segmentId = confilterid;
+	obj.fieldId = fieldId;
+	
+	$.ifvSyncPostJSON('<ifvm:action name="setEmptyField"/>',obj
+	,function(result) {
+		
+		var filterId = fieldId + '_temp' + seq;
+        
+        $("#" + filterId).attr("filterId", result.message);
+        
+	}); 
+}
+
+
+//세그먼트 쿼리 조회
+function getSegmentQuery(){
+	
+	$.ifvSyncPostJSON('<ifvm:action name="getSegmentQuery"/>',{segmentId : confilterid}
+	,function(result) {
+		$("#sqlQuery").text(result.sqlQuery);
+	}); 
+
+}
+
+
+//세그먼트 저장
+function setTargetSegment(){
+	
+	
+	
+	var obj = {};
+ 	if(typeof(quickFlag) != "undefined"){
+		
+ 		if(camId != null && camId != 'null'){
+			obj.camId = camId;
+			obj.segmentId = confilterid;
+			obj.targetLevelId = targetLevelId;
+			obj.quickFlag = quickFlag;
+			
+			if($("#compareValue").val() != null && $("#compareValue").val().length > 0){
+				obj.compareValue = $("#compareValue").val();
+				obj.compareType = $("#compareSelect").val();
+			}
+			
+			$.ifvSyncPostJSON('<ifvm:action name="setTargetSegment"/>',obj
+			,function(result) {
+				alert('<spring:message code="marketing.targeting.saveDone"/>');
+			}); 
+			
+		}
+		else{	
+			alert('<spring:message code="marketing.quickCampaign.noCmapaignInfo"/>');
+		}
+		
+	}
+ 	else{
+	
+ 		obj.segmentId = confilterid;
+		obj.targetLevelId = targetLevelId;
+		
+		if($("#compareValue").val() != null && $("#compareValue").val().length > 0){
+			obj.compareValue = $("#compareValue").val();
+			obj.compareType = $("#compareSelect").val();
+		}
+		
+		$.ifvSyncPostJSON('<ifvm:action name="setTargetSegment"/>',obj
+		,function(result) {
+			alert('<spring:message code="marketing.targeting.saveDone"/>');
+		}); 
+			
+ 	}
+}
+
+//필드 필터 정보 조회
+function fieldFilterList(){
+	
+	$.ifvSyncPostJSON('<ifvm:action name="getFieldFilterList"/>',{
+		segmentId : confilterid
+	},function(result) {
+		
+		 var fieldTemp = {};
+	        
+		 $("#selectedFilterCnt").text(result.fieldFilterItem.length);
+		 
+		 for(var i=0; i<result.fieldFilterItem.length; i++){
+			
+			$("#fieldSelectArea").find( ".placeholder" ).hide();
+			 
+			fieldTemp.id = result.fieldFilterItem[i].fieldId + '_temp' + result.fieldFilterItem[i].filterSeq;
+	        fieldTemp.func = result.fieldFilterItem[i].fieldId + '_temp' + result.fieldFilterItem[i].filterSeq;
+	        fieldTemp.text = result.fieldFilterItem[i].fieldName;
+	        
+	        seq = result.fieldFilterItem[i].filterSeq;
+	        
+	        var temp = $("#draggableTemp").tmpl(fieldTemp);
+	        $("#fieldSelectArea ul").append(temp);
+	        
+	        $("#" + fieldTemp.id).attr("filterId", result.fieldFilterItem[i].filterId);
+	        
+	        if(result.fieldFilterItem[i].andOr == 'AND'){
+	        	$("#" + fieldTemp.id).find('select').val("1");
+	        }
+	        else{
+	        	$("#" + fieldTemp.id).find('select').val("2");
+	        }
+	        
+	       //필터 값 셋팅
+	        var filterValue = "";
+	        
+	        if(result.fieldFilterItem[i].filterValue!= null && result.fieldFilterItem[i].filterValue != 'null'){
+	        	 
+	        	if(result.fieldFilterItem[i].criteriaType != "BETWEEN"){
+	        		filterValue += result.fieldFilterItem[i].criteriaType + " : " + result.fieldFilterItem[i].filterValue;
+		        	 $("#" + fieldTemp.id).find('p').text(filterValue);
+	        	}
+	        	else{
+	        		filterValue += result.fieldFilterItem[i].criteriaType + " : " + result.fieldFilterItem[i].filterValue + " AND " + result.fieldFilterItem[i].filterAttr;
+		        	 $("#" + fieldTemp.id).find('p').text(filterValue);
+	        	}
+	        	 
+	        	//버튼 색 변경
+	 			$("#" + fieldTemp.id).find('button').addClass("btn_filter_save");
+	 			$("#" + fieldTemp.id).find('button').children(".filter_ico").attr("src", "../images/ico_check2.png");
+	 			
+	        }
+	        else{
+	        	 $("#" + fieldTemp.id).find('p').text('<spring:message code="marketing.userTargeting.filterSettingValue"/>');
+	        }
+	       
+		 }
+	        
+		 seq ++;
+	        
+		 filterHide();
+		
+	});
+}
+
+function divideScreen() {
+	$('#adminCon').split({orientation:'vertical', limit:100, position:'15%'});
+}
+
+function accordionSetting(){
+	$("#basicAccordion").ejAccordion({
+		collapsible: true
+	});
+}
+
+
+function init(){
+	$("#adminCon").height(900);
+	divideScreen();	//split
+	accordionSetting();	//아코디언
+	$("#userTargetingTab").ejTab();	//탭
+	settingUserMenu();
+	conditionType();
+	//compareType();
+	//fieldFilterList();
+}
+
+//대상 카운트
+function countTarget(){
+	
+	
+	var obj = {};
+	obj.segmentId = confilterid;
+	obj.targetLevelId = targetLevelId;
+	
+	 $.ifvSyncPostJSON('<ifvm:action name="getTargetCount"/>',obj
+	,function(result) {
+		
+		
+		$("#filterAllCnt").text(result.allCnt);
+		
+		for(var i=0; i<result.countItem.length; i++){
+			
+			for(var k=0; k<$("#fieldSelectArea").find('li').length; k++){
+				
+				if(result.countItem[i].filterId == $("#fieldSelectArea").find('li')[k].getAttribute('filterId')){
+					$("#fieldSelectArea").find('li').eq(k).find('input').val(result.countItem[i].filterCount);
+				}
+			}
+		}
+		
+	}); 
+	
+	
+}
+
+//공통코드 조회 - 조건유형
+function conditionType(){
+	//$.ifvSyncPostJSON('<ifvm:action name="getCommCodeList"/>',{
+		//groupCode : 'MKT_SEG_GROUP_CONDITION_TYPE'
+		//, enableNA : true
+	//},function(result) {
+		var result = {};
+		result.rows = [{
+			codeId: "ee5fc0d99f2911e5bca10200",
+			codeName: "COUNT",
+			markName: "COUNT"
+		}, {
+			codeId: "ee793fc59f2911e5bca10200",
+			codeName: "SUM",
+			markName: "SUM"
+		}, {
+			codeId: "ee8cf0af9f2911e5bca10200",
+			codeName: "AVG",
+			markName: "AVERAGE"
+		}];
+		conditionList = result;
+	//});
+}; 
+
+//공통코드 조회 - 비교군
+function compareType(){
+	$.ifvSyncPostJSON('<ifvm:action name="getCommCodeList"/>',{
+		groupCode : 'MKT_SEND_UNIT_CD'
+		, enableNA : true
+	},function(result) {
+		
+		var temp = $("#compareTemplate").tmpl(result.rows);
+		$("#compareSelect").append(temp);
+	});
+}; 
+
+//필터 저장시 버튼 변경
+function filterSetBtnUI(_this){
+	$(_this).addClass("btn_filter_save")
+	.children(".filter_ico").attr("src", "../images/ico_check2.png");
+}
+
+function userTargetingPopClose(){
+	$("#userTargetingPop").ejDialog('destroy');
+}
+
+//서브젝트 에어리어 영역 조회
+function settingUserMenu(){
+	
+	/* $.ifvSyncPostJSON('<ifvm:action name="getSubjectFieldList"/>'
+	, {targetLevelId : targetLevelId}
+	,function(result) { */
+		var result = {};
+		result.subjectAreaList = [{
+									fieldList : [{
+										fieldId: "754feea2a55611e5bca10200",
+										fieldKroNm: "회원ID"
+									}, {
+										fieldId: "7f62c119a55611e5bca10200",
+										fieldKroNm: "회원명"
+									}, {
+										fieldId: "8fe15037a55611e5bca10200",
+										fieldKroNm: "회원성별"
+									}, {
+										fieldId: "9a5eb6f1a55611e5bca10200",
+										fieldKroNm: "회원연령대"
+									}, {
+										fieldId: "a64e65e0a55611e5bca10200",
+										fieldKroNm: "회원이메일"
+									}],
+									subjectAreaId: "5673aed79806142ba427ea17",
+									subjectAreaNm : "YM 회원프로파일",
+									targetLevelNm : "YM 회원분석"
+								}, 
+								{
+									fieldList : [{
+										fieldId: "b0eebd7ea55611e5bca10200",
+										fieldKroNm: "회원ID"
+									}, {
+										fieldId: "eec23b01a55711e5bca10200",
+										fieldKroNm: "기준월"
+									}, {
+										fieldId: "e6183d53a55711e5bca10200",
+										fieldKroNm: "스토어명"
+									}, {
+										fieldId: "fe5d08b3a55711e5bca10200",
+										fieldKroNm: "온라인방문수"
+									}, {
+										fieldId: "38ee2637a55811e5bca10200",
+										fieldKroNm: "댓글수"
+									}, {
+										fieldId: "b2b55fb5a90f11e5bca10200",
+										fieldKroNm: "최종방문일자"
+									}, {
+										fieldId: "12b67421a91011e5bca10200",
+										fieldKroNm: "미사용스탬프수"
+									}, {
+										fieldId: "28b64d29a91011e5bca10200",
+										fieldKroNm: "사용스탬프수"
+									}, {
+										fieldId: "8d79a0a9a91611e5bca10200",
+										fieldKroNm: "오프라인방문수"
+									}],
+									subjectAreaId: "5673aefe9806142ba427ea18",
+									subjectAreaNm : "YM 월별회원접속",
+									targetLevelNm : "YM 회원분석"
+								}];
+
+		
+		for(var i=0; i<result.subjectAreaList.length; i++){
+			
+			$("#targetLevelNm").text(result.subjectAreaList[0].targetLevelNm);
+			
+			var temp = $("#toggleMenuTemp").tmpl(result.subjectAreaList[i]);
+		    $("#menuArea").append(temp);
+		    
+		    var temp2 = $("#toggleSubMenuTemp").tmpl(result.subjectAreaList[i].fieldList);
+		    $("#"+ result.subjectAreaList[i].subjectAreaId).append(temp2);
+			
+		}
+		
+	//});
+	draggable();
+	
+	/* var temp = $("#toggleMenuTemp").tmpl();
+    $("#menuArea").append(temp);
+    
+    var temp2 = $("#toggleSubMenuTemp").tmpl();
+    $("#menuArea .menu_ul").append(temp2); */
+}
+function draggable(){
+	$( "#basicAccordion li" ).draggable({
+    	appendTo: "body",
+    	helper: "clone"
+    });
+}
+
+
+function isKeyPressed(event, _this) {
+	//ctrl key 눌렀을 때 event
+	if (event.ctrlKey) {
+    	
+    	$(_this).addClass("sel");
+    	var selectList = $( "#fieldSelectArea>ul>li.sel" ); 
+
+		//group버튼 활성화
+    	if( selectList.length > 1 ){
+			$("#groupBtn").removeAttr("disabled");
+		}
+		
+		if(  $( "#fieldSelectArea>ul>ul" ).hasClass("sel") ){
+    		$("#groupBtn").attr("disabled", "disabled");
+    	}
+    	
+    } else {	//일반 클릭 시
+    	removeSelClass();
+    	$("#groupBtn").attr("disabled", "disabled");
+    	$(_this).addClass("sel");
+    }
+}
+
+//선택한 style 없애기
+function removeSelClass(){
+	$( "#fieldSelectArea ul" ).removeClass("sel");
+	$( "#fieldSelectArea ul li" ).removeClass("sel");
+}
+
+//그룹안에 리스트 1개일 때 그룹 해제
+function setUngroup(){
+	var selectList = $( "#fieldSelectArea ul.group_list.sel li:not(.group_edge)" );
+	
+	if( selectList.length == 1 ){
+		var html = "";
+		
+		for(var i=0; i<selectList.length; i++){
+			html += selectList[i].outerHTML;	//복제
+		}  
+		
+		$("#fieldSelectArea ul.group_list.sel").after(html);
+		$("#fieldSelectArea ul.group_list.sel").remove();
+		removeSelClass();
+	}
+}
+
+$(document).ready(function() {
+
+	if(typeof(quickFlag) == "undefined"){
+		//$.ifvmLnbSetting('userMain');
+		init();
+		
+	}
+
+	//drag and drop
+	draggable();
+    $( "#fieldSelectArea ul" ).droppable({
+        accept: "#basicAccordion li",
+        drop: function( event, ui ) {
+	        $( this ).find( ".placeholder" ).hide();
+	        
+	        var fieldTemp = {};
+	        
+	        fieldTemp.id = ui.draggable.attr('id') + '_temp' + seq;
+	        fieldTemp.func = ui.draggable.attr('id') + '_func' + seq;
+	        fieldTemp.text = ui.draggable.text();
+	        
+	        var temp = $("#draggableTemp").tmpl(fieldTemp);
+	        $("#fieldSelectArea>ul").append(temp);
+	        
+	        var comTemp = $("#conditionTypeTemplate").tmpl(conditionList.rows);
+			$("#" + fieldTemp.func).append(comTemp); 
+			
+			var notFunc = {};
+			notFunc.codeName = 'NA';
+			notFunc.markName = '--';
+			
+			var comNotFunc = $("#conditionTypeTemplate").tmpl(notFunc);
+			$("#" + fieldTemp.func).prepend(comNotFunc); 
+			
+			var fieldCnt = parseInt($("#selectedFilterCnt").text()) + 1;
+			$("#selectedFilterCnt").text(fieldCnt);
+			
+			//필터 저장
+			//setEmptyField(ui.draggable.attr('id'));
+			
+			filterHide();
+			
+			seq++;
+	    }
+    }).sortable({
+    	axis : "y",
+        items : "li:not(.placeholder, .group_edge), ul.group_list",
+        opacity : 0.8,
+		start : function (event, ui){
+			//그룹일 때
+			var parent = ui.item.parent();
+			
+			if( $(parent).hasClass("group_list") ){
+				 if( $(parent).children("li:not(.group_edge)").length == 3 ){
+					 $(".group_list").removeClass("sel");
+					 $(parent).addClass("sel");
+				 }
+			}
+		},
+        sort : function(event, ui) {
+        	var item = ui.item[0];
+        	$(item).addClass("sort");
+        },
+        stop : function(event, ui){
+        	var item = ui.item[0];
+        	$(item).removeClass("sort");
+        	setUngroup();	//1개 남을 때 그룹해제
+        	filterHide();	//첫번째 리스트의 select 삭제 
+        	
+        	//그룹안에 그룹 방지
+        	if( ui.item.hasClass("group_list") ){
+        		if( ui.item.parent().hasClass("group_list") ){
+            		$(this).sortable('cancel');	
+            	}	
+        	}
+        	
+        	
+        }
+    });
+    
+  //필드 조건 리스트 클릭
+	$( "#fieldSelectArea ul li" ).live("click", function(event){
+		var _this = $(this);
+		$( "#groupBtn" ).text("Group");
+		isKeyPressed(event, _this);
+    });
+	
+    //group버튼 클릭
+	$( "#groupBtn" ).live("click", function(event){
+		
+		if( $(this).text() == "Group" ){
+			var selectList = $( "#fieldSelectArea>ul>li.sel" ); 
+			
+			if( selectList.length > 1 ){
+				removeSelClass();
+				var html = "";
+				html += "<ul class='group_list'>";
+				html += "<li class='group_start_item group_edge'>{</li>";
+				
+				for(var i=0; i<selectList.length; i++){
+					html += selectList[i].outerHTML;	//복제
+				}  
+	
+				html += "<li class='group_end_item group_edge'>}</li>";
+				html += "</ul>";
+			   
+			    $(selectList[0]).before(html);
+			    selectList.remove();	//선택된 list 삭제
+			}
+		} else {	// Ungroup
+			
+			var selectList = $( "#fieldSelectArea ul.group_list.sel li:not(.group_edge)" );
+			var html = "";
+
+			for(var i=0; i<selectList.length; i++){
+				html += selectList[i].outerHTML;	//복제
+			}  
+			
+			$("#fieldSelectArea ul.group_list.sel").after(html);
+			$("#fieldSelectArea ul.group_list.sel").remove();	//선택된 list 삭제
+			removeSelClass();
+			
+		}
+		
+		$("#groupBtn").attr("disabled", "disabled");
+    });
+    
+    //그룹 리스트 클릭
+	$( "#fieldSelectArea ul.group_list" ).live("click", function(){
+		removeSelClass();
+		$(this).addClass("sel");
+		$( "#groupBtn" ).text("Ungroup");
+		$("#groupBtn").removeAttr("disabled");
+	});
+    
+    //토글 메뉴
+    $(".menu_wrap .menu_title").on("click", function(){
+    	$(this).next('ul').slideToggle( "fast", function(){
+    		$(this).prev(".menu_title").toggleClass( "focus", 1000 );	
+    	} );
+    	
+    });
+    
+    //토글 메뉴 리스트 drag시 style 
+    $( "#basicAccordion li" ).on("dragstart", function(){
+    	$(this).addClass("focus");
+    });
+    $( "body" ).on("mouseup", function(){
+    	$( "#basicAccordion li" ).removeClass("focus");
+    });
+    
+    //필드 조건 닫기 버튼
+    $(".draggable_close").live("hover", function(e){
+    	if(e.type== "mouseleave"){
+    		$(this).children("img").attr("src", "../images/ico_close.png");	
+    	} else {
+    		$(this).children("img").attr("src", "../images/ico_close_hover.png");	
+    	}
+    	
+    }).live("click", function(){
+    	var group = $(this).parent().parent(".group_list");
+    	
+    	if( $(group).hasClass("group_list") ){
+    		$(".group_list").removeClass("sel");
+    		$(group).addClass("sel");
+    	}
+    	
+    	var delFilterId = this.parentElement.getAttribute('filterId');
+    	
+    	if(delFilterId.length > 0){
+    		
+    		/* $.ifvSyncPostJSON('<ifvm:action name="deleteFilterValue"/>',{filterId : delFilterId}
+    		,function(result) {
+    			
+    		}); */
+    	}
+    	
+    	$(this).parent().remove();	//제거
+		setUngroup();	//1개남을 때 그룹해제
+		
+    	if( $(".draggable_list").length == 0 ){
+    		$("#fieldSelectArea").find( ".placeholder" ).show();	
+    	}
+
+    	var fieldCnt = $("#fieldSelectArea").children().children().length -1
+    	$("#selectedFilterCnt").text(fieldCnt);
+    	
+    	filterHide();
+    	
+    });
+    
+    //필터설정 버튼
+    /*$(".btn_filter").live("click", function(){
+    	
+    	selectedFilterName = this.parentElement.parentElement.getElementsByClassName("field_row_label")[0].id;
+    	selectedFilterId = this.parentElement.parentElement.id;
+    	
+    	//필터값 유무 조회
+    	if(this.parentElement.parentElement.getAttribute('filterId').length > 0){
+    		filterId = this.parentElement.parentElement.getAttribute('filterId');
+    	}
+    	else{
+    		filterId = null;
+    	}
+    	
+    	var _this = $(this);
+    	$("#userTargetingPop").ejDialog({
+    		enableModal : true,
+            enableResize: false,
+            contentUrl: 'filterSettingPop.html',
+            contentType: "ajax",
+            title: '필터 설정',
+            width: 828,
+            open : function(){
+            	//filterBtn(_this);
+            },
+            close : 'userTargetingPopClose'
+        }); 
+    	
+    });*/
+    
+    //카운트 버튼 클릭
+    $("#countBtn").on('click', function(){
+    	//countTarget();
+    });
+    
+    //저장 버튼 클릭
+    $("#targetSegmentSaveBtn").on('click', function(){
+    	//setTargetSegment();
+    });
+    
+    //sql 확인 버튼 클릭
+    $("#sqlConfirm").on('click', function(){
+    	//getSegmentQuery();
+    });
+    
+    
+    
+});
+
+</script>
+
+<!-- 비교군 공통코드 -->
+<script id="compareTemplate" type="text/x-jquery-tmpl">
+<option id="${codeName}" value="${codeName}">${markName}</option>
+</script>
+
+<!-- 조건 공통코드 -->
+<script id="conditionTypeTemplate" type="text/x-jquery-tmpl">
+<option id="${codeName}" value="${codeName}">${markName}</option>
+</script>
+
+<!-- 메뉴 타이틀 -->
+<script id="toggleMenuTemp" type="text/x-jquery-tmpl">
+<h3 class="menu_title"><a href="#">${subjectAreaNm}</a></h3>
+<ul class="menu_ul" id="${subjectAreaId}">
+	
+</ul>	
+</script>
+
+<!-- 메뉴 리스트 -->
+<script id="toggleSubMenuTemp" type="text/x-jquery-tmpl">
+<li id="${fieldId}">${fieldKroNm}</li>
+</script>
+
+<!-- 필드 조건 편집 템플릿 -->
+<script id="draggableTemp" type="text/x-jquery-tmpl">
+<li class="draggable_list" id="${id}" filterId="">
+	<div class="in_select select_and">
+		<select onChange="changeAndOr(this)">
+			<option value="1" selected="selected">AND</option>
+			<option value="2">OR</option>
+		</select>
+	</div>
+	<span class="field_row_label" id="${text}">${text}</span>
+	<div class="right_area">
+		<button class="btn_filter">
+			<img src="../images/ico_setting.png" alt="" class="filter_ico" />
+			필터설정
+		</button>
+		
+		<input type="text" class="in_text text-right" disabled="true" placeholder="Count" />
+	</div>			
+	<p class="field_txt_area">필터 설정 값</p>
+	
+	<a href="javascript:;" class="draggable_close"><img src="../images/ico_close.png" alt="" /></a>
+</li>
+</script>
+
+</head>
+<body style="overflow:auto;">
+
+<div class="user_targeting_area">
+	<div class="page-title">
+		<h1>
+			캠페인 대상 선정
+			<span> &gt; 목록</span>
+		</h1>
+	</div>
+	<div id="adminCon">
+		<!-- 좌측 아코디언 -->
+ 		<div id="basicAccordion" class="left_userTargeting">
+			<h2>
+				<a href="#">대상 추출 조건 SET</a>
+			</h2>
+			<div class="menu_wrap" id="menuArea">
+				
+			</div>
+		</div>
+		<!-- 우측 컨텐츠 -->
+		<div class="right_userTargeting">
+			<div class="page_btn_area">
+				<div class="col-xs-7">
+					<span>대상 추출 조건 편집 &gt; 대상 레벨 : <span class="level_label" id="targetLevelNm">YM 회원분석</span></span>
+				</div>
+				<div class="col-xs-5 searchbtn_r">
+					<button class="btn btn-sm" id="targetSegmentSaveBtn">
+						<i class="glyphicon glyphicon-check"></i>
+						저장
+					</button> 
+				</div>
+			</div>
+			<div class="well">
+				<p class="user_description">새로운 필터를 추가 하기 위해서는 <span>좌측의 필드를 선택</span>하여 <span>필드 조건 영역으로 Drag &amp; Drop 후 에 필터를 설정</span>합니다.</p>
+				<p class="user_description">필드를 Ctrl로 N개 선택 후 우측 상단의 Group 버튼을 눌러 그룹핑할 수 있습니다.</p>
+				<div id="userTargetingTab" class="round_tab">
+					<ul>
+						<li><a href="#fieldConditionTab">필드 조건편집</a></li>
+						<li><a href="#sqlConfirmTab" id="sqlConfirm">SQL 확인</a></li>
+					</ul>
+					<!-- 필드 조건편집 -->
+					<div id="fieldConditionTab">
+						<div class="field_condition_top">
+							<p class="field_label">
+								선택 필드 :  <!-- 선택 필드 -->
+								<span><span id="selectedFilterCnt">0</span> 건</span>
+							</p> 
+							<p class="field_label">
+								전체 추출 고객 수 : <!-- 전체 추출 고객 수 -->
+								<span><span id="filterAllCnt">0</span> 명</span>
+							</p>
+							<div class="pull-right right_area">
+								<span class="field_label">비교군</span>
+								<select class="in_select" id="compareSelect">
+									<option></option>
+								</select>
+								<input type="text" class="in_text" id="compareValue" />
+								<button class="btn btn-sm btn_gray" id="countBtn">Count</button>	<!-- count 버튼 -->
+								<button class="btn btn-sm btn_gray" id="groupBtn" disabled="disabled">Group</button>
+							</div>
+							
+						</div>
+						<div id="fieldSelectArea" class="field_select_area">
+							<ul>
+						      <li class="placeholder">
+							      <span class="font_bold">선택된 필드가 없습니다.</span><br />
+							      좌측 필드를 선택후 드래그 해서 추가해 주세요. 
+						      </li>
+						    </ul>
+						</div>
+					</div>
+					<!-- SQL 확인  -->
+					<div id="sqlConfirmTab">
+						<textarea class="sql_readOnly" disabled="true" id="sqlQuery"></textarea>
+					</div>
+				</div>
+			</div>
+			
+		</div>	 
+	</div>
+</div>
+
+<div id="userTargetingPop" class="popup_container"></div>
+
+</body>
+</html>

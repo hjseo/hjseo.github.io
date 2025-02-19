@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>삼성화재 멤버십</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/jquery-3.2.0.min.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+</head>
+<body>
+	<div class="mem_wrap">
+		<header>
+			<a href="index.html"><img src="./images/icon_home.png" alt="홈으로 이동" class="home" /></a>
+			<img src="./images/membership.gif" alt="삼성화재 MEMBERSHIP" class="img-responsive logo" />
+		</header>
+		<div class="tab_wrap clearfix">
+			<a href="#event1"><img src="./images/tab_01.gif" alt="이달의 선물" class="img-responsive" /></a>
+			<a href="#event2"><img src="./images/tab_02.gif" alt="택시 바우처" class="img-responsive" /></a>
+		</div>
+		<div id="event1">
+			<img src="./images/event_01.jpg" alt="4월 한 달간 삼성화재 멤버십에 가입하신 신규 고객님들께 추첨을 통해 BMW LIFESTYLE 제품을 드립니다." class="img-responsive" />
+			<img src="./images/event_product.jpg" alt="경품안내. 1명 BMW 크루즈M 자전거. 5명 BMW Motorsport 텐트. 10명 BMW 머니클립. 15명 BMW 자동식 우산. 30명 BMW 미니어처 카. 40명 BMW 메탈 케이스 USB." class="img-responsive" />
+			<img src="./images/info_title.gif" alt="아래 정보를 입력해주세요" class="img-responsive" />
+			<div class="mem_join">
+				<div class="input_wrap">
+					<div class="clearfix">
+						<span class="col_name"><img src="./images/txt_name.png" alt="이름" class="img-responsive" /></span>
+						<span class="col_input"><input type="text" id="name" name="name" class="form-control" /></span>
+					</div>
+					<div class="clearfix">
+						<span class="col_name"><img src="./images/txt_phone.png" alt="휴대전화번호" class="img-responsive" /></span>
+						<span class="col_input phone_wrap">
+							<div class="col_phone">
+								<input type="number" id="phone1" name="phone1" class="form-control" min="0" max="999" maxlength="3"oninput="maxLengthCheck(this)" />
+							</div>
+							<span><img src="./images/dash.gif" alt="-" /></span>
+							<div class="col_phone">
+								<input type="number" id="phone2" name="phone2" class="form-control" min="0" max="9999" maxlength="4"oninput="maxLengthCheck(this)" />
+							</div>
+							<span><img src="./images/dash.gif" alt="-" /></span>
+							<div class="col_phone">
+								<input type="number" id="phone3" name="phone3" class="form-control" min="0" max="9999" maxlength="4"oninput="maxLengthCheck(this)" />
+							</div>
+						</span>
+					</div>
+					<div class="clearfix">
+						<span class="col_name"><img src="./images/txt_address.png" alt="주소" class="img-responsive" /></span>
+						<span class="col_input">
+							<div class="post_input">
+								<input type="text" id="postcode" name="postcode" class="form-control" readonly="readonly" />
+							</div>
+							<span class="btn_post" onclick="execDaumPostcode()"><img src="./images/txt_postnumber.png" alt="우편번호 검색" /></span>
+							
+							<input type="text" id="address" name="address" class="form-control" readonly="readonly" />
+							<input type="text" id="address2" name="address2" class="form-control" />
+						</span>
+					</div>
+				</div>
+				<div class="terms_wrap">
+					<img src="./images/txt_terms.png" alt="다음 개인정보 이용 약관을 확인 하였으며, 본인의 개인정보를 처리(수집, 이용, 제공)하는 것에 동의합니다." class="img-responsive" />
+					<div class="chx_box">
+						<div class="clearfix terms1">
+							<span class="check">
+								<input type="checkbox" id="chk" name="chk" /><label for="chk"></label>
+							</span>
+							<label for="chk"><img src="./images/txt_terms_01.png" alt="1. 개인 정보 수집 및 이용 약관 (필수)" class="txt_term" /></label>
+							<a href="javascript:openPop(0);"><img src="./images/btn_content.gif" alt="내용보기" class="btn_term" /></a>
+						</div>
+						<div class="clearfix terms2">
+							<span class="check">
+								<input type="checkbox" id="chk2" name="chk2" /><label for="chk2"></label>
+							</span>
+							<label for="chk2"><img src="./images/txt_terms_02.png" alt="2. 개인 정보 취급 위탁 약관 (필수)" class="txt_term" /></label>
+							<a href="javascript:openPop(1);"><img src="./images/btn_content.gif" alt="내용보기" class="btn_term" /></a>
+						</div>
+					</div>
+				</div>
+				<a href="http://skpla.net/delhbji" class="event_btn">
+					<img src="./images/btn_event_01.gif" alt="삼성화재 멤버십 가입하러 가기" class="img-responsive" />
+				</a>
+			</div>
+			<img src="./images/event_01_desc.gif" alt="삼성화재 멤버십 가입을 위해 시럽(Syrup)앱으로 이동합니다. 시럽(Syrup)앱에서 멤버십에 가입해야만 이벤트에 응모 됩니다." class="img-responsive" />
+			<div class="info_wrap">
+				<span role="button" class="info_title"><img src="./images/note_info.gif" alt="유의사항 안내" class="img-responsive" /></span>
+				<img src="./images/info_content.gif" alt="이벤트 참여 시 기입한 정보와 삼성화재 멤버십 가입정보가 불일치할 경우 참여가 불가합니다. 본 이벤트는 기간 내 신규 가입자 대상으로 진행됩니다. 경품은 상기 이미지와 다를 수 있으며, 당사 사정에 따라 변경될 수 있습니다. 개인정보 도용, 허위 참여 등 부정 참여 시 당첨이 취소될 수 있으며, 책임은 본인에게 있습니다. 당첨 경품은 이벤트 참여 시 기입한 정보 기준으로 발송되며, 추후 변경 불가합니다. 당첨된 경품은 환불이나 다른 경품으로 교환 불가합니다. 당첨 결과 및 경품 수령 안내는 당첨자 본인에 한하여 개별고지 될 예정입니다. 이벤트 참여 및 경품 관련 문의 : event@adartcomm.com" class="img-responsive info_content" />
+			</div>
+		</div>
+		<div id="event2">
+			<img src="./images/event_02.jpg" alt="삼성화재 멤버십 회원님들께 BMW 차량을 체험할 수 있는 바우처를 드립니다. 지금 시럽(Syrup)앱 내 삼성화재 멤버십에서 받아가세요!" class="img-responsive" />
+			<a href="http://www.bmw-driving-center.co.kr" target="_blank"><img src="./images/txt_homepage.gif" alt="BMW TAXI 프로그램 정보는 BMW Driving Center (http://www.bmw-driving-center.co.kr) 홈페이지 참고" class="img-responsive" /></a>
+			<img src="./images/txt_taxi.gif" alt="예약 시 TAXI(M/JCW/Exclusive) 3종 중 택1 가능합니다." class="img-responsive" />
+			<a href="http://skpla.net/delhbji" class="event_btn">
+				<img src="./images/btn_event_02.gif" alt="바우처 받으러 가기" class="img-responsive" />
+			</a>
+			<img src="./images/event_02_desc.gif" alt="바우처 발급을 위해 시럽(Syrup)앱으로 이동합니다." class="img-responsive" />
+		</div>
+		<footer>
+			<img src="./images/footer.gif" alt="삼성화재 해상보험주식회사 대표이사 사장 : 안민수. 온라인대행 : ㈜애다트커뮤니케이션 대표 김상지. Copyright ⓒ2017 samsung fire & Marine insurance Co., LTD, All Rights Reserved" class="img-responsive" />
+		</footer>
+
+		<div class="popup_wrap">
+			<div class="bg_pop"></div>
+			<div class="popup">
+				<img src="./images/btn_close.png" alt="닫기" class="btn_close" />
+				<img src="./images/term01.gif" alt="1. 개인 정보 수집 및 이용에 대한 동의" class="content" />
+			</div>
+		</div>
+		<div class="popup_wrap">
+			<div class="bg_pop"></div>
+			<div class="popup">
+				<img src="./images/btn_close.png" alt="닫기" class="btn_close" />
+				<img src="./images/term02.gif" alt="2. 개인 정보 취급 위탁에 대한 동의" class="content" />
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		function maxLengthCheck(object){
+			if (object.value.length > object.maxLength){
+				object.value = object.value.slice(0, object.maxLength);
+			}    
+		}
+		function execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var fullAddr = ''; // 최종 주소 변수
+	                var extraAddr = ''; // 조합형 주소 변수
+
+	                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    fullAddr = data.roadAddress;
+
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    fullAddr = data.jibunAddress;
+	                }
+
+	                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    //법정동명이 있을 경우 추가한다.
+	                    if(data.bname !== ''){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있을 경우 추가한다.
+	                    if(data.buildingName !== ''){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+	                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+	                }
+
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
+	                document.getElementById('address').value = fullAddr;
+
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementById('address2').focus();
+	            }
+	        }).open();
+	    }
+		function openPop(i){
+			if ( i == 0 ) {
+				$('.popup_wrap').eq(0).show();
+			} else {
+				$('.popup_wrap').eq(1).show();
+			}
+		}
+
+		var display = false;
+		$('.info_title').on('click', function(){
+			if ( display === true ) {
+				var src = $(this).children().attr('src').replace('note_info_on.gif', 'note_info.gif');
+				$(this).children().attr('src', src);
+				$('.info_content').hide();
+				display = false;
+			} else if ( display === false ) {
+				var src = $(this).children().attr('src').replace('note_info.gif', 'note_info_on.gif');
+				$(this).children().attr('src', src);
+				$('.info_content').show();
+				display = true;
+			}
+		});
+
+		$('.mem_join .event_btn').on('click', function(event){
+			if ($('#name').val() == '') {
+				alert('이름을 입력해 주세요');
+				return false;
+			} else if ($('#phone1').val() == '' || $('#phone2').val() == '' || $('#phone3').val() == '') {
+				alert('휴대전화번호를 입력해 주세요');
+				return false;
+			} else if ($('#postcode').val() == '') {
+				alert('우편번호를 검색해 주세요');
+				return false;
+			} else if ($('#chk').is(':checked') == false || $('#chk2').is(':checked') == false) {
+				alert('개인정보이용 약관에 동의해 주세요.');
+				return false;
+			}
+		});
+
+		$('.btn_close').on('click', function(){
+			$('.popup_wrap').hide();
+		});
+
+
+	</script>
+</body>
+</html>

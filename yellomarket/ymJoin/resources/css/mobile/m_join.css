@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+body{background: #fff;}
+
+.join_wrap{margin-top:40px; padding:15px;}
+.tit_terms{display: inline-block; font-size: 14px; line-height: 35px; color:#323232;}
+.terms_wrap{clear: both;}
+.terms_wrap .terms_top{overflow: hidden;}
+.terms_wrap .terms_check{display: inline-block; margin-right: 5px; margin-bottom: -8px; width:25px; height: 25px; border:2px solid #cfcbc6; border-radius: 5px; background: url('../../images/mobile/join/join_check.png') no-repeat center; background-size:20px auto;}
+.terms_wrap .terms_check.active{border:2px solid #40e2d0; background-image: url('../../images/mobile/join/join_check_active.png');}
+.terms_wrap .btn_all{float: right; display: inline-block; padding:0 9px; height: 35px; background-color: #f5f5f5; border:2px solid #cfcbc6; border-radius: 4px; font-size: 14px; line-height: 30px; color:#666; box-sizing:border-box;}
+.terms_wrap .terms_contents{margin-top:5px; margin-bottom: 15px; height: 134px; background-color: #f9f9f9; border:1px solid #d4d4d4; color:#676767;}
+
+.phonenumber_area{margin-bottom: 30px;}
+.phonenumber_area .tit_terms{display: block;}
+.phonenumber_area .phone_area{display: inline-block; padding-right:5px; width:33.33%; box-sizing: border-box;}
+.phonenumber_area .phone_area:last-of-type{padding-right:0;}
+
+.info_area .input_area:first-of-type{margin-top:2px;}
+.input_area .vali-check{display: block; padding: 8px 0; min-height: 30px; color: #676767;     box-sizing: border-box;}
+.input_area .vali-check.error{color: #e94823;}
+
+.input_area.error input[type=text], 
+.input_area.error input[type=password], 
+.input_area.error input[type=email], 
+.input_area.error input[type=tel]{
+    border:2px solid #e66a6a;
+}
+.input_area.error .vali-check{color: #e94823;}

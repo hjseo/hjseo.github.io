@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+@font-face{
+	font-family:nmGothic;
+	src:url(../font/nmGothic.eot);
+	src:local(※),url(../font/nmGothic.woff) format('woff');
+}
+
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:middle;
+    background:transparent;
+}
+
+body {
+	font-family:nmGothic, "Malgun Gothic", "맑은 고딕";
+	font-size:13px;
+    line-height:1;
+    color:#000;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+address{font-style: normal;}
+
+a:link{color:#312e2b; text-decoration:none;}
+a:visited{color:#312e2b; text-decoration:none;}
+a:hover{color:#312e2b; text-decoration:none;}
+a:active{color:#312e2b; text-decoration:none;}
+
+input[type=button]{border:0 none;}
+
+::-webkit-input-placeholder{color:#6c6c6c;} /* 웹킷 전용 속성 */
+textarea:-moz-placeholder, input:-moz-placeholder{color:#6c6c6c;} /* 파이어폭스 전용 속성 */
+select{color:#6c6c6c;}

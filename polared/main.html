@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>polared</title>
+    <meta charset="UTF-8">
+    <script src="js/jquery-1.8.3.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript">
+
+        //메인 이미지 100%
+        function mainImgSetting(){
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+            $("#mainCover").outerWidth(windowWidth - 21).outerHeight(windowHeight - 45);
+        }
+
+        //상단 header 고정
+        function winScroll() {
+            var oHeader = $("#header");
+            var winWidth = $(window).width();
+            var winMaxSize = 960;
+            var sclTop = $(window).scrollTop();
+            if ( winWidth <= winMaxSize ) {
+                oHeader.css({'position':'absolute','top':sclTop});
+            } else {
+                oHeader.css({'position':'fixed', 'top':'0'});
+            };
+        };
+
+        $(document).ready(function(){
+            $(window).on("load resize", mainImgSetting);
+            $(window).on("scroll resize", winScroll);
+        });
+    </script>
+</head>
+<body>
+<div id="polaredWrap">
+    <header class="layout_con lang_en" id="header">
+        <div class="response">
+            <h1><a href="main.html" class="logo"><img src="images/logo.png" alt="polared" /></a></h1>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="company.html">COMPANY</a></li>
+                    <li><a href="service.html">SERVICE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>  
+        </div>        
+    </header>
+    <section class="layout_con">
+        <section class="main lang_en" id="mainCover">
+            <div class="response">
+                <div>
+                    <p class="main_title">O2O PLATFORM <br /> SOLUTION DELIVERY</p>
+                    <div class="main_txt_area"></div>
+                    <ul class="main_txt">
+                        <li>Consumer Network Service</li>
+                        <li>Marketing</li>
+                        <li>Service</li>
+                        <li>Sales</li>
+                        <li>Communication</li>
+                        <li>Info/ Analytics</li>
+                    </ul>
+                </div>
+                 
+            </div>
+        </section>
+        <div class="link_area lang_en">
+            <div class="response">
+                <a href="https://itunes.apple.com/us/app/infavor/id684704308?l=ko&ls=1&mt=8" class="link_app" target="_blank">Yello Market App Store</a>         
+                <a href="https://play.google.com/store/apps/details?id=com.icekake.and&feature=search_result#?t=W251bGwsMSwxLDEsImNvbS5pY2VrYWtlLmFuZCJd" class="link_app" target="_blank">Yello Market Google Play</a> 
+            </div>
+        </div> 
+        <section class="business_con">
+            <div class="response">
+                <h2 class="con_title lang_en">Business<a href="company.html" class="circle_link_btn"></a></h2>
+                <p class="detail_txt">
+                    “CRM과의 IoT의 창조적 결합”을 Vision으로 IoT (사물 인터넷) 기반의 <br />
+                    O2O Platform 제공과 Beacon을 통한 위치기반 근거리 마케팅 (Proximity-Based Marketing)<br />
+                    사업을 추진하고 있습니다.
+                </p>
+            </div>
+        </section>
+        <section class="marketing_con">
+            <div class="response">
+                <h2 class="center_title lang_en">O2O Marketing with CRM</h2>
+                <div class="detail_txt">
+                    <div class="txt_area">
+                        <h3 class="sm_title">사용자의 관심에 대한 이해</h3>
+                        <p>
+                            사용자 정보 연계<br />
+                            사용자 관심 상품과 서비스 분야<br />
+                            사용자 주요 행동패턴 및 반응
+                        </p>
+                    </div>
+                    <div class="txt_area">
+                        <h3 class="sm_title">위치/상황에 맞는 컨텐츠</h3>
+                        <p>
+                            방문빈도가 높은 장소와 특성<br />
+                            체류시간이 긴 장소와 특성<br />
+                            재 방문율이 높은 장소와 특성<br />
+                            Personal Places of Interest (PPOI) 설정
+                        </p>
+                    </div>
+                    <div class="txt_area">
+                        <h3 class="sm_title">사용자 Loyalty 제공</h3>
+                        <p>
+                            휴대 및 사용의 편의성<br />
+                            시간과 공간의 제약이 없음<br />
+                            Fun + Attractive
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="yellomarket_con">
+            <div class="response">
+                <h2 class="con_title lang_en">Yello Market<br />iCignal<a href="service.html" class="circle_link_btn"></a></h2>
+                <p class="detail_txt">
+                    Yello Market를 통해서 기업 및 소상공인은 온라인의 가상 공간을 생성하여 <br />
+                    매장홍보, 상품소개, 정보제공, 판매, 이용자 분석이 가능한 Tool로 활용 <br />
+                    일반 소비자는 원하는 정보와 구매, 상품 및 서비스 이용경험을 취득할 수가 있는 <br />
+                    플랫폼이기 때문에 기업 및 소상공인은 원할한 서비스의 <br />
+                    확산과 인지도를 확보할 수 있습니다.
+                </p>
+            </div>
+        </section>
+
+
+    </section>
+    <footer class="layout_con" id="footer">
+        <div class="response">
+            <img src="images/footer_logo.png" alt="polared" class="footer_logo" />
+            <div class="footer_txt">
+                <span>150-708</span> <address class="address">서울특별시 영등포구 여의나루로 71 (여의도동, 동화빌딩 16층)</address> 
+                <p class="tel">대표전화 02-541-8517 / 대표팩스 02-512-8510</p>
+                <p class="copyright">Copyright &copy; 2015 polared Corp. All rights reserved</p>    
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

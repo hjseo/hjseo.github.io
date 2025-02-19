@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>polared : company</title>
+    <meta charset="UTF-8">
+    <script src="js/jquery-1.8.3.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript">
+        var offsetTopArr = [];
+        var itemWidth = [];
+        
+
+        //내부 링크 고정
+        function subTitScroll() {
+            var linkArea = $('#linkArea');
+            var winWidth = $(window).width();
+            var winMaxSize = 960;
+            var sclTop = $(window).scrollTop();
+
+            if (sclTop > 165) {
+                $("#subPageImg").css('margin-bottom', "45px");
+
+                if ( winWidth <= winMaxSize ) {
+                    linkArea.css({'position':'absolute','top':sclTop});
+                } else {
+                    linkArea.css('position', 'fixed').css('top', '0');
+                }      
+            }else {
+                linkArea.css('position','relative').css('top','0');
+                $("#subPageImg").css('margin-bottom', "0");
+            }
+        };
+
+        
+        function movingBorder(){
+            offsetTopArr[offsetTopArr.length-1] = $(document).height() - $(window).height();
+            var sclTop = $(window).scrollTop();
+            var movBar = $("#movingBorder");
+            var currentIndex = 0;
+            var moveBarSize = [217, 116, 20];
+            if(sclTop >= offsetTopArr[2]) {
+                currentIndex = 2;
+            } else if(sclTop >= offsetTopArr[1]) {
+                currentIndex = 1;
+            }
+            movBar.stop().animate({'right' : moveBarSize[currentIndex], "width" : itemWidth[currentIndex]});
+
+        };
+
+        $(document).ready(function(){
+            $(window).on("scroll resize", function(){
+                subTitScroll();
+                movingBorder();
+            });
+
+            $("#linkArea a").on("click", function() {
+                var posTop = $( $(this).attr('href') ).offset().top;
+                $("html, body").stop().animate({'scrollTop':posTop});
+
+                event.preventDefault();
+            });
+
+            $("#linkArea a").each(function(){
+                offsetTopArr.push($( $(this).attr('href') ).offset().top);
+                itemWidth.push($(this).width());
+            });
+            
+        });
+    </script>
+</head>
+<body>
+<div id="polaredWrap">
+    <header class="layout_con lang_en" id="header">
+        <div class="response">
+            <h1><a href="main.html" class="logo"><img src="images/logo.png" alt="polared" /></a></h1>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="company.html" class="active">COMPANY</a></li>
+                    <li><a href="service.html">SERVICE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>  
+        </div>        
+    </header>
+    
+    <section class="layout_con company_wrap">
+        <div class="company_img" id="subPageImg"></div>
+        <div class="link_area lang_en" id="linkArea">
+            <div class="response">
+                <h2 class="sub_title">COMPANY</h2>
+                <span><a href="#aboutPolared" class="inner_link_btn active">About Polared</a></span>
+                <span><a href="#business" class="inner_link_btn">Business</a></span>
+                <span><a href="#location" class="inner_link_btn">Location</a></span>
+                <div class="moving_border" id="movingBorder"></div>
+            </div>
+        </div> 
+        <section class="aboutPolared_con" id="aboutPolared">
+            <div class="response">
+                <h3 class="con_title lang_en">About Polared</h3>
+                <h4 class="second_title">폴라레드 (Polared)</h4>
+                <p class="detail_txt">
+                    CRM Consulting 및 Solution Delivery 회사인 퀸텟 시스템즈의 Spin-Off 회사로서 <br />
+                    2013년 설립된 이래로 퀸텟 시스템즈에서 연구 개발된 다양한 IoT Solution 판매 및 마케팅, <br />
+                    그리고 O2O Platform을 활용한 B2C, B2B Solution Delivery를 <br />
+                    주요 사업 영역으로 하고 있습니다.
+                </p>
+            </div>
+        </section>
+        <section class="business_con" id="business">
+            <div class="response">
+                <h3 class="con_title lang_en">Business</h3>
+                <p class="detail_txt">
+                    “CRM과의 IoT의 창조적 결합”을 Vision으로 IoT (사물 인터넷) 기반의 <br />
+                    O2O Platform 제공과 Beacon을 통한 위치기반 근거리 마케팅 (Proximity-Based Marketing)<br />
+                    사업을 추진하고 있습니다.
+                </p>
+            </div>
+        </section>
+        <section class="marketing_con">
+            <div class="response">
+                <h3 class="center_title lang_en">O2O Marketing with CRM</h3>
+                <div class="detail_txt">
+                    <div class="txt_area">
+                        <h4 class="sm_title">사용자의 관심에 대한 이해</h4>
+                        <p>
+                            사용자 정보 연계<br />
+                            사용자 관심 상품과 서비스 분야<br />
+                            사용자 주요 행동패턴 및 반응
+                        </p>
+                    </div>
+                    <div class="txt_area">
+                        <h4 class="sm_title">위치/상황에 맞는 컨텐츠</h4>
+                        <p>
+                            방문빈도가 높은 장소와 특성<br />
+                            체류시간이 긴 장소와 특성<br />
+                            재 방문율이 높은 장소와 특성<br />
+                            Personal Places of Interest (PPOI) 설정
+                        </p>
+                    </div>
+                    <div class="txt_area">
+                        <h4 class="sm_title">사용자 Loyalty 제공</h4>
+                        <p>
+                            휴대 및 사용의 편의성<br />
+                            시간과 공간의 제약이 없음<br />
+                            Fun + Attractive
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="location_con" id="location">
+            <div class="response">
+                <h3 class="con_title lang_en">Location</h3>
+                <h4 class="third_title">(주)폴라레드</h4>
+                <p class="detail_txt">
+                    Address: <br />
+                    150-708 서울특별시 영등포구 여의나루로 71 <br />
+                    (여의도동 동화빌딩 16층) <br />
+                    <br />
+                    지하철 : 여의도역(5,9호선) 4번출구 직진 5분<br />
+                    <br />
+                    Tel : (02) 541-8517 <br />
+                    Fax : (02) 512-8510 
+                </p>
+            </div>
+        </section>
+
+
+    </section>
+    <footer class="layout_con" id="footer">
+        <div class="response">
+            <img src="images/footer_logo.png" alt="polared" class="footer_logo" />
+            <div class="footer_txt">
+                <span>150-708</span> <address class="address">서울특별시 영등포구 여의나루로 71 (여의도동, 동화빌딩 16층)</address> 
+                <p class="tel">대표전화 02-541-8517 / 대표팩스 02-512-8510</p>
+                <p class="copyright">Copyright &copy; 2015 polared Corp. All rights reserved</p>    
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

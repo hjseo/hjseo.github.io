@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<title>고객센터</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+		<script src="js/placeholders.min.js"></script>
+		<script src="js/custom.js"></script>
+		<style>
+			#subTop{padding-top:70px;}
+			#container{padding-top:0;}
+		</style>
+		
+		<script>
+			$("document").ready(function(){
+				
+				$("#util").children("li").eq(1).addClass("on");
+				
+				$("#faq").find(".question").click(function(){
+					$("#faq").find(".question").not(this).next().hide();
+					$(this).next("tr").toggle();
+				});
+				
+				
+				var Cheight = $(window).height();
+				 
+				$("#menuIcon").click(function() {
+					
+					if( $("#menuBox").css("display") == "none" ) {
+						$(this).children().attr("src","images/common/btn_close.gif");
+						$("#menuBox").css({"height":Cheight});
+						$("body").css({overflow:'hidden'}).bind('touchmove', function(e){e.preventDefault()});
+					}else{
+						$(this).children().attr("src","images/common/menu.jpg");
+						$("body").css({overflow:'auto'}).unbind('touchmove');
+					} 
+					
+					$("#menuBox").fadeToggle();
+					
+				});
+				  
+				$("#menuBox ul").find("li").click(function(){
+
+					$("#menuIcon").children().attr("src","images/common/menu.jpg");
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="headerWrap">
+				<div id="header">
+					<h1><a href="index.html"><img src="images/common/logo.png" alt="인페이버 비콘 매니저" /></a></h1>
+					<a href="javascript:;" id="menuIcon" >
+						<img src="images/common/menu.jpg" alt="주메뉴" />
+					</a>
+					<div id="menuBox">
+						<h2 class="hidden">주메뉴</h2>
+						<ul id="menu">
+							<li><a href="infavor.html" title="인페이버">인페이버</a></li>
+							<li><a href="beaconManager.html" title="비콘매니저">비콘매니저</a></li>
+						</ul>
+						<ul id="util">
+							<li><a href="myService.html" title="내 서비스">내 서비스</a></li>
+							<li><a href="applyService.html" title="서비스 신청">서비스 신청</a></li>
+							<li><a href="customerCenter.html" title="고객센터">고객센터</a>
+								<ul class="lnb">
+									<li><a href="customerCenter.html#faqTitle">FAQ</a></li>
+									<li><a href="customerCenter.html#inquireTitle">1:1 문의하기</a></li>
+									<li><a href="customerCenter.html#companyTitle">회사소개</a></li>
+								</ul>
+							</li>
+							<li><a href="login.html" title="로그인">로그인</a></li>
+							<!-- <li><a href="login.html" title="로그아웃">로그아웃</a></li> -->
+						</ul>
+					</div>
+					<div id="me">
+						<span>서혜정</span>님 환영합니다!
+					</div>
+					
+				</div>
+			</div>
+			<div id="subTopTitle" class="applyService_title" >
+				<div class="response">
+					<h2>서비스 신청</h2>
+				</div>
+			</div>
+			<div id="container">
+				<div class="response">
+					<div id="applyService">
+						
+						<div class="process_service">
+							<div class="title">
+								<h3 class="skip">서비스 신청 절차</h3>
+								<input type="button" value="1:1 문의하기" class="btn" />	
+							</div>
+							
+							<div class="box_contents">
+								<div class="txt">
+									<img src="images/applyService/img_process_bg.png" alt="" />
+									<div>
+										<p>
+											개인 또는 사업자등록증을 가진 사업자는 누구든지 가입하여 <br />
+											Infavor Marketing 또는 Infavor Beacon Marketing을 진행 할 수 있습니다.
+										</p>
+										<p class="sub">
+											(단, 청소년 보호법에서 지정한 청소년 유해매체물 및 유해품목, 담배, 경마/경정 등 사행산업, 주류, 성인, 대부업에 해당하는 
+											개인 및 사업자는 이용이 불가합니다. 상세한 내용은 이용약관을 참조 해주세요.)
+										</p>	
+									</div>
+										
+								</div>
+								
+								<div class="process">
+									<div>
+										<img src="images/applyService/process_one.png">
+										<p class="tit">상담을 위한 1대 1 문의작성</p>
+										<p class="top_area">1대1 문의에서 가게 정보 등을 작성 후 <br />보내주세요</p>
+										<div class="bottom_area button">
+											<input type="button" value="1대1 문의 바로가기" class="btn" />
+											<p class="sub">서비스 상담은 무료로 진행합니다.</p>
+										</div>
+										
+									</div>
+									<div>
+										<img src="images/applyService/process_two.png">
+										<p class="tit">담당 매니저 배정 및 상담</p>
+										<p class="top_area">보내주신 정보를 바탕으로 담당 매니저가<br />
+											배정되어 서비스 이용에 대한 상담을<br />
+											진행해드립니다.
+										</p>
+										<p class="sub bottom_area">고객님의 가게에 가장 적합한 서비스 구성에 
+										대하여 자세한 상담을 받으실 수 있습니다.</p>
+									</div>
+									<div>
+										<img src="images/applyService/process_three.png">
+										<p class="tit">서비스 신청 및 구매</p>
+										<p class="top_area">담당 매니저를 통해 원하시는 서비스<br />
+											신청 및 구매를 진행합니다.
+										</p>
+										<p class="sub bottom_area">번거로운 절차는 담당 매니저에게 맡겨주세요. <br />
+											가장 손쉬운 방법으로 서비스를 이용하실 수 있도록 진행해 드립니다.
+										</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="info_service">
+							<div class="title">
+								<h3 class="skip">서비스 안내</h3>
+							</div>
+							
+							<div class="box_contents info_contents">
+								<div class="txt">
+									<p>우리 가게 매출 증가에 가장 적합한 서비스를 확인해보세요.</p>
+									<p class="sub">서비스 이용에 대한 궁금하신 점은 고객센터 > 1대1 문의를 통해 문의를 주시면 자세히 상담 해드립니다.</p>	
+								</div>
+								<div class="box">
+									<img src="images/applyService/info_store.jpg" />
+									<div class="txt">
+										<p class="tit">Infavor Store</p>
+										<p class="time">나만의 온라인 가게를 무료로 오픈해보세요.<br />
+										소비자 네트워크 서비스 인페이버의 회원과 소통하며 나의 가게를 홍보합니다.</p>
+										<ul class="detail">
+											<li>Web / App 동시 무료 개설</li>
+											<li>상품 소개 및 고객과 소통</li>
+										</ul>
+									</div>
+									<a href="https://www.infavor.me">스토어 무료 개설</a>
+								</div>
+								<div class="box">
+									<img src="images/applyService/info_coupon_manager.jpg" />
+									<div class="txt">
+										<p class="tit">Infavor Coupon Manager</p>
+										<p class="time">내 인페이버 스토어의 회원들에게 쿠폰을 발행하여 고객 관리를 합니다.<br/>
+											쿠폰 관리 및 각종 통계를 통해 효율적인 마케팅을 진행할 수 있습니다.</p>
+										<ul class="detail">
+											<li>소비자 네트워크 서비스 Infavor 온라인 스토어 개설(Web, App)</li>
+											<li>우리 가게의 쿠폰 발행에서 관리까지</li>
+											<li>한눈에 손쉽게 확인하는 고객과 쿠폰 통계</li>
+										</ul>
+									</div>
+									<a href="" class="double">서비스<br />문의하기</a>
+								</div>
+								<div class="box">
+									<img src="images/applyService/info_beacon_manager_lite.jpg" />
+									<div class="txt">
+										<p class="tit">Infavor Beacon Manager Lite</p>
+										<p class="time">오프라인 가게에 비콘을 설치하고 비콘을 통한 가게 홍보, 고객관리, 쿠폰발행을 할 수 있습니다.</p>
+										<ul class="detail">
+											<li>소비자 네트워크 서비스 Infavor 온라인 스토어 개설(Web, App)</li>
+											<li>비콘(Beacon)을 이용한 실시간 모바일 마케팅</li>
+											<li>우리 가게의 쿠폰 발행에서 관리까지</li>
+											<li>한눈에 손쉽게 확인하는 고객, 마케팅활동, 쿠폰 통계</li>
+										</ul>
+									</div>
+									<a href="" class="double">서비스<br />문의하기</a>
+								</div>
+							</div>
+						</div>
+
+						
+					</div>
+					
+				</div>
+			</div>
+			<div id="footer">
+				<div class="response">
+					<address>150-708 서울특별시 영등포구 여의나루로 71 (여의도동, 동화빌딩 16층)</address> 
+					<p class="tel">대표전화 02-541-8517 / 대표팩스 02-512-8510</p>
+					<p class="copy">Copyright &copy; 2014 Infavor. All rights reserved</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

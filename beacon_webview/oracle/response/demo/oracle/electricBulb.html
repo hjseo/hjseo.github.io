@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>ORACLE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/beacon/demo/oracle/oracle.css" />
+<script>
+var rgbArr;
+
+function appClose(){
+	location.href = 'infavor://closeWebView';
+}
+
+function lightFunc() {
+	var number = 3;
+	rgbArr = [];
+	
+	var setCount = setInterval(function(){ 
+		number--;
+		rgbArr.push(Math.floor(Math.random() * 100) + 1);
+		
+		if( number == 0 ){
+			$('#backgroundColor').css('background','rgb('+ rgbArr[0] +','+ rgbArr[1] +','+ rgbArr[2] +')');
+			$('#lightImage').attr('src','../../images/beacon/demo/oracle/light_on.png');
+			$('#countNumber').text('');
+		}else {
+			$('#countNumber').text(number);
+		}
+	}, 1000);
+	
+	setTimeout(function(){ 
+		clearInterval(setCount);
+		rgbArr.push(Math.floor(Math.random() * 50) + 1);
+		debugger;
+		urlCallFunc();
+	}, 4000);
+}
+
+function urlCallFunc(){
+	$('#urlCall').attr('src','http://222.237.78.76:8080/qsc/ledcontrol?destId=1000&amp;red='+rgbArr[0]+'&amp;blue='+rgbArr[1]+'&amp;green='+rgbArr[2]+'&amp;white='+rgbArr[3]);
+}
+
+$(document).ready(function(){
+	lightFunc();
+});
+
+</script>
+
+</head>
+<body>
+	<div class="oracle_wrap">
+		<div class="container_wrap">
+			<header class="header">
+				<h1><img src="../../images/beacon/demo/oracle/oracle_logo.png" alt="oracle cloud day" class="oracle_logo" /></h1>	
+				<a href="javascript:appClose();" class="btn_close"><img src="../../images/beacon/demo/oracle/btn_close.png" alt="닫기" /></a>
+			</header>
+			<section class="led_contents">
+				<h2><img src="../../images/beacon/demo/oracle/icignal_logo.png" alt="icignal" class="icignal_logo"></h2>
+				<img src="../../images/beacon/demo/oracle/txt_booth.png" alt="퀸텟시스템즈 전시 부스를 찾아주셔서 감사합니다." class="txt_booth" />
+	
+				<div class="electric_area" id="backgroundColor">
+					<span id="countNumber" class="count_number">3</span>
+					<img src="../../images/beacon/demo/oracle/light_off.png" alt="" id="lightImage" />
+				</div>
+
+				<p class="txt_desc">
+					3초 후에 LED전구 색이 변합니다.<br />
+					iCIGNAL로 100배 빠르게<br />
+					IoT 서비스를 도입해보세요
+				</p>
+			</section>
+			<footer class="footer media_footer">
+				<img src="../../images/beacon/demo/oracle/quintet_logo.png" alt="quintet" class="quintet_logo" />
+			</footer>
+		</div>
+	</div>
+	<iframe src="" id="urlCall"></iframe>
+</body>
+</html>

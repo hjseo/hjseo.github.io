@@ -1,0 +1,143 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Waveform.JS</title>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src='http://connect.soundcloud.com/sdk.js'></script>
+    <script src='waveform.js'></script>
+
+    <style>
+    * {
+  margin: 0;
+  padding: 0; }
+
+body {
+  color: #999999;
+  font: 13px Interstate Light; }
+
+.waveform {
+  width: 80%;
+  height: 150px;
+  margin: 100px auto;
+}
+
+</style>
+
+
+
+  </head>
+  <body>
+    <button class="play">Play!</button>
+    <div class='waveform w0' id="example4"></div>
+    <div class='waveform w1'></div>
+    <div class='waveform w2' id="example2"></div>
+    <div class='waveform w3'></div>
+    <div class='waveform w4'></div>
+    <audio id="audio-test" controls></audio>
+<script>
+
+/*SC.initialize({
+    client_id: "02279ab1b6ec248aa05fd3f900e3b46f"
+  });
+
+
+  SC.get("/tracks/38640984", function(track){
+    $.getJSON("http://wave64.it/w?callback=?", {
+      url: track.waveform_url,
+    }, function(d){
+      var sound;
+      var waveform = new Waveform({
+        container: $(".w0").get(0),
+        innerColor: function(x){
+          if(sound && x < sound.position / sound.durationEstimate){
+            return "rgba(255,  102, 0, 0.8)";
+          }else if(sound && x < sound.bytesLoaded / sound.bytesTotal){
+            return "rgba(0, 0, 0, 0.8)";
+          }else{
+            return "rgba(0, 0, 0, 0.4)";
+          }
+        },
+        data: d
+      });
+
+      SC.stream(track.uri, {
+        whileloading: waveform.redraw,
+        whileplaying: waveform.redraw,
+        volume: 0,
+        autoPlay: true
+      }, function(s){
+        sound = s;
+      });
+    });
+  });*/
+
+SC.get("/tracks/75868018", function(track){
+  var waveform = new Waveform({
+    container: document.getElementById("example2"),
+    innerColor: "#333"
+  });
+
+  waveform.dataFromSoundCloudTrack(track);
+  var streamOptions = waveform.optionsForSyncedStream();
+  SC.stream(track.uri, streamOptions, function(stream){
+    window.exampleStream = stream;
+  });
+});
+/*
+
+SC.initialize({
+    client_id: '10e27db0dacd00954d7160b4c092a6e2' // I added my id here
+});
+
+SC.get("/tracks/75868018", {}, function(sound){
+    alert("Sound URI: "+sound.uri);
+    $("#audio-test").attr("src", sound.uri);
+});*/
+
+/*
+var getAudio = function (req, res) {
+  var requestUrl = 'http://youtube.com/watch?v=' + req.params.videoId
+  //s-mOy8VUEBk
+
+  try {
+    youtubeStream(requestUrl).pipe(res)
+  } catch (exception) {
+    res.status(500).send(exception)
+  }
+}
+getAudio()*/
+
+var data = [];
+var waveform = new Waveform({
+  container: document.getElementById("example4"),
+  interpolate: false
+});
+var i=0;
+setInterval(function(){
+  data.push(Math.cos(i++/25) - 0.2 + Math.random()*0.3);
+  waveform.update({
+    data: data
+  });
+}, 50);
+
+/*
+$.getJSON("http://waveformjs.org/w?callback=?", {
+    url: "http://w1.sndcdn.com/EQyi2vpPOMvG_m.png",
+  }, function(d){
+
+    w1 = new Waveform({
+      container: $(".w1")[0],
+      outerColor: "transparent",
+      innerColor: function(){
+        return '#'+Math.floor(Math.random()*16777215).toString(16);
+      },
+      data: d
+    });
+  });*/
+
+
+</script>
+
+  </body>
+</html>

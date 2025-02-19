@@ -1,0 +1,146 @@
+@CHARSET "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: middle;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{font-family:HelveticaNeue;}
+html, body{width:100%; height: 100%; background-color: #1e313f;}
+
+/* 로그인 */
+#login{
+	display:table; 
+	width:100%; 
+	background-image: url('../images/login_bg.jpg');
+	background-size:cover; 
+}
+#login .content_area{display: table-cell; width:100%;}
+
+#login #main{
+	min-height: 233px; 
+	background:rgba(0,0,0,.4); 
+	border-top:1px solid rgba(255,255,255,.4); 
+	border-bottom:1px solid rgba(255,255,255,.4);
+}
+#login #main .login_txt{margin-top:40px; color:#fff;}
+#login #main .login_txt .txt_main{font-weight:bold; font-size:14px; line-height:20px;}
+#login #main .login_txt .txt_detail{margin-top:12px; font-size:12px; line-height:15px;}
+
+.client-form header{padding: 17px 0 13px 0; background:transparent; font-size: 14px; line-height: 16px; color:#fefefe;}
+body>footer{position: absolute; left: 50%; bottom: 40px; margin-left: -73px; color: #fff;}
+
+
+/* 앱다운로드 */
+.container{margin:0 auto;}
+.header {
+	margin-top:-60px;
+    height: 146px;
+    text-align:left;
+}
+.header .mobile_logo{
+	margin:0 auto;
+	display: block;
+	width:125px;
+}
+
+#content {
+    padding: 10px 14px;
+    position: relative;
+    left: 0;
+}
+.content{overflow:hidden;}
+.button_area{width: 331px; margin: 0 auto;}
+.button_area .ios_download{
+	margin-bottom:13px;
+	display:block; 
+	background: url('../images/btn_appStore.png') no-repeat 0 0; 
+	background-size:331px;
+	width:331px; 
+	height:66px;
+	text-indent:-9999px;
+}
+.button_area .and_download{
+	display:block; 
+	background: url('../images/btn_googlePlay.png') no-repeat 0 0; 
+	background-size:331px;
+	width:331px; 
+	height:66px;
+	text-indent:-9999px;
+}
+body>footer{font-size:13px;}
+.hidden-mobile{display:none;}
+
+@media screen and (max-width: 320px){
+	.button_area{width:100%;}
+	.button_area .ios_download{    
+		background-size: 100%;
+	    width: 100%;
+	    height:58px;
+    }
+    .button_area .and_download{    
+		background-size: 100%;
+	    width: 100%;
+	    height:58px;
+    }
+}
+
+@media screen and (min-width: 768px){
+	.header {margin-top:0; height: 60px;}
+    .container {width: 1166px;}
+    #login #main{min-height:310px;}
+    #login #main .login_txt{width:66.66666666666666%; float:left;}
+	#login #main .button_area{width:33.33333333333333%; float:left;}
+	.hidden-mobile{display:inline-block;}
+	.header .mobile_logo.hidden-web{display:none;}
+	.client-form header{padding-top:35px}
+	.button_area .ios_download{
+		margin-bottom:10px;
+		background-size:331px;
+		width:331px; 
+		height:66px;
+	}
+	.button_area .and_download{
+		background-size:331px;
+		width:331px; 
+		height:66px;
+	}
+}

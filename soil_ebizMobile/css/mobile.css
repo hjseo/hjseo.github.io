@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+li{list-style:none;}
+a{text-decoration: none;}
+a:link{color:#fff;}
+a:visited{color:#fff;}
+a:hover{color:#fff;}
+a:active{color:#fff;}
+
+body{font-size:100%; font-weight:bold;}
+#wrap{width:100%; font-size:0.8em;}
+#subWrap{width:100%; font-size:0.8em;}
+
+#header{text-align:center;}
+#header .logo{padding:2.5% 0; }
+#header .logo img{max-width:33%;}
+#header .text{padding:4% 0;}
+
+#container{background:url(../images/m_bg.gif);}
+
+.btn{
+	width:100%;
+	font-size:1em;
+	font-weight:bold;
+	color:#fff;
+	background:#72b991;
+	border: 1px solid #449e65;
+	border-radius: 3px;
+	box-shadow: inset 0 -20px 10px rgba(75,152,97,.8);
+	-moz-box-shadow: inset 0 -20px 10px rgba(75,152,97,.8);
+	-webkit-box-shadow: inset 0 -20px 10px rgba(75,152,97,.8);
+}
+
+@media only screen and (min-width: 360px) {
+	#wrap{font-size:1.1em;}
+	#subWrap{font-size:1.1em;}
+}
+@media only screen and (min-width: 1024px) {
+	#wrap{font-size:2em;}
+	#subWrap{font-size:2em;}
+}
+
+
+#wrap #container ul li{text-align:center;}
+#wrap #container ul li a{display:block; width:100%; height:100%; padding:3% 0;}
+
+#subWrap #header{color:#ffffff;}
+#subWrap #header .text{background:#5ca777;}
+#subWrap #container .contents h3{font-size:1.1em;}
+#subWrap #container .contents .btn{font-size:1em;}
+
+#subWrap #container h2.icon{text-align:center; padding:10%;}
+#subWrap #container h2.icon img{width:50%;}
+#subWrap #container .contents{padding:5%; background:#7b786e; color:#efefef;}
+#subWrap #container .contents h3{color:#ffee7b; padding-bottom:5%;}
+#subWrap #container .contents ol{padding-bottom:10%;}
+#subWrap #container .contents ol li{letter-spacing: -1px;}
+#subWrap #container input.btn{padding:3% 0;}
+

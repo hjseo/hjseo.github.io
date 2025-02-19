@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" media="only screen and (max-width:480px)" href="css/mobile.css" />
+		<link rel="stylesheet" media="only screen and (min-width:481px) and (max-width:768px)" href="css/tablet.css" />
+		<link rel="stylesheet" media="only screen and (min-width:769px)" href="css/pc.css" />
+		<link rel="stylesheet" href="css/popup.css" />
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/masonry.pkgd.min.js"></script>
+		<script src="js/custom.js"></script>
+		
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/css3-mediaqueries.js"></script>
+		<![endif]-->
+		<script>
+			
+		</script>
+		<title>Infavor - 인페이버</title>
+
+	</head>
+
+	<body>
+		<div id="wrap">
+			<ul class="skip">
+				<li>
+					<a href="#container">본문바로가기</a>
+				</li>
+			</ul>
+			<!-- header Start -->
+			<div id="header">
+	 			<h1><a href="index.html"><img src="images/logo.gif" alt="infavor" /></a></h1>
+	 			<h2 class="skip">로그인</h2>
+	 			<div id="hearder_right" class="login_area">
+					<a href="javascript:$.ikLoginPopShow();" class="btn_login">로그인</a>
+					<a href="javascript:$.ikNaviJoin();" class="btn_join">가입하기</a>
+				</div>
+	 			<h2 class="skip">검색 및 기능</h2>
+	 			<div class="left_con_header">
+	 				<!-- 카테고리 -->
+					<div class="category_area">
+						<a href="javascript:;" class="btn" id="category_btn" title="카테고리">
+							<img src="images/category_btn_off.gif" alt="카테고리" class="toggel" style="margin-right:2px;"> 
+							카테고리
+						</a>
+					</div>
+					<!-- 카테고리 리스트 -->
+					<div class="listComponent animation_set" id="categoryList" style="display: none;">
+						<img src="images/list_arr.png" alt="" class="list_arr" style="left:25px;">
+						<ul id="mainCategoryContainer" class="borderbox main_category_container">
+							<li><a href="javascript:;"> 카테고리</a></li>
+							<li><a href="javascript:;">음식ㆍ맛집</a></li>
+							<li><a href="javascript:;">문화ㆍ여가</a></li>
+							<li><a href="javascript:;">패션ㆍ뷰티</a></li>
+							<li><a href="javascript:;">디지털ㆍ가전</a></li>
+							<li><a href="javascript:;">여행</a></li>
+							<li><a href="javascript:;">생활용품</a></li>
+							<li><a href="javascript:;">부동산</a></li>
+							<li><a href="javascript:;">병원ㆍ건강</a></li>
+							<li><a href="javascript:;">은행ㆍ보험</a></li>
+							<li><a href="javascript:;">육아ㆍ교육</a></li>
+							<li><a href="javascript:;">자동차ㆍ교통</a></li>
+							<li><a href="javascript:;">기타</a></li>
+						</ul>
+					</div>
+					<!-- 검색창 -->
+					<div class="search_area">
+						<input type="text" id="txtAutoCompSearch" maxlength="30" placeholder="기업/서비스/상품 검색">
+						<a href="#" class="btn" id="searchBtn">
+							<img src="images/search_icon.gif" alt="검색">
+						</a>
+					</div>
+					<!-- 간편기능 -->
+					<div class="make_btn">
+						<a href="javascript:;" title="간편기능">
+							<img src="images/btn_plus_off.gif" alt="페이버 만들기" id="plusBtn">
+						</a>
+						<!-- 간편기능 리스트 -->
+						<div class="listComponent animation_set" id="plusListComponent" style="display: none;">
+							<img src="images/list_arr.png" alt="" class="list_arr" style="left:80px;">
+							<ul class="borderbox plusListItems">
+								<li><a href="javascript:;" class="post">포스트하기</a></li>
+								<li><a href="javascript:;" class="faver">페이버만들기</a></li>
+								<li><a href="javascript:;" class="message">메시지 보내기</a></li>
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- header End-->
+			
+			<!-- container Start -->
+			<div id="container">
+				<!-- contents_wrap Start -->
+				<h2 class="skip">컨텐츠</h2>
+				<div id="contents_wrap">
+					
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="">
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="" />
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="" />
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="" />
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="" />
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="" />
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="" />
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					<!-- contents_item Start -->
+					<div class="main_contents_faver_item">  
+						<div class="pic_wrap">
+							<div class="picture">  
+								<div class="moveCon" style="position: absolute;">
+									<a href="javascript:;" class="bannerSlideItem0" style="display: block; position: absolute; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Post/2014/5/22/d4e48556-448c-4895-afb9-98bee21dbbf0_W_N.png" alt="" />
+									</a>
+								</div>    
+								<div class="left_btn" style="display: none; top: 143px;"></div>  
+								<div class="right_btn" style="display: none; top: 143px;"></div> 
+							</div>    
+							<div class="txt_area">     
+								<div class="title">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af')">
+										[업데이트 소식] 인페이버에서 비콘이 가능해졌습니다.
+									</a>
+								</div>  
+								<div class="content">
+									<a href="javascript:mainPostItempostDetailShow('537d91590cf293ee66a67a0c', '51b67e6b0cf250a7fbf594af');">
+										새롭게 업데이트 된 인페이버 앱에서는
+										비콘 서비스가 가능해 집니다.
+										
+										더욱 새로워지는 인페이버를
+										기대해 주세요.
+										
+										안드로이드 - http://bit.ly/1jiI2Si
+										아이폰 - http://...
+									</a>
+								</div>
+								<div class="favor_name">
+									<a href="javascript:$.ikNaviSite('infavor')">인페이버</a>
+								</div>  
+								<ul class="icon_area">   
+									<li class="join">
+										<img src="images/icon_eye.gif" alt="조회수" title="조회수"> 83
+									</li>   
+									<li class="hart">
+										<img src="images/icon_hart.gif" alt="공감" title="공감"> 
+										<span>4</span>
+									</li>   
+									<li class="icon">
+										<img src="images/min_icon_good.png" width="30px" alt="좋아요" title="좋아요">
+									</li>  
+								</ul> 
+							</div>
+						</div>
+						<div class="info">   
+							<div class="profile">
+								<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf');">
+									<img src="https://img.infavor.me/resources/UploadImages/Profile/2013/6/11/8ba36fe5-99a6-4808-a717-b9b11977a99d_W_T.png" alt="profile" width="30" height="30">
+								</a>
+							</div>   
+							<div class="txtcon">    
+								<p class="name">
+									<a href="javascript:$.ikNaviMyPage('51b187880cf20868d13847cf')">인페이버</a>
+								</p>    
+								<p class="date">7 일 전</p>   
+							</div>    
+							<div class="list_btn">    
+								<a href="javascript:favorListShow('537d91590cf293ee66a67a0c');">
+									<img src="images/btn_faver_item_list_off.gif" class="favorItemBtn" alt="퍼가기 및 신고하기 버튼" style="display: none;">
+								</a>    
+								<ul class="favorItemList animation_set" style="display: none;">               
+									<a href="javascript:;">퍼가기</a>                     
+									<a href="javascript:$.ikReportPopShow('537d91590cf293ee66a67a0c');">신고하기</a>         
+								</ul>  
+							</div>  
+						</div>  
+						<div class="reply_area">   
+							<ul class="top">    
+								<li class="txt">     
+									<span>0</span>개 댓글     
+									<a href="javascript:;" class="btnMore" style="display: none;">      
+										<img src="images/reply_icon_arr_up.gif" alt="댓글 더보기">
+									</a>    
+								</li>    
+								<li class="btns">     
+									<a href="javascript:;">
+										<img src="images/reply_icon_share.gif" class="share_btn" alt="공유" title="공유">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_message.gif" class="reply_btn" alt="메시지" title="메시지">
+									</a>          
+									<a href="javascript:;">
+										<img src="images/reply_icon_hart.gif" class="hart_btn toggle" alt="공감" title="공감">
+									</a>    
+								</li>   
+							</ul>    
+							<div class="listComponent share_component animation_set" style="display: none;">         
+								<img src="images/list_arr.png" alt="" class="list_arr" style="left:154px;">        
+								
+							</div>      
+							<div class="reply_con scroll_area">       </div>         
+							<div class="reply_con reply_write_con">    
+								<div class="searchlist listComponent"></div>    
+								<div class="item noline">     
+									<ul>      
+										<li class="img">
+											<img src="images/header_profile_bg.gif" alt="프로필사진" width="30px" height="30px">
+										</li>      
+										<li class="input">
+											<div class="textinput" contenteditable="true" maxlength="500"></div>
+										</li>     
+									</ul>     
+									<div class="btns writebtn" style="display: none;">      
+										<a href="javascript:;" class="btn_white_21">취소</a>      
+										<a href="javascript:;" class="btn_blue_21">댓글남기기</a>     
+									</div>     
+								</div>    
+								<div class="clear"></div>   
+							</div>     
+						</div> 
+					</div>
+					<!-- contents_item End -->
+					
+				</div>
+				<script>
+					var container = document.querySelector('#contents_wrap');
+					var msnry = new Masonry( container, {
+					  // options
+					  columnWidth: 254,
+					  itemSelector: '.main_contents_faver_item',
+					  isAnimated: !Modernizr.csstransitions,
+				      isFitWidth: true
+					});
+				</script>
+				
+				<!-- contents_wrap End-->
+				<!-- banner Start -->
+				<h2 class="skip">서브배너</h2>
+				<div id="banner">
+					<div class="bannerBox">
+						<h3>인페이버 오픈</h3>
+						<div class="gallery_slider" id="gallery_slider">
+							<ul id="mainMoveConRight" >
+								<li>
+									<a href="javascript:;" class="bannerSlideItem1" style="width: 260px; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Banner/2013/10/11/2814967d-c86a-4aa8-ba95-83b2eec02025_W_N.png" width="260" height="217" alt="인페이버 블로그 바로가기">
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" class="bannerSlideItem2" style="width: 260px; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Banner/2013/10/11/afab7c72-c4aa-4581-b52f-fca743c8846e_W_N.png" width="260" height="217" alt="소비경험을 나누는 공간!">
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" class="bannerSlideItem3" style="width: 260px; text-align: center;">
+										<img src="https://img.infavor.me/resources/UploadImages/Banner/2013/10/24/7bf7cead-0837-4040-836a-2497c2ea05c5_W_N.png" width="260" height="217" alt="인페이버 서포터즈 2기 모집">
+									</a>
+								</li>
+							</ul>
+							<div class="controller" style="display: block;">
+								<ul>
+									<li class="left_btn" id="leftBtn">
+										<a href="javascript:bannerSlider.leftMove();">
+											<img src="images/gallery_btn_left.png" alt="좌측이동">
+										</a>
+									</li>
+									<li class="txt_con" id="txtCon">
+										<span class="num">1</span>/3
+									</li>
+									<li class="right_btn" id="rightBtn">
+										<a href="javascript:bannerSlider.rightMove();">
+											<img src="images/gallery_btn_right.png" alt="우측이동">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="bannerBox">
+						<h3>인기 페이버</h3>
+						<p class="reload">
+							<a href="#" title="새로고침">새로고침
+								<span>
+									<img src="images/icon_reload.gif" alt="새로고침" />
+								</span>
+							</a>
+						</p>
+						<ul class="pop_favor line">
+							<li class="first">
+								<a href="#"><img src="images/popular_img_bg.gif" alt="" class="picture" /></a>
+								<img src="images/popular_toggle_off.png" class="toggle" alt="북마크" style="display: none;">
+								<div class="text">
+									<p class="title"><a href="#">dfdf</a></p>
+									<span class="name"><a href="#">dfdf</a></span>
+								</div>
+							</li>
+							<li>
+								<a href="#"><img src="images/popular_img_bg.gif" alt="" class="picture" /></a>
+								<img src="images/popular_toggle_off.png" class="toggle" alt="북마크" style="display: none;">
+								<div class="text">
+									<p class="title"><a href="#">dfdf</a></p>
+									<span class="name"><a href="#">dfdf</a></span>
+								</div>
+							</li>
+							<li>
+								<a href="#"><img src="images/popular_img_bg.gif" alt="" class="picture" /></a>
+								<img src="images/popular_toggle_off.png" class="toggle" alt="북마크" style="display: none;">
+								<div class="text">
+									<p class="title"><a href="#">dfdf</a></p>
+									<span class="name"><a href="#">dfdf</a></span>
+								</div>
+							</li>
+							<li>
+								<a href="#"><img src="images/popular_img_bg.gif" alt="" class="picture" /></a>
+								<img src="images/popular_toggle_off.png" class="toggle" alt="북마크" style="display: none;">
+								<div class="text">
+									<p class="title"><a href="#">dfdf</a></p>
+									<span class="name"><a href="#">dfdf</a></span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="bannerBox">
+						<h3>인기 피플</h3>
+						<p class="reload">
+							<a href="#" title="새로고침">새로고침
+								<span>
+									<img src="images/icon_reload.gif" alt="새로고침" />
+								</span>
+							</a>
+						</p>
+						<ul class="pop_people line">
+							<li class="no_left">
+								<a href="#">
+									<img src="images/img_popular_people_bg.gif" alt="" class="picture" />
+								</a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li>
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li>
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li class="no_left">
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li>
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li>
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li class="no_left">
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li>
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+							<li>
+								<a href="#"><img src="images/img_popular_people_bg.gif" alt="" class="picture" /></a>
+								<img src="images/people_toggle_off.png" class="toggle" alt="즐겨찾기" style="display: none;">
+							</li>
+						</ul>
+					</div>
+					<div class="bannerBox">
+						<h3>인기 포스트</h3>
+						<ol class="pop_post line">
+							<li>
+								<span class="num">1</span>
+								<p>
+									<a href="#">왔다네~ 왔다네~ 여의도에 왔다네~</a><br />
+									<span><a href="#">떡볶이</a></span>
+								</p>
+							</li>
+							<li>
+								<span class="num">2</span>
+								<p>
+									<a href="#">왔다네~ 왔다네~ 여의도에 왔다네~</a><br />
+									<span><a href="#">떡볶이</a></span>
+								</p>
+							</li>
+							<li>
+								<span class="num">3</span>
+								<p>
+									<a href="#">왔다네~ 왔다네~ 여의도에 왔다네~</a><br />
+									<span><a href="#">떡볶이</a></span>
+								</p>
+							</li>
+							<li>
+								<span class="num">4</span>
+								<p>
+									<a href="#">왔다네~ 왔다네~ 여의도에 왔다네~</a><br />
+									<span><a href="#">떡볶이</a></span>
+								</p>
+							</li>
+						</ol>
+					</div>
+					
+
+					<!-- subfooter Start -->
+					<h2 class="skip">하단영역</h2>
+					<div id="subfooter">
+						<ul class="subfootermenu">
+							<li class="first"><a href="#">소개</a></li> 
+							<li><a href="#">이용약관</a></li> 
+							<li><a href="#">개인정보취급방침</a></li>
+							<li><a href="#">고객센터</a></li>
+						</ul>
+						<ul class="subfootermenu_icon">
+							<li>
+								<a href="#" title="블로그 바로가기">
+									<img src="images/copy_icon_t.png" alt="블로그 바로가기" />
+								</a>
+							</li> 
+							<li>
+								<a href="#" title="페이스북 바로가기">
+									<img src="images/copy_icon_facebook.png" alt="페이스북 바로가기" />
+								</a>
+							</li>
+							<li>
+								<a href="#" title="안드로이드 앱 설치 바로가기">
+									<img src="images/copy_icon_google.png" alt="안드로이드 앱 설치 바로가기" />
+								</a>
+							</li>
+							<li>
+								<a href="#" title="아이폰 앱 설치 바로가기">
+									<img src="images/copy_icon_apple.png" alt="아이폰 앱 설치 바로가기" />
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- subfooter End -->
+
+				</div>
+				<!-- banner End-->
+			</div>
+			<!-- container End -->
+			
+			<!-- footer Start -->
+			<div id="footer">
+				<div class="footer_body">
+					<ul class="left_box">
+				        <li><a href="javascript:;">소개</a> <span class="bar_g"> | </span></li>
+				        <li><a href="javascript:;">이용약관</a> <span class="bar_g"> | </span></li>
+				        <li><a href="javascript:;">개인정보취급방침</a><span class="bar_g"> | </span></li>
+				        <li><a href="javascript:;">게재물 게재규칙</a> <span class="bar_g"> | </span></li>
+				        <li><a href="javascript:;">고객센터</a> <span class="bar_g"> | </span></li>
+				        <li><a href="javascript:;" target="_blank">블로그</a></li>
+			   		</ul>
+				    <div class="footer_info">
+				    	<span>
+				    		누구든지 정보통신망을 통하여 음란물, 지적 재산권/저작권 침해 자료, 선거법에 어긋나는 자료, 타인의 명예를 훼손하는 자료, 청소년 유해자료, 기타 위법 자료 등을<br>
+				    		게시하거나 전송하는 경우 게시물은 경고없이 삭제되며, 게시자는 각 해당 법률에 따라 민·형사상의 책임을 질 수 있습니다.
+				    	</span>
+					</div>
+					<div class="right_box">
+				        <span class="color_gray_11">infavor © 2013 </span>
+				    </div>
+				 </div>
+			 </div> 
+			
+			<!-- footer End -->
+		</div>
+		<!-- wrap End -->
+		
+		<!-- popupFullScreen Start -->
+		<div id="popupFullScreen0" class="dark_alpha_pop" style="display:none;">
+			
+			<form class="popup_style login_pop" id="logrinFrm">
+				<div class="logo">
+					<img src="images/logo.gif" alt="infavor">
+				</div>
+				<div class="login_con">
+					<input type="email" class="input_text email" title="이메일" id="loginPopEmailInput" maxlength="50" placeholder="이메일">
+					<input type="password" class="input_text pw" title="비밀번호" id="loginPopPwInput" maxlength="16" placeholder="비밀번호">
+					<a id="btnLogin" onclick="loginPopContent.loginClick();" href="javascript:loginPopContent.loginClick();" class="btn_login">로그인</a>	
+					<ul class="area1">
+						<li class="save_email">
+							<input type="checkbox" id="loginPopEmailCookie">
+							<label for="loginPopEmailCookie">이메일 저장</label>
+						</li>
+						<li class="pw_join">
+							<a href="javascript:loginPopContent.pwFindClick();" class="pw_search">비밀번호 찾기</a> | 
+							<a href="javascript:loginPopContent.joinClick();" class="member_join">회원가입</a>
+						</li>
+					</ul>
+					<div class="btns">
+						<a href="javascript:loginPopContent.facebookClick();" class="btn_fb">
+							<span>페이스북 계정 로그인</span>
+						</a>
+						<a href="javascript:loginPopContent.twitterClick();" class="btn_twiter">
+							<span>트위터 계정 로그인</span>
+						</a>
+					</div>
+				</div>
+				<div class="btn_close">
+					<button>
+						<img src="images/btn_pop_close.png" alt="닫기">
+					</button>
+				</div>
+			</form>
+		</div>
+		<!-- popupFullScreen End -->
+	</body>
+</html>

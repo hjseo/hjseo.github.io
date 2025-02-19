@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.clearfix:after{content: ''; display: block; clear:both; }
+.wrap{width:100%; position: relative;}
+
+.wrap>img{width:100%; }
+
+.content{width:80%; position: absolute; top:20%; left:10%; font-size: 1.3em; letter-spacing: -1px;}
+.content img{width:100%;}
+.content .bg_txt{padding:3%; position: absolute; left:5%; width:90%;  background-color: rgba(255,255,255,.7); border:1px solid rgba(255,255,255,1); border-radius: 5px; box-sizing:border-box;}
+.content .bg_txt.title{top:15%; height: 13%; }
+.content .bg_txt.desc{top:30%; height:65%; line-height: 1.5; overflow:auto;}
+
+
+@media screen and (max-width: 480px) {
+	.content{font-size: 0.9em;}
+}

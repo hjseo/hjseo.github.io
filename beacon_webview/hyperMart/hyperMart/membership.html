@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html  lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>Hyper Mart</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" media="screen" href="../resources/css/beacon/demo/hyperMart/hyperMart.css" />
+    <script>
+    function appClose(){
+        location.href = 'infavor://closeWebView';
+    }
+</script>
+</head>
+<body>
+	<div class="hm_wrap">
+		<header class="hm_header">
+            <h1>Membership</h1>
+            <a href="javascript:appClose();" class="btn_close"><img src="../resources/images/beacon/demo/hyperMart/btn_close.png" alt="닫기" /></a>
+        </header>
+        
+        <section class="hm_contents_area">
+            <div class="mem_card_area">
+                <img src="../resources/images/beacon/demo/hyperMart/membership_card.png" alt="" class="mem_card" />
+                <p class="txt_card_num">CARD NUMBER</p>
+                <p class="num_mem_card">1234 5678 9101 1213</p>    
+            </div>
+            <div class="barcode_area">
+                <p>Barcode</p>
+                <img src="../resources/images/beacon/demo/hyperMart/barcode.gif" alt="" class="img_barcode" />
+            </div>
+        </section>
+        <section class="hicard_area">
+            <img src="../resources/images/beacon/demo/hyperMart/hicard.gif" alt="" class="img_hicard" />
+            <img src="../resources/images/beacon/demo/hyperMart/vivo.gif" alt="" />
+        </section>
+	</div>
+</body>
+
+</html>

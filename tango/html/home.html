@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<script src="https://img.infavor.me/resources/ifv-Framework/1.0/ifvCommon/js/ifvFramework.js"></script>
+<script src="../js/jstree/jstree.js"></script>
+<script src="../js/jquery.splitter-0.14.0.js"></script>
+<script src="../js/tango.js"></script>
+<link rel="stylesheet" href="../js/jstree/themes/default/style.css" />
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css" id="black">
+<link rel="stylesheet" href="../css/whiteStyle.css" id="white">
+<script>
+var tangoLayoutClass;
+
+function makeHomeGrid1(){
+	var jqGridOption = {
+		onSelectRow : function (data) {
+			
+		},
+		colNames:['No','제목', '작성일'],
+	    colModel:[
+	        {name:'no', align:"center", key : true },
+	        {name:'title',index:'ifsb.title',},
+	        {name:'createDate',index:'ifsb.create_date', align:"center", formatter:'date',  formatoptions:{srcformat:"Y-m-d",newformat:"d-m-Y"} }      
+	    ],
+	    cellEdit : true,
+		cellsubmit : 'clientArray', 
+	    autowidth:true,
+	    sortname: 'ifsb.create_date',
+	    sortorder: "desc",
+	    rowList:[2,4,6,8,10],
+	    pager: '#pjqgajax',
+	    caption:"공지사항",
+	    tempId:'titleGridTemplete'
+	};
+	this.grid = $("#homeGridCon1").ifvGrid({ jqGridOption : jqGridOption });
+	this.grid.pagerSetting({page : 1, size : 5})
+
+}
+function makeHomeGrid2(){
+	var jqGridOption = {
+		onSelectRow : function (data) {
+			
+		},
+		colNames:['No','제목', '작성일'],
+	    colModel:[
+	        {name:'no', align:"center", key : true },
+	        {name:'title',index:'ifsb.title'},
+	        {name:'createDate',index:'ifsb.create_date', align:"center", formatter:'date',  formatoptions:{srcformat:"Y-m-d",newformat:"d-m-Y"} }      
+	    ],
+	    cellEdit : true,
+		cellsubmit : 'clientArray', 
+	    autowidth:true,
+	    sortname: 'ifsb.create_date',
+	    sortorder: "desc",
+	    rowList:[2,4,6,8,10],
+	    pager: '#pjqgajax',
+	    caption:"Lock Project",
+	    tempId:'titleGridTemplete'
+	};
+	this.grid = $("#homeGridCon2").ifvGrid({ jqGridOption : jqGridOption });
+	this.grid.pagerSetting({page : 1, size : 5})
+
+}
+
+function makeHomeGrid3(){
+	var jqGridOption = {
+		onSelectRow : function (data) {
+			
+		},
+		colNames:['No','제목', '작성일'],
+	    colModel:[
+	        {name:'no', align:"center", key : true },
+	        {name:'title',index:'ifsb.title'},
+	        {name:'createDate',index:'ifsb.create_date', align:"center", formatter:'date',  formatoptions:{srcformat:"Y-m-d",newformat:"d-m-Y"} }      
+	    ],
+	    cellEdit : true,
+		cellsubmit : 'clientArray', 
+	    autowidth:true,
+	    sortname: 'ifsb.create_date',
+	    sortorder: "desc",
+	    rowList:[2,4,6,8,10],
+	    pager: '#pjqgajax',
+	    caption:"요청사항",
+	    tempId:'titleGridTemplete'
+	};
+	this.grid = $("#homeGridCon3").ifvGrid({ jqGridOption : jqGridOption });
+	this.grid.pagerSetting({page : 1, size : 5})
+
+}
+function makeHomeGrid4(){
+	var jqGridOption = {
+		onSelectRow : function (data) {
+			
+		},
+	    colNames:['No','제목', '작성일'],
+	    colModel:[
+	        {name:'no', align:"center", key : true },
+	        {name:'title',index:'ifsb.title'},
+	        {name:'createDate',index:'ifsb.create_date', align:"center", formatter:'date',  formatoptions:{srcformat:"Y-m-d",newformat:"d-m-Y"} }      
+	    ],
+	    cellEdit : true,
+		cellsubmit : 'clientArray', 
+	    autowidth:true,
+	    sortname: 'ifsb.create_date',
+	    sortorder: "desc",
+	    rowList:[2,4,6,8,10],
+	    pager: '#pjqgajax',
+	    caption:"자료실",
+	    tempId:'titleGridTemplete'
+	};
+	this.grid = $("#homeGridCon4").ifvGrid({ jqGridOption : jqGridOption });
+	this.grid.pagerSetting({page : 1, size : 5})
+
+}
+
+$(document).ready(function(){
+	tangoLayoutClass = new TangoLayoutClass();
+    makeHomeGrid1();
+    makeHomeGrid2();
+    makeHomeGrid3();
+    makeHomeGrid4();
+	
+	var arr = []
+    arr[0] = {value:'111', txt:'rk'}
+    arr[1] = {value:'222', txt:'rk2'}
+    arr[2] = {value:'333', txt:'rk3'}
+
+    //셀렉트 박스 생성
+    var selectbox = $("#selectboxTop").ifvSelectBox();
+    selectbox.setData(arr, function(obj){
+       //alert(obj.value);
+    });
+    
+/* 
+    $("#menuTitle .menu_arrow").click(function(){
+    	$('#container').split({ orientation:'vertical', limit:100, panels:[{collapsible:true}] });
+    }); */
+    
+});
+
+</script>
+<script id="titleGridTemplete" type="text/ifvGrid-tmpl">
+	<div class="ifv_grid_templete">
+		{title}
+		<div class="grid_con">
+			{grid}
+		</div>
+	</div>
+</script>
+<script id="tabTemplate" type="text/x-jquery-tmpl">
+	<div class="title" id="tabArea">
+		<p>${tabTitle}</p>
+		<img src="../images/common/button/btn_close.png" alt="닫기" class="close" />
+	</div>
+</script>
+<style>
+	#homeGridCon1 .ifv_grid_templete > .title{border-top:0;}
+	#homeGridCon2 .ifv_grid_templete > .title{border-top:0;}
+</style>
+
+</head>
+
+<body>
+
+<div class="wrap">
+    <div class="header">
+    	<div class="top">
+    		<div class="left">
+    			<h1><img src="../images/common/header/logo.png" alt="Tango" /></h1>
+    			<p>Tango Development Tools</p>
+    		</div>
+    		<div class="right">
+    			<span><img src="../images/common/header/help.png" alt="도움말" />도움말</span>
+    			<span><img src="../images/common/header/member.png" alt="회원정보" />hyejeong Seo</span>
+    			<input type="button" value="로그아웃" class="btn btn_top btn_logout" />
+    		</div>
+    	</div>
+    	<div class="bottom">
+    		<div class="left">
+    			<label>Repository</label>
+    			<input type="text" id="selectboxTop" class="sel_top" value="퀸텟시스템즈 영업메타" />
+    			<input type="button" value="불러오기" class="btn btn_top btn_import" />
+    			<input type="button" value="Client 실행" class="btn btn_top btn_client_play" />
+    		</div>
+    		<div class="right">
+    			<span>Skin</span>
+    			<div class="skin skin1" onclick="tangoLayoutClass.blackSkin()"></div>
+    			<div class="skin skin2" onclick="tangoLayoutClass.whiteSkin()"></div>
+    		</div>
+    	</div>
+    	
+    	
+    </div><!-- header End -->
+    
+	<div id="container" class="container">
+		<!-- left_panel -->
+		<div class="menu">
+			<div class="title" id="menuTitle">
+				<p>MENU</p>
+				<a class="menu_arrow" onclick="tangoLayoutClass.splitterCollapsible()"></a>	
+			</div>
+			<div class="treeCon">
+				<div id="jstree"></div>
+			</div>
+			<div class="btn_area">
+				<input type="button" value="quick button" class="btn_quick first" />
+				<input type="button" value="quick button" class="btn_quick" />
+			</div>
+		</div><!-- menu End -->
+		
+		<!-- right_panel -->
+		<div>
+			<div class="main">
+				<div class="tab" id="topTab">
+				
+					<div class="title_area" id="topTabCon">
+						
+					</div>
+					<a class="arrow_left" id="topTabArrowLeft"></a>
+					<a class="arrow_right" id="topTabArrowRight"></a>
+				</div>
+				
+				<div class="clearfix">
+					<div class="mainLeft">
+						<div id="homeGridCon1"></div>
+					</div>
+					<div class="mainRight">
+						<div id="homeGridCon2"></div>
+					</div>
+					
+				</div>
+				<div class="clearfix row">
+					<div class="mainLeft">
+						<div id="homeGridCon3"></div>
+					</div>
+					<div class="mainRight">
+						<div id="homeGridCon4"></div>
+					</div>
+				</div>
+				
+				
+			</div><!-- main End -->
+		</div>
+		
+	</div>
+</div>
+
+
+</body>
+</html>

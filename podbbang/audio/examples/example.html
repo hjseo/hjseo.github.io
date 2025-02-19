@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Shore Example</title>
+		<meta charset="UTF-8">
+		<link href="./main.css" rel="stylesheet" type="text/css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../shore.js"></script>
+		<script>
+			window.onload = function() {
+				shore({
+					source: 'source',
+					view: 'visualisation',
+					color: '#FF2C00',
+					scale: 0.4
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<h1>Shore Example</h1>
+		<p>
+			Shore is a simple Javascript waveform library to visualize audio files
+			on the web.
+		</p>
+		<audio id="source" controls>
+  			<source src="./80s_vibe.mp3" type="audio/mp3">
+		</audio>
+		<canvas id="visualisation" width="800" height="200"></canvas>
+	</body>
+</html>

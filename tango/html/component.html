@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<script src="https://img.infavor.me/resources/ifv-Framework/1.0/ifvCommon/js/ifvFramework.js"></script>
+<script src="../js/jstree/jstree.js"></script>
+<script src="../js/jquery.splitter-0.14.0.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../js/jstree/themes/default/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/layout.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/whiteStyle.css">
+<script type="text/javascript">
+
+function makeGrid(){
+	var jqGridOption = {
+		onSelectRow : function (data) {
+			
+		},
+	    colNames:['id','제목', '내용', '작성자', '이메일', '작성일', '수정일'],
+	    colModel:[
+	        {name:'id', width:55, hidden : true, key : true },
+	        {name:'title',index:'ifsb.title', width:90 },
+	        {name:'content',index:'ifsb.content', width:100, editable:true },
+	        {name:'name',index:'ifsm.name', width:80, align:"right" },
+	        {name:'email',index:'ifsm.email', width:80, align:"right" },      
+	        {name:'createDate',index:'ifsb.create_date', width:150, formatter:'date',  formatoptions:{srcformat:"Y-m-d",newformat:"d-m-Y"} },       
+	        {name:'modifyDate',index:'ifsb.modify_date', width:150, formatter:'date',  formatoptions:{srcformat:"Y-m-d",newformat:"d-m-Y"} }        
+	    ],
+	    cellEdit : true,
+		cellsubmit : 'clientArray', 
+	    autowidth:true,
+	    sortname: 'ifsb.create_date',
+	    sortorder: "desc",
+	    rowList:[2,4,6,8,10],
+	    pager: '#pjqgajax',
+	    caption:"샘플 jqgrid"
+	};
+	this.grid = $("#gridCon").ifvGrid({ jqGridOption : jqGridOption });
+	this.grid.pagerSetting({page : 1, size : 5})
+
+}
+
+function makeTreeMenu(){
+	$('#jstree').jstree({
+		"core" : {
+		    'data' : [
+		     	{ "id" : "ajson1", "parent" : "#", "text" : "Application" },
+		       	{ "id" : "ajson3", "parent" : "ajson1", "text" : "Child 1" },
+		       	{ "id" : "ajson4", "parent" : "ajson1", "text" : "Child 2" },
+		       	{ "id" : "ajson2", "parent" : "#", "text" : "Menu" },
+		       	{ "id" : "ajson5", "parent" : "#", "text" : "Application" },
+		       	{ "id" : "ajson6", "parent" : "ajson5", "text" : "Child 1" },
+		       	{ "id" : "ajson7", "parent" : "ajson5", "text" : "Child 2" },
+		    ],
+		    "multiple" : false,
+		    "check_callback" : true
+		}, 
+		
+		"types" : {
+			"default" : {
+		    	"icon" : "../images/common/menu/bu_tree_child.gif"
+			}
+		},
+	  
+		"plugins" : [
+		 	"contextmenu", "dnd", "types"
+		]
+	})
+
+}
+
+function tab(){
+	$("#tab .title").click(function(){
+		$("#tab .title").removeClass("on");
+		$(this).addClass("on");
+	});
+	
+	$("#tab .title").hover(function(){
+		$(this).children(".close").show();
+	}, function(){
+		$(this).children(".close").hide();
+	});
+	
+	$("#tab .title .close").click(function(){
+		$(this).parent(".title").hide();
+	});
+	
+}
+
+$(document).ready(function(){
+    $('#container').split({orientation:'vertical', limit:100, position:'15%'});
+    makeTreeMenu();
+    tab();
+    makeGrid();
+    
+    var arr = []
+    arr[0] = {value:'111', txt:'rk'}
+    arr[1] = {value:'222', txt:'rk2'}
+    arr[2] = {value:'333', txt:'rk3'}
+
+    //셀렉트 박스 생성
+    var selectbox = $("#selectboxTop").ifvSelectBox();
+    selectbox.setData(arr, function(obj){
+       //alert(obj.value);
+    });
+
+    var selectbox2 = $("#selectboxTop2").ifvSelectBox();
+    selectbox2.setData(arr, function(obj){
+       //alert(obj.value);
+    });
+
+    var selectbox3 = $("#selectbox1").ifvSelectBox();
+    selectbox3.setData(arr, function(obj){
+       //alert(obj.value);
+    });
+
+	var selectbox4 = $("#selectbox2").ifvSelectBox();
+    selectbox4.setData(arr, function(obj){
+       //alert(obj.value);
+    });
+    
+
+});
+
+
+</script>
+</head>
+
+<body>
+
+
+<div id="container" class="container">
+	<div class="menu">
+		<div class="title" id="menuTitle">
+			<p>MENU</p>
+			<a class="menu_arrow"></a>
+		</div>
+		<div class="treeCon">
+			<div id="jstree"></div>
+		</div>
+		<div class="btn_area">
+			<input type="button" value="quick button" class="btn_quick first" />
+			<input type="button" value="quick button" class="btn_quick" />
+		</div>
+	</div><!-- menu End -->
+	
+	<div>
+		<div class="tab" id="tab">
+			<div class="title">
+				<p>Home</p>
+				<img src="../images/common/button/btn_close.png" alt="닫기" class="close" />
+			</div>
+			<div class="title ">
+				<p>Application</p>
+				<img src="../images/common/button/btn_close.png" alt="닫기" class="close" />
+			</div>
+			<div class="title on">
+				<p>App Detail</p>
+				<img src="../images/common/button/btn_close.png" alt="닫기" class="close" />
+			</div>
+		</div>
+		
+		<div>
+		    <h2>상단공통</h2>
+		
+		    <h3>버튼</h3>
+		    <input type="button" value="불러오기" class="btn btn_top btn_import" />
+		    <input type="button" value="불러오기" class="btn btn_top btn_import" disabled="disabled" />
+		
+		    <input type="button" value="Client 실행" class="btn btn_top btn_client_play" />
+		    <input type="button" value="Client 실행" class="btn btn_top btn_client_play" disabled="disabled" />
+		
+		    <input type="button" value="로그아웃" class="btn btn_top btn_logout" />
+		
+		    <h3>셀렉트 박스</h3>
+		    <input type="text" id="selectboxTop" class="sel_top" value="퀸텟시스템즈 영업메타" />
+		    <input type="text" id="selectboxTop2" class="sel_top" value="퀸텟시스템즈 영업메타" disabled="disabled" />
+		
+		</div>
+		
+		<div>
+		    <h3>버튼</h3>
+		    <input type="button" value="취소" class="btn btn_default btn_cancel" />
+		    <input type="button" value="취소" class="btn btn_default btn_cancel" disabled="disabled" />
+		
+		    <input type="button" value="선택" class="btn btn_default btn_select" />
+		    <input type="button" value="선택" class="btn btn_default btn_select" disabled="disabled" />
+		
+		    <input type="button" value="수정" class="btn btn_default btn_edit_md" />
+		    <input type="button" value="수정" class="btn btn_default btn_edit_md" disabled="disabled" />
+		
+		    <input type="button" value="수정" class="btn btn_default btn_edit_sm" />
+		    <input type="button" value="수정" class="btn btn_default btn_edit_sm" disabled="disabled" />
+		
+		    <h3>셀렉트 박스</h3>
+		    <input type="text" id="selectbox1" class="sel_default" value="TEST" />
+		    <input type="text" id="selectbox2" class="sel_default" value="TEST" disabled="disabled" />
+		
+			<h3>텍스트</h3>
+		    <input type="text" id="" class="input_text" />
+		    <input type="text" id="" class="input_text" value="test" disabled="disabled" />
+		
+			
+		</div>
+		<div>
+			<textarea class="textarea"></textarea>
+			<textarea class="textarea" disabled="disabled">현재 Nwagon 레이더차트를 이용하려고하는데음..레이더 차트를 사용하면 5개의 항목을 사용할시 약 25도정...
+			</textarea>
+		</div>
+		
+		<div style="width:90%;">
+			<div id="gridCon"></div>
+		</div>
+		
+		
+	</div>
+
+</div>
+</body>
+</html>
+
+
