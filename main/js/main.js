@@ -131,10 +131,6 @@ jQuery(function($) {
         document.location.reload();
     });
 
-    $frame.on('touchstart mousewheel DOMMouseScroll', function(e) {
-        e.preventDefault(); // 기본 스크롤 동작 차단
-    });
-
     // 웹접근성 - enter를 눌렀을 때에도 클릭이 되도록
     $("#frame>ul>li").keyup(function(event) {
         if (event.which === 13) {
@@ -160,6 +156,8 @@ jQuery(function($) {
 
     // 이미지배너 우측하단 화살표 버튼
     $('.move_right').on('click', function(){
+        $('#frame > ul > li').removeClass('active');
+        $(this).closest('li').addClass('active');
         for (var i=0; i < $('#frame > ul > li').length; i++){
             if($('#frame > ul > li').eq(i).hasClass('active')) {
                 sliderArr[i-1].leftBtn(this);
@@ -167,6 +165,8 @@ jQuery(function($) {
         }
     });
     $('.move_left').on('click', function(){
+        $('#frame > ul > li').removeClass('active');
+        $(this).closest('li').addClass('active');
         for (var i=0; i < $('#frame > ul > li').length; i++){
             if($('#frame > ul > li').eq(i).hasClass('active')) {
                 sliderArr[i-1].rightBtn(this);
@@ -199,7 +199,7 @@ jQuery(function($) {
     });
 
     //화살표 클릭 시, 첫 번째 리스트로 이동
-    $('.info_area .btn_arr, .footer .btn_arr, .header .logo').on('click', function(){
+    $('.info_area .btn_arr, .footer .btn_arr').on('click', function(){
         sly.activate(1);    
     });
 
