@@ -6,6 +6,10 @@ var $frame = $('#frame');
 var sliderArr = [];
 // 이미지 리스트
 var imgList = [
+    [   {src: "./images/hana_event7945.png"},
+        {src: "./images/hana_event7843.png"},
+        {src: "./images/hana_subscribe.png"}
+    ],
     [   {src: "./images/samsungFire.png"},
         {src: "./images/samsungFire2.png"},
         {src: "./images/samsungFire3.png"}
@@ -47,6 +51,7 @@ function mainLayout () {
         horizontal: 1,
         itemNav: 'basic',
         activateOn: 'click',
+        smart: 1,
         mouseDragging: 1,
         touchDragging: 1,
         releaseSwing: 1,
@@ -54,8 +59,10 @@ function mainLayout () {
         scrollBy: 1,
         speed: 400,
         elasticBounds: 1,
-        easing: 'easeOutExpo'
+        easing: 'easeOutExpo',
+        infinite: 1
     }).init();
+
     sly.on('active', function(eventName, itemIndex){
         closeLnb();
         
@@ -67,6 +74,7 @@ function mainLayout () {
             $('#frame>ul>li.active').focus();
         }, 210);
     });
+    
     sly.on('load', function(eventName){
         sly.toStart(sly.rel.activeItem);
     });
@@ -119,6 +127,14 @@ jQuery(function($) {
         }
     });*/
 
+    $(window).resize(function() {
+        document.location.reload();
+    });
+
+    $frame.on('touchstart mousewheel DOMMouseScroll', function(e) {
+        e.preventDefault(); // 기본 스크롤 동작 차단
+    });
+
     // 웹접근성 - enter를 눌렀을 때에도 클릭이 되도록
     $("#frame>ul>li").keyup(function(event) {
         if (event.which === 13) {
@@ -137,25 +153,21 @@ jQuery(function($) {
             //brandImgList: brandImgList[i],
             //brandImgClass : 'brand_logo'
         });
-        if ( imgList[i].length == 1 ) {
+        if ( imgList[i].length === 1 ) {
             $('.slider_wrap').eq(i).parent().children('.btn_arr').hide();
         }
     }
 
     // 이미지배너 우측하단 화살표 버튼
     $('.move_right').on('click', function(){
-        $('#frame > ul > li').removeClass('active');
-        $(this).closest('li').addClass('active');
-        for (var i=0; i < $('#frame > ul > li').length-2; i++){
+        for (var i=0; i < $('#frame > ul > li').length; i++){
             if($('#frame > ul > li').eq(i).hasClass('active')) {
                 sliderArr[i-1].leftBtn(this);
             }
         }
     });
     $('.move_left').on('click', function(){
-        $('#frame > ul > li').removeClass('active');
-        $(this).closest('li').addClass('active');
-        for (var i=0; i < $('#frame > ul > li').length-2; i++){
+        for (var i=0; i < $('#frame > ul > li').length; i++){
             if($('#frame > ul > li').eq(i).hasClass('active')) {
                 sliderArr[i-1].rightBtn(this);
             }
@@ -187,7 +199,7 @@ jQuery(function($) {
     });
 
     //화살표 클릭 시, 첫 번째 리스트로 이동
-    $('.info_area .btn_arr, .footer .btn_arr').on('click', function(){
+    $('.info_area .btn_arr, .footer .btn_arr, .header .logo').on('click', function(){
         sly.activate(1);    
     });
 

@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>하나카드 원큐페이 통합</title>
+
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- favicon -->
+	<link rel="icon" href="./images/common/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="512x512" href="./images/common/appicon-512.png" />
+	<!-- //favicon -->
+
+	<!-- style -->
+	<link type="text/css" rel="stylesheet" href="./css/common.css" />
+	<link type="text/css" rel="stylesheet" href="./css/ui-style.css" />
+	<link type="text/css" rel="stylesheet" href="./css/page-style.css" />
+	<!-- //style -->
+</head>
+
+<body>
+	<div id="wrap">
+		<div class="layout-wrap">
+			<!-- fix top area -->
+			<!-- <div class="fix-top-wrap">
+				<header class="header">
+					<div class="header-left">
+						<button type="button" class="header-button type-back"><span class="for-a11y">이전</span></button>
+						<h1 class="header-title">오토케어 프리미엄</h1>
+					</div>
+					<div class="header-right">
+						<button type="button" class="header-button type-menu"><span class="for-a11y">메뉴</span></button>
+					</div>
+				</header>
+			</div> -->
+			<!-- //fix top area -->
+
+			<!-- [2024-11-18 : shj] 구독서비스 UI 개편 subscribe-wrap 추가 -->
+			<div class="contents-wrap subscribe-wrap">
+				<div class="page-contents">
+					<div class="page-section">
+						<h2 class="page-title top-title">
+							<span class="point-title">
+								<span class="color-primary">월 9,900원</span>으로<br>
+							</span>
+							자동차 관리부터 쿠폰할인 혜택까지!
+						</h2>
+						<img src="./images/subscribe/img_autocare_9847.png" alt="" class="title-img margin-bottom-none">
+					</div>
+					<div class="page-section">
+						<div class="benefit-accordion">
+							<div class="accordion-list js-ui-accordion" data-once="true">
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic_autocare1_9847.png" alt="">
+										<strong class="accordion-opener-title">주유 <span class="color-primary">1만원</span><br>할인 혜택</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">상세 혜택
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 주유 할인쿠폰 5,000원권 2매 무료 제공
+													</li>
+													<li class="info-item">서비스 가입 시 SK / GS / 현대오일뱅크 중 1개 선택
+													</li>
+													<li class="info-item">선택한 1개사의 전국 주유소 및 충전소에서 사용 가능(일부 주유소 및 충전소 제외)
+													</li>
+												</ul>
+												<p class="benefit-contents-title">발급일 및 사용기간
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 1일에 2매 제공(가입월은 가입 익일)</li>
+													<li class="info-item">전반 할인쿠폰 : 매 발급월 1일~15일</li>
+													<li class="info-item">후반 할인쿠폰 : 매 발급월 16일~말일</li>
+												</ul>
+												<p class="benefit-contents-title">유의사항</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">쿠폰 유효기한 종료 및 서비스 해지후 쿠폰 사용 불가</li>
+													<li class="info-item">현금교환 및 쿠폰 중복사용 불가</li>
+													<li class="info-item">포인트 적립은 할인쿠폰 적용금액 외이용금액에 대해 적립 가능</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic_autocare2_9847.png" alt="">
+										<strong class="accordion-opener-title">연간 <span class="color-primary">40만원</span> 상당<br>경정비 할인 혜택
+										</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">상세 혜택
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매년 경정비 할인쿠폰 무료 제공</li>
+													<li class="info-item">매년 엔진오일 교환 2만 5천원 할인 포함 국산차, 수입차 10개 항목 이상의 할인 혜택을 사은품으로 제공</li>
+													<li class="info-item">국산차 쿠폰은 전국 700여개 SK스피드메이트 정비사업장에서 사용 가능하며, 수입차 쿠폰은 SK스피드메이트 수입차 전문매장에서
+														사용(일부 사업장 및 수입차 제외)</li>
+												</ul>
+												<p class="benefit-contents-title">발급일 및 사용기간
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매년 가입월 1일에 1회 제공(가입월은 가입 익일)</li>
+													<li class="info-item">매월 1일에 기발급 쿠폰 재발송</li>
+													<li class="info-item">사용기간 : 발급일로부터 1년</li>
+												</ul>
+												<p class="benefit-contents-title">유의사항</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">엔진오일 1회 교환 가능</li>
+													<li class="info-item">엔진오일 교환은 ZIC X7, 에어컨/히터필터/부동액/브레이크패드/와이퍼는 스피드메이트 PB 상품 기준</li>
+													<li class="info-item">쿠폰 유효기한 종료 및 서비스 해지 후 쿠폰 사용 불가</li>
+													<li class="info-item">현금교환 및 쿠폰 중복사용 불가</li>
+													<li class="info-item">포인트 적립은 할인쿠폰 적용금액 외 이용금액에 대해 적립 가능</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic_autocare3_9847.png" alt="">
+										<strong class="accordion-opener-title">세차 <span class="color-primary">3천원</span><br>할인 혜택</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">상세 혜택
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 3천원 자동세차 할인쿠폰 무료 제공</li>
+													<li class="info-item">전국 GS칼텍스 주유소에서 사용 가능(일부 주유소 제외)</li>
+												</ul>
+												<p class="benefit-contents-title">발급일 및 사용기간
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 1일에 1매 제공(가입월은 가입 익일)</li>
+													<li class="info-item">사용기간 : 매 발급월 1일~말일</li>
+												</ul>
+												<p class="benefit-contents-title">유의사항</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">쿠폰 유효기한 종료 및 서비스 해지 후 쿠폰 사용 불가</li>
+													<li class="info-item">현금교환 및 쿠폰 중복사용 불가</li>
+													<li class="info-item">포인트 적립은 할인쿠폰 적용금액 외 이용금액에 대해 적립 가능</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic_autocare4_9847.png" alt="">
+										<strong class="accordion-opener-title">주차 <span class="color-primary">2천원</span><br>할인 혜택</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">상세 혜택
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 모두의주차장 2천원 할인쿠폰 무료 제공</li>
+													<li class="info-item">모두의주차장 App에서 매월 신규 발급되는 주차 할인쿠폰 확인 가능</li>
+												</ul>
+												<p class="benefit-contents-title">발급일 및 사용기간
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 1일에 1매 제공(가입월은 가입 익일)</li>
+													<li class="info-item">사용기간 : 매 발급월 1일~말일</li>
+												</ul>
+												<p class="benefit-contents-title">유의사항</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">최초 이용 시 오토케어 프리미엄 모바일웹에서 모두의주차장 제3자 제공 동의 후 이용가능</li>
+													<li class="info-item">쿠폰 유효기한 종료 및 서비스 해지 후 쿠폰 사용 불가</li>
+													<li class="info-item">현금교환 및 쿠폰 중복사용 불가</li>
+													<li class="info-item">포인트 적립은 할인쿠폰 적용금액 외 이용금액에 대해 적립 가능</li>
+													<li class="info-item">쿠폰문의 : 1899-8242</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic_autocare5_9847.png" alt="">
+										<strong class="accordion-opener-title">CGV 영화/콤보 <span class="color-primary">1만원</span><br>할인
+											혜택</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">상세 혜택
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 CGV 영화 할인/콤보 각 5,000원 할인쿠폰 1매씩 무료 제공</li>
+													<li class="info-item">영화 할인쿠폰은 CGV 홈페이지 또는 APP에서 쿠폰 등록 후 사용 가능(오프라인 사용 불가)</li>
+													<li class="info-item">콤보 할인쿠폰은 CGV 오프라인 매장 및 무인 KIOSK에서 사용 가능</li>
+													<li class="info-item">일부 위탁 지점 이용불가</li>
+												</ul>
+												<p class="benefit-contents-title">발급일 및 사용기간
+												</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">매월 1일에 각 1매 제공(가입월은 가입 익일)</li>
+													<li class="info-item">사용기간 : 매 발급월 1일~말일</li>
+												</ul>
+												<p class="benefit-contents-title">유의사항</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">영화티켓 1장당 쿠폰 1매만 적용 가능</li>
+													<li class="info-item">9천원 이상 2D 일반영화, ScreenX, 4DX 영화에 한해 사용 가능 (특별관, 특별 좌석 등 적용 불가)</li>
+													<li class="info-item">콤보 1set당 쿠폰 1매만 적용 가능</li>
+													<li class="info-item">쿠폰 유효기한 종료 및 서비스 해지 후 쿠폰 사용 불가</li>
+													<li class="info-item">현금교환 및 쿠폰 중복사용 불가</li>
+													<li class="info-item">포인트 적립은 할인쿠폰 적용금액 외 이용금액에 대해 적립 가능</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="page-section">
+						<h2 class="middle-title">상세혜택</h2>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont1_9847.png" alt="혜택1." class="item-img">
+							<p class="item-title font-weight-bold">주유 <span class="color-primary">1만원</span> 할인
+									혜택</p>
+							<p class="item-desc">매월 SK / GS / 현대오일뱅크 중 택 1 5천원권 2매 발급</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont2_9847.png" alt="혜택2." class="item-img">
+							<p class="item-title font-weight-bold">연간 <span class="color-primary">40만원</span> 상당 경정비 할인
+									혜택</p>
+							<p class="item-desc">스피드메이트 정비사 정장내 국산차, 수입차 10개 항목</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont3_9847.png" alt="혜택3." class="item-img">
+							<p class="item-title font-weight-bold">세차 <span class="color-primary">3천원</span> 할인
+									혜택</p>
+							<p class="item-desc">전국 GS칼텍스 주유소에서 사용 가능 (일부 주유소 제외)
+							</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont4_9847.png" alt="혜택4." class="item-img">
+							<p class="item-title font-weight-bold">CGV 영화/콤보 <span class="color-primary">1만원</span> 할인 혜택
+							</p>
+							<p class="item-desc">CGV 영화 할인/콤보 5천원 할인쿠폰 1매 씩 무료 제공
+							</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont5_9847.png" alt="혜택5." class="item-img">
+							<p class="item-title font-weight-bold"> 주차 <span class="color-primary">2천원</span> 할인 혜택
+							</p>
+							<p class="item-desc">모두의 주차장 APP에서 제공
+							</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont6_9847.png" alt="혜택6." class="item-img">
+							<p class="item-title font-weight-bold">각종 내차 정보
+							</p>
+							<p class="item-desc color-basic font-weight-bold margin-top-15">상세 기능</p>
+							<p class="item-desc margin-top-6">
+								고객 보유의 등록 차량에 대한 각종 정보를 제공합니다. 오토케어 프리미엄 PC/모바일 웹페이지에서 언제든지 조회할 수 있습니다.
+							</p>
+							<p class="item-desc color-basic font-weight-bold margin-top-15">제공 정보</p>
+							<p class="item-desc margin-top-6">
+								내차 기본정보 : 차량, 모델연도, 차량번호, 소유주, 사용 본거지, 검사유효기간 포함 17개 항목<br>
+								소유정보 : 소유주 주민(법인)등록번호, 등록일, 관련 사항란 포함 5개 항목<br>
+								출처 : 자동차등록원부
+							</p>
+							
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont7_9847.png" alt="혜택7." class="item-img">
+							<p class="item-title font-weight-bold">내차 시세
+							</p>
+							<p class="item-desc color-basic font-weight-bold margin-top-15">상세 기능</p>
+							<p class="item-desc margin-top-6">
+								국토교통부에 등록된 거래 Data에 NICE평가정보㈜의 시세예측모델을 결합하여 소유 차량의 현재/미래 시세 확인 가능
+
+							</p>
+							<p class="item-desc color-basic font-weight-bold margin-top-15">제공 정보</p>
+							<p class="item-desc margin-top-6">
+								현재 시세 : 주행거리, 현재시세, 출시가격, 출시가격 대비 시세, 감가금액 포함 9개 항목<br>
+								시세 예측 : 1년~5년 후 예측 시세<br>
+								주행거리별 시세 : 10,000km 단위 예측 시세 (10,000 ~ 150,000km)
+							</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/img_cont8_9847.png" alt="혜택8." class="item-img">
+							<p class="item-title font-weight-bold">내차 금융 및 신용정보</p>
+							<p class="item-desc color-basic font-weight-bold margin-top-15">상세 기능</p>
+							<p class="item-desc margin-top-6">
+								NICE평가정보㈜가 보유한 자동차금융 개인정보를 가공한 자동차 특화 신용 정보 관리 서비스 제공<br>
+								자동차금융 대출 및 연체 정보 포함한 개인신용정보 변동 발생 시 SMS 또는 E-mail 통한 변동알림 기능 제공<br>
+								상세내역 신용변동알림 전용 ARS 또는 웹페이지 내 조회 가능
+							</p>
+							<p class="item-desc color-basic font-weight-bold margin-top-15">제공 정보
+							</p>
+							<p class="item-desc margin-top-6">
+								차량 구입 관련 오토금융 신용정보 상세내역 및 기타 일반 신용정보 제공<br>
+								신용평점, 신용개설정보, 신용조회기록, 대출정보, 대출상환정보, 보증정보, 단기카드대출(현금서비스), 장기연체(신정사/신정원), CB단기연체정보, 금융질서문란정보, 공공정보 등
+							</p>
+						</div>
+
+					</div>
+					<div class="page-section">
+						<div class="menu-link-area">
+							<ul class="menu-link-list">
+								<li class="menu-link-item"><a href="javascript:void(0)" class="ui-arrow-block menu-link-button"
+										role="button">상품 이용약관 안내</a></li>
+							</ul>
+						</div>
+						<!-- [2024-11-15 : shj] 신청 중일때 버튼 -->
+						<div class="ui-buttons margin-top-24">
+							<ul class="ui-buttons-list">
+								<li class="ui-buttons-item">
+									<button type="button" class="ui-button ui-basic-button type-secondary">조회/해지</button>
+								</li>
+							</ul>
+						</div>
+						<!-- // [2024-11-15 : shj] 신청 중일때 버튼 -->
+						<div class="accordion-list js-ui-accordion notice-accordion" data-once="true">
+							<div class="accordion-item js-ui-accordion__item">
+								<button type="button" class="accordion-opener js-ui-accordion__opener">
+									<strong class="accordion-opener-title">반드시 확인하세요.</strong>
+								</button>
+								<div class="js-ui-accordion__layer">
+									<div class="accordion-contents">
+										<div class="accordion-section-contents">
+											<ul class="info-list type-inherit type-outside">
+												<li class="info-item">계약 체결 전 상품 설명서 및 상품 약관을 반드시 확인하시기 바랍니다.</li>
+												<li class="info-item">신용카드 발급이 부적정한 경우(개인신용평점 낮음 등) 카드발급이 제한될 수 있습니다.</li>
+												<li class="info-item">카드이용대금과 이에 수반되는 모든 수수료를 지정된 대금 결제일에 상환하여야 합니다.</li>
+												<li class="info-item">금융소비자는 해당 상품 또는 서비스에 대하여 설명을 받을 권리가 있습니다.</li>
+												<li class="info-item font-weight-bold">상환능력에 비해 신용카드 사용액이 과도할 경우, 귀하의 개인신용평점이 하락할 수 있습니다.</li>
+												<li class="info-item font-weight-bold">개인신용평점 하락 시 금융거래와 관련된 불이익이 발생할 수 있습니다.</li>
+												<li class="info-item font-weight-bold">일정기간 원리금을 연체할 경우, 모든 원리금을 변제할 의무가 발생할 수 있습니다.</li>
+												<li class="margin-top-10">준법심의 A-24-2681(2024.10.31~2025.10.30)</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- [2024-11-15 : shj] 신청 전 버튼 -->
+				<div class="page-buttons type-fixed">
+					<div class="ui-buttons">
+						<ul class="ui-buttons-list">
+							<li class="ui-buttons-item">
+								<button type="button" class="ui-button ui-basic-button type-primary">월 9,900원 신청하기</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- // [2024-11-15 : shj] 신청 전 버튼 -->
+			</div>
+		</div>
+	</div>
+
+	<!-- script -->
+	<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="./js/swiper.min.js"></script>
+	<script type="text/javascript" src="./js/ui-script.js"></script>
+	<!-- //script -->
+</body>
+
+</html>

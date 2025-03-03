@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT</title>
+    <link href="css/swiper.min.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <link href="css/ui-style.css" rel="stylesheet" />
+    <link href="css/page-style.css" rel="stylesheet" />
+    <link href="css/wcms-data-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/ui-script.js"></script>
+    <style>
+        .fix-scroll-header.fixed {
+            display: none;
+        }
+
+        .wide-contents {
+            margin-left: -24px !important;
+            margin-right: -24px !important;
+        }
+
+        .wcms-data .event-data .btn-donation.page-buttons.type-sticky {
+            position: sticky;
+            position: -webkit-sticky;
+            left: 0;
+            bottom: 0;
+            padding: 0;
+            border-top: 0;
+        }
+
+        .wcms-data input:not([type='range']) {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .wcms-data input[type='date']::-webkit-outer-spin-button,
+        .wcms-data input[type='date']::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        .wcms-data input[type='date']::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wcms-data .ui-input-block::before {
+            background: none;
+        }
+
+        .wcms-data .ui-input-block input[type='date'].ui-input-date {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 40px;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background-color: #fff;
+            font-size: 1.7rem;
+            line-height: 40px;
+            text-align: left !important;
+            white-space: nowrap;
+        }
+
+        .wcms-data select.ui-select {
+            appearance: none;
+            border: 0;
+        }
+
+        .top_plan_box {
+            margin-bottom: 25px;
+            padding: 32px 16px 16px;
+            border-radius: 24px;
+            background-image: linear-gradient(126deg, #e8feff 0%, #f2eaff 100%);
+        }
+
+        .top_plan_box h3 {
+            margin: 0 0 16px;
+        }
+
+        .top_plan_box .form-group {
+            padding: 16px;
+            border-radius: 20px;
+            box-shadow: 0 2.7px 5.4px 0 rgba(168, 155, 214, 0.16);
+            background-color: #fff;
+        }
+
+        .top_plan_box .form-group .row_input_info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #d4e0e2;
+        }
+
+        .top_plan_box .form-group .row_input_info:last-child {
+            border: 0;
+        }
+
+        .top_plan_box .form-group .row_input_info .icon-label {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .top_plan_box .form-group .row_input_info label {
+            width: 100px;
+            color: var(--gray-80);
+        }
+
+        .top_plan_box .form-group .row_input_info label+div {
+            width: calc(100% - 125px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-contents padding-top-none">
+        <div class="wcms-data">
+            <section class="event-data">
+                <!-- 본문내용 -->
+
+                <script type="text/javascript">
+                    // $(document).ready(function () {
+                    //     $("#checkboxToggle").on("click", function () {
+                    //         var a = $("#checkboxToggle").is(':checked');
+                    //         if (a = 'true') {
+                    //             if (_isLogin) {
+                    //                 var url = "/MKLUCK1000M.ajax";
+                    //                 var param = {
+                    //                     targetMethod: "marketingYN_Event",
+                    //                     EVN_SEQ: "7958",
+                    //                 };
+                    //                 ajaxExceute2(url, param, function (dataMap) {
+                    //                     if (dataMap.RESULT == "SUCCESS") {
+                    //                         var marketingYN = dataMap.MARKETING_YN;
+                    //                         if (marketingYN == 'N') {
+                    //                             marketingYN = 'Y';
+                    //                         }
+                    //                         appMarketingYn(marketingYN);  // 결제 > 쿠폰 > 모든쿠폰목록(마케팅 push 동의 여부 저장) 앱 스킴 호출!
+                    //                         if (_isIosDeviceRequest) {
+                    //                             setTimeout(function () {
+                    //                                 setLoading(false);
+                    //                             }, 100);
+                    //                         }
+
+                    //                     } else {
+                    //                         ajaxError(dataMap);
+                    //                     }
+                    //                 });
+                    //             } else {
+                    //                 alert("하나페이 가입 및 로그인 후 이용이 가능합니다.");
+                    //                 goLinkWeb("/MKLGN2000M.web");
+                    //             }
+                    //         }
+
+                    //     });
+                    // });
+
+                    //마케팅 알림 수신팝업 체크
+                    function marketingYNPopupBtnChk() {
+                        uiJSLayer.open("layer-event-agree-N");
+                        // if (_isLogin) {
+                        //     var url = "/MKLUCK1000M.ajax";
+                        //     var param = {
+                        //         targetMethod: "marketingCheckYN",
+                        //         EVN_SEQ: "7958",
+                        //     };
+                        //     ajaxExceute2(url, param, function (dataMap) {
+                        //         if (dataMap.RESULT == "SUCCESS") {
+                        //             if (dataMap.PUSH_YN == 'N') {
+                        //                 uiJSLayer.open("layer-event-agree-N");
+                        //             } else {
+                        //                 uiJSLayer.open("layer-event-agree-Y");
+                        //             }
+                        //         } else {
+                        //             ajaxError(dataMap);
+                        //         }
+                        //     });
+                        // } else {
+                        //     alert("하나페이 가입 및 로그인 후 이용이 가능합니다.");
+                        //     goLinkWeb("/MKLGN2000M.web");
+                        // }
+                    }
+
+
+                    //마케팅 알림 수신 동의
+                    function marketingNChk() {
+                        if (!$("#checkboxToggle").is(":checked")) {
+                            alert("이벤트/마케팅 알림 수신동의 진행해야 이벤트 참여 가능합니다");
+                            return;
+                        }
+
+                        if ($("#startDate-N").val() == '' || $("#startDate-N").val() == null) {
+                            alert("여행시작일을 선택해주세요");
+                            return;
+                        }
+
+                        if ($("#countryList-N").val() == '' || $("#countryList-N").val() == null) {
+                            alert("여행국가를 선택해주세요");
+                            return;
+                        }
+
+                        alert("응모완료하였습니다.");
+                        // var url = "/MKLUCK1000M.ajax";
+                        // var param = {
+                        //     targetMethod: "marketingCountryEvnent",
+                        //     EVN_SEQ: "7958",
+                        //     EVN_TYPE: "01",
+                        //     RCP_MO_CN: $("#startDate-N").val(),
+                        //     MBR_WRT_MO_CN: $("#countryList-N").val()
+                        // };
+                        // ajaxExceute2(url, param, function (dataMap) {
+                        //     if (dataMap.RESULT == "SUCCESS") {
+                        //         if (dataMap.PUSH_YN == 'N') {
+                        //             alert("이벤트/마케팅 알림 수신동의 진행해야 이벤트 참여 가능합니다");
+                        //         } else if (dataMap.RS_STATUS == '03') {
+                        //             alert("이미 응모한 고객입니다.");
+                        //         } else if (dataMap.RS_STATUS == '96') {
+                        //             alert("이벤트가 마감하였습니다.");
+                        //         } else if (dataMap.STAT == 'NO_APP') {
+                        //             alert("하나페이APP 진입 시, 이벤트 참여가능합니다");
+                        //         } else {
+                        //             alert("응모완료하였습니다.");
+                        //         }
+                        //     } else {
+                        //         ajaxError(dataMap);
+                        //     }
+                        // });
+                    }
+
+                    //마케팅 알림 수신 동의
+                    function marketingYChk() {
+                        if ($("#startDate-Y").val() == '' || $("#startDate-Y").val() == null) {
+                            alert("여행시작일을 선택해주세요");
+                            return;
+                        }
+
+                        if ($("#countryList-Y").val() == '' || $("#countryList-Y").val() == null) {
+                            alert("여행국가를 선택해주세요");
+                            return;
+                        }
+
+                        alert("응모완료하였습니다.");
+                        // var url = "/MKLUCK1000M.ajax";
+                        // var param = {
+                        //     targetMethod: "marketingCountryEvnent",
+                        //     EVN_SEQ: "7958",
+                        //     EVN_TYPE: "01",
+                        //     RCP_MO_CN: $("#startDate-Y").val(),
+                        //     MBR_WRT_MO_CN: $("#countryList-Y").val()
+                        // };
+                        // ajaxExceute2(url, param, function (dataMap) {
+                        //     if (dataMap.RESULT == "SUCCESS") {
+                        //         if (dataMap.PUSH_YN == 'N') {
+                        //             alert("이벤트/마케팅 알림 수신동의 진행해야 이벤트 참여 가능합니다");
+                        //         } else if (dataMap.RS_STATUS == '03') {
+                        //             alert("이미 응모한 고객입니다.");
+                        //         } else if (dataMap.RS_STATUS == '96') {
+                        //             alert("이벤트가 마감하였습니다.");
+                        //         } else if (dataMap.STAT == 'NO_APP') {
+                        //             alert("하나페이APP 진입 시, 이벤트 참여가능합니다");
+                        //         } else {
+                        //             alert("응모완료하였습니다.");
+                        //             goLinkWeb("/MKTRVB0000M.web");
+                        //         }
+                        //     } else {
+                        //         ajaxError(dataMap);
+                        //     }
+                        // });
+                    }
+                </script>
+
+                <script type="text/javascript">
+                    // 링크 주소 - 트래블버킷 바로가기
+                    function appWebView01() {
+                        if (_isAppChannelRequest) {
+                            appWebView('/MKTRVB0000M.web');
+                        } else {
+                            goNewWin('/MKTRVB0000M.web');
+                        }
+                    };
+                </script>
+                <section class="wcms-section-group margin-top-none">
+                    <div class="wcms-header-less"></div>
+                    <div class="wcms-full-block"><img src="images/event/7958/mka_event_contents1_7958.png"
+                            alt="당신의 버킷리스트를 후원합니다! 가고 싶은 나라를 알려주시면 여행 꿀팁 정보와 하나머니를 드려요!" class="wcms-image"> <img
+                            src="images/event/7958/mka_event_contents2_7958.png" alt="해당 이미지의 정보는 순차탐색으로만 인식이 가능합니다."
+                            class="wcms-image">
+                        <div class="wcms-for-a11y">
+                            <p>기간 : 2024년 6월 26일 ~ 8월 31일</p>
+                            <p>대상 : 하나 개인 신용/체크카드 손님</p>
+                            <p>혜택1. 여행 혜택을 알려드려요! 주요 환종5개 최저 환율 시점에 알려드려요! (USD, EUR, JPY, VND, TWD)</p>
+                            <p>tip! 다른 통화도 알림을 받고 싶다면?</p>
+                        </div>
+                        <a href="https://app.hanamembership.com/appLink.do?MENUNO=9232" target="_blank" title="새창열림">
+                            <img src="images/event/7958/mka_event_contents3_7958.png" alt="환율 알림 설정 바로가기"
+                                class="wcms-image">
+                        </a>
+                        <img src="images/event/7958/mka_event_contents4_7958.png" alt="해당 이미지의 정보는 순차탐색으로만 인식이 가능합니다."
+                            class="wcms-image">
+                        <div class="wcms-for-a11y">
+                            <p>땡처리 항공권 알림. 트래블버킷에서만 만나는 땡처리 항공권 정보를 알려드려요!</p>
+                            <p>면세점 할인쿠폰 발송. 트래블버킷 손님께 특별 할인쿠폰을 드려요!</p>
+                            <p>혜택2. 알림 설정하신 분 중 추첨하여 최대 1만 하나머니를 드려요!</p>
+                            <p>1,000하나머니 5,000명 당첨</p>
+                            <p>5,000하나머니 300명 당첨</p>
+                            <p>10,000하나머니 100명 당첨</p>
+                            <p>혜택적립일 : 2024년 9월 말 이내</p>
+                            <ul>
+                                <li>당첨자 앞 별도 안내 예정</li>
+                                <li>알람 수신 동의 시에만 이벤트 응모가 가능하며, 여행 혜택 안내를 받으실 수 있습니다.</li>
+                                <li>경품 추첨 시 마케팅 수신 거부 시 당첨자에서 제외됩니다.</li>
+                            </ul>
+                        </div>
+                        <div class="btn-donation page-buttons type-sticky wcms-flex">
+                            <div class="wcms-flex-cell type-flexible"><a href="javascript:void(0);"
+                                    onclick="marketingYNPopupBtnChk();">
+                                    <img src="images/event/7958/mka_event_contents5_7958.png" alt="여행정보 입력하고 알림받기"
+                                        class="wcms-image"> </a></div>
+                        </div>
+                    </div>
+                    <!-- [2024-07-01 트래블버킷 배너 추가] -->
+                    <div class="wcms-margin-large"><a href="javascript:void(0);">
+                            <img class="wcms-image" src="images/event/7958/MKA__travelbucket_event_banner.png"
+                                alt="아직 항공/호텔 예약 전이라면, 찾으시는 가격 여기에 있어요"> </a></div>
+                </section>
+                <!-- layer 이벤트/마케팅 알림 수신 -->
+                <div class="layer-wrap layer-wrap--slide layer-wrap--select" data-layer="layer-event-agree-N">
+                    <div class="layer-container">
+                        <section class="ui-layer">
+                            <div class="ui-layer__head">
+                                <div class="header">
+                                    <h2 class="header__title wcms-margin-none">여행정보 입력하기</h2>
+                                    <div class="header__right"><button type="button"
+                                            class="ui-button header__button header__button--close"
+                                            data-role="layerClose"> <span class="for-a11y">레이어 닫기</span> </button></div>
+                                </div>
+                            </div>
+                            <div class="ui-layer__body">
+                                <div class="ui-layer__body-inner">
+                                    <div class="top_plan_box">
+                                        <h3><img src="images/event/7958/mka_event_contents6_7958.png"
+                                                alt="여행 계획을 등록하고 알림받아요" class="wcms-image" style="width: 70%;"></h3>
+                                        <div class="form-group">
+                                            <div class="row_input_info"><img
+                                                    src="images/event/7958/icon_calendar_7958.png" alt=""
+                                                    class="wcms-image icon-label"> <label for="startDate-N"
+                                                    class="wcms-size-small">여행시작일</label>
+                                                <div class="ui-input-block type-date"><input type="date"
+                                                        class="ui-input-date" id="startDate-N" title="일정을 선택해주세요"
+                                                        required="" aria-required="true" data-placeholder="일정을 선택해주세요">
+                                                </div>
+                                            </div>
+                                            <div class="row_input_info"><img
+                                                    src="images/event/7958/ico_location_7958.png" alt=""
+                                                    class="wcms-image icon-label"> <label for="countryList"
+                                                    class="wcms-size-small">여행국가</label>
+                                                <div class="ui-select-block"><select class="ui-select" title="지역 고르기"
+                                                        id="countryList-N">
+                                                        <option value="-1" disabled="disabled" selected="selected">지역
+                                                            고르기</option>
+                                                        <option value="미국">미국</option>
+                                                        <option value="일본">일본</option>
+                                                        <option value="유럽">유럽</option>
+                                                        <option value="영국">영국</option>
+                                                        <option value="남아공">남아공</option>
+                                                        <option value="노르웨이">노르웨이</option>
+                                                        <option value="뉴질랜드">뉴질랜드</option>
+                                                        <option value="대만">대만</option>
+                                                        <option value="덴마크">덴마크</option>
+                                                        <option value="마카오">마카오</option>
+                                                        <option value="말레이시아">말레이시아</option>
+                                                        <option value="멕시코">멕시코</option>
+                                                        <option value="몽골">몽골</option>
+                                                        <option value="미얀마">미얀마</option>
+                                                        <option value="바레인">바레인</option>
+                                                        <option value="베트남">베트남</option>
+                                                        <option value="브라질">브라질</option>
+                                                        <option value="사우디">사우디</option>
+                                                        <option value="스웨덴">스웨덴</option>
+                                                        <option value="스위스">스위스</option>
+                                                        <option value="싱가포르">싱가포르</option>
+                                                        <option value="아랍에미리트">아랍에미리트</option>
+                                                        <option value="이스라엘">이스라엘</option>
+                                                        <option value="이집트">이집트</option>
+                                                        <option value="인도">인도</option>
+                                                        <option value="인도네시아">인도네시아</option>
+                                                        <option value="중국">중국</option>
+                                                        <option value="체코">체코</option>
+                                                        <option value="카타르">카타르</option>
+                                                        <option value="캄보디아">캄보디아</option>
+                                                        <option value="캐나다">캐나다</option>
+                                                        <option value="케냐">케냐</option>
+                                                        <option value="쿠웨이트">쿠웨이트</option>
+                                                        <option value="태국">태국</option>
+                                                        <option value="튀르키예">튀르키예</option>
+                                                        <option value="헝가리">헝가리</option>
+                                                        <option value="호주">호주</option>
+                                                        <option value="홍콩">홍콩</option>
+                                                        <option value="기타">기타</option>
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="toggle-info-list margin-top-none">
+                                        <div class="toggle-info-item type-wide">
+                                            <div class="toggle-info-title"><strong class="title">이벤트/마케팅 알림 수신</strong>
+                                            </div>
+                                            <div class="ui-toggle-block"><input type="checkbox" class="ui-toggle"
+                                                    id="checkboxToggle"> <label for="checkboxToggle" class="ui-label">
+                                                    <span class="ui-toggle-object"></span> <span
+                                                        class="for-a11y">이벤트/마케팅 알림 수신 동의</span> </label></div>
+                                        </div>
+                                    </div>
+                                    <ul class="wcms-list wcms-size-small wcms-color-gray wcms-margin-normal">
+                                        <li class="wcms-list-item type-dot">
+                                            <div class="wcms-list-contents">알림 수신 동의 시에만 이벤트 응모가 가능하며, 여행 혜택 안내를 받으실 수
+                                                있습니다.</div>
+                                        </li>
+                                        <li class="wcms-list-item type-dot">
+                                            <div class="wcms-list-contents">경품 추첨 시 마케팅 수신 거부 시 당첨자에서 제외되어요.</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="ui-layer__foot margin-top-minus-15">
+                                <div class="ui-buttons">
+                                    <ul class="ui-buttons-list">
+                                        <li class="ui-buttons-item"><button type="button" onclick="marketingNChk();"
+                                                class="ui-button ui-basic-button type-primary">응모 완료</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- // layer 이벤트/마케팅 알림 수신 --> <!-- layer 이벤트/마케팅 알림 수신 -->
+                <div class="layer-wrap layer-wrap--slide layer-wrap--select" data-layer="layer-event-agree-Y">
+                    <div class="layer-container">
+                        <section class="ui-layer">
+                            <div class="ui-layer__head">
+                                <div class="header">
+                                    <h2 class="header__title wcms-margin-none">여행정보 입력하기</h2>
+                                    <div class="header__right"><button type="button"
+                                            class="ui-button header__button header__button--close"
+                                            data-role="layerClose"> <span class="for-a11y">레이어 닫기</span> </button></div>
+                                </div>
+                            </div>
+                            <div class="ui-layer__body">
+                                <div class="ui-layer__body-inner">
+                                    <div class="top_plan_box">
+                                        <h3><img src="images/event/7958/mka_event_contents6_7958.png"
+                                                alt="여행 계획을 등록하고 알림받아요" class="wcms-image" style="width: 70%;"></h3>
+                                        <div class="form-group">
+                                            <div class="row_input_info"><img
+                                                    src="images/event/7958/icon_calendar_7958.png" alt=""
+                                                    class="wcms-image icon-label"> <label for="startDate-Y"
+                                                    class="wcms-size-small">여행시작일</label>
+                                                <div class="ui-input-block type-date"><input type="date"
+                                                        class="ui-input-date" id="startDate-Y" title="일정을 선택해주세요"
+                                                        required="" aria-required="true" data-placeholder="일정을 선택해주세요">
+                                                </div>
+                                            </div>
+                                            <div class="row_input_info"><img
+                                                    src="images/event/7958/ico_location_7958.png" alt=""
+                                                    class="wcms-image icon-label"> <label for="countryList"
+                                                    class="wcms-size-small">여행국가</label>
+                                                <div class="ui-select-block"><select class="ui-select" title="지역 고르기"
+                                                        id="countryList-Y">
+                                                        <option value="-1" disabled="disabled" selected="selected">지역
+                                                            고르기</option>
+                                                        <option value="미국">미국</option>
+                                                        <option value="일본">일본</option>
+                                                        <option value="유럽">유럽</option>
+                                                        <option value="영국">영국</option>
+                                                        <option value="남아공">남아공</option>
+                                                        <option value="노르웨이">노르웨이</option>
+                                                        <option value="뉴질랜드">뉴질랜드</option>
+                                                        <option value="대만">대만</option>
+                                                        <option value="덴마크">덴마크</option>
+                                                        <option value="마카오">마카오</option>
+                                                        <option value="말레이시아">말레이시아</option>
+                                                        <option value="멕시코">멕시코</option>
+                                                        <option value="몽골">몽골</option>
+                                                        <option value="미얀마">미얀마</option>
+                                                        <option value="바레인">바레인</option>
+                                                        <option value="베트남">베트남</option>
+                                                        <option value="브라질">브라질</option>
+                                                        <option value="사우디">사우디</option>
+                                                        <option value="스웨덴">스웨덴</option>
+                                                        <option value="스위스">스위스</option>
+                                                        <option value="싱가포르">싱가포르</option>
+                                                        <option value="아랍에미리트">아랍에미리트</option>
+                                                        <option value="이스라엘">이스라엘</option>
+                                                        <option value="이집트">이집트</option>
+                                                        <option value="인도">인도</option>
+                                                        <option value="인도네시아">인도네시아</option>
+                                                        <option value="중국">중국</option>
+                                                        <option value="체코">체코</option>
+                                                        <option value="카타르">카타르</option>
+                                                        <option value="캄보디아">캄보디아</option>
+                                                        <option value="캐나다">캐나다</option>
+                                                        <option value="케냐">케냐</option>
+                                                        <option value="쿠웨이트">쿠웨이트</option>
+                                                        <option value="태국">태국</option>
+                                                        <option value="튀르키예">튀르키예</option>
+                                                        <option value="헝가리">헝가리</option>
+                                                        <option value="호주">호주</option>
+                                                        <option value="홍콩">홍콩</option>
+                                                        <option value="기타">기타</option>
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="wcms-list wcms-size-small wcms-color-gray wcms-margin-normal">
+                                        <li class="wcms-list-item type-dot">
+                                            <div class="wcms-list-contents">알림 수신 동의 시에만 이벤트 응모가 가능하며, 여행 혜택 안내를 받으실 수
+                                                있습니다.</div>
+                                        </li>
+                                        <li class="wcms-list-item type-dot">
+                                            <div class="wcms-list-contents">경품 추첨 시 마케팅 수신 거부 시 당첨자에서 제외되어요.</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="ui-layer__foot margin-top-minus-15">
+                                <div class="ui-buttons">
+                                    <ul class="ui-buttons-list">
+                                        <li class="ui-buttons-item"><button type="button" onclick="marketingYChk();"
+                                                class="ui-button ui-basic-button type-primary">응모 완료</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- // layer 이벤트/마케팅 알림 수신 -->
+                <script type="text/javascript">
+                    document.getElementById("startDate-N").valueAsDate = new Date();
+                </script>
+
+                <!-- //본문내용 -->
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

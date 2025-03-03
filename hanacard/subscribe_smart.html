@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>하나카드 원큐페이 통합</title>
+
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- favicon -->
+	<link rel="icon" href="./images/common/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="512x512" href="./images/common/appicon-512.png" />
+	<!-- //favicon -->
+
+	<!-- style -->
+	<link type="text/css" rel="stylesheet" href="./css/common.css" />
+	<link type="text/css" rel="stylesheet" href="./css/ui-style.css" />
+	<link type="text/css" rel="stylesheet" href="./css/page-style.css" />
+	<!-- //style -->
+</head>
+
+<body>
+	<div id="wrap">
+		<div class="layout-wrap">
+			<!-- fix top area -->
+			<!-- <div class="fix-top-wrap">
+				<header class="header">
+					<div class="header-left">
+						<button type="button" class="header-button type-back"><span class="for-a11y">이전</span></button>
+						<h1 class="header-title">스마트할인팩</h1>
+					</div>
+					<div class="header-right">
+						<button type="button" class="header-button type-menu"><span class="for-a11y">메뉴</span></button>
+					</div>
+				</header>
+			</div> -->
+			<!-- //fix top area -->
+
+			<!-- [2024-11-18 : shj] 구독서비스 UI 개편 subscribe-wrap 추가 -->
+			<div class="contents-wrap subscribe-wrap">
+				<div class="page-contents">
+					<div class="page-section">
+						<h2 class="page-title top-title">
+							<span class="point-title">
+								<span class="color-primary">월 9,900원</span>으로<br>
+							</span>
+							최대 3.3만원 쿠폰 혜택!
+						</h2>
+						<img src="./images/subscribe/smart-title.png" alt="" class="title-img">
+					</div>
+					<div class="page-section">
+						<div class="benefit-accordion">
+							<div class="accordion-list js-ui-accordion" data-once="true">
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic-store.png" alt="">
+										<strong class="accordion-opener-title">대형마트 <span class="color-primary">1만원</span><br>쿠폰 혜택</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">혜택</p>
+												<p>5,000원 대형마트 모바일 상품권 2장 제공</p>
+												<p class="benefit-contents-title">이용방법</p>
+												<ul class="info-list type-inherit type-outside">
+													<li class="info-item">가입 익일 쿠폰 문자 발송, 다음달 쿠폰은 이전 쿠폰 유효기간 만료 시 발급</li>
+													<li class="info-item">매월 이마트, 홈플러스/홈플러스 익스프레스/롯데마트 중 택 1 발급</li>
+												</ul>
+												<p class="benefit-contents-title">이용처</p>
+												<p>이마트, 홈플러스, 홈플러스 익스프레스, 롯데마트</p>												
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic-shopping.png" alt="">
+										<strong class="accordion-opener-title">쇼핑몰 <span class="color-primary">2만원</span><br>쿠폰 혜택</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">혜택</p>
+												<p>5,000원 온라인 쇼핑몰 쿠폰 4장 제공</p>
+												<p class="benefit-contents-title">이용방법</p>
+												<p>가입 익일 쿠폰 문자 발송, 다음달 쿠폰은 매월 1일 쿠폰 문자 수신 후 사용</p>
+												<p class="benefit-contents-title">이용처</p>
+												<p>G마켓, 어바웃펫, 펫프렌즈</p>	
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic-coffee.png" alt="">
+										<strong class="accordion-opener-title">커피 <span class="color-primary">3천원</span><br>쿠폰 혜택</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">혜택</p>
+												<p>매월 메가커피 3천원 금액권 지급</p>
+												<p class="benefit-contents-title">이용방법</p>
+												<p>가입 익일 쿠폰 문자 발송, 다음달 쿠폰은 매월 1일 쿠폰 문자 수신 후 사용</p>
+												<p class="benefit-contents-title">이용처</p>
+												<p>메가커피</p>	
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item js-ui-accordion__item">
+									<button type="button" class="accordion-opener js-ui-accordion__opener">
+										<img src="./images/subscribe/ic-insure.png" alt="">
+										<strong class="accordion-opener-title">구매물품보상보험<br>(해외직구 포함)</strong>
+									</button>
+									<div class="js-ui-accordion__layer">
+										<div class="accordion-contents">
+											<div class="accordion-section-contents">
+												<p class="benefit-contents-title">혜택</p>
+												<p>보험기간 중 발생한 도난, 화재 또는 파손으로 손해가 발생한 경우 수리비용 또는 대체비용을 보상(자기부담금 제외) / 최대 100만원</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="page-section">
+						<h2 class="middle-title">상세혜택</h2>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/smart-benefit01.png" alt="혜택1. 이마트, 홈플러스, 홈플러스 익스프레스, 롯데마트 쿠폰 이미지" class="item-img">
+							<p class="item-title">대형마트 <span class="font-weight-bold"><span class="color-primary">1만원</span> 쿠폰 혜택</span></p>
+							<p class="item-desc">매월 이마트/홈플러스/홈플러스 익스프레스/롯데마트 중 택 1 발급</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/smart-benefit02.png" alt="혜택2. G마켓, 어바웃펫, 펫프렌즈 쿠폰 이미지" class="item-img">
+							<p class="item-title">쇼핑몰 <span class="font-weight-bold"><span class="color-primary">2만원</span> 쿠폰 혜택</span></p>
+							<p class="item-desc">매월 G마켓/어바웃펫/펫프렌즈 중 택 1 발급</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/smart-benefit03.png" alt="혜택3. 메가커피 쿠폰 이미지" class="item-img">
+							<p class="item-title">커피 <span class="font-weight-bold"><span class="color-primary">3천원</span> 쿠폰 혜택</span></p>
+							<p class="item-desc">매월 메가커피 3천원 금액권 지급</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/smart-benefit04.png" alt="혜택4. 보장증명서 예시 이미지" class="item-img">
+							<p class="item-title"><span class="font-weight-bold">구매물품보상보험</span> (해외직구 포함)</p>
+							<p class="item-desc">보험기간 중 발생한 도난, 화재 또는 파손으로 손해가 발생한 경우 수리비용 또는 대체비용을 보상(자기부담금 제외) / 최대 100만원</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/smart-benefit05.png" alt="혜택5. 반려동물 건강분석 예시 이미지" class="item-img">
+							<p class="item-title">반려동물 <span class="font-weight-bold">건강분석</span></p>
+							<p class="item-desc">반려동물 뒷모습 촬영을 통해 슬개골 탈구 위험도 측정과 위험도에 따른 솔루션을 제공, 
+								간단한 문진을 통한 부위별 건강점수 및 관리 방법을 제공</p>
+						</div>
+						<div class="detail-benefit-item">
+							<img src="./images/subscribe/smart-benefit06.png" alt="혜택6. 반려동물 매거진 예시 이미지" class="item-img">
+							<p class="item-title">반려동물 <span class="font-weight-bold">매거진</span></p>
+							<p class="item-desc">반려동물 건강, 질환, 품종, 꿀팁 등 매달 다양한 정보 제공</p>
+						</div>
+
+					</div>
+					<div class="page-section">
+						<div class="menu-link-area">
+							<ul class="menu-link-list">
+								<li class="menu-link-item"><a href="javascript:void(0)" class="ui-arrow-block menu-link-button"
+										role="button">상품 이용약관 안내</a></li>
+							</ul>
+						</div>
+						<!-- [2024-11-15 : shj] 신청 중일때 버튼 -->
+						<div class="ui-buttons margin-top-24">
+							<ul class="ui-buttons-list">
+								<li class="ui-buttons-item">
+									<button type="button" class="ui-button ui-basic-button type-secondary">조회/해지</button>
+								</li>
+							</ul>
+						</div>
+						<!-- // [2024-11-15 : shj] 신청 중일때 버튼 -->
+						<div class="accordion-list js-ui-accordion notice-accordion" data-once="true">
+							<div class="accordion-item js-ui-accordion__item">
+								<button type="button" class="accordion-opener js-ui-accordion__opener">
+									<strong class="accordion-opener-title">반드시 확인하세요.</strong>
+								</button>
+								<div class="js-ui-accordion__layer">
+									<div class="accordion-contents">
+										<div class="accordion-section-contents">
+											<ul class="info-list type-inherit type-outside">
+												<li class="info-item">하나 개인 신용/체크 카드 손님 대상 (하나BC/가족/코웨이복지/동백전 체크카드 제외)</li>
+												<li class="info-item">계약 체결 전 상품 설명서 및 상품 약관을 반드시 확인하시기 바랍니다.</li>
+												<li class="info-item">신용카드 발급이 부적정한 경우(개인신용평점 낮음 등) 카드발급이 제한될 수 있습니다.</li>
+												<li class="info-item">카드이용대금과 이에 수반되는 모든 수수료를 지정된 대금 결제일에 상환하여야 합니다.</li>
+												<li class="info-item">금융소비자는 해당 상품 또는 서비스에 대하여 설명을 받을 권리가 있습니다.</li>
+												<li class="info-item font-weight-bold">상환능력에 비해 신용카드 사용액이 과도할 경우, 귀하의 개인신용평점이 하락할 수 있습니다.</li>
+												<li class="info-item font-weight-bold">개인신용평점 하락 시 금융거래와 관련된 불이익이 발생할 수 있습니다.</li>
+												<li class="info-item font-weight-bold">일정기간 원리금을 연체할 경우, 모든 원리금을 변제할 의무가 발생할 수 있습니다.</li>
+												<li class="margin-top-10">준법심의 A-24-2680 (2024.10.31~2025.10.30)</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- [2024-11-15 : shj] 신청 전 버튼 -->
+				<div class="page-buttons type-fixed">
+					<div class="ui-buttons">
+						<ul class="ui-buttons-list">
+							<li class="ui-buttons-item">
+								<button type="button" class="ui-button ui-basic-button type-primary">월 9,900원 신청하기</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- // [2024-11-15 : shj] 신청 전 버튼 -->
+			</div>
+		</div>
+	</div>
+
+	<!-- script -->
+	<script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="./js/swiper.min.js"></script>
+	<script type="text/javascript" src="./js/ui-script.js"></script>
+	<!-- //script -->
+</body>
+
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT</title>
+    <link href="./css/swiper.min.css" rel="stylesheet" />
+    <link href="./css/common.css" rel="stylesheet" />
+    <link href="./css/ui-style.css" rel="stylesheet" />
+    <link href="./css/page-style.css" rel="stylesheet" />
+    <link href="./css/wcms-data-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./js/swiper.min.js"></script>
+    <script type="text/javascript" src="./js/ui-script.js"></script>
+    <style>
+        .wcms-data .wcms-section-group {
+            margin: 0 auto;
+            max-width: 640px;
+        }
+        .event-wrap .cherry_blossom {
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            background: url('./images/event/7843/mka_event_7843_img01.png') center center no-repeat;
+            background-size: cover;
+            perspective: 1000px;
+        }
+
+        .event-wrap .cherry_blossom .petal {
+            position: absolute;
+            background: linear-gradient(-45deg, #ffb6c1 0%, #ffc5d0 40%, #ffdfe6 80%);
+            border-radius: 10% 50% 40% 50%;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            transform-style: preserve-3d;
+            transition: transform 1000ms linear;
+        }
+
+        .event-wrap .cherry_blossom img {
+            position: absolute;
+            top: 10px;
+        }
+
+        .event-wrap .contents-area {
+            position: relative;
+        }
+
+        .event-wrap .contents-area .btn-link img {
+            position: absolute;
+            bottom: 7%;
+            left: 0;
+            right: 0;
+            width: 84%;
+        }
+
+        .event-wrap .contents-area .btn-link.btn-random img {
+            bottom: 11%;
+            width: 70%;
+        }
+
+        @keyframes fall {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0.2;
+
+            }
+        }
+
+
+        .wcms-data .event-data .layer-wrap button,
+        .wcms-data .vip-event-data .layer-wrap button,
+        .wcms-data .event-data .layer-wrap [type='button'],
+        .wcms-data .vip-event-data .layer-wrap [type='button'] {
+            padding: 16px 0;
+            background: none;
+            color: var(--gray-70);
+            font-size: 15px;
+        }
+
+        .ui-tab-link.js-tabpanel-active {
+            color: var(--basic);
+        }
+
+        .wcms-data a.ui-tab-link {
+            text-decoration: none;
+            color: var(--gray-70);
+        }
+
+        .wcms-data .event-data .layer-wrap .ui-layer__foot button {
+            color: #fff;
+            border-color: var(--primary);
+            background-color: var(--primary);
+        }
+
+        /* 레이어 팝업 스타일 */
+        .layer-wish-event .header__title {
+            text-align: center;
+        }
+
+        .layer-wish-event .ui-layer__body-inner {
+            text-align: center;
+            padding-bottom: 0;
+        }
+
+        .layer-wish-event .ui-layer__body-inner h3.cont-tit {
+            margin-top: 16px;
+            margin-bottom: 0;
+            font-size: 2rem;
+            line-height: 2.3rem;
+        }
+
+        .layer-wish-event .ui-layer__body-inner .layer-gray-box {
+            margin-top: 24px;
+            padding: 15px 35px;
+            background-color: rgb(245, 244, 241);
+            font-size: 1.3rem;
+            line-height: 1.9rem;
+            border-radius: 8px;
+            word-break: keep-all;
+        }
+
+        .layer-wish-event .mission-result-img-box {
+            margin: 0 auto;
+            width: 180px;
+            height: 140px;
+        }
+
+        .layer-wish-event .mission-result-img-box.type-1 {
+            background: url(./images/event/7843/mka_event_7843_img06.png) no-repeat center center;
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-contents padding-top-none padding-bottom-none">
+        <div class="wcms-data">
+            <section class="event-data">
+                <!-- 본문내용 -->
+                <div class="wcms-header-less"></div>
+                <section class="wcms-section-group margin-top-none margin-bottom-none event-wrap">
+                    <div class="wcms-full-block">
+                        <div class="cherry_blossom">
+                            <img src="./images/event/7843/mka_event_7843_img00.png" alt="봄나들이 지원금 100% 드려요"
+                                class="wcms-image">
+                        </div>
+                        <div class="contents-area">
+                            <img src="./images/event/7843/mka_event_7843_img02.png" alt="" class="wcms-image">
+                            <div class="wcms-for-a11y">
+                                <p>봄나들이 가기 좋은 4월</p>
+                                <p>하나페이에서 봄나들이 지원금을 드려요!</p>
+                                <p>응모만 해도 10 하나머니 100% 지급 (10 하나머니는 익일 적립됩니다.)</p>
+                                <p>응모 고객 중 추첨을 통해 1만 하나머니 100명</p>
+                                <p>추가혜택</p>
+                                <p>응모 후 하나카드를 이용하면?
+                                    5만 하나머니 추가 당첨 기회! 50명
+                                    응모 후, 하나카드(개인 신용/체크)로 결제하면 당첨대상이 됩니다.</p>
+                            </div>
+
+
+                            <a href="javascript:void(0);"
+                                onclick="uiJSLayer.open('layer-wish-event');"
+                                class="btn-link">
+                                <img src="./images/event/7843/mka_event_7843_img04.png" alt="응모하기" class="wcms-image">
+                            </a>
+                            <div class="wcms-for-a11y">
+                                <p>하나Pay앱에서만 참여가능한 이벤트입니다.</p>
+                            </div>
+                        </div>
+                        <div class="contents-area">
+                            <img src="./images/event/7843/mka_event_7843_img03.png" alt="" class="wcms-image">
+                            <div class="wcms-for-a11y">
+                                <dl>
+                                    <dt>기간</dt>
+                                    <dd>2024.04.01~2024.04.30</dd>
+                                    <dt>대상</dt>
+                                    <dd>하나 개인 신용/체크카드 소지 회원 &amp; 하나Pay 앱에서 응모한 고객.
+                                        추가혜택은 응모 후, 하나카드(개인 신용/체크)로 결제하면 당첨 대상이 됩니다.</dd>
+                                    <dt>당첨자 당첨 및 지급일</dt>
+                                    <dd>2024년 05월 15일 이내 당첨 및 지급 예정 (10 하나머니는 응모일 익일 적립됩니다.)</dd>
+                                </dl>
+                                <p>1원만 결제해도, 10하나머니부터 케익 쿠폰까지! 100% 당첨되는 랜덤바스도 이용해보세요.</p>
+                            </div>
+
+
+
+                            <a href="https://m.hanacard.co.kr/MKEVT1010M.web?EVN_SEQ=7254"
+                                class="btn-link btn-random">
+                                <img src="./images/event/7843/mka_event_7843_img05.png" alt="랜덤박스 바로가기"
+                                    class="wcms-image">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- layer: 자동응모 -->
+                <div class="layer-wrap layer-wrap--slide layer-wish-event" data-layer="layer-wish-event">
+                    <div class="layer-container">
+                        <section class="ui-layer">
+                            <div class="ui-layer__head">
+                                <div class="header">
+                                    <h2 style="margin: 0; padding-left: 20px;" class="header__title">
+                                        응모 완료!</h2>
+                                    <div class="header__right">
+                                        <button type="button" class="ui-button header__button header__button--close"
+                                            data-role="layerClose">
+                                            <span class="for-a11y">레이어 닫기</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-layer__body">
+                                <div class="ui-layer__body-inner">
+                                    <div class="mission-result-img-box type-1">
+                                        <div class="for-a11y">쿠폰 이미지</div>
+                                    </div>
+                                    <div class="wcms-size-small margin-top-none wcms-color-green">
+                                        10하나머니는 익일 적립됩니다.</div>
+                                    <div class="layer-gray-box" style="font-size: 13px;">1원 결제해도, 10하나머니부터
+                                        케익쿠폰까지<br>100% 당첨되는 랜덤박스도
+                                        이용해보세요.</div>
+                                </div>
+                            </div>
+                            <div class="ui-layer__foot">
+                                <div class="ui-buttons">
+                                    <ul class="ui-buttons-list">
+                                        <li class="ui-buttons-item">
+                                            <a style="text-decoration: none;" href="https://m.hanacard.co.kr/MKEVT1010M.web?EVN_SEQ=7254"
+                                                class="ui-basic-button type-primary" role="button"
+                                                data-role="layerClose">랜덤박스 바로가기</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- layer: 응모완료 -->
+                <div class="layer-wrap layer-wrap--slide layer-wish-event" data-layer="layer-wish-event-done">
+                    <div class="layer-container">
+                        <section class="ui-layer">
+                            <div class="ui-layer__head">
+                                <div class="header">
+                                    <h2 style="margin: 0;" class="header__title">
+                                        이미 응모하셨습니다!</h2>
+                                    <div class="header__right">
+                                        <button type="button" class="ui-button header__button header__button--close"
+                                            data-role="layerClose">
+                                            <span class="for-a11y">레이어 닫기</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-layer__body">
+                                <div class="ui-layer__body-inner">
+                                    <div class="wcms-size-small margin-top-none wcms-color-green">
+                                        추가혜택은 하나카드를 이용하시면<br>자동 응모됩니다.</div>
+                                    <div class="layer-gray-box wcms-size-small" style="font-size: 13px;">
+                                        1원 결제해도, 10하나머니부터 케익쿠폰까지<br>100% 당첨되는 랜덤박스도 이용해보세요.</div>
+                                </div>
+                            </div>
+                            <div class="ui-layer__foot">
+                                <div class="ui-buttons">
+                                    <ul class="ui-buttons-list">
+                                        <li class="ui-buttons-item">
+                                            <a style="text-decoration: none;" href="https://m.hanacard.co.kr/MKEVT1010M.web?EVN_SEQ=7254"
+                                                class="ui-basic-button type-primary" role="button"
+                                                data-role="layerClose">랜덤박스 바로가기</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- //layer: 응모완료 -->
+
+
+                <script>
+
+                    // 기본 값 설정
+                    const defaults = {
+                        speed: 10,
+                        maxSize: 20,
+                        minSize: 15,
+                        newOn: 350
+                    };
+
+                    // 벚꽃 영역 크기를 저장할 변수
+                    var $wrap = $('.cherry_blossom');
+                    let wrapH = $wrap.height();
+                    let wrapW = $wrap.width();
+
+                    // 벚꽃 잎 생성
+                    const $petal = $('<span class="petal"></span>');
+
+                    // 랜덤 회전 값을 생성하는 함수
+                    const getRandomRotate = () => {
+                        const rotateX = 360;
+                        const rotateY = Math.random() * 60 - 30;
+                        const rotateZ = Math.random() * 120 - 30;
+                        const translateX = Math.random() * 10 - 5;
+                        const translateY = Math.random() * 10 - 10;
+                        const translateZ = Math.random() * 15;
+                        return `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px)`;
+                    };
+                    // 무작위 흔들림 애니메이션 배열 생성
+                    const randomSwayAnims = [...Array(10)].map(getRandomRotate);
+
+                    // 특정 요소에 흔들림 애니메이션 적용
+                    const applySwayAnim = (element) => {
+                        const randomSway = randomSwayAnims[Math.floor(Math.random() * randomSwayAnims.length)];
+                        element.css('transform', randomSway);
+                        setTimeout(() => {
+                            applySwayAnim(element);
+                        }, 1000);
+                    };
+
+                    // 벚꽃 잎 생성 함수
+                    const petalGen = () => {
+                        setTimeout(requestAnimationFrame, defaults.newOn, petalGen);
+
+                        const petal = $petal.clone();
+                        const size = Math.floor(Math.random() * (defaults.maxSize - defaults.minSize + 1)) + defaults.minSize;
+                        const startPosLeft = Math.random() * wrapW;
+                        const fallTime = (wrapH * 0.1 + Math.random() * 5) / defaults.speed;
+                        const horizontalOffset = Math.random() * 2 - 1;
+
+                        // 애니메이션 끝나면 제거
+                        petal.on('animationend', () => {
+                            petal.remove();
+                        }).css({
+                            width: size,
+                            height: size,
+                            left: startPosLeft,
+                            position: 'absolute',
+                            animation: `fall ${fallTime}s linear`
+                        }).appendTo($wrap);
+
+                        // 위치 업데이트 함수
+                        const updatePos = () => {
+                            petal.css('left', `+=${horizontalOffset}`);
+                            requestAnimationFrame(updatePos);
+                        };
+
+                        updatePos();
+                        applySwayAnim(petal);
+                    };
+
+
+                    // 창 크기가 변경될 때 문서 크기 업데이트
+                    $(window).resize(() => {
+                        wrapH = $wrap.height();
+                        wrapW = $wrap.width();
+                    });
+
+                    // 로딩 완료 후 벚꽃 잎 생성 시작
+                    $(window).on('load', () => {
+                        requestAnimationFrame(petalGen);
+                    });
+
+                </script>
+
+
+                <!-- //본문내용 -->
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

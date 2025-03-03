@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT</title>
+    <link href="css/swiper.min.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <link href="css/ui-style.css" rel="stylesheet" />
+    <link href="css/page-style.css" rel="stylesheet" />
+    <link href="css/wcms-data-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/ui-script.js"></script>
+    <style>
+        .wcms-data .wcms-section-group {
+            margin: 0 auto;
+            max-width: 640px;
+        }
+
+        .wcms-full-block.event_bg {
+            background-color: #202020;
+        }
+
+        /* button */
+        .wcms-data .event-data .page-buttons.type-sticky {
+            position: sticky;
+            position: -webkit-sticky;
+            left: 0;
+            bottom: 0;
+            padding: 0 0 20px;
+            border-top: 0;
+            background-color: #303030;
+        }
+
+        .wcms-data .wcms-button.button_apply {
+            margin-top: -20px;
+            border: 1px solid #00b17c;
+            background-color: #00b17c;
+        }
+
+        .wcms-data .wcms-button.button_openrun {
+            margin-top: -20px;
+            border: 1px solid #fa0f5f;
+            background-color: #fa0f5f;
+        }
+
+
+        /* top contents */
+        .top_openRun_container {
+            overflow: hidden;
+            position: relative;
+            /* width: 100%; */
+            height: calc(100vh - 50px);
+            background: no-repeat url('images/event/7945/mka_event_7945_top_bg.png') 100% / cover;
+        }
+
+        .top_openRun_container .txt_title {
+            width: 80%;
+            margin-top: 55px;
+        }
+
+        .top_openRun_container .txt_date {
+            width: 68%;
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .top_openRun_container .bell_contents {
+            position: relative;
+        }
+
+        .top_openRun_container .frame {
+            width: 80%;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            top: 15vh;
+            opacity: 0;
+            animation: frame-animation 1s cubic-bezier(0.05, 1, 0.88, 1) forwards;
+        }
+
+        .top_openRun_container .bell {
+            width: 42%;
+            height: auto;
+            position: absolute;
+            left: 52%;
+            transform: translate(-50%, 0);
+            top: 12vh;
+            opacity: 0;
+            transform-origin: 20% 0;
+            animation: bell-animation 10s 0.6s cubic-bezier(0.05, 1, 0.88, 1) forwards;
+        }
+
+        .top_openRun_container .plane {
+            width: 39%;
+            height: auto;
+            position: absolute;
+            left: -200px;
+            bottom: -200px;
+            animation: plane-animation 0.7s cubic-bezier(0.05, 1, 0.88, 1) forwards;
+        }
+
+        .top_openRun_container .bag {
+            width: 50%;
+            height: auto;
+            position: absolute;
+            right: -200px;
+            bottom: -200px;
+            animation: bag-animation 0.7s 0.3s cubic-bezier(0.05, 1, 0.88, 1) forwards;
+        }
+
+        @keyframes frame-animation {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(-50%, -50px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bell-animation {
+            0% {
+                transform: translate(-50%, 0) rotate(0);
+                opacity: 0;
+            }
+
+            10% {
+                transform: translate(-50%, -10vh) rotate(0);
+                opacity: 1;
+            }
+
+            11% {
+                transform: translate(-50%, -10vh) rotate(-28deg);
+            }
+
+            13% {
+                transform: translate(-50%, -10vh) rotate(26deg);
+            }
+
+            15% {
+                transform: translate(-50%, -10vh) rotate(-24deg);
+            }
+
+            17% {
+                transform: translate(-50%, -10vh) rotate(22deg);
+            }
+
+            19% {
+                transform: translate(-50%, -10vh) rotate(-20deg);
+            }
+
+            21% {
+                transform: translate(-50%, -10vh) rotate(18deg);
+            }
+
+            23% {
+                transform: translate(-50%, -10vh) rotate(-16deg);
+            }
+
+            25% {
+                transform: translate(-50%, -10vh) rotate(14deg);
+            }
+
+            27% {
+                transform: translate(-50%, -10vh) rotate(-12deg);
+            }
+
+            29% {
+                transform: translate(-50%, -10vh) rotate(10deg);
+            }
+
+            31% {
+                transform: translate(-50%, -10vh) rotate(-8deg);
+            }
+
+            33% {
+                transform: translate(-50%, -10vh) rotate(6deg);
+            }
+
+            35% {
+                transform: translate(-50%, -10vh) rotate(-4deg);
+            }
+
+            37% {
+                transform: translate(-50%, -10vh) rotate(2deg);
+            }
+
+            39% {
+                transform: translate(-50%, -10vh) rotate(-1deg);
+            }
+
+            41% {
+                transform: translate(-50%, -10vh) rotate(1deg);
+            }
+
+            100% {
+                transform: translate(-50%, -10vh) rotate(0);
+                opacity: 1;
+            }
+
+        }
+
+
+        @keyframes plane-animation {
+            0% {
+                transform: translate(0, 0) scale(0.9);
+                opacity: 0;
+            }
+
+            70% {
+                transform: translate(240px, -320px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(230px, -300px) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bag-animation {
+            0% {
+                transform: translate(0, 0) scale(0.9);
+                opacity: 0;
+            }
+
+            70% {
+                transform: translate(-190px, -210px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(-170px, -200px) scale(1);
+                opacity: 1;
+            }
+        }
+
+
+        .section_apply {
+            padding: 40px 24px 64px;
+        }
+
+        .section_benefit {
+            padding: 80px 24px;
+            border-radius: 40px 40px 0 0;
+            background-color: #303030;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-contents padding-top-none padding-bottom-none">
+        <div class="wcms-data">
+            <section class="event-data">
+                <!-- 본문내용 -->
+
+                <script>
+
+                    //마케팅 알림 수신팝업 체크
+                    function marketingYNPopupBtnChk() {
+                        uiJSLayer.open("layer-event-agree");
+                    }
+
+
+                    //마케팅 알림 수신 동의
+                    function marketingYNChk() {
+                        if (!$("#checkboxToggle").is(":checked")) {
+                            alert("이벤트/마케팅 알림 수신동의 진행해야 이벤트 참여 가능합니다");
+                            return;
+                        }
+
+                        alert("응모완료하였습니다.");
+                        uiJSLayer.close("layer-event-agree");
+                    }
+                </script>
+                <section class="wcms-section-group wcms-margin-none">
+                    <div class="wcms-header-less"></div>
+                    <div class="wcms-full-block event_bg">
+                        <div class="top_openRun_container">
+                            <img src="images/event/7945/mka_event_7945_top_tit.png" alt="GRAND OPEN EVENT 트래블버킷 오픈런"
+                                class="wcms-image txt_title">
+                            <img src="images/event/7945/mka_event_7945_plane.png" alt="" class="plane">
+                            <img src="images/event/7945/mka_event_7945_bag.png" alt="" class="bag">
+                            <div class="bell_contents">
+                                <img src="images/event/7945/mka_event_7945_frame.png" alt="" class="wcms-image frame">
+                                <img src="images/event/7945/mka_event_7945_bell.png" alt="" class="bell">
+                            </div>
+
+                            <img src="images/event/7945/mka_event_7945_date.png" alt="2024.6.26 트래블버킷이 찾아옵니다."
+                                class="wcms-image txt_date">
+                        </div>
+                        <div>
+                            <div class="section_apply">
+                                <img src="images/event/7945/mka_event_7945_toggle.png" alt="" class="wcms-image"
+                                    style="width: 200px;">
+                                <img src="images/event/7945/mka_event_7945_txt_apply.png" alt="트래블버킷 오픈기념 이벤트"
+                                    class="wcms-image margin-top-15">
+                                <div class="wcms-for-a11y">
+                                    <p>오픈 알림을 신청하세요! (하나Pay앱에서만 참여 가능한 이벤트)</p>
+                                    <p>기간 : 2024년 6월 17일 ~ 6월 26일</p>
+                                    <p>대상 : 하나 개인 신용/체크카드 손님</p>
+                                </div>
+                            </div>
+                            <div class="section_benefit">
+                                <img src="images/event/7945/mka_event_7945_benefit01.png" alt="" class="wcms-image">
+                                <div class="wcms-for-a11y">
+                                    <p>혜택1. 응모 및 알림을 신청하신 분들 중 추첨을 통해
+                                        전세계 라운지 이용권 100명 드려요!
+                                        (정상가 : 56,000원 상당 1인 1매)</p>
+                                    <p>참여방법: 이벤트/마케팅 수신동의하고 이벤트 응모하기
+                                        (이벤트/마케팅 기동의자의 경우 응모 바로가능)</p>
+                                    <p>응모기간 : 2024년 06월 17일 ~ 06월 25일 13시</p>
+                                    <p>지급일 : 2024년 7월 31일 이내 지급 예정
+                                        (경품 추첨 시점에 마케팅 수신 거부 시 당첨자에서 제외)
+                                        (라운지 이용권 유효기간 : 2024년 12월 31일까지, 연장불가)</p>
+                                </div>
+
+
+
+
+                                <img src="images/event/7945/mka_event_7945_benefit01_img.png" alt="Lounge 이미지"
+                                    class="wcms-image margin-top-45">
+                                <div class="page-buttons type-sticky wcms-flex">
+                                    <div class="wcms-flex-cell type-flexible">
+                                        <a href="javascript:void(0);" onclick="marketingYNPopupBtnChk();"
+                                            class="wcms-button button_apply">
+                                            <span class="wcms-button-text">알림받고 응모하기</span>
+                                        </a>
+                                        <!-- <a href="javascript:void(0);" class="wcms-button type-gray margin-top-minus-20">
+                                            <span class="wcms-button-text">응모마감</span>
+                                        </a> -->
+                                    </div>
+                                </div>
+
+
+
+                                <img src="images/event/7945/mka_event_7945_benefit02.png" alt="" class="wcms-image margin-top-50">
+                                <div class="wcms-for-a11y">
+                                    <p>혜택2. 6월 26일 오픈 당일
+                                        응모 대상자 중 오픈런(트래블버킷 방문) 하신
+                                        선착순 1,000명께 $1를 드려요!</p>
+                                    <p>참여방법 : 6월 26일 정오 12시 트래블버킷 오픈 당일
+                                        오픈런 버튼 활성화 되면 클릭! (1인 1회 참여 가능)</p>
+                                    <p>지급일 : 2024년 7월 31일 이내 지급 예정 (외화는 2024년 7월 1일 최종고시환율 기준 원화 환산금액으로
+                                        지급)</p>
+                                </div>
+
+
+
+
+                                <img src="images/event/7945/mka_event_7945_benefit02_img.png" alt=""
+                                    class="wcms-image margin-top-45">
+                                
+                            </div>
+                        </div>
+
+
+
+                        <img src="images/event/7945/mka_event_7945_notice.png" alt="유의사항" class="wcms-image">
+                        <div class="wcms-for-a11y">
+                            <ul>
+                                <li>본 이벤트는 하나Pay앱에서만 참여가능한 이벤트로, 모바일웹에서 참여 시 이벤트대상에서 제외됩니다.</li>
+                                <li>본 이벤트는 이벤트/마케팅 알림 수신 동의 시에만 여행혜택 정보를 받으실 수 있으며, 경품 추첨 시점에 마케팅 수신 거부 시 당첨자에서 제외됩니다.
+                                </li>
+                                <li>인천공항 라운지는 더라운지의 책임하에 운영되며, 자세한 내용은 더라운지 고객센터에서 확인 가능합니다.
+                                    (더라운지 고객센터 : 1811-7437 / 9:00~17:30 주말,공휴일 휴무)</li>
+                                <li>혜택 제공 시점에 정상 카드 보유시 혜택이 제공되며, 혜택 제공 시점에 본인회원의 휴대폰번호가 하나카드에 정상 등록되어 있지 않을 경우 쿠폰이 발송되지
+                                    않을 수 있습니다.
+                                </li>
+                                <li>혜택 2의 경우, 혜택 1 기간 내에 응모하셔야 대상에 포함됩니다.</li>
+                                <li>혜택 2의 경우, 해당 이벤트 페이지 ‘오픈런’ 버튼을 통해 트래블버킷 접속시 선착순에 카운팅 됩니다.</li>
+                                <li>혜택 지급일 이전에 하나카드 해지 또는 탈회 시 혜택 제공이 불가합니다.</li>
+                                <li>본 이벤트는 하나카드 사정에 따라 사전 고지 없이 변경되거나 조기 종료될 수 있습니다.</li>
+                                <li>계약체결 전 상품 설명서 및 상품 약관을 반드시 확인하시기 바랍니다.</li>
+                                <li>신용카드 발급이 부적정한 경우(개인신용평점 낮음 등) 카드발급이 제한될 수 있습니다.</li>
+                                <li>카드이용대금과 이에 수반되는 모든 수수료를 지정된 대금 결제일에 상환하여야 합니다.</li>
+                                <li>금융소비자는 해당 상품 또는 서비스에 대하여 설명을 받을 권리가 있습니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- layer 이벤트/마케팅 알림 수신 -->
+                <div class="layer-wrap layer-wrap--slide layer-wrap--select" data-layer="layer-event-agree">
+                    <div class="layer-container">
+                        <section class="ui-layer">
+                            <div class="ui-layer__head">
+                                <div class="header">
+                                    <h2 class="header__title wcms-margin-none">알림받고 응모하기</h2>
+                                    <div class="header__right">
+                                        <button type="button" class="ui-button header__button header__button--close"
+                                            data-role="layerClose">
+                                            <span class="for-a11y">레이어 닫기</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-layer__body">
+                                <div class="ui-layer__body-inner">
+                                    <div class="toggle-info-list margin-top-none">
+                                        <div class="toggle-info-item type-wide">
+                                            <div class="toggle-info-title">
+                                                <strong class="title">이벤트/마케팅 알림 수신</strong>
+                                            </div>
+                                            <div class="ui-toggle-block">
+                                                <input type="checkbox" class="ui-toggle" id="checkboxToggle">
+                                                <label for="checkboxToggle" class="ui-label">
+                                                    <span class="ui-toggle-object"></span>
+                                                    <span class="for-a11y">이벤트/마케팅 알림 수신 동의</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="wcms-list wcms-size-small wcms-color-gray wcms-margin-small">
+                                        <li class="wcms-list-item" data-symbol="※">
+                                            <div class="wcms-list-contents">
+                                                알림 수신 동의 시에만 이벤트 응모가 가능하며, <br>여행 혜택 안내를 받으실 수 있습니다.</div>
+                                        </li>
+                                        <li class="wcms-list-item" data-symbol="※">
+                                            <div class="wcms-list-contents">
+                                                경품 추첨 시 마케팅 수신 거부 시 당첨자에서 제외되어요.</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="ui-layer__foot margin-top-minus-15">
+                                <div class="ui-buttons">
+                                    <ul class="ui-buttons-list">
+                                        <li class="ui-buttons-item">
+                                            <button type="button" class="ui-button ui-basic-button type-primary"
+                                                onclick="marketingYNChk();">응모
+                                                완료</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- // layer 이벤트/마케팅 알림 수신 -->
+
+                <!-- //본문내용 -->
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

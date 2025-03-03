@@ -1,0 +1,96 @@
+/* 갤럭시 폴드 대응 반응형 class="resize_320" ui-script.js 에서 추가시킴. 폴드 대응 css는 여기에 적용 */
+
+/* 마이 메인 */
+/*.resize_320 .header-button.type-text{font-size: 1.2rem;} //240221_폰트사이즈이슈 테스트 */
+/* .resize_320 .header-button.type-text,
+.resize_320 .header-right.simple-icon-type .for-a11y {font-size: 1.2rem;} */
+.resize_320 .header-button + .header-button, .resize_320 .header-button + .ui-basic-button, .resize_320 .ui-basic-button + .ui-basic-button {margin-left: 10px;}
+.resize_320 .new-mypage-wrap {padding: 0 1.5rem;}
+.resize_320 .new-mypage-section {padding: 2rem 1.5rem;}
+.resize_320 .reset-margin-padding {padding: 0;}
+.resize_320 .wide .mypage-top-button-text,
+.resize_320 .my-hanamoney.type-02 .my-hanamoney-cost.type-login {font-size: 1.7rem;}
+.resize_320 .my-hanamoney.type-02 .my-hanamoney-title-link.type-02::before {width: 24px; height: 24px; margin: -2px 2px 0 0;}
+.resize_320 .mypage-top-buttons.type-03 .mypage-top-button.wide .mypage-top-button-text:before {width: 24px; height: 24px;}
+
+.resize_320 .new-my-menu-list {display: flex; flex-wrap: wrap;}
+
+.resize_320 .my-hanamoney.type-02 .my-hanamoney-link-02.type-wide-button,
+.resize_320 .exchange-2023 .my-hanamoney-link-02.type-wide-button {padding: 9px 0 9px 15px; font-size: 1.5rem;}
+.resize_320 .exchange-2023 .my-hanamoney.type-02 .my-hanamoney-link-02::after {width: 60px; height: 40px; background-size: 60px 40px;}
+
+.resize_320 .mypage-section-load.section-padding-type-new.amount-tobe-paid.success .months-tab-list ul li {width:48px; font-size: 1.5rem;}
+.resize_320 .link-list-btn {flex-wrap: wrap;}
+.resize_320 .link-list-btn li a {word-break: keep-all;}
+.resize_320 .mypage-section-load.section-padding-type-new.amount-tobe-paid.success .link-list-btn li:last-child {padding: 0 5px;} 
+
+.resize_320 .alert-banner > p {height:auto !important; padding-left: 20px; position: relative; line-height: 18px;}
+.resize_320 .alert-banner > p::before {content: ''; display: block; width: 14px; height: 14px; background: url('/images/mypage_new_images/icon-info.png') no-repeat 50% / 14px; position: absolute; left: 0; top: 0;}
+.resize_320 .alert-banner > p img {display: none;}
+.resize_320 .alert-banner > p .color-wrong {margin-left:0;}
+
+.resize_320 .new-image-banner .new-image-banner-text {padding-top: 12px;}
+
+.resize_320 .mypage-section-load .usage-default-right {width:auto; padding-left:5px;}
+.resize_320 .mypage-section-load .new-logo-image {width:40px; margin-top:5px;}
+.resize_320 .slide-card3.myCard.success .card-select-list {right:15px;}
+.resize_320 .slide-card3.myCard.success .new-card-image-inner {margin-right:0;}
+.resize_320 .new-mypage-section-content .new-card-text-wrap .card-usage-num {font-size: 18px;}
+.resize_320 .slide-card3 .new-mypage-section.reset-margin-padding > div > a {display: flex; width:100%; height: 100%; justify-content: center; align-items: center;}
+.resize_320 .slide-card3 .slide-card-item a > img {width:100%; height: auto !important; box-sizing: border-box;}
+
+/* 챗봇 오픈 길이 수정 */
+.resize_320 .chat-floating-wrap.open {animation: msg-open-320 7s;}
+.resize_320 .chat-floating-wrap .chat-msg {font-size: 1.4rem;}
+@keyframes msg-open-320 {
+	0%{width: 5.4rem; height: 5.4rem;}
+	15%{width: 85vw; height: 4rem;}
+	85%{width: 85vw; height: 4rem;}
+	0%{width: 5.4rem; height: 5.4rem;}
+}
+
+/* 건별즉시결제 */
+.resize_320 .top-button-link-wrap,
+.resize_320 .page-contents.type-step {padding:15px;}
+.resize_320 .usage-default-title,
+.resize_320 .usage-default-sum {font-size: 1.6rem;}
+.resize_320 .usage-default-right {margin-left: 12px; min-width: 75px;}
+.resize_320 .usage-default-opener {width: 22px;}
+
+/* 라이프한눈에 */
+.resize_320 .life-main-list {flex-wrap: wrap;}
+.resize_320 .new-life-main-item {margin-right: 0; width: 100%; max-width: none;}
+.resize_320 .new-life-main-text span br {display: none;}
+
+/* 231214 장기카드 대출 (한동희) */
+.resize_320 .card-loan-page .page-contents{
+    padding: 30px 14px 35px;
+}
+.resize_320 .card-loan-page .menu-banner-item .menu-banner-link{
+    font-size: 1.3rem;
+    padding: 0 15px;
+    word-break: keep-all;
+}
+.resize_320 .card-loan-page .menu-banner-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* 231218_쿠폰페이지 개선 (이화정) */
+.resize_320 .coupons-list.type-grid {grid-template-columns: 1fr}
+
+/* [2024-05-22 마이 명세서 간격조정 : HDH] */
+.resize_320 .link-list-btn {
+    left: 15px;
+    bottom: 20px;
+    /* width: calc(100% - 30px); */
+}
+.resize_320 .link-list-btn li a {
+    font-size: 1.4rem;
+}
+.resize_320 .link-list-btn li a span.small-text {
+    font-size: 1.1rem;
+}
+.resize_320 .welcome-nav-item .smaller-font-size {
+    font-size: 1.2rem !important;
+}
