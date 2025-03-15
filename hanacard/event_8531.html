@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EVENT</title>
+	<link href="css/swiper.min.css" rel="stylesheet" />
+	<link href="css/common.css" rel="stylesheet" />
+	<link href="css/ui-style.css" rel="stylesheet" />
+	<link href="css/page-style.css" rel="stylesheet" />
+	<link href="css/wcms-data-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/ui-script.js"></script>
+	<style>
+		.wcms-full-block {
+			overflow: hidden;
+		}
+
+		.event-wrapper {
+			background: #caec44 url(./images/event/8531/mka_8531_bg.png) no-repeat 0 30px / 100%;
+		}
+
+		.event-wrapper .img-title {
+			margin: 0 auto;
+			padding: 55px 0 30px;
+			width: auto;
+			height: 206px;
+		}
+
+		.lottery-wrapper {
+			position: relative;
+			padding: 0 20px 20px;
+		}
+
+		.lottery-wrapper .coupon-hand {
+			position: absolute;
+			right: -100px;
+			bottom: -170px;
+			width: 188px;
+			z-index: 99;
+			animation: hand-left 1s forwards infinite;
+		}
+
+		@keyframes hand-left {
+			0% {
+				transform: translate(0, 20px);
+				-webkit-transform: translate(0, 20px);
+			}
+
+			100% {
+				transform: translate(-20px, 0);
+				-webkit-transform: translate(-20px, 0);
+			}
+		}
+
+
+		.lottery-result {
+			position: relative;
+			top: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			min-height: calc(174 / 360 * 100vw);
+			padding: 20px 10px;
+			background: url(./images/event/8531/cou_02.png) no-repeat 0 0 / 100% 100%;
+			box-sizing: border-box;
+		}
+
+		.lottery-result .coupon-img {
+			margin: 0 auto;
+			width: 40%;
+		}
+
+		.lottery-result .coupon-text {
+			margin: 11px 0;
+			text-align: center;
+			font-size: 1.8rem;
+			font-weight: 500;
+			line-height: 26px;
+		}
+
+		.img-loading-before {
+			opacity: 0;
+		}
+
+		.lottery-result .coupon-btn img {
+			width: 60%;
+		}
+
+		.coupon-canvas {
+			position: absolute;
+			top: 0;
+			left: 20px;
+			right: 20px;
+			bottom: 20px;
+		}
+
+		.coupon-done canvas,
+		.coupon-done .coupon-hand {
+			display: none;
+		}
+
+		.alarm-section {
+			padding: 0 24px 55px;
+		}
+
+		.white-box {
+			background: #fefff2;
+		}
+
+		/* 알림받기 버튼 스타일 */
+		.toggle-info-list {
+			margin: 0 auto;
+			padding: 16px 19px;
+			max-width: 680px;
+		}
+
+		.toggle-info-list.main-toggle-alarm {
+			border-radius: 20px;
+			background: #fff;
+		}
+
+		.toggle-info-item.type-wide {
+			padding: 0;
+		}
+
+		.toggle-info-item .ui-toggle-block {
+			top: 13px;
+		}
+
+		.toggle-info-title {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: #111;
+			line-height: 24px;
+			letter-spacing: 0.45px;
+			display: flex;
+			align-items: flex-start;
+		}
+
+		.toggle-info-title img {
+			width: 50px;
+			height: auto;
+			flex-grow: 0;
+			margin-right: 8px;
+			position: relative;
+			top: 2px;
+		}
+
+		.toggle-info-title .info {
+			margin-top: 10px;
+			font-size: 14px;
+			font-weight: normal;
+			color: #999;
+			line-height: normal;
+			letter-spacing: -0.35px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="page-contents padding-top-none padding-bottom-none">
+		<div class="wcms-data">
+			<section class="event-data">
+				<!-- 본문내용 -->
+				<section class="wcms-section-group margin-top-none margin-bottom-none event-wrap">
+					<div class="wcms-full-block">
+						<div class="event-wrapper">
+							<img src="./images/event/8531/mka_8531_title.png" alt="" class="wcms-image img-title">
+							<!-- [2025-02-17: shj] 복권 긁은 후 재접속 시 lottery-wrapper에 coupon-done 클래스 추가 -->
+							<div class="lottery-wrapper">
+								<div class="lottery-result">
+									<img src="./images/event/8531/product.png" alt=""
+										class="wcms-image coupon-img img-loading-before">
+									<p class="coupon-text img-loading-before">CU 트윅스미니초콜릿</p>
+									<a href="javascript:void(0);" class="coupon-btn" role="button"
+										data-role="layerClose">
+										<img src="./images/event/8531/btn8531.png" alt="내 쿠폰함 가기" class="wcms-image">
+									</a>
+								</div>
+								<canvas id="canvas" class="coupon-canvas"></canvas>
+								<img src="./images/event/8531/hand.png" alt="" class="coupon-hand">
+							</div>
+							<div class="pos-relative">
+								<img src="./images/event/8531/mka_8531_02.png" alt="" class="wcms-image">
+							</div>
+							<div class="pos-relative">
+								<img src="./images/event/8531/mka_8531_03.png" alt="" class="wcms-image">
+							</div>
+							<!--알람 기능 시작-->
+							<div class="alarm-section">
+								<!-- 알림설정 미설정 시 보이는 버튼 -->
+								<!-- 마케팅 알림 동의 토글 -->
+								<div class="toggle-info-list margin-top-none main-toggle-alarm">
+									<div class="toggle-info-item type-wide">
+										<div class="toggle-info-title">
+											<img src="./images/event/8531/icon_bell.png" alt="">
+											<div>
+												<p class="title">깜짝 복권이 또 열리면<br>알려드릴까요?</p>
+												<p class="info">알림 신청하신들은 카카오 알림톡으로 알려드려요!<br>알림 신청
+													시, 하나카드 카카오 알림톡 수신동의 처리 됩니다.</p>
+											</div>
+											<!--// 24.08.07 알림신청 이미지 => 텍스트로 변경-->
+										</div>
+										<div class="ui-toggle-block">
+											<input type="checkbox" class="ui-toggle" id="checkboxToggle">
+											<label for="checkboxToggle" class="ui-label">
+												<span class="ui-toggle-object"></span>
+												<span class="for-a11y">랜덤박스
+													알림 받기 수신 동의</span>
+												<!--// 24.08.07 토글 대체 텍스트 수정-->
+											</label>
+										</div>
+									</div>
+								</div>
+								<!--toast alarm-->
+								<div class="ui-toast-alert" id="toastAlert_off"></div>
+								<div class="ui-toast-alert" id="toastAlert_on"></div>
+								<!--// toast alarm-->
+							</div>
+							<!--알람 기능 끝-->
+						</div>
+						<!-- 머니박스 -->
+						<div class="white-box">
+							<div class="pos-relative">
+								<img src="./images/event/8531/mka_8531_04_01.png" alt="" class="wcms-image">
+							</div>
+							<a href="javascript:void(0);" class="btn-link btn-random">
+								<img src="./images/event/8531/mka_8531_04_02.png" alt="머니박스 바로가기" class="wcms-image">
+							</a>
+						</div>
+						<!-- //머니박스 -->
+						<!-- 랜덤박스 -->
+						<div class="white-box">
+							<div class="pos-relative">
+								<img src="./images/event/8531/mka_8531_05_01.png" alt="" class="wcms-image">
+							</div>
+							<a href="javascript:void(0);" class="btn-link btn-random">
+								<img src="./images/event/8531/mka_8531_05_02.png" alt="랜덤박스 바로가기" class="wcms-image">
+							</a>
+						</div>
+						<!-- //랜덤박스 -->
+					</div>
+				</section>
+				<!-- layer: 1-1 최초 참여 시 팝업 -->
+				<div class="layer-wrap layer-wrap--slide layer-wish-event" data-layer="layer-wish-event">
+					<div class="layer-container">
+						<section class="ui-layer">
+							<div class="ui-layer__head">
+								<div class="header">
+									<h2 style="margin: 0; padding-left: 20px;" class="header__title"></h2>
+									<div class="header__right">
+										<button type="button" class="ui-button header__button header__button--close"
+											data-role="layerClose">
+											<span class="for-a11y">레이어
+												닫기</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="ui-layer__body">
+								<div class="ui-layer__body-inner align-center">
+									<img src="./images/event/8531/product.png" alt="" class="wcms-image"
+										style="width: 50%;">
+									<h5 class="wcms-title-medium wcms-margin-small margin-top-20 color-primary">
+										BHC 후라이드
+									</h5>
+									<p class="wcms-title-medium wcms-margin-small margin-bottom-20">
+										당첨 축하드려요!
+									</p>
+									<div class="wcms-size-small margin-top-none wcms-color-black">
+										앞으로도 하나페이 자주 와주세요!
+									</div>
+								</div>
+							</div>
+							<div class="ui-layer__foot">
+								<div class="ui-buttons">
+									<ul class="ui-buttons-list">
+										<li class="ui-buttons-item">
+											<a style="text-decoration: none;" href="javascript:void(0);"
+												class="ui-basic-button type-primary" role="button"
+												data-role="layerClose">내 쿠폰함 가기</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+				<!-- //layer: 1-1 최초 참여 시 팝업 -->
+				<!-- layer : 1-2 이벤트/마케팅 알림 미동의 시 팝업 -->
+				<div class="layer-wrap layer-wrap--slide layer-wrap--select" data-layer="layer-event-agree">
+					<div class="layer-container">
+						<section class="ui-layer">
+							<div class="ui-layer__head">
+								<div class="header">
+									<h2 class="header__title wcms-margin-none"></h2>
+									<div class="header__right">
+										<button type="button" class="ui-button header__button header__button--close"
+											data-role="layerClose">
+											<span class="for-a11y">레이어
+												닫기
+											</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="ui-layer__body">
+								<div class="ui-layer__body-inner">
+									<div class="toggle-info-list margin-top-none">
+										<div class="toggle-info-item type-wide">
+											<div class="toggle-info-title">
+												<strong class="title">이벤트/마케팅 알림 수신
+												</strong>
+											</div>
+											<div class="ui-toggle-block">
+												<input type="checkbox" class="ui-toggle" id="checkboxTogglePop">
+												<label for="checkboxTogglePop" class="ui-label">
+													<span class="ui-toggle-object"></span>
+													<span class="for-a11y">이벤트/마케팅 알림 수신 동의</span>
+												</label>
+											</div>
+										</div>
+									</div>
+									<ul class="wcms-list wcms-size-small wcms-color-gray wcms-margin-normal">
+										<li class="wcms-list-item" data-symbol="※">
+											<div class="wcms-list-contents">
+												알림 수신 동의시에만 이벤트 응모가
+												가능하며,<br>이벤트 안내를 받아 보실 수 있어요.
+											</div>
+										</li>
+										<li class="wcms-list-item" data-symbol="※">
+											<div class="wcms-list-contents">경품 추첨시점 마케팅 수신 거부 시
+												당첨자에서 제외되어요.
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="ui-layer__foot margin-top-minus-15">
+								<div class="ui-buttons">
+									<ul class="ui-buttons-list">
+										<li class="ui-buttons-item">
+											<button type="button" class="ui-button ui-basic-button type-primary">응모
+												완료</button>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+				<!-- // layer : 1-2 이벤트/마케팅 알림 미동의 시 팝업 -->
+				<!-- layer: 1-3 기응모 시 팝업 -->
+				<div class="layer-wrap layer-wrap--slide layer-wish-event" data-layer="layer-wish-event-done">
+					<div class="layer-container">
+						<section class="ui-layer">
+							<div class="ui-layer__head">
+								<div class="header">
+									<h2 style="margin: 0;" class="header__title align-center">
+										이미 참여하셨어요!
+									</h2>
+									<div class="header__right">
+										<button type="button" class="ui-button header__button header__button--close"
+											data-role="layerClose">
+											<span class="for-a11y">레이어 닫기
+											</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="ui-layer__body">
+								<div class="ui-layer__body-inner align-center">
+									<div class="wcms-size-small margin-top-none wcms-color-black">
+										앞으로도 하나페이 자주 와주세요!</div>
+								</div>
+							</div>
+							<div class="ui-layer__foot">
+								<div class="ui-buttons">
+									<ul class="ui-buttons-list">
+										<li class="ui-buttons-item"><a style="text-decoration: none;"
+												href="javascript:void(0);" class="ui-basic-button type-primary"
+												role="button" data-role="layerClose">내 쿠폰함 가기</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+				<!-- //layer: 1-3 기응모 시 팝업 -->
+				<!-- layer: 1-4 대상자가 아닐 경우 팝업 -->
+				<div class="layer-wrap layer-wrap--slide" data-layer="layer-noTarget">
+					<div class="layer-container">
+						<section class="ui-layer">
+							<div class="ui-layer__head">
+								<div class="header">
+									<h2 style="margin: 0;" class="header__title align-center">아쉽지만
+										대상자가 아닙니다.</h2>
+									<div class="header__right"><button type="button"
+											class="ui-button header__button header__button--close"
+											data-role="layerClose"> <span class="for-a11y">레이어
+												닫기</span> </button></div>
+								</div>
+							</div>
+							<div class="ui-layer__foot">
+								<div class="ui-buttons">
+									<ul class="ui-buttons-list">
+										<li class="ui-buttons-item"><a style="text-decoration: none;"
+												href="javascript:void(0);" class="ui-basic-button type-primary"
+												role="button" data-role="layerClose">확인</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+				<!-- //layer: 1-4 대상자가 아닐 경우 팝업 -->
+
+				<!-- //본문내용 -->
+			</section>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		const wrapper = document.querySelector(".lottery-result");
+		const $canvas = document.getElementById("canvas");
+		const context = $canvas.getContext("2d");
+		const { top: canvasTop, left: canvasLeft } = $canvas.getBoundingClientRect();
+		let WIDTH = wrapper.offsetWidth;
+		let HEIGHT = wrapper.offsetHeight;
+		const ERASE_RADIUS = 30;
+		const ERASE_DISTANCE = ERASE_RADIUS / 2; // 지워진 영역(투명한 원)간 임의 간격
+		const dpr = window.devicePixelRatio;
+		const erasedList = [];
+
+		let isDrawing = false;
+		let thresholdOfEraseCount = 0;
+		let isRevealed = false;
+
+		// 이미지 객체 생성
+		let img = new Image();
+		img.src = './images/event/8531/cou_01.png';
+
+		// 이미지가 로드된 후 캔버스에 그리기
+		img.onload = () => {
+			drawImg();
+
+			document.querySelectorAll('.img-loading-before').forEach(item => {
+				item.classList.remove('img-loading-before');
+			});
+		}
+
+		const drawImg = () => {
+			context.drawImage(img, 0, 0, WIDTH, HEIGHT);   // x, y, 너비, 높이
+		}
+
+		const initCanvas = () => {
+			$canvas.style.width = `${WIDTH}px`;
+			$canvas.style.height = `${HEIGHT}px`;
+			$canvas.width = WIDTH * dpr;
+			$canvas.height = HEIGHT * dpr;
+			context.scale(dpr, dpr);
+
+			context.beginPath();
+			drawImg();
+
+			// 자동으로 결과를 보여줄 임계치 설정
+			const col = Math.ceil(WIDTH / (ERASE_RADIUS * 2 + ERASE_DISTANCE));
+			const row = Math.ceil(HEIGHT / (ERASE_RADIUS * 2 + ERASE_DISTANCE));
+			thresholdOfEraseCount = col * row;
+		};
+
+		const handleDrawingStart = () => {
+			if (!isDrawing) {
+				isDrawing = true;
+			}
+		};
+
+		const getCanvasOffset = () => {
+			const { top, left } = $canvas.getBoundingClientRect();
+			return { canvasTop: top, canvasLeft: left };
+		}
+
+		const handleMouseMove = (event) => {
+			event.preventDefault();
+			const { offsetX, offsetY } = event;
+			const { canvasTop, canvasLeft } = getCanvasOffset();
+			handleDrawing(offsetX, offsetY);
+		};
+
+		const handleTouchMove = (event) => {
+			event.preventDefault();
+			const { clientX, clientY } = event.changedTouches[0];
+			const { canvasTop, canvasLeft } = getCanvasOffset();
+			handleDrawing(clientX - canvasLeft, clientY - canvasTop);
+		};
+
+		const drawTransparentCircle = (x, y) => {
+			context.save();
+			context.globalCompositeOperation = "destination-out";
+			context.beginPath();
+			context.arc(x, y, ERASE_RADIUS, 0, 2 * Math.PI, false);
+			context.fill();
+			context.closePath();
+			context.restore();
+
+			const checkList = erasedList.filter(({ x: posX, y: posY }) => {
+				const distX = posX - x;
+				const distY = posY - y;
+				return (
+					Math.sqrt(distX * distX + distY * distY) < ERASE_RADIUS + ERASE_DISTANCE
+				);
+			});
+			if (!checkList.length) {
+				erasedList.push({ x, y });
+			}
+		};
+
+		const handleDrawing = (x, y) => {
+			if (isDrawing) {
+				if (erasedList.length < thresholdOfEraseCount) {
+					drawTransparentCircle(x, y);
+				} else {
+					if (!isRevealed) {
+						context.clearRect(0, 0, WIDTH, HEIGHT);
+						isRevealed = true;
+
+						uiJSLayer.open('layer-wish-event');
+						$canvas.remove();
+						document.querySelector(".coupon-hand").remove();
+					}
+				}
+			}
+		};
+
+		const handleDrawingEnd = () => {
+			if (isDrawing) {
+				isDrawing = false;
+			}
+		};
+
+		initCanvas();
+		$canvas.addEventListener("mousedown", handleDrawingStart);
+		$canvas.addEventListener("touchstart", handleDrawingStart);
+		$canvas.addEventListener("mousemove", handleMouseMove);
+		$canvas.addEventListener("touchmove", handleTouchMove);
+		$canvas.addEventListener("mouseup", handleDrawingEnd);
+		$canvas.addEventListener("touchend", handleDrawingEnd);
+
+		window.addEventListener("scroll", () => {
+			const { canvasTop, canvasLeft } = getCanvasOffset();
+		});
+
+
+		window.addEventListener("resize", () => {
+			location.reload();
+		});
+	</script>
+
+</body>
+
+</html>

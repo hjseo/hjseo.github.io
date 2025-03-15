@@ -6,9 +6,14 @@ var $frame = $('#frame');
 var sliderArr = [];
 // 이미지 리스트
 var imgList = [
-    [   {src: "./images/hana_event7945.png"},
-        {src: "./images/hana_event7843.png"},
+    [   {src: "./images/hana_event8531.png"},
         {src: "./images/hana_subscribe.png"}
+    ],
+    [   
+        {src: "./images/hana_event7945.png"}
+    ],
+    [   
+        {src: "./images/hana_event7843.png"}
     ],
     [   {src: "./images/samsungFire.png"},
         {src: "./images/samsungFire2.png"},
