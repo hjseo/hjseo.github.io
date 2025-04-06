@@ -134,7 +134,9 @@ jQuery(function($) {
     });*/
 
     $(window).resize(function() {
-        document.location.reload();
+        if ($(window).width() >= 1024) {
+            document.location.reload();
+        }
     });
 
     // 웹접근성 - enter를 눌렀을 때에도 클릭이 되도록
