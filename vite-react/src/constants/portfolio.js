@@ -193,7 +193,7 @@ export const portfolioItems = [
         alt: '본IF Admin 캠페인 설정'
       }
     ],
-    tags: ['Drag&Drop', 'Sortable', 'Accordion', '#jQuery 라이브러리', '동적 기능 구현', 'jstl'],
+    tags: ['Drag&Drop', 'Sortable', 'Accordion', 'jQuery 라이브러리', '동적 기능 구현', 'jstl'],
     progress: 100,
     links: [
       {
