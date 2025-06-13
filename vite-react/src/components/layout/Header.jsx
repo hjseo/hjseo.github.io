@@ -4,11 +4,16 @@ export const Header = ({ isDarkMode, toggleDarkMode, isNavOpen, setIsNavOpen }) 
   const theme = getThemeClasses(isDarkMode);
   const transitions = getTransitionClasses();
 
+  const handleClick = (e, message) => {
+    e.preventDefault();
+    alert(message);
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 ${isDarkMode ? 'bg-gray-900/80' : 'bg-white/80'} backdrop-blur-sm ${transitions.color}`} role="banner">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="메인 네비게이션">
         <h1 className={`text-2xl font-bold ${theme.accent}`}>
-          <a href="javascript:;" className="focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 flex items-center gap-2">
+          <a href="/" className="focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 flex items-center gap-2">
             <img src="/src/assets/hjs-logo.png" alt="서혜정의 포트폴리오 로고" />
             <span>Portfolio</span>
           </a>
@@ -31,8 +36,8 @@ export const Header = ({ isDarkMode, toggleDarkMode, isNavOpen, setIsNavOpen }) 
               </svg>
             )}
           </button>
-          <a href="javascript:;" onClick={() => alert('이름: 서혜정, 생년월일: 1992.01.23 \n기억해 주세요~')} className={`hover:${theme.accent} focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1`}>ABOUT</a>
-          <a href="javascript:;" onClick={() => alert('seohj92@gmail.com \n스팸은 안 받아요~')} className={`hover:${theme.accent} focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1`}>CONTACT</a>
+          <a href="#" onClick={(e) => handleClick(e, '이름: 서혜정, 생년월일: 1992.01.23 \n기억해 주세요~')} className={`hover:${theme.accent} focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1`}>ABOUT</a>
+          <a href="#" onClick={(e) => handleClick(e, 'seohj92@gmail.com \n스팸은 안 받아요~')} className={`hover:${theme.accent} focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1`}>CONTACT</a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -75,8 +80,8 @@ export const Header = ({ isDarkMode, toggleDarkMode, isNavOpen, setIsNavOpen }) 
       {/* Mobile Menu */}
       <div className={`md:hidden overflow-hidden ${transitions.default} ${isNavOpen ? 'max-h-40' : 'max-h-0'}`}>
         <div className={`px-4 py-2 ${theme.card} flex flex-col gap-2`}>
-          <a href="javascript:;" onClick={() => alert('이름: 서혜정, 생년월일: 1992.01.23 \n기억해 주세요~')} className={`${isDarkMode ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-cyan-600'} py-2 px-4 rounded-lg ${transitions.color}`}>ABOUT</a>
-          <a href="javascript:;" onClick={() => alert('seohj92@gmail.com \n스팸은 안 받아요~')} className={`${isDarkMode ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-cyan-600'} py-2 px-4 rounded-lg ${transitions.color}`}>CONTACT</a>
+          <a href="#" onClick={(e) => handleClick(e, '이름: 서혜정, 생년월일: 1992.01.23 \n기억해 주세요~')} className={`${isDarkMode ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-cyan-600'} py-2 px-4 rounded-lg ${transitions.color}`}>ABOUT</a>
+          <a href="#" onClick={(e) => handleClick(e, 'seohj92@gmail.com \n스팸은 안 받아요~')} className={`${isDarkMode ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-cyan-600'} py-2 px-4 rounded-lg ${transitions.color}`}>CONTACT</a>
         </div>
       </div>
     </header>
