@@ -10,19 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
+          # cache: 'npm' # 캐시 제거하여 문제 진단
 
       - name: Install Dependencies
-        run: npm install --prefix vite-react # vite-react 디렉토리에서 npm install 실행
+        run: npm install
+        working-directory: vite-react # 명시적으로 working-directory 설정
 
       - name: Build
-        run: npm run build --prefix vite-react # vite-react 디렉토리에서 npm run build 실행
+        run: npm run build
+        working-directory: vite-react # 명시적으로 working-directory 설정
 
       - name: Deploy to GitHub Pages Subfolder
         uses: JamesIves/github-pages-deploy-action@v4
@@ -30,4 +32,4 @@ jobs:
           branch: gh-pages # gh-pages 브랜치로 배포
           folder: vite-react/dist # 저장소 루트에서 vite-react/dist 폴더를 지정
           target-folder: vite-react # gh-pages 브랜치 내의 vite-react 폴더로 배포
-          clean: false # 기존 gh-pages 브랜치 내용을 지우지 않음 
+          clean: true # 명시적으로 clean을 true로 설정 
