@@ -36,5 +36,5 @@ jobs:
         with:
           branch: gh-pages # gh-pages 브랜치로 배포
           folder: vite-react/dist # 저장소 루트에서 vite-react/dist 폴더를 지정
-          target-folder: vite-react # gh-pages 브랜치 내의 vite-react 폴더로 배포
+          target-folder: react-project # gh-pages 브랜치 내의 react-project 폴더로 배포
           clean: true # 명시적으로 clean을 true로 설정 
