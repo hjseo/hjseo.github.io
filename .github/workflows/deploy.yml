@@ -18,19 +18,18 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Change directory to vite-react
-        run: cd vite-react
-
       - name: Install Dependencies
         run: npm ci
+        working-directory: vite-react # vite-react 디렉토리에서 실행
 
       - name: Build
         run: npm run build
+        working-directory: vite-react # vite-react 디렉토리에서 실행
 
       - name: Deploy to GitHub Pages Subfolder
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # gh-pages 브랜치로 배포
-          folder: vite-react/dist # 빌드된 dist 폴더를 지정 (경로 수정)
+          folder: dist # vite-react 디렉토리 내의 dist 폴더를 지정
           target-folder: vite-react # gh-pages 브랜치 내의 vite-react 폴더로 배포
           clean: false # 기존 gh-pages 브랜치 내용을 지우지 않음 
