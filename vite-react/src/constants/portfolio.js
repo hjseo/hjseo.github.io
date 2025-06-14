@@ -198,7 +198,7 @@ export const portfolioItems = [
     links: [
       {
         title: 'CRM Admin',
-        url: 'https://hjseo.github.io/segment'
+        url: 'https://hjseo.github.io/icignalMarketing/html/userTargeting.html'
       }
     ]
   },
