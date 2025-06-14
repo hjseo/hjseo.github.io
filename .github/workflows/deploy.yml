@@ -18,11 +18,13 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Install Dependencies and Build
-        run: |
-          cd vite-react
-          npm ci
-          npm run build
+      - name: Install Dependencies
+        run: npm install
+        working-directory: vite-react # vite-react 디렉토리에서 실행
+
+      - name: Build
+        run: npm run build
+        working-directory: vite-react # vite-react 디렉토리에서 실행
 
       - name: Deploy to GitHub Pages Subfolder
         uses: JamesIves/github-pages-deploy-action@v4
