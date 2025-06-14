@@ -9,7 +9,7 @@ export const Header = ({ isDarkMode, toggleDarkMode, isNavOpen, setIsNavOpen }) 
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="메인 네비게이션">
         <h1 className={`text-2xl font-bold ${theme.accent}`}>
           <a href="javascript:;" className="focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 flex items-center gap-2">
-            <img src="/src/assets/hjs-logo.png" alt="서혜정의 포트폴리오 로고" />
+            <img src="/react-project/images/hjs-logo.png" alt="서혜정의 포트폴리오 로고" />
             <span>Portfolio</span>
           </a>
         </h1>

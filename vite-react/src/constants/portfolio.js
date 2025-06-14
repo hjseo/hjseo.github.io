@@ -4,7 +4,7 @@ export const portfolioItems = [
     title: '[하나카드] PC/MO 유지보수 및 개선',
     images: [
       {
-        url: '/src/assets/images/hana_subscribe.png',
+        url: '/react-project/images/hana_subscribe.png',
         alt: '하나카드 구독 서비스 안내 화면'
       }
     ],
@@ -22,15 +22,15 @@ export const portfolioItems = [
     title: '[하나카드] PC/MO 상시 이벤트',
     images: [
       {
-        url: '/src/assets/images/hana_event8531.png',
+        url: '/react-project/images/hana_event8531.png',
         alt: '하나카드 복권긁기 이벤트'
       },
       {
-        url: '/src/assets/images/hana_event7843.png',
+        url: '/react-project/images/hana_event7843.png',
         alt: '하나카드 벚꽃 이벤트'
       },
       {
-        url: '/src/assets/images/hana_event7945.png',
+        url: '/react-project/images/hana_event7945.png',
         alt: '하나카드 트래블버킷 이벤트'
       }
     ],
@@ -56,15 +56,15 @@ export const portfolioItems = [
     title: '[삼성화재] 멤버십 이벤트',
     images: [
       {
-        url: '/src/assets/images/samsungFire1.png',
+        url: '/react-project/images/samsungFire1.png',
         alt: '삼성화재 멤버십 메인'
       },
       {
-        url: '/src/assets/images/samsungFire2.png',
+        url: '/react-project/images/samsungFire2.png',
         alt: '삼성화재 멤버십 메인'
       },
       {
-        url: '/src/assets/images/samsungFire3.png',
+        url: '/react-project/images/samsungFire3.png',
         alt: '삼성화재 멤버십 상세'
       },
     ],
@@ -82,11 +82,11 @@ export const portfolioItems = [
     title: '[팟빵] PC/MO 유지보수 및 개선',
     images: [
       {
-        url: '/src/assets/images/podbbang1.png',
+        url: '/react-project/images/podbbang1.png',
         alt: '팟빵 랭킹 화면면'
       },
       {
-        url: '/src/assets/images/podbbang2.png',
+        url: '/react-project/images/podbbang2.png',
         alt: '팟빵 오디오북 화면'
       }
     ],
@@ -99,11 +99,11 @@ export const portfolioItems = [
     title: '[알리바바 클라우드] 사이트 구축',
     images: [
       {
-        url: '/src/assets/images/alibabacloud1.png',
+        url: '/react-project/images/alibabacloud1.png',
         alt: '알리바바 클라우드 메인'
       },
       {
-        url: '/src/assets/images/alibabacloud2.png',
+        url: '/react-project/images/alibabacloud2.png',
         alt: '알리바바 클라우드 상세'
       }
     ],
@@ -116,15 +116,15 @@ export const portfolioItems = [
     title: '[클라우드 시큐리티] 사이트 구축',
     images: [
       {
-        url: '/src/assets/images/cloudsecurity1.png',
+        url: '/react-project/images/cloudsecurity1.png',
         alt: '클라우드 시큐리티 메인'
       },
       {
-        url: '/src/assets/images/cloudsecurity2.png',
+        url: '/react-project/images/cloudsecurity2.png',
         alt: '클라우드 시큐리티 상세'
       },
       {
-        url: '/src/assets/images/cloudsecurity3.png',
+        url: '/react-project/images/cloudsecurity3.png',
         alt: '클라우드 시큐리티 상세'
       }
     ],
@@ -142,7 +142,7 @@ export const portfolioItems = [
     title: '[AWS] 클라우드 행사 안내 EDM',
     images: [
       {
-        url: '/src/assets/images/aws1.png',
+        url: '/react-project/images/aws1.png',
         alt: '클라우드 행사 안내 EDM'
       }
     ],
@@ -155,7 +155,7 @@ export const portfolioItems = [
     title: '[경기대학교 원격교육원] 유지보수',
     images: [
       {
-        url: '/src/assets/images/kgu1.png',
+        url: '/react-project/images/kgu1.png',
         alt: '경기대학교 원격교육원 안내 팝업'
       }
     ],
@@ -168,11 +168,11 @@ export const portfolioItems = [
     title: '[메가존] 호스팅케이알(호스팅 서비스) 리뉴얼',
     images: [
       {
-        url: '/src/assets/images/hostingkr1.jpg',
+        url: '/react-project/images/hostingkr1.jpg',
         alt: '호스팅케이알 메인'
       },
       {
-        url: '/src/assets/images/hostingkr2.jpg',
+        url: '/react-project/images/hostingkr2.jpg',
         alt: '호스팅케이알 상세'
       }
     ],
@@ -185,11 +185,11 @@ export const portfolioItems = [
     title: '[본IF(본죽)] CRM 관리자 사이트 구축',
     images: [
       {
-        url: '/src/assets/images/segment1.png',
+        url: '/react-project/images/segment1.png',
         alt: '본IF Admin 캠페인 설정'
       },
       {
-        url: '/src/assets/images/segment2.png',
+        url: '/react-project/images/segment2.png',
         alt: '본IF Admin 캠페인 설정'
       }
     ],
@@ -198,7 +198,7 @@ export const portfolioItems = [
     links: [
       {
         title: 'CRM Admin',
-        url: 'https://hjseo.github.io/icignalMarketing/html/userTargeting.html'
+        url: 'https://hjseo.github.io/segment'
       }
     ]
   },
@@ -207,7 +207,7 @@ export const portfolioItems = [
     title: '[S-Oil e-Biz] CRM 관리자 사이트 구축',
     images: [
       {
-        url: '/src/assets/images/soil1.png',
+        url: '/react-project/images/soil1.png',
         alt: 'S-Oil e-Biz Admin 사이트'
       }
     ],
@@ -220,11 +220,11 @@ export const portfolioItems = [
     title: '[옐로마켓] 서비스/관리자 사이트 리뉴얼',
     images: [
       {
-        url: '/src/assets/images/yellomarket1.png',
+        url: '/react-project/images/yellomarket1.png',
         alt: '옐로마켓 B2C 서비스 스토어 탭'
       },
       {
-        url: '/src/assets/images/yellomarket2.png',
+        url: '/react-project/images/yellomarket2.png',
         alt: '옐로마켓 B2C 서비스 스탬프 탭'
       }
     ],
@@ -242,7 +242,7 @@ export const portfolioItems = [
     title: '[폴라레드] 기업 홈페이지 구축',
     images: [
       {
-        url: '/src/assets/images/polared1.png',
+        url: '/react-project/images/polared1.png',
         alt: '폴라레드 메인'
       }
     ],
