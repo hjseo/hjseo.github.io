@@ -17,6 +17,12 @@
 		.wcms-full-block {
 			overflow: hidden;
 		}
+		.page-contents {
+			padding: 0;
+		}
+		.event-wrap {
+			padding: 0 24px;
+		}
 
 		.event-wrapper {
 			background: #caec44 url(./images/event/8531/mka_8531_bg.png) no-repeat 0 30px / 100%;
@@ -164,15 +170,22 @@
 		.h-screen {
 			height: 100vh;
 		}
+		.h-full {
+			height: 100%;
+		}
+		.overflow-y-auto {
+			overflow-y: auto;
+		}
+
 	</style>
 </head>
 
 <body>
 	<div class="page-contents padding-top-none padding-bottom-none h-screen">
-		<div class="wcms-data">
-			<section class="event-data">
+		<div class="wcms-data h-full">
+			<section class="event-data h-full">
 				<!-- 본문내용 -->
-				<section class="wcms-section-group margin-top-none margin-bottom-none event-wrap">
+				<section class="wcms-section-group margin-top-none margin-bottom-none event-wrap h-full overflow-y-auto">
 					<div class="wcms-full-block">
 						<div class="event-wrapper">
 							<img src="./images/event/8531/mka_8531_title.png" alt="" class="wcms-image img-title">
