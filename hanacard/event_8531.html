@@ -160,11 +160,15 @@
 			line-height: normal;
 			letter-spacing: -0.35px;
 		}
+
+		.h-screen {
+			height: 100vh;
+		}
 	</style>
 </head>
 
 <body>
-	<div class="page-contents padding-top-none padding-bottom-none">
+	<div class="page-contents padding-top-none padding-bottom-none h-screen">
 		<div class="wcms-data">
 			<section class="event-data">
 				<!-- 본문내용 -->
@@ -557,6 +561,10 @@
 			const { canvasTop, canvasLeft } = getCanvasOffset();
 		});
 
+
+		window.addEventListener("resize", () => {
+			location.reload();
+		});
 	</script>
 
 </body>
