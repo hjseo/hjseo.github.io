@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>단톡방 통계, 이렇게 읽으면 더 재미있다 - 수다왕·히트맵·칭호 기준 - 단톡 리포트</title>
+<meta name="description" content="메시지 수, 시간대 히트맵, 월별 추이, 많이 쓴 단어까지 단톡방 통계를 제대로 읽는 법과 단톡 리포트 칭호의 계산 기준을 정리했습니다.">
+<link rel="canonical" href="https://dantokreport.com/guide/read-chat-stats.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="단톡방 통계, 이렇게 읽으면 더 재미있다">
+<meta property="og:description" content="수다왕부터 히트맵까지, 숫자 뒤에 숨은 우리 방 이야기를 읽는 법">
+<meta property="og:url" content="https://dantokreport.com/guide/read-chat-stats.html">
+<meta property="og:image" content="https://dantokreport.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#5b3df5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b3df5'/%3E%3Cpath d='M9 21V13M16 21V9M23 21v-5' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"단톡방 통계, 이렇게 읽으면 더 재미있다","datePublished":"2026-11-25","dateModified":"2026-11-25","author":{"@type":"Person","name":"서혜정"},"publisher":{"@type":"Organization","name":"단톡 리포트"}}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="../"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 21V13M16 21V9M23 21v-5"/></svg></span>단톡 리포트</a>
+    <nav aria-label="주요 메뉴"><a href="../">대화 분석하기</a><a href="./">가이드</a></nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <div class="crumbs"><a href="../">홈</a> › <a href="./">가이드</a> › 통계 읽는 법</div>
+  <h1>단톡방 통계, 이렇게 읽으면 더 재미있다</h1>
+  <div class="meta">2026년 11월 25일 · 읽는 데 약 6분</div>
+
+  <div class="summary">
+    <b>한 줄 요약</b>
+    <ul>
+      <li>메시지 수는 ‘얼마나 자주’, 평균 글자 수는 ‘얼마나 길게’를 보여줍니다. 둘을 같이 봐야 정확합니다.</li>
+      <li>히트맵과 월별 추이는 우리 방의 생활 패턴과 사건을 보여줍니다.</li>
+      <li>칭호는 재미로 보는 결과입니다. 아래에 계산 기준을 모두 공개합니다.</li>
+    </ul>
+  </div>
+
+  <p>대화 분석 결과를 처음 보면 “역시 민지가 1등이네” 하고 넘기기 쉽습니다. 하지만 숫자를 조금만 더 들여다보면 우리 방이 언제 살아나는지, 무엇 때문에 북적였는지, 누가 어떤 역할을 하는지까지 보입니다. 이 글에서는 단톡 리포트의 각 항목을 어떻게 읽으면 좋은지 정리했습니다.</p>
+
+  <h2>1. 메시지 수: ‘많이 말한 사람’이 아니라 ‘자주 보낸 사람’</h2>
+  <p>수다 순위는 <strong>보낸 메시지 개수</strong>로 정합니다. 그런데 사람마다 메시지를 보내는 습관이 다릅니다. 한 사람은 “아”, “진짜?”, “ㅋㅋ”처럼 짧게 여러 번 보내고, 다른 사람은 할 말을 모아 한 번에 길게 보냅니다. 두 사람이 같은 양의 이야기를 했어도 메시지 수는 몇 배 차이가 날 수 있습니다.</p>
+  <p>그래서 순위를 볼 때는 <strong>사람별 상세 표의 ‘평균 글자’</strong>를 함께 보세요. 메시지 수는 적은데 평균 글자가 길다면, 그 사람은 말이 적은 게 아니라 정리해서 말하는 사람일 가능성이 큽니다.</p>
+
+  <h2>2. 시간대·요일: 우리 방의 생활 리듬</h2>
+  <p>시간대별 막대그래프는 하루 중 언제 대화가 몰리는지 보여줍니다. 직장인 친구들의 방이라면 점심시간(12~13시)과 퇴근 후(18~22시)에 봉우리가 두 개 생기는 경우가 많고, 학생들의 방이라면 밤늦은 시간까지 길게 이어지기도 합니다.</p>
+  <p><strong>요일 × 시간 히트맵</strong>은 이걸 한 번 더 쪼갠 것입니다. 칸이 진할수록 그 요일, 그 시간에 대화가 많았다는 뜻입니다. 예를 들어 금요일 저녁 칸만 유독 진하다면 “주말 약속을 금요일에 정하는 방”이라고 읽을 수 있습니다.</p>
+  <div class="callout"><p>💡 활용 팁: 모임 공지나 투표는 히트맵에서 가장 진한 시간대에 올리면 답이 빨리 모입니다.</p></div>
+
+  <h2>3. 월별 추이와 가장 뜨거웠던 날: 우리 방의 ‘사건’</h2>
+  <p>월별 막대가 갑자기 솟은 달이 있다면 그때 무슨 일이 있었는지 떠올려 보세요. 여행 준비, 누군가의 결혼 소식, 다 같이 본 경기나 드라마 같은 이벤트가 있었을 가능성이 큽니다. ‘가장 뜨거웠던 날 TOP 5’의 날짜를 보면 그 사건이 언제였는지 더 정확히 짚을 수 있습니다.</p>
+  <p>반대로 막대가 점점 낮아진다면 방이 조금 조용해지고 있다는 신호입니다. 이럴 때 쓸 수 있는 아이디어는 <a href="revive-group-chat.html">조용해진 단톡방 다시 살리는 방법</a>에 정리해 두었습니다.</p>
+
+  <h2>4. 많이 쓴 단어: 우리 방의 말버릇</h2>
+  <p>많이 쓴 단어에는 그 방의 관심사와 말버릇이 드러납니다. “좋아”, “가능”이 많다면 약속을 자주 잡는 방이고, 음식 이름이 많다면 맛집 이야기를 자주 하는 방이겠죠.</p>
+  <p>다만 이 목록은 <strong>띄어쓰기를 기준으로 단어를 나누고, 흔한 조사(은·는·이·가 등)를 간단히 떼어 내는 방식</strong>이라 완벽하지 않습니다. “치킨”과 “치킨이랑”이 같은 단어로 묶이지 않을 수 있고, ‘ㅋㅋ’ 같은 자음만 있는 말과 사진·이모티콘 표시는 일부러 뺐습니다. 대략적인 경향으로 봐 주세요.</p>
+
+  <h2>5. 칭호는 이렇게 정해집니다</h2>
+  <p>단톡 리포트의 칭호는 각 항목에서 가장 높은 값을 가진 사람에게 돌아갑니다. 해당 값이 0이면 그 칭호는 나오지 않습니다. 계산 기준은 다음과 같습니다.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>칭호</th><th>기준</th></tr></thead>
+      <tbody>
+        <tr><td>👑 수다왕</td><td>보낸 메시지가 가장 많은 사람</td></tr>
+        <tr><td>🤣 웃음 장인</td><td>글자 ‘ㅋ’를 가장 많이 입력한 사람 (‘ㅋㅋㅋ’는 3번으로 셈)</td></tr>
+        <tr><td>🔔 대화 시작 요정</td><td>1시간 이상 아무도 말하지 않다가 첫 메시지를 보낸 횟수가 가장 많은 사람</td></tr>
+        <tr><td>🦉 새벽 올빼미</td><td>새벽 0시~5시 사이에 보낸 메시지가 가장 많은 사람</td></tr>
+        <tr><td>🌅 아침형 인간</td><td>아침 5시~9시 사이에 보낸 메시지가 가장 많은 사람</td></tr>
+        <tr><td>📜 장문러</td><td>글 메시지의 평균 글자 수가 가장 긴 사람 (메시지가 너무 적은 사람은 제외)</td></tr>
+        <tr><td>📸 사진 담당</td><td>보낸 사진 장수가 가장 많은 사람 (여러 장을 한 번에 보내면 장수만큼 셈)</td></tr>
+        <tr><td>🧸 이모티콘 부자</td><td>이모티콘을 가장 많이 보낸 사람</td></tr>
+        <tr><td>🔗 링크 배달부</td><td>인터넷 주소(링크)가 들어간 메시지가 가장 많은 사람</td></tr>
+        <tr><td>🫣 앗 실수</td><td>삭제한 메시지가 가장 많은 사람</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>입장·퇴장 같은 안내 메시지는 어느 계산에도 들어가지 않습니다. 또 기간 선택(최근 1년, 6개월 등)을 바꾸면 그 기간만 다시 계산하기 때문에, 최근 들어 분위기가 어떻게 달라졌는지도 비교해 볼 수 있습니다.</p>
+
+  <h2>6. 숫자는 재미로, 사람은 다정하게</h2>
+  <p>통계는 대화를 다시 떠올리게 하는 좋은 이야깃거리지만, 사람을 평가하는 점수는 아닙니다. 메시지가 적은 친구는 바빴을 수도 있고, 원래 읽기만 좋아하는 성격일 수도 있습니다. 결과를 공유할 때는 순위가 낮은 사람을 놀리기보다 “이번 달엔 네가 사진 담당이었네!”처럼 각자의 역할을 짚어 주는 쪽이 방 분위기를 훨씬 좋게 만듭니다.</p>
+
+  <div class="cta">
+    <p>우리 방은 어떤 패턴일까요? 직접 확인해 보세요.</p>
+    <a class="btn btn-primary" href="../">우리 단톡방 분석하기</a>
+  </div>
+
+  <div class="ad-slot"><!-- 광고 자리 --></div>
+
+  <section class="related">
+    <h2>함께 보면 좋은 글</h2>
+    <div class="guide-list">
+      <a class="guide-card" href="export-chat.html"><b>단톡방 대화 내보내기 방법 총정리</b><span>PC·안드로이드·아이폰·Mac별 순서</span></a>
+      <a class="guide-card" href="revive-group-chat.html"><b>조용해진 단톡방 다시 살리는 방법 8가지</b><span>통계로 찾는 대화 타이밍</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div><b>단톡 리포트</b> · 대화 파일은 운영자 서버로 전송·저장하지 않습니다.</div>
+    <div>이 사이트는 메신저 운영사와 관련 없는 독립 서비스입니다.</div>
+    <div><a href="../privacy.html">개인정보처리방침</a></div>
+  </div>
+</footer>
+</body>
+</html>

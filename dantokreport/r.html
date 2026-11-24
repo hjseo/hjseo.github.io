@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>우리 단톡방 분석 결과 - 단톡 리포트</title>
+<!-- 공유된 결과 페이지: 검색에 노출하지 않고, 광고·통계 스크립트를 넣지 않습니다. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="친구가 공유한 단톡방 분석 결과예요. 수다왕, 칭호, 활발한 시간대를 확인해 보세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="우리 단톡방 분석 결과가 도착했어요 💬">
+<meta property="og:description" content="누가 수다왕일까? 눌러서 우리 방 결과를 확인해 보세요.">
+<meta property="og:image" content="https://dantokreport.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="단톡 리포트 - 우리 단톡방, 숫자로 보면 어떨까?">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#5b3df5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b3df5'/%3E%3Cpath d='M9 21V13M16 21V9M23 21v-5' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="shared">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 21V13M16 21V9M23 21v-5"/></svg></span>단톡 리포트</a>
+    <nav aria-label="주요 메뉴"><a href="./">우리 방도 분석하기</a><a href="guide/">가이드</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="loading" id="loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <div>결과를 불러오고 있어요…</div>
+  </div>
+
+  <div class="wrap" id="sharedError" hidden>
+    <div class="notice" style="margin-block:40px">
+      <b>결과를 열 수 없어요.</b><br>링크가 잘렸거나 손상된 것 같아요. 링크를 보낸 사람에게 다시 복사해 달라고 하거나, 직접 분석해 보세요.
+      <div style="margin-top:12px"><a class="btn btn-primary" href="./">우리 단톡방 분석하기</a></div>
+    </div>
+  </div>
+
+  <section class="result" id="result" hidden aria-live="polite">
+    <div class="wrap">
+      <div class="shared-banner">
+        <p>💬 친구가 공유한 단톡방 분석 결과예요<small>원본 대화 내용 없이 통계 요약만 담겨 있어요.</small></p>
+        <a class="btn btn-primary" href="./">우리 방도 분석하기</a>
+      </div>
+
+      <div class="toolbar">
+        <span class="room" id="roomLabel"></span>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="card reveal" style="margin-bottom:16px">
+        <h2>🏆 우리 방 칭호</h2>
+        <p class="sub">각 부문 1등에게 드리는 영광의 칭호</p>
+        <div class="awards" id="awards"></div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <h2>💬 수다 순위</h2>
+          <p class="sub">보낸 메시지 수 기준 · 상위 10명</p>
+          <div class="hbars" id="ranking"></div>
+        </div>
+        <div class="card reveal">
+          <h2>⏰ 시간대별 대화량</h2>
+          <p class="sub" id="hourSub"></p>
+          <div class="chart-scroll"><div class="inner" id="hours"></div></div>
+        </div>
+        <div class="card reveal">
+          <h2>📅 요일별 대화량</h2>
+          <p class="sub" id="daySub"></p>
+          <div id="weekdays"></div>
+        </div>
+        <div class="card reveal">
+          <h2>🔥 요일 × 시간 히트맵</h2>
+          <p class="sub">진할수록 대화가 많았던 시간이에요</p>
+          <div class="chart-scroll"><div id="heat"></div></div>
+          <div class="heat-legend"><span>적음</span><span class="ramp"></span><span>많음</span></div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:16px">
+        <h2>📈 월별 대화량</h2>
+        <p class="sub" id="monthSub"></p>
+        <div class="chart-scroll"><div class="inner" id="months"></div></div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card reveal">
+          <h2>🌋 가장 뜨거웠던 날</h2>
+          <p class="sub">하루 메시지가 가장 많았던 날 TOP 5</p>
+          <ol class="list" id="hotDays"></ol>
+        </div>
+        <div class="card reveal">
+          <h2>🗣️ 많이 쓴 단어</h2>
+          <p class="sub">ㅋㅋ·이모티콘·사진은 빼고 셌어요</p>
+          <div class="words" id="words"></div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:16px">
+        <h2>📤 결과 카드</h2>
+        <p class="sub">이미지로 저장하거나 이 링크를 다시 공유할 수 있어요.</p>
+        <div class="share-area">
+          <div class="share-preview"><div id="shareCard"></div></div>
+          <div class="share-actions">
+            <button class="btn btn-primary" id="saveBtn" type="button">🖼️ 이미지 저장</button>
+            <button class="btn" id="shareBtn" type="button" hidden>📲 바로 공유</button>
+            <button class="btn" id="copyBtn" type="button">🔗 결과 링크 복사</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <p>우리 단톡방은 어떨까요? 대화 파일만 있으면 1분이면 돼요.</p>
+        <a class="btn btn-primary" href="./">우리 방도 분석하기</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div><b>단톡 리포트</b> · 대화 파일은 운영자 서버로 전송·저장하지 않습니다.</div>
+    <div>공유된 결과는 링크 주소 안에만 담겨 있으며, 운영자 서버에 저장되지 않습니다.</div>
+    <div><a href="guide/">가이드</a> · <a href="privacy.html">개인정보처리방침</a></div>
+  </div>
+</footer>
+
+<div class="tip" id="tip" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="assets/sharelink.js" defer></script>
+<script src="assets/inapp.js" defer></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

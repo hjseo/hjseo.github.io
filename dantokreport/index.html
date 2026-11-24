@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>단톡 리포트 - 우리 단톡방 대화 분석기 (수다왕·시간대·많이 쓴 단어)</title>
+<meta name="description" content="단톡방 대화 내보내기 파일을 올리면 수다왕, 웃음 장인, 새벽 올빼미, 활발한 시간대, 많이 쓴 단어를 분석해 드려요. 대화 파일은 운영자 서버로 전송·저장하지 않고 내 브라우저 안에서만 분석합니다.">
+<meta name="keywords" content="단톡방 분석, 단톡 대화 분석, 대화 분석기, 수다왕, 단톡 통계, 채팅 분석">
+<link rel="canonical" href="https://dantokreport.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="단톡 리포트 - 우리 단톡방, 숫자로 보면?">
+<meta property="og:description" content="누가 제일 말이 많을까? 수다왕·웃음 장인·새벽 올빼미를 찾아보세요. 대화 파일은 운영자 서버로 전송·저장하지 않아요.">
+<meta property="og:url" content="https://dantokreport.com/">
+<meta property="og:image" content="https://dantokreport.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="단톡 리포트 - 우리 단톡방, 숫자로 보면 어떨까?">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#5b3df5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b3df5'/%3E%3Cpath d='M9 21V13M16 21V9M23 21v-5' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "단톡 리포트",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+  "description": "단톡방 대화 내보내기 파일을 브라우저 안에서 분석하는 무료 도구"
+}
+</script>
+<!-- 애드센스 승인 후 여기에 광고 스크립트를 넣으세요.
+     자동 광고를 쓰는 경우, 애드센스 설정에서 분석 결과 영역에는 광고가 들어가지 않도록 제외하세요. -->
+<!-- 결과 화면 광고 차단 안내와 맞추려면 수동 광고 단위(ad-1, ad-2 자리)만 쓰는 것을 권장합니다. -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 21V13M16 21V9M23 21v-5"/></svg></span>단톡 리포트</a>
+    <nav aria-label="주요 메뉴">
+      <a href="#guide">파일 내보내는 법</a>
+      <a href="#faq">자주 묻는 질문</a>
+      <a href="guide/">가이드</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- 업로드 -->
+  <section class="hero" id="intro">
+    <div class="wrap">
+      <h1>우리 단톡방,<br><em>숫자로 보면</em> 어떨까?</h1>
+      <p class="lead">대화 내보내기 파일을 올리면 수다왕, 웃음 장인, 새벽 올빼미부터 가장 뜨거웠던 날까지 한 번에 보여드려요.</p>
+
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept=".txt,.csv,text/plain,text/csv" aria-label="대화 파일 선택">
+        <div class="drop-icon" aria-hidden="true">📂</div>
+        <div class="drop-title">대화 파일을 여기에 끌어다 놓거나 눌러서 선택</div>
+        <div class="drop-sub">.txt 또는 .csv 파일 · PC, 안드로이드, 아이폰 내보내기 지원</div>
+      </label>
+
+      <div class="hero-actions">
+        <button class="btn" id="demoBtn" type="button">✨ 예시로 먼저 보기</button>
+        <a class="btn" href="#guide">파일은 어떻게 받나요?</a>
+      </div>
+
+      <div class="trust"><span class="trust-icon" aria-hidden="true">🔒</span><span><b>대화 파일은 운영자 서버로 전송·저장하지 않아요.</b><br>이 브라우저 안에서만 분석합니다.</span></div>
+      <div class="notice" id="error" role="alert" hidden></div>
+    </div>
+  </section>
+
+  <div class="loading" id="loading" hidden>
+    <div class="spinner" aria-hidden="true"></div>
+    <div>대화를 분석하고 있어요…</div>
+  </div>
+
+  <!-- 결과 -->
+  <section class="result" id="result" hidden aria-live="polite">
+    <div class="wrap">
+      <div class="toolbar">
+        <span class="room" id="roomLabel"></span>
+        <select id="period" aria-label="분석 기간">
+          <option value="0">전체 기간</option>
+          <option value="12">최근 1년</option>
+          <option value="6">최근 6개월</option>
+          <option value="3">최근 3개월</option>
+          <option value="1">최근 1개월</option>
+        </select>
+        <label class="toggle"><input type="checkbox" id="mask"> 이름 가리기</label>
+        <button class="btn" id="resetBtn" type="button">다른 파일</button>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="card reveal" style="margin-bottom:16px">
+        <h2>🏆 우리 방 칭호</h2>
+        <p class="sub">각 부문 1등에게 드리는 영광의 칭호</p>
+        <div class="awards" id="awards"></div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <h2>💬 수다 순위</h2>
+          <p class="sub">보낸 메시지 수 기준</p>
+          <div class="hbars" id="ranking"></div>
+          <button class="more" id="moreBtn" type="button" hidden>전체 보기</button>
+        </div>
+        <div class="card reveal">
+          <h2>⏰ 시간대별 대화량</h2>
+          <p class="sub" id="hourSub"></p>
+          <div class="chart-scroll"><div class="inner" id="hours"></div></div>
+        </div>
+        <div class="card reveal">
+          <h2>📅 요일별 대화량</h2>
+          <p class="sub" id="daySub"></p>
+          <div id="weekdays"></div>
+        </div>
+        <div class="card reveal">
+          <h2>🔥 요일 × 시간 히트맵</h2>
+          <p class="sub">진할수록 대화가 많았던 시간이에요</p>
+          <div class="chart-scroll"><div id="heat"></div></div>
+          <div class="heat-legend"><span>적음</span><span class="ramp"></span><span>많음</span></div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:16px">
+        <h2>📈 월별 대화량</h2>
+        <p class="sub" id="monthSub"></p>
+        <div class="chart-scroll"><div class="inner" id="months"></div></div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card reveal">
+          <h2>🌋 가장 뜨거웠던 날</h2>
+          <p class="sub">하루 메시지가 가장 많았던 날 TOP 5</p>
+          <ol class="list" id="hotDays"></ol>
+        </div>
+        <div class="card reveal">
+          <h2>🗣️ 많이 쓴 단어</h2>
+          <p class="sub">ㅋㅋ·이모티콘·사진은 빼고 셌어요</p>
+          <div class="words" id="words"></div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:16px">
+        <details>
+          <summary>📋 사람별 상세 표</summary>
+          <div class="table-wrap"><table id="table"></table></div>
+        </details>
+      </div>
+
+      <!-- 공유 카드 -->
+      <div class="card reveal" style="margin-top:16px">
+        <h2>📤 결과 카드로 공유하기</h2>
+        <p class="sub">이미지로 저장하거나, 결과 링크를 복사해 단톡방에 올려 보세요. 링크를 누르면 이 결과 화면이 그대로 열려요.</p>
+        <div class="share-area">
+          <input class="room-input" id="roomInput" type="text" maxlength="30" placeholder="카드에 표시할 방 이름" aria-label="카드에 표시할 방 이름">
+          <div class="share-preview"><div id="shareCard"></div></div>
+          <div class="share-actions">
+            <button class="btn btn-primary" id="saveBtn" type="button">🖼️ 이미지 저장</button>
+            <button class="btn" id="shareBtn" type="button" hidden>📲 바로 공유</button>
+            <button class="btn" id="copyBtn" type="button">🔗 결과 링크 복사</button>
+          </div>
+          <p class="link-note" id="linkNote"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 내보내기 방법 -->
+  <section class="section" id="guide">
+    <div class="wrap">
+      <h2>대화 파일 내보내는 방법</h2>
+      <div class="card">
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-tab="pc">PC</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="android">안드로이드</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="ios">아이폰</button>
+        </div>
+        <div data-panel="pc">
+          <ol class="steps">
+            <li>PC 메신저에서 분석할 단톡방을 엽니다.</li>
+            <li>오른쪽 위 메뉴(≡)를 누릅니다.</li>
+            <li><b>대화 내보내기</b>(또는 대화 내용 저장)를 눌러 .txt 파일로 저장합니다.</li>
+            <li>저장한 파일을 위 상자에 끌어다 놓으면 끝!</li>
+          </ol>
+        </div>
+        <div data-panel="android" hidden>
+          <ol class="steps">
+            <li>단톡방 오른쪽 위 메뉴(≡) → 아래쪽 <b>설정(톱니바퀴)</b>을 누릅니다.</li>
+            <li><b>대화 내용 내보내기</b>를 누릅니다.</li>
+            <li><b>텍스트만 보내기</b>를 골라 기기에 저장하거나 나에게 보냅니다.</li>
+            <li>받은 .txt 파일을 이 페이지에서 선택합니다.</li>
+          </ol>
+        </div>
+        <div data-panel="ios" hidden>
+          <ol class="steps">
+            <li>단톡방 오른쪽 위 메뉴(≡) → <b>설정(톱니바퀴)</b>을 누릅니다.</li>
+            <li><b>대화 내용 내보내기</b> → <b>텍스트 메시지만 보내기</b>를 누릅니다.</li>
+            <li><b>파일에 저장</b>을 고릅니다.</li>
+            <li>이 페이지에서 저장한 .txt 파일을 선택합니다.</li>
+          </ol>
+        </div>
+        <p class="hint">앱 버전에 따라 메뉴 이름이 조금 다를 수 있어요. 사진까지 함께 내보내 .zip 파일이 되었다면 압축을 풀고 안에 있는 .txt 파일을 올려 주세요. <a href="guide/export-chat.html">자세한 방법과 문제 해결 보기</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 광고는 분석 결과 영역(#result) 밖에만 둡니다. 결과 화면에는 광고를 넣지 않는다고 안내하고 있습니다. -->
+  <div class="wrap"><div class="ad-slot" id="ad-1"><!-- 광고 자리 1 --></div></div>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="wrap">
+      <h2>자주 묻는 질문</h2>
+      <details>
+        <summary>대화 내용이 어딘가에 저장되나요?</summary>
+        <p>아니요. 대화 파일은 운영자 서버로 전송되거나 저장되지 않고, 지금 보고 계신 브라우저 안에서만 읽고 분석합니다. 창을 닫으면 분석 결과도 사라집니다. 분석 결과 화면에는 광고를 넣지 않습니다.</p>
+      </details>
+      <details>
+        <summary>어떤 파일을 지원하나요?</summary>
+        <p>PC(Windows), 안드로이드, 아이폰에서 내보낸 .txt 파일과 Mac에서 내보낸 .csv 파일을 지원합니다. 한국어 설정 기준이며, 영어 설정 파일도 대부분 인식합니다.</p>
+      </details>
+      <details>
+        <summary>결과가 실제와 조금 달라요.</summary>
+        <p>입장·퇴장 같은 안내 메시지는 제외하고 계산합니다. 사진 여러 장을 한 번에 보낸 경우 장수만큼 셉니다. 많이 쓴 단어는 띄어쓰기를 기준으로 세기 때문에 대략적인 경향으로 봐 주세요.</p>
+      </details>
+      <details>
+        <summary>다른 사람 이름이 나와서 공유하기 부담돼요.</summary>
+        <p>결과 화면 위쪽의 ‘이름 가리기’를 켜면 차트와 결과 카드의 이름이 ‘김*수’처럼 가려집니다.</p>
+      </details>
+      <details>
+        <summary>결과 링크를 보내면 친구도 결과를 볼 수 있나요?</summary>
+        <p>네. ‘결과 링크 복사’로 만든 링크를 누르면 같은 결과 화면이 열려요. 링크에는 원본 대화 없이 통계 요약만 주소 안에 담기고, 운영자 서버에는 저장되지 않아요. 다만 링크를 받은 사람은 누구나 볼 수 있으니, 단톡방 밖으로 보낼 때는 ‘이름 가리기’를 켜고 링크를 만드세요.</p>
+      </details>
+      <details>
+        <summary>사용료가 있나요?</summary>
+        <p>무료입니다. 회원가입도 필요 없어요.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 가이드 -->
+  <section class="section" id="guides">
+    <div class="wrap">
+      <h2>더 알아보기</h2>
+      <div class="guide-list">
+        <a class="guide-card" href="guide/export-chat.html"><b>단톡방 대화 내보내기 방법 총정리</b><span>기기별 순서와 자주 생기는 문제 해결법</span></a>
+        <a class="guide-card" href="guide/read-chat-stats.html"><b>단톡방 통계, 이렇게 읽으면 더 재미있다</b><span>히트맵 읽는 법과 칭호 계산 기준</span></a>
+        <a class="guide-card" href="guide/share-safely.html"><b>대화 분석 결과 안전하게 공유하는 법</b><span>공유 전 30초 체크리스트</span></a>
+        <a class="guide-card" href="guide/revive-group-chat.html"><b>조용해진 단톡방 다시 살리는 방법 8가지</b><span>대화가 잘 붙는 시간 찾기부터</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="ad-slot" id="ad-2"><!-- 광고 자리 2 --></div></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div><b>단톡 리포트</b> · 대화 파일은 운영자 서버로 전송·저장하지 않습니다.</div>
+    <div>이 사이트는 메신저 운영사와 관련 없는 독립 서비스입니다. 분석 결과는 재미와 참고용입니다.</div>
+    <div><a href="guide/">가이드</a> · <a href="privacy.html">개인정보처리방침</a></div>
+  </div>
+</footer>
+
+<div class="tip" id="tip" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="assets/parser.js" defer></script>
+<script src="assets/stats.js" defer></script>
+<script src="assets/sample.js" defer></script>
+<script src="assets/sharelink.js" defer></script>
+<script src="assets/inapp.js" defer></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>
