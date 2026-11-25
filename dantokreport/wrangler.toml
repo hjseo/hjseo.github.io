@@ -1,0 +1,10 @@
+# Cloudflare Pages 설정 (wrangler@3 pages deploy 가 읽습니다)
+# 배포할 때는 이 파일과 functions 폴더를, 공개 파일을 모은 dist 폴더 옆에 두고 실행합니다. README 참고.
+name = "dantokreport"
+pages_build_output_dir = "./dist"
+compatibility_date = "2024-11-01"
+
+# 짧은 결과 링크용 저장소 (30일 뒤 자동 삭제)
+[[kv_namespaces]]
+binding = "SHARE"
+id = "2727fb1a23d44ee59c4b125384eb8798"

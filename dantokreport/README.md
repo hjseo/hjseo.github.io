@@ -40,24 +40,48 @@ npx serve .
 
 Cloudflare Pages 프로젝트 `dantokreport`로 배포 중입니다: https://dantokreport.pages.dev
 
-이 PC의 Node.js가 20이라 wrangler는 3 버전을 씁니다. 다시 배포하려면:
+이 PC의 Node.js가 20이라 wrangler는 3 버전을 씁니다. 다시 배포하려면 배포용 폴더(예: `site`)를 이렇게 만듭니다.
 
-1. 공개할 파일만 별도 폴더(예: `dist`)에 복사합니다. **`README.md`와 `.claude` 폴더는 넣지 마세요.**
-   (`assets`, `guide`, `404.html`, `about.html`, `ads.txt`, `index.html`, `og-image.png`, `privacy.html`, `r.html`, `robots.txt`, `sitemap.xml`)
-2. 그 폴더가 있는 곳에서 실행합니다.
+```
+site/
+├─ dist/            ← 공개할 파일만 (README.md, .claude, functions, wrangler.toml은 넣지 않기)
+│   assets, guide, 404.html, about.html, ads.txt, index.html, og-image.png,
+│   privacy.html, r.html, robots.txt, sitemap.xml
+├─ functions/       ← 이 폴더의 functions 그대로 (짧은 결과 링크 서버 기능)
+└─ wrangler.toml    ← 이 폴더의 wrangler.toml 그대로 (KV 저장소 연결 설정)
+```
+
+`site` 폴더 안에서 실행합니다.
 
 ```powershell
-npx wrangler@3 pages deploy dist --project-name dantokreport --branch main
+npx wrangler@3 pages deploy --project-name dantokreport --branch main
 ```
+
+배포 전에 로컬에서 서버 기능까지 확인하려면 `site` 폴더에서 `npx wrangler@3 pages dev`를 실행하고 http://127.0.0.1:8788 을 엽니다.
 
 - Cloudflare Pages는 주소의 `.html`을 떼어 줍니다(`/r.html` → `/r`). 공식 주소(canonical, sitemap)는 `.html` 없는 형태로 적어 두었습니다.
 - 없는 주소는 `404.html`이 보여집니다.
 
 배포 후 네이버 서치어드바이저와 구글 서치 콘솔에 사이트를 등록하고 `sitemap.xml`을 제출하세요.
 
+## 짧은 결과 링크
+
+- "결과 링크 복사"를 누르면 `POST /api/share`로 통계 요약(원본 대화 아님)을 Cloudflare KV(`dantokreport-share`)에 **30일** 보관하고 `https://dantokreport.com/r/아이디`를 돌려줍니다.
+- `/r/아이디`를 열면 `r.html`이 뜨고, 페이지가 `GET /api/s/아이디`로 요약을 가져와 그립니다.
+- 서버를 쓸 수 없으면(로컬 미리보기, 오류) 예전 방식인 긴 링크(`/r.html#요약`)로 자동 대체되고, 예전 긴 링크도 계속 열립니다.
+- 다른 사이트에서 보낸 요청과 형식이 맞지 않는 데이터는 거절합니다.
+- 무료 요금제의 KV 쓰기는 하루 1,000회입니다. 넘으면 그날은 긴 링크로 대체됩니다.
+
+**삭제 요청을 받으면** (링크 주소 끝의 아이디가 `x7Kp2aB`라면) `site` 폴더에서:
+
+```powershell
+npx wrangler@3 kv key delete "s:x7Kp2aB" --namespace-id 2727fb1a23d44ee59c4b125384eb8798
+```
+
 ## 법적 체크
 
-- 대화 파일을 서버로 보내는 코드를 추가하지 마세요. "운영자 서버로 전송·저장하지 않는다"는 안내가 이 서비스의 핵심 신뢰 요소입니다.
+- 대화 파일을 서버로 보내는 코드를 추가하지 마세요. "대화 파일은 운영자 서버로 전송·저장하지 않는다"는 안내가 이 서비스의 핵심 신뢰 요소입니다.
+- 짧은 링크용으로 보관하는 요약의 항목이나 보관 기간(30일)을 바꾸면 개인정보처리방침 2항(국외 이전 표 포함)도 함께 고치세요.
 - 개인정보처리방침의 내용(광고, 통계 도구, 보호책임자)은 실제 운영과 항상 일치해야 합니다. 바꾸면 시행일을 새로 적고 이전 방침을 변경 이력으로 남기세요.
 - 사이트 이름, 로고, 색상에 메신저 회사의 상표나 브랜드 요소를 쓰지 마세요. 사용법 안내에서 앱 이름을 언급하는 정도는 괜찮습니다.
 - 수익이 생기면 사업자등록과 종합소득세 신고를 하세요.

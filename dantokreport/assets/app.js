@@ -273,15 +273,20 @@
   function renderLinkNote() {
     var el = $('linkNote');
     if (!el || IS_SHARED) return;
-    el.innerHTML = state.mask
-      ? '🔒 이름을 가린 결과로 링크가 만들어져요. 원본 대화 내용은 링크에 담기지 않아요.'
-      : '⚠️ 링크를 받은 사람은 누구나 <b>이름이 보이는 결과</b>를 볼 수 있어요. 가리려면 위에서 ‘이름 가리기’를 켜세요.';
+    el.innerHTML = (state.mask
+      ? '🔒 이름을 가린 결과로 링크가 만들어져요.'
+      : '⚠️ 링크를 받은 사람은 누구나 <b>이름이 보이는 결과</b>를 볼 수 있어요. 가리려면 위에서 ‘이름 가리기’를 켜세요.') +
+      '<br>링크에는 원본 대화 없이 통계 요약만 담기고, <b>30일 뒤 자동으로 삭제</b>돼요.';
   }
 
   /* ---------- 결과 링크 ---------- */
   var linkCache = { key: '', url: '' };
 
-  /** 현재 결과를 담은 공유 링크 (공유 페이지에서는 지금 주소 그대로) */
+  /**
+   * 현재 결과를 담은 공유 링크 (공유 페이지에서는 지금 주소 그대로)
+   * 1) 짧은 링크: 요약을 /api/share 에 30일 보관하고 https://dantokreport.com/r/아이디 를 받음
+   * 2) 서버를 쓸 수 없으면(로컬 미리보기·네트워크 오류): 예전처럼 요약을 주소 # 뒤에 담은 긴 링크
+   */
   function resultLink() {
     if (IS_SHARED) return Promise.resolve(location.href);
     var a = state.analysis;
@@ -289,7 +294,20 @@
     var cacheKey = JSON.stringify(payload);
     if (cacheKey === linkCache.key) return Promise.resolve(linkCache.url);
     return TalkShare.encode(payload).then(function (data) {
-      var url = new URL('r.html', location.href.split('#')[0]).href + '#' + data;
+      var longUrl = new URL('r.html', location.href.split('#')[0]).href + '#' + data;
+      return fetch('/api/share', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'omit',
+        body: JSON.stringify({ d: data })
+      }).then(function (r) {
+        if (!r.ok) throw new Error('share ' + r.status);
+        return r.json();
+      }).then(function (j) {
+        if (!j || !/^[A-Za-z0-9]{6,12}$/.test(j.id)) throw new Error('bad id');
+        return location.origin + '/r/' + j.id;
+      }).catch(function () { return longUrl; });
+    }).then(function (url) {
       linkCache = { key: cacheKey, url: url };
       return url;
     });
@@ -308,13 +326,39 @@
     });
   }
 
+  /** 복사가 막힌 환경: 링크를 직접 길게 눌러 복사할 수 있게 보여줌 */
+  function showLinkBox(url) {
+    var box = $('linkBox');
+    if (!box) {
+      box = document.createElement('input');
+      box.id = 'linkBox'; box.className = 'room-input'; box.readOnly = true;
+      box.setAttribute('aria-label', '결과 링크');
+      var actions = $('copyBtn').parentNode;
+      actions.parentNode.insertBefore(box, actions.nextSibling);
+    }
+    box.value = url; box.hidden = false;
+    box.focus(); box.select();
+  }
+
   function copyLink() {
-    var btn = $('copyBtn'), label = btn.textContent;
-    resultLink().then(copyText).then(function () {
-      btn.textContent = '✅ 링크가 복사됐어요';
-    }, function () {
-      btn.textContent = '복사하지 못했어요';
-    }).then(function () { setTimeout(function () { btn.textContent = label; }, 2000); });
+    var btn = $('copyBtn'), label = '🔗 결과 링크 복사';
+    var linkP = resultLink();
+    var done = function () { btn.textContent = '✅ 링크가 복사됐어요'; };
+    var failed = function () {
+      btn.textContent = '아래 링크를 길게 눌러 복사하세요';
+      linkP.then(showLinkBox);
+    };
+    btn.textContent = '링크 만드는 중…';
+    var copied;
+    // 아이폰 Safari는 버튼을 누른 순간에만 복사를 허용하므로, 링크가 준비되기 전에 복사를 "예약"합니다.
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write && window.isSecureContext) {
+      copied = navigator.clipboard.write([new ClipboardItem({
+        'text/plain': linkP.then(function (u) { return new Blob([u], { type: 'text/plain' }); })
+      })]).catch(function () { return linkP.then(copyText); });
+    } else {
+      copied = linkP.then(copyText);
+    }
+    copied.then(done, failed).then(function () { setTimeout(function () { btn.textContent = label; }, 2500); });
   }
 
   /* ---------- image export ----------
@@ -466,12 +510,21 @@
 
   /* ---------- r.html : 공유 링크로 열었을 때 ---------- */
   if (IS_SHARED) {
-    var data = location.hash.slice(1);
     var fail = function () { $('loading').hidden = true; $('result').hidden = true; $('sharedError').hidden = false; };
     // 이미 열린 결과 페이지에서 다른 결과 링크를 열면 # 뒤만 바뀌어 새로고침되지 않으므로 다시 불러옵니다.
     window.addEventListener('hashchange', function () { location.reload(); });
-    if (!data) { fail(); return; }
-    TalkShare.decode(data).then(function (o) {
+    // 짧은 링크(/r/아이디): 보관된 요약을 가져옴 / 예전 긴 링크(/r#요약): 주소에서 바로 읽음
+    var shortId = (location.pathname.match(/^\/r\/([A-Za-z0-9]{6,12})\/?$/) || [])[1];
+    var getData = shortId
+      ? fetch('/api/s/' + shortId, { credentials: 'omit' }).then(function (r) {
+          if (!r.ok) throw new Error('not_found');
+          return r.json();
+        }).then(function (j) { return j.d; })
+      : Promise.resolve(location.hash.slice(1));
+    getData.then(function (data) {
+      if (!data) throw new Error('empty');
+      return TalkShare.decode(data);
+    }).then(function (o) {
       state.analysis = TalkShare.fromPayload(o);
       state.roomName = state.analysis.roomName;
       render();
