@@ -36,10 +36,22 @@ npx serve .
    - 유럽·영국·스위스 방문자용 쿠키 동의 메시지는 애드센스의 "개인정보 보호 및 메시지"에서 켜세요.
 5. Google Analytics 같은 통계 도구를 추가하면 `privacy.html` 4항에 그 내용을 덧붙이세요.
 
-## 무료 배포 (Cloudflare Pages 또는 Netlify)
+## 배포 (Cloudflare Pages)
 
-- **Netlify:** app.netlify.com → Add new site → Deploy manually → 이 폴더를 끌어다 놓기
-- **Cloudflare Pages:** Workers & Pages → Create → Pages → Upload assets → 이 폴더 업로드
+Cloudflare Pages 프로젝트 `dantokreport`로 배포 중입니다: https://dantokreport.pages.dev
+
+이 PC의 Node.js가 20이라 wrangler는 3 버전을 씁니다. 다시 배포하려면:
+
+1. 공개할 파일만 별도 폴더(예: `dist`)에 복사합니다. **`README.md`와 `.claude` 폴더는 넣지 마세요.**
+   (`assets`, `guide`, `404.html`, `index.html`, `og-image.png`, `privacy.html`, `r.html`, `robots.txt`, `sitemap.xml`)
+2. 그 폴더가 있는 곳에서 실행합니다.
+
+```powershell
+npx wrangler@3 pages deploy dist --project-name dantokreport --branch main
+```
+
+- Cloudflare Pages는 주소의 `.html`을 떼어 줍니다(`/r.html` → `/r`). 공식 주소(canonical, sitemap)는 `.html` 없는 형태로 적어 두었습니다.
+- 없는 주소는 `404.html`이 보여집니다.
 
 배포 후 네이버 서치어드바이저와 구글 서치 콘솔에 사이트를 등록하고 `sitemap.xml`을 제출하세요.
 
