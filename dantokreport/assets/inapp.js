@@ -1,18 +1,17 @@
 /*
- * 단톡 리포트 - 앱 안 브라우저(인앱 브라우저) 안내
+ * 단톡 리포트 - 앱 안 브라우저(인앱 브라우저) 대응
  *
- * 메신저·SNS 앱 안에서 링크를 열면 파일 선택이나 이미지 저장(다운로드)이
- * 막히거나 다르게 동작하는 경우가 많습니다. 그래서
- *  1) 앱 안 브라우저를 감지해 위쪽에 안내 배너를 띄우고
- *  2) 가능한 앱에서는 "외부 브라우저로 열기" 버튼을, 안 되는 곳에서는 주소 복사와 방법 안내를 보여주고
- *  3) 이미지 저장 대신 "길게 눌러 저장"할 수 있는 이미지 화면을 띄웁니다.
+ * 앱 안에서 열었다는 이유만으로 안내를 띄우지 않습니다. 실제로 안 되는 순간에만 안내합니다.
+ *  1) 파일 선택: 업로드 상자를 눌렀는데 파일 선택 창이 열리지 않으면, 상자 아래에 안내를 보여줍니다.
+ *  2) 이미지 저장: 다운로드가 막히는 환경에서는 이미지를 띄워 "길게 눌러 저장"하게 합니다. (app.js에서 호출)
+ * 두 경우 모두, 가능한 앱에서는 "외부 브라우저로 열기" 버튼을 함께 보여줍니다.
  */
 (function (root) {
   'use strict';
 
   // 앱 안 브라우저의 User-Agent 표시
   var IN_APP = /KAKAOTALK|NAVER\(inapp|Instagram|FBAN|FBAV|FB_IAB|\bLine\/|everytimeApp|DaumApps|BAND\/|; wv\)/i;
-  var DISMISS_KEY = 'dantok-inapp-dismissed';
+  var PICKER_WAIT = 1500;   // 파일 선택 창이 뜨기를 기다리는 시간(ms)
 
   /** @returns {{inApp:boolean, kind:'kakao'|'android'|'ios'|'other'|null}} */
   function detect(ua) {
@@ -35,8 +34,6 @@
     return null;
   }
 
-  function store(fn) { try { return fn(window.sessionStorage); } catch (e) { return null; } }
-
   function copyText(text) {
     if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
     return new Promise(function (resolve, reject) {
@@ -50,55 +47,73 @@
     });
   }
 
-  /* ---------- 배너 ---------- */
-  function showBanner(info) {
-    if (store(function (s) { return s.getItem(DISMISS_KEY); })) return;
-    var shared = document.body.getAttribute('data-page') === 'shared';
-    var url = location.href;
-    var ext = externalUrl(info.kind, url);
+  var info = detect();
 
-    var bar = document.createElement('div');
-    bar.className = 'inapp';
-    bar.setAttribute('role', 'region');
-    bar.setAttribute('aria-label', '외부 브라우저 안내');
-
-    var title = shared ? '이미지 저장이 안 되면 외부 브라우저에서 열어 보세요' : '앱 안 브라우저로 열려 있어요';
-    var desc = shared
-      ? '앱 안에서는 결과 카드 이미지 저장이 막힐 수 있어요.'
-      : '파일 선택이나 이미지 저장이 잘 안 될 수 있어요. Chrome이나 Safari에서 열면 더 편해요.';
+  /** 외부 브라우저 열기 / 주소 복사 버튼 묶음 */
+  function actionsHTML() {
+    var ext = externalUrl(info.kind, location.href);
     var how = info.kind === 'ios'
-      ? '화면 아래나 위의 <b>⋯</b> 또는 <b>공유</b> 버튼을 누르고 <b>Safari로 열기</b>를 고르세요.'
-      : '화면의 <b>⋮</b> 메뉴에서 <b>다른 브라우저로 열기</b>를 고르거나, 주소를 복사해 브라우저에 붙여 넣으세요.';
-
-    bar.innerHTML =
-      '<div class="inapp-text"><b>📱 ' + title + '</b><span>' + desc + '</span>' +
-      (ext ? '' : '<span class="inapp-how">' + how + '</span>') + '</div>' +
-      '<div class="inapp-actions">' +
-      (ext ? '<a class="btn btn-primary" id="inappOpen" href="' + ext.replace(/"/g, '&quot;') + '">외부 브라우저로 열기</a>' : '') +
-      '<button class="btn" id="inappCopy" type="button">주소 복사</button>' +
-      '<button class="inapp-close" id="inappClose" type="button" aria-label="안내 닫기">✕</button>' +
-      '</div>';
-
-    var main = document.querySelector('main');
-    var wrap = document.createElement('div');
-    wrap.className = 'wrap';
-    wrap.appendChild(bar);
-    main.insertBefore(wrap, main.firstChild);
-
-    document.getElementById('inappCopy').addEventListener('click', function () {
-      var btn = this;
+      ? '화면의 <b>⋯</b> 또는 <b>공유</b> 버튼에서 <b>Safari로 열기</b>를 고르세요.'
+      : '화면의 <b>⋮</b> 메뉴에서 <b>다른 브라우저로 열기</b>를 고르거나 주소를 복사해 브라우저에 붙여 넣으세요.';
+    return (ext ? '' : '<span class="inapp-how">' + how + '</span>') +
+      '<span class="inapp-actions">' +
+      (ext ? '<a class="btn btn-primary" href="' + ext.replace(/"/g, '&quot;') + '">외부 브라우저로 열기</a>' : '') +
+      '<button class="btn" type="button" data-inapp-copy>주소 복사</button></span>';
+  }
+  function bindCopy(scope) {
+    var btn = scope.querySelector('[data-inapp-copy]');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
       copyText(location.href).then(function () { btn.textContent = '✅ 복사됨'; }, function () { btn.textContent = '복사 실패'; })
         .then(function () { setTimeout(function () { btn.textContent = '주소 복사'; }, 1800); });
     });
-    document.getElementById('inappClose').addEventListener('click', function () {
-      wrap.remove();
-      store(function (s) { s.setItem(DISMISS_KEY, '1'); });
+  }
+
+  /* ---------- 1) 파일 선택 창이 안 열릴 때만 안내 ---------- */
+  function showUploadHelp(dropEl) {
+    if (document.getElementById('inappHelp')) return;
+    var box = document.createElement('div');
+    box.className = 'inapp';
+    box.id = 'inappHelp';
+    box.setAttribute('role', 'alert');
+    box.innerHTML =
+      '<div class="inapp-text"><b>📱 파일 선택 창이 열리지 않나요?</b>' +
+      '<span>이 앱 안에서는 파일 선택이 막혀 있을 수 있어요. Chrome이나 Safari에서 열면 바로 돼요.</span>' +
+      actionsHTML() + '</div>' +
+      '<button class="inapp-close" type="button" aria-label="안내 닫기">✕</button>';
+    dropEl.parentNode.insertBefore(box, dropEl.nextSibling);
+    bindCopy(box);
+    box.querySelector('.inapp-close').addEventListener('click', function () { box.remove(); });
+  }
+
+  /**
+   * 앱 안 브라우저에서 업로드 상자를 눌렀을 때 파일 선택 창이 정말 열리는지 지켜봅니다.
+   * 창이 열리면 페이지가 잠시 가려지거나(blur·visibilitychange) 파일이 선택(change)됩니다.
+   * 그런 신호가 없으면 "열리지 않았다"고 보고 안내를 보여줍니다.
+   */
+  function watchUpload(dropEl, input) {
+    if (!info.inApp || !dropEl || !input) return;
+    var timer = null;
+    function opened() { clearTimeout(timer); timer = null; }
+    window.addEventListener('blur', opened);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) opened(); });
+    input.addEventListener('change', function () {
+      opened();
+      // 실제로는 열렸는데 안내가 먼저 떴던 경우 정리
+      var help = document.getElementById('inappHelp');
+      if (help) help.remove();
+    });
+    input.addEventListener('click', function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () { if (!document.hidden) showUploadHelp(dropEl); }, PICKER_WAIT);
     });
   }
 
-  /* ---------- 길게 눌러 저장하는 이미지 화면 ---------- */
+  /* ---------- 2) 길게 눌러 저장하는 이미지 화면 ---------- */
   function showImage(blob) {
     var url = URL.createObjectURL(blob);
+    var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var how = ios ? '이미지를 길게 누른 뒤 <b>‘사진 앱에 저장’</b>을 고르세요.' : '이미지를 길게 누른 뒤 <b>‘이미지 저장’</b>을 고르세요. 갤러리에 저장돼요.';
     var layer = document.createElement('div');
     layer.className = 'img-sheet';
     layer.setAttribute('role', 'dialog');
@@ -106,37 +121,35 @@
     layer.setAttribute('aria-label', '결과 카드 이미지');
     layer.innerHTML =
       '<div class="img-sheet-box">' +
-      '<p><b>이미지를 길게 눌러 저장하세요</b><span>앱 안 브라우저에서는 저장 버튼이 막혀 있어 이렇게 저장해요.</span></p>' +
+      '<p><b>이미지를 길게 눌러 저장하세요</b><span>' + how + '</span></p>' +
       '<img alt="단톡 리포트 결과 카드">' +
-      '<button class="btn btn-primary" type="button">닫기</button>' +
+      (info.inApp ? '<p class="img-sheet-alt"><span>길게 눌러도 저장되지 않으면 외부 브라우저에서 열어 주세요.</span>' + actionsHTML() + '</p>' : '') +
+      '<button class="btn btn-primary" type="button" data-close>닫기</button>' +
       '</div>';
     layer.querySelector('img').src = url;
+    bindCopy(layer);
     function close() {
       layer.remove();
       document.removeEventListener('keydown', onKey);
       URL.revokeObjectURL(url);
     }
     function onKey(e) { if (e.key === 'Escape') close(); }
-    layer.querySelector('button').addEventListener('click', close);
+    layer.querySelector('[data-close]').addEventListener('click', close);
     layer.addEventListener('click', function (e) { if (e.target === layer) close(); });
     document.addEventListener('keydown', onKey);
     document.body.appendChild(layer);
-    layer.querySelector('button').focus();
+    layer.querySelector('[data-close]').focus();
   }
 
-  var info = detect();
   var api = {
     detect: detect,
     externalUrl: externalUrl,
     isInApp: function () { return info.inApp; },
     showImage: showImage,
-    showBanner: showBanner
+    watchUpload: watchUpload,
+    showUploadHelp: showUploadHelp,
+    _setInfo: function (v) { info = v; }   // 테스트용
   };
   root.TalkInApp = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
-
-  if (typeof document !== 'undefined' && info.inApp) {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { showBanner(info); });
-    else showBanner(info);
-  }
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -267,6 +267,7 @@
       (aw ? '<div class="sc-h">🏆 칭호</div><div class="sc-awards">' + aw + '</div>' : '') +
       (words ? '<div class="sc-h">🗣️ 많이 쓴 단어</div><div class="sc-words">' + words + '</div>' : '') +
       '<div class="sc-foot"><span>대화 파일은 서버에 저장하지 않아요</span><span>' + esc(SITE_URL) + '</span></div>');
+    prepareCard();
   }
 
   function renderLinkNote() {
@@ -316,31 +317,101 @@
     }).then(function () { setTimeout(function () { btn.textContent = label; }, 2000); });
   }
 
-  /* ---------- image export ---------- */
+  /* ---------- image export ----------
+   * 웹페이지는 저장 위치(파일/사진)를 직접 고를 수 없어서, 기기마다 사진에 저장되는 방법을 씁니다.
+   *  - 아이폰: 공유 창을 열고 '이미지 저장'을 누르면 사진 앱에 저장됨
+   *  - 공유 창을 못 여는 아이폰·앱 안 브라우저: 이미지를 띄워 길게 눌러 '사진에 저장'
+   *  - 안드로이드·PC: 다운로드 (안드로이드는 갤러리 앱의 'Download' 앨범에 보임)
+   */
+  var UA = navigator.userAgent;
+  var IS_IOS = /iPhone|iPad|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var IS_ANDROID = /Android/i.test(UA);
+  var SAVE_LABEL = '🖼️ 이미지 저장';
+
+  function canShareFiles() {
+    try { return !!(navigator.canShare && navigator.canShare({ files: [new File([''], 'a.png', { type: 'image/png' })] })); }
+    catch (e) { return false; }
+  }
+  function inApp() { return !!(window.TalkInApp && TalkInApp.isInApp()); }
+
+  var cache = { html: '', promise: null, blob: null };
+  /** 결과 카드 이미지. 카드 내용이 그대로면 만들어 둔 이미지를 다시 씁니다. */
   function cardBlob() {
     if (!window.html2canvas) return Promise.reject(new Error('html2canvas'));
+    var html = $('shareCard').innerHTML;
+    if (cache.promise && cache.html === html) return cache.promise;
     var ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-    return ready.then(function () {
+    var p = ready.then(function () {
       return html2canvas($('shareCard'), { scale: 3, backgroundColor: null, useCORS: true, logging: false });
     }).then(function (canvas) {
-      return new Promise(function (res) { canvas.toBlob(res, 'image/png'); });
+      return new Promise(function (res, rej) { canvas.toBlob(function (b) { b ? res(b) : rej(new Error('blob')); }, 'image/png'); });
+    });
+    cache = { html: html, promise: p, blob: null };
+    p.then(function (b) { if (cache.promise === p) cache.blob = b; },
+           function () { if (cache.promise === p) cache = { html: '', promise: null, blob: null }; });
+    return p;
+  }
+
+  // 아이폰은 버튼을 누른 "바로 그 순간"에만 공유 창을 열어 줍니다.
+  // 그래서 결과 카드가 바뀌면 이미지를 미리 만들어 두었다가, 누르자마자 공유 창을 엽니다.
+  var prepTimer = null;
+  function prepareCard() {
+    if (!(IS_IOS && canShareFiles())) return;
+    clearTimeout(prepTimer);
+    prepTimer = setTimeout(function () { cardBlob().catch(function () { /* 누를 때 다시 시도 */ }); }, 700);
+  }
+
+  function fileOf(blob) { return new File([blob], '단톡리포트.png', { type: 'image/png' }); }
+  function showSheet(blob) { if (window.TalkInApp) TalkInApp.showImage(blob); }
+  function download(blob) {
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    link.href = url; link.download = '단톡리포트.png';
+    document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+  function flash(text) {
+    var btn = $('saveBtn');
+    btn.disabled = false; btn.textContent = text;
+    setTimeout(function () { btn.textContent = SAVE_LABEL; }, 2200);
+  }
+  /** 공유 창 → '이미지 저장'. 사용자가 닫은 경우가 아니면 길게 눌러 저장 화면으로 */
+  function shareToPhotos(blob) {
+    return navigator.share({ files: [fileOf(blob)] }).catch(function (e) {
+      if (!e || e.name !== 'AbortError') showSheet(blob);
     });
   }
 
   function saveImage() {
     var btn = $('saveBtn');
+    // 아이폰: 미리 만들어 둔 이미지가 있으면 바로 공유 창
+    if (IS_IOS && canShareFiles() && cache.blob && cache.html === $('shareCard').innerHTML) {
+      shareToPhotos(cache.blob);
+      return;
+    }
     btn.disabled = true; btn.textContent = '만드는 중…';
     cardBlob().then(function (blob) {
-      // 앱 안 브라우저는 다운로드가 막히는 경우가 많아 "길게 눌러 저장" 화면을 띄웁니다.
-      if (window.TalkInApp && TalkInApp.isInApp()) { TalkInApp.showImage(blob); return; }
-      var url = URL.createObjectURL(blob);
-      var link = document.createElement('a');
-      link.href = url; link.download = '단톡리포트.png';
-      document.body.appendChild(link); link.click(); link.remove();
-      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+      if (IS_IOS && canShareFiles()) { flash(SAVE_LABEL); return shareToPhotos(blob); }
+      if (IS_IOS || inApp()) { flash(SAVE_LABEL); showSheet(blob); return; }
+      download(blob);
+      flash(IS_ANDROID ? '✅ 저장했어요 · 갤러리 > Download' : '✅ 저장했어요');
     }).catch(function () {
-      btn.textContent = '이미지를 만들지 못했어요';
-    }).then(function () { setTimeout(function () { btn.disabled = false; btn.textContent = '🖼️ 이미지 저장'; }, 1200); });
+      flash('이미지를 만들지 못했어요');
+    });
+  }
+
+  /** 저장 버튼 아래 기기별 안내 */
+  function renderSaveNote() {
+    var actions = $('saveBtn') && $('saveBtn').parentNode;
+    if (!actions || $('saveNote')) return;
+    var text = '';
+    if (IS_IOS && canShareFiles()) text = '📱 공유 창이 열리면 <b>‘이미지 저장’</b>을 눌러 주세요. 사진 앱에 저장돼요.';
+    else if (IS_IOS || inApp()) text = '📱 이미지가 뜨면 <b>길게 눌러 사진에 저장</b>하세요.';
+    else if (IS_ANDROID) text = '📱 저장한 이미지는 <b>갤러리 앱의 ‘Download’ 앨범</b>에서 볼 수 있어요.';
+    if (!text) return;
+    var p = document.createElement('p');
+    p.className = 'link-note'; p.id = 'saveNote'; p.innerHTML = text;
+    actions.parentNode.insertBefore(p, actions.nextSibling);
   }
 
   function shareImage() {
@@ -387,6 +458,7 @@
   $('saveBtn').addEventListener('click', saveImage);
   $('shareBtn').addEventListener('click', shareImage);
   $('copyBtn').addEventListener('click', copyLink);
+  renderSaveNote();
   try {
     var probe = new File([''], 'a.png', { type: 'image/png' });
     if (navigator.canShare && navigator.canShare({ files: [probe] })) $('shareBtn').hidden = false;
@@ -424,6 +496,8 @@
   window.addEventListener('drop', function (e) { e.preventDefault(); if (e.target.closest && !e.target.closest('#drop')) readFile(e.dataTransfer.files[0]); });
 
   $('demoBtn').addEventListener('click', function () { loadText(TalkSample.generate(), true); });
+  // 앱 안 브라우저에서 파일 선택 창이 안 열리는 경우에만 안내
+  if (window.TalkInApp) TalkInApp.watchUpload(drop, $('file'));
   $('resetBtn').addEventListener('click', function () {
     state.messages = []; $('result').hidden = true;
     window.scrollTo({ top: 0, behavior: 'smooth' });
