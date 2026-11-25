@@ -31,7 +31,7 @@ npx serve .
 1. 도메인은 `dantokreport.com`으로 설정됨 (canonical, og, robots.txt, sitemap.xml). 바꾸려면 이 주소를 전부 찾아 바꾸기 (`assets/sample.js`의 example.com은 예시 대화용이라 그대로 둠)
 2. `privacy.html`의 시행일(2026년 11월 25일)이 실제 공개일과 다르면 고치기
 3. 공유 미리보기 이미지 `og-image.png`(1200×630)는 만들어 두었음. 디자인을 바꾸려면 새로 만들어 같은 이름으로 교체
-4. 애드센스 승인 후 `index.html`의 `<head>` 주석 위치에 광고 스크립트를 넣고, `ad-1`, `ad-2` 자리에 수동 광고 단위 넣기
+4. 애드센스 코드(ca-pub-3282029099369003)와 `ads.txt`는 넣어 두었음. 승인 후 `ad-1`, `ad-2`와 가이드 글의 광고 자리에 수동 광고 단위 넣기. `r.html`과 `404.html`에는 광고 코드를 넣지 않음
    - 분석 결과 화면(`#result`)에는 광고를 넣지 않는다고 안내하고 있으니, 자동 광고를 켜면 결과 영역을 꼭 제외하세요.
    - 유럽·영국·스위스 방문자용 쿠키 동의 메시지는 애드센스의 "개인정보 보호 및 메시지"에서 켜세요.
 5. Google Analytics 같은 통계 도구를 추가하면 `privacy.html` 4항에 그 내용을 덧붙이세요.
@@ -43,7 +43,7 @@ Cloudflare Pages 프로젝트 `dantokreport`로 배포 중입니다: https://dan
 이 PC의 Node.js가 20이라 wrangler는 3 버전을 씁니다. 다시 배포하려면:
 
 1. 공개할 파일만 별도 폴더(예: `dist`)에 복사합니다. **`README.md`와 `.claude` 폴더는 넣지 마세요.**
-   (`assets`, `guide`, `404.html`, `index.html`, `og-image.png`, `privacy.html`, `r.html`, `robots.txt`, `sitemap.xml`)
+   (`assets`, `guide`, `404.html`, `about.html`, `ads.txt`, `index.html`, `og-image.png`, `privacy.html`, `r.html`, `robots.txt`, `sitemap.xml`)
 2. 그 폴더가 있는 곳에서 실행합니다.
 
 ```powershell
