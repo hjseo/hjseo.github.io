@@ -61,7 +61,15 @@
 
       <label class="drop" id="drop">
         <input type="file" id="file" accept=".txt,.csv,text/plain,text/csv" aria-label="대화 파일 선택">
-        <div class="drop-icon" aria-hidden="true">📂</div>
+        <!-- 기기마다 이모지 모양이 달라서, 어디서나 같은 노란 폴더 그림(SVG)을 씁니다. 크기·색은 속성에 직접 지정 -->
+        <div class="drop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="44" height="44" focusable="false" style="display:block;margin:0 auto">
+          <defs>
+            <linearGradient id="dropBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7B23B"/><stop offset="1" stop-color="#E8962A"/></linearGradient>
+            <linearGradient id="dropFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE07A"/><stop offset="1" stop-color="#FFB937"/></linearGradient>
+          </defs>
+          <path d="M4 12.5A4.5 4.5 0 0 1 8.5 8h9.6a4.5 4.5 0 0 1 3.2 1.3L24 12h15.5a4.5 4.5 0 0 1 4.5 4.5V36a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z" fill="url(#dropBack)"/>
+          <path d="M9.4 19.2A4 4 0 0 1 13.2 16.5h30.4a2.6 2.6 0 0 1 2.5 3.3l-4.2 16.8A4.5 4.5 0 0 1 37.5 40H7.6a3 3 0 0 1-2.9-3.8z" fill="url(#dropFront)"/>
+        </svg></div>
         <div class="drop-title">대화 파일을 여기에 끌어다 놓거나 눌러서 선택</div>
         <div class="drop-sub">.txt 또는 .csv 파일 · PC, 안드로이드, 아이폰 내보내기 지원</div>
       </label>
