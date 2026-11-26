@@ -21,8 +21,8 @@
 <meta name="theme-color" content="#5b3df5">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b3df5'/%3E%3Cpath d='M9 21V13M16 21V9M23 21v-5' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="assets/style.css?v=20261125-5">
-<script src="assets/theme.js?v=20261125-5"></script>
+<link rel="stylesheet" href="assets/style.css?v=20261126-1">
+<script src="assets/theme.js?v=20261126-1"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,7 +60,7 @@
       <p class="lead">대화 내보내기 파일을 올리면 수다왕, 웃음 장인, 새벽 올빼미부터 가장 뜨거웠던 날까지 한 번에 보여드려요.</p>
 
       <label class="drop" id="drop">
-        <input type="file" id="file" accept=".txt,.csv,text/plain,text/csv" aria-label="대화 파일 선택">
+        <input type="file" id="file" accept=".txt,.csv,.zip,text/plain,text/csv,application/zip,application/x-zip-compressed" aria-label="대화 파일 선택">
         <!-- 기기마다 이모지 모양이 달라서, 어디서나 같은 노란 폴더 그림(SVG)을 씁니다. 크기·색은 속성에 직접 지정 -->
         <div class="drop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="44" height="44" focusable="false" style="display:block;margin:0 auto">
           <defs>
@@ -71,7 +71,7 @@
           <path d="M9.4 19.2A4 4 0 0 1 13.2 16.5h30.4a2.6 2.6 0 0 1 2.5 3.3l-4.2 16.8A4.5 4.5 0 0 1 37.5 40H7.6a3 3 0 0 1-2.9-3.8z" fill="url(#dropFront)"/>
         </svg></div>
         <div class="drop-title">대화 파일을 여기에 끌어다 놓거나 눌러서 선택</div>
-        <div class="drop-sub">.txt 또는 .csv 파일 · PC, 안드로이드, 아이폰 내보내기 지원</div>
+        <div class="drop-sub">.txt · .zip 파일 · PC, 안드로이드, 아이폰 내보내기 지원 (사진이 든 zip도 그대로 OK)</div>
       </label>
 
       <div class="hero-actions">
@@ -204,19 +204,20 @@
           <ol class="steps">
             <li>단톡방 오른쪽 위 메뉴(≡) → 아래쪽 <b>설정(톱니바퀴)</b>을 누릅니다.</li>
             <li><b>대화 내용 내보내기</b>를 누릅니다.</li>
-            <li><b>텍스트만 보내기</b>를 골라 기기에 저장하거나 나에게 보냅니다.</li>
-            <li>받은 .txt 파일을 이 페이지에서 선택합니다.</li>
+            <li><b>텍스트만 보내기</b>를 골라 기기에 저장하거나 나에게 보냅니다. <b>모든 메시지 내부저장소에 저장</b>을 골라도 됩니다(.zip).</li>
+            <li>받은 .txt 또는 .zip 파일을 이 페이지에서 그대로 선택합니다.</li>
           </ol>
         </div>
         <div data-panel="ios" hidden>
           <ol class="steps">
             <li>단톡방 오른쪽 위 메뉴(≡) → <b>설정(톱니바퀴)</b>을 누릅니다.</li>
-            <li><b>대화 내용 내보내기</b> → <b>텍스트 메시지만 보내기</b>를 누릅니다.</li>
-            <li><b>파일에 저장</b>을 고릅니다.</li>
+            <li><b>대화 내용 내보내기</b> → <b>텍스트 메시지만 보내기</b>를 누르면 메일 작성 화면이 열립니다. 받는 사람에 <b>내 이메일</b>을 적어 보냅니다.</li>
+            <li><b>메일</b> 앱에서 받은 메일을 열고, 첨부된 .txt 파일을 <b>길게 눌러 ‘파일에 저장’</b>을 고릅니다.</li>
             <li>이 페이지에서 저장한 .txt 파일을 선택합니다.</li>
+            <li>메뉴에 <b>모든 메시지 보내기</b>가 있다면, 공유 창에서 <b>파일에 저장</b>을 골라 받은 <b>.zip 파일을 그대로</b> 올려도 됩니다.</li>
           </ol>
         </div>
-        <p class="hint">앱 버전에 따라 메뉴 이름이 조금 다를 수 있어요. 사진까지 함께 내보내 .zip 파일이 되었다면 압축을 풀고 안에 있는 .txt 파일을 올려 주세요. <a href="guide/export-chat.html">자세한 방법과 문제 해결 보기</a></p>
+        <p class="hint">앱 버전에 따라 메뉴 이름이 조금 다를 수 있어요. 사진까지 함께 내보낸 <b>.zip 파일도 압축을 풀지 않고 그대로</b> 올리면 돼요. 사진은 읽지 않고 대화 파일만 찾아서 분석해요. <a href="guide/export-chat.html">자세한 방법과 문제 해결 보기</a></p>
       </div>
     </div>
   </section>
@@ -234,7 +235,7 @@
       </details>
       <details>
         <summary>어떤 파일을 지원하나요?</summary>
-        <p>PC(Windows), 안드로이드, 아이폰에서 내보낸 .txt 파일과 Mac에서 내보낸 .csv 파일을 지원합니다. 한국어 설정 기준이며, 영어 설정 파일도 대부분 인식합니다.</p>
+        <p>PC(Windows), 안드로이드, 아이폰에서 내보낸 .txt 파일, 사진까지 함께 내보낸 .zip 파일, Mac에서 내보낸 .csv 파일을 지원합니다. zip은 압축을 풀지 않고 올리면 안의 대화 파일만 찾아 분석하고, 사진·동영상은 읽지 않습니다. 한국어 설정 기준이며, 영어 설정 파일도 대부분 인식합니다.</p>
       </details>
       <details>
         <summary>결과가 실제와 조금 달라요.</summary>
@@ -282,11 +283,12 @@
 <div class="tip" id="tip" hidden></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
-<script src="assets/parser.js?v=20261125-5" defer></script>
-<script src="assets/stats.js?v=20261125-5" defer></script>
-<script src="assets/sample.js?v=20261125-5" defer></script>
-<script src="assets/sharelink.js?v=20261125-5" defer></script>
-<script src="assets/inapp.js?v=20261125-5" defer></script>
-<script src="assets/app.js?v=20261125-5" defer></script>
+<script src="assets/parser.js?v=20261126-1" defer></script>
+<script src="assets/stats.js?v=20261126-1" defer></script>
+<script src="assets/sample.js?v=20261126-1" defer></script>
+<script src="assets/sharelink.js?v=20261126-1" defer></script>
+<script src="assets/unzip.js?v=20261126-1" defer></script>
+<script src="assets/inapp.js?v=20261126-1" defer></script>
+<script src="assets/app.js?v=20261126-1" defer></script>
 </body>
 </html>

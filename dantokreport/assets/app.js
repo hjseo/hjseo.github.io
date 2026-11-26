@@ -68,8 +68,8 @@
       catch (e) { parsed = { messages: [] }; }
       $('loading').hidden = true;
       if (!parsed.messages.length) {
-        showError('<b>대화를 찾지 못했어요.</b><br>메신저에서 ‘대화 내보내기’로 받은 .txt(또는 Mac의 .csv) 파일인지 확인해 주세요. ' +
-          '사진까지 포함된 .zip 파일이라면 압축을 풀고 안의 .txt 파일을 올려 주세요. <a href="#guide">내보내는 방법 보기</a>');
+        showError('<b>대화를 찾지 못했어요.</b><br>메신저에서 ‘대화 내보내기’로 받은 .txt·.zip(또는 Mac의 .csv) 파일인지 확인해 주세요. ' +
+          '<a href="#guide">내보내는 방법 보기</a>');
         return;
       }
       state.messages = parsed.messages;
@@ -83,18 +83,51 @@
     }, 30);
   }
 
+  function setLoading(text) {
+    var el = $('loading');
+    if (el && el.lastElementChild) el.lastElementChild.textContent = text;
+  }
+
+  var ZIP_ERRORS = {
+    no_text: '<b>압축 파일 안에 대화 파일(.txt)이 없어요.</b><br>대화 내보내기로 받은 압축 파일이 맞는지 확인해 주세요.',
+    no_chat: '<b>압축 파일 안에서 대화를 찾지 못했어요.</b><br>대화 내보내기로 받은 압축 파일이 맞는지 확인해 주세요.',
+    encrypted: '<b>비밀번호가 걸린 압축 파일은 열 수 없어요.</b><br>압축을 풀어 안의 .txt 파일을 올려 주세요.',
+    too_large: '<b>압축 파일 안의 대화 파일이 너무 커요(300MB 초과).</b><br>기간을 나눠 내보내 주세요.',
+    no_inflate: '<b>이 브라우저에서는 압축 파일을 열 수 없어요.</b><br>압축을 풀어 안의 .txt 파일을 올리거나, 최신 Chrome·Safari에서 열어 주세요.',
+    unsupported: '<b>이 압축 방식은 열 수 없어요.</b><br>압축을 풀어 안의 .txt 파일을 올려 주세요.'
+  };
+
+  /** .zip: 목차만 읽어 대화 파일을 찾고 그 부분만 풀어서 분석 (사진·동영상은 읽지 않음) */
+  function readZip(file) {
+    $('error').hidden = true;
+    $('result').hidden = true;
+    setLoading('압축 파일에서 대화를 찾고 있어요…');
+    $('loading').hidden = false;
+    TalkUnzip.findChat(file, function (buf) {
+      var text = TalkParser.decode(buf), count = 0;
+      try { count = TalkParser.parse(text).messages.length; } catch (e) { /* 대화 파일 아님 */ }
+      return { text: text, count: count };
+    }).then(function (found) {
+      setLoading('대화를 분석하고 있어요…');
+      loadText(found.text, false);
+    }).catch(function (e) {
+      $('loading').hidden = true;
+      setLoading('대화를 분석하고 있어요…');
+      showError(ZIP_ERRORS[e && e.code] || '<b>압축 파일을 열지 못했어요.</b><br>압축을 풀어 안의 .txt 파일을 올려 주세요.');
+    });
+  }
+
   function readFile(file) {
     if (!file) return;
-    if (/\.zip$/i.test(file.name)) {
-      showError('<b>.zip 파일이에요.</b> 압축을 풀고 안에 있는 .txt 파일을 올려 주세요.');
-      return;
-    }
-    if (file.size > 300 * 1024 * 1024) {
-      showError('<b>파일이 너무 커요(300MB 초과).</b> 기간을 나눠 내보내거나 PC에서 시도해 주세요.');
-      return;
-    }
-    file.arrayBuffer().then(function (buf) { loadText(TalkParser.decode(buf), false); })
-      .catch(function () { showError('파일을 읽지 못했어요. 다시 시도해 주세요.'); });
+    var looksZip = /\.zip$/i.test(file.name) || /zip/i.test(file.type);
+    (looksZip ? Promise.resolve(true) : TalkUnzip.isZip(file)).then(function (zip) {
+      if (zip) return readZip(file);
+      if (file.size > 300 * 1024 * 1024) {
+        showError('<b>파일이 너무 커요(300MB 초과).</b> 기간을 나눠 내보내거나 PC에서 시도해 주세요.');
+        return;
+      }
+      return file.arrayBuffer().then(function (buf) { loadText(TalkParser.decode(buf), false); });
+    }).catch(function () { showError('파일을 읽지 못했어요. 다시 시도해 주세요.'); });
   }
 
   function run() {
